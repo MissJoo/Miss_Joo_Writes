@@ -25,7 +25,7 @@ const Header = () => {
             to="/" 
             className="font-serif text-xl lg:text-2xl tracking-wide text-foreground hover:text-primary transition-colors duration-300"
           >
-            Miss Joo's Notes
+            Miss Joo Writes
           </Link>
 
           {/* Desktop Navigation */}
