@@ -8,7 +8,7 @@ import heroImage from "@/assets/hero-image.jpg";
 // Sample blog posts data
 const blogPosts = [
   { 
-    title: "Learning to embrace the quiet moments",
+    title: "Some days I'm strong, some days I'm just tired",
     excerpt: "I’ve learned that strength doesn’t always look loud. Some days, it’s simply getting through the day without explaining why you feel heavy....",
     date: "December 30, 2025",
     category: "Healing",
