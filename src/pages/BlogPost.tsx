@@ -5,9 +5,29 @@ import { ArrowLeft } from "lucide-react";
 
 // Sample blog post content
 const postsContent: Record<string, { title: string; date: string; category: string; content: string[] }> = {
+"strong-days": {
+  title: "Some days I'm strong, some days I'm just tired",
+  date: "December 30, 2025",
+    category: "Healing",
+  content: [
+    "I’ve learned that strength doesn’t always look loud.",
+    "Some days, it’s simply getting through the day without explaining why you feel heavy.",
+    "Without justifying your silence.",
+    "Without forcing yourself to be okay for the comfort of others.",
+    "I used to think being strong meant always having answers.",
+    "Now I know it sometimes means allowing yourself not to have them.",
+    "There are days I feel grounded, clear, and confident.",
+    "And there are days where everything feels heavier than it should.",
+    "I’m learning not to judge either version of myself.",
+    "Maybe strength is letting both exist.",
+    "Maybe healing doesn’t need to be rushed.",
+    "Maybe becoming takes time.",
+    "And today, I’m allowing that.",
+    ],
+},
   "embrace-quiet-moments": {
     title: "Learning to embrace the quiet moments",
-    date: "December 28, 2024",
+    date: "December 28, 2025",
     category: "Thoughts",
     content: [
       "There's something profoundly beautiful about sitting with silence. Not the uncomfortable kind that begs to be filled, but the kind that wraps around you like a warm blanket on a winter evening.",
@@ -20,7 +40,7 @@ const postsContent: Record<string, { title: string; date: string; category: stri
   },
   "growing-through-change": {
     title: "On growing through change",
-    date: "December 20, 2024",
+    date: "December 20, 2025",
     category: "Healing",
     content: [
       "Change has always felt like losing pieces of myself. Every transition, every ending, every new beginning—they all seemed to take something from me.",
@@ -32,7 +52,7 @@ const postsContent: Record<string, { title: string; date: string; category: stri
   },
   "letters-never-sent": {
     title: "Letters I never sent",
-    date: "December 15, 2024",
+    date: "December 15, 2025",
     category: "Life",
     content: [
       "Sometimes the most important conversations happen in the space between what we say and what we mean. These are the words I've been holding onto.",
@@ -44,7 +64,7 @@ const postsContent: Record<string, { title: string; date: string; category: stri
   },
   "random-tuesday": {
     title: "A random Tuesday in December",
-    date: "December 10, 2024",
+    date: "December 10, 2025",
     category: "Random",
     content: [
       "Not every day needs to be remarkable. Sometimes the most beautiful moments are the ones that pass without fanfare.",
@@ -57,7 +77,7 @@ const postsContent: Record<string, { title: string; date: string; category: stri
   },
   "art-of-letting-go": {
     title: "The art of letting go",
-    date: "December 5, 2024",
+    date: "December 5, 2025",
     category: "Healing",
     content: [
       "Letting go doesn't mean forgetting. It means making peace with the memories, allowing them to exist without the weight of what could have been.",
@@ -69,7 +89,7 @@ const postsContent: Record<string, { title: string; date: string; category: stri
   },
   "midnight-conversations": {
     title: "Midnight conversations with myself",
-    date: "November 28, 2024",
+    date: "November 28, 2025",
     category: "Thoughts",
     content: [
       "There's honesty that only comes out at 2 AM, when the world is asleep and you're left with nothing but your thoughts and the soft glow of a bedside lamp.",
