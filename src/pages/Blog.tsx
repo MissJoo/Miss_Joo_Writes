@@ -11,7 +11,7 @@ const allPosts = [
     excerpt: "I’ve learned that strength doesn’t always look loud. Some days, it’s simply getting through the day without explaining why you feel heavy....",
     date: "December 30, 2025",
     category: "Healing",
-    slug: "some-days-im-strong",
+    slug: "strong-days",
   },
   {
     title: "Learning to embrace the quiet moments",
