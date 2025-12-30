@@ -7,32 +7,39 @@ import heroImage from "@/assets/hero-image.jpg";
 
 // Sample blog posts data
 const blogPosts = [
+  { 
+    title: "Learning to embrace the quiet moments",
+    excerpt: "I’ve learned that strength doesn’t always look loud. Some days, it’s simply getting through the day without explaining why you feel heavy....",
+    date: "December 30, 2025",
+    category: "Healing",
+    slug: "strong-days",
+    featured: true,
+  },
   {
     title: "Learning to embrace the quiet moments",
     excerpt: "There's something profoundly beautiful about sitting with silence. Not the uncomfortable kind that begs to be filled, but the kind that wraps around you like a warm blanket on a winter evening...",
-    date: "December 28, 2024",
+    date: "December 28, 2025",
     category: "Thoughts",
     slug: "embrace-quiet-moments",
-    featured: true,
   },
   {
     title: "On growing through change",
     excerpt: "Change has always felt like losing pieces of myself. But lately, I've started to see it differently—as collecting new pieces, adding to who I am...",
-    date: "December 20, 2024",
+    date: "December 20, 2025",
     category: "Healing",
     slug: "growing-through-change",
   },
   {
     title: "Letters I never sent",
     excerpt: "Sometimes the most important conversations happen in the space between what we say and what we mean. These are the words I've been holding...",
-    date: "December 15, 2024",
+    date: "December 15, 2025",
     category: "Life",
     slug: "letters-never-sent",
   },
   {
     title: "A random Tuesday in December",
     excerpt: "Not every day needs to be remarkable. Sometimes the most beautiful moments are the ones that pass without fanfare...",
-    date: "December 10, 2024",
+    date: "December 10, 2025",
     category: "Random",
     slug: "random-tuesday",
   },
