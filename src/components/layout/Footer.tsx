@@ -24,10 +24,10 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: Instagram, href: "https://instagram.com/missjooo98", label: "Instagram" },
-    { icon: Facebook, href: "https://facebook.com/YOUR_FB_USERNAME", label: "Facebook" },
-    { icon: TikTokIcon, href: "https://tiktok.com/@YOUR_TIKTOK_USERNAME", label: "TikTok" },
-    { icon: BuyMeCoffeeIcon, href: "https://buymeacoffee.com/YOUR_USERNAME", label: "Buy Me a Coffee" },
-    { icon: LinktreeIcon, href: "https://linktr.ee/YOUR_USERNAME", label: "Linktree" },
+    { icon: Facebook, href: "https://www.facebook.com/share/1JpvRLVBsj/?mibextid=wwXIfr", label: "Facebook" },
+    { icon: TikTokIcon, href: "https://tiktok.com/@missjooo98", label: "TikTok" },
+    { icon: BuyMeCoffeeIcon, href: "https://buymeacoffee.com/missjooo", label: "Buy Me a Coffee" },
+    { icon: LinktreeIcon, href: "https://linktr.ee/missjooo98", label: "Linktree" },
   ];
 
   return (
