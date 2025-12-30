@@ -7,44 +7,51 @@ const categories = ["All", "Thoughts", "Life", "Healing", "Random"];
 
 const allPosts = [
   {
+    title: "Some days I'm strong, some days I'm just tired",
+    excerpt: "I’ve learned that strength doesn’t always look loud. Some days, it’s simply getting through the day without explaining why you feel heavy....",
+    category: "Healing",
+    slug: "some-days-im-strong",
+  }
+  
+  {
     title: "Learning to embrace the quiet moments",
     excerpt: "There's something profoundly beautiful about sitting with silence. Not the uncomfortable kind that begs to be filled, but the kind that wraps around you like a warm blanket on a winter evening. I've spent so much of my life afraid of stillness...",
-    date: "December 28, 2024",
+    date: "December 28, 2025",
     category: "Thoughts",
     slug: "embrace-quiet-moments",
   },
   {
     title: "On growing through change",
     excerpt: "Change has always felt like losing pieces of myself. But lately, I've started to see it differently—as collecting new pieces, adding to who I am rather than subtracting from it...",
-    date: "December 20, 2024",
+    date: "December 20, 2025",
     category: "Healing",
     slug: "growing-through-change",
   },
   {
     title: "Letters I never sent",
     excerpt: "Sometimes the most important conversations happen in the space between what we say and what we mean. These are the words I've been holding onto, the things I wish I could have said...",
-    date: "December 15, 2024",
+    date: "December 15, 2025",
     category: "Life",
     slug: "letters-never-sent",
   },
   {
     title: "A random Tuesday in December",
     excerpt: "Not every day needs to be remarkable. Sometimes the most beautiful moments are the ones that pass without fanfare, the quiet Tuesdays that become treasured memories...",
-    date: "December 10, 2024",
+    date: "December 10, 2025",
     category: "Random",
     slug: "random-tuesday",
   },
   {
     title: "The art of letting go",
     excerpt: "Letting go doesn't mean forgetting. It means making peace with the memories, allowing them to exist without the weight of what could have been...",
-    date: "December 5, 2024",
+    date: "December 5, 2025",
     category: "Healing",
     slug: "art-of-letting-go",
   },
   {
     title: "Midnight conversations with myself",
     excerpt: "There's honesty that only comes out at 2 AM, when the world is asleep and you're left with nothing but your thoughts and the soft glow of a bedside lamp...",
-    date: "November 28, 2024",
+    date: "November 28, 2025",
     category: "Thoughts",
     slug: "midnight-conversations",
   },
