@@ -8,7 +8,7 @@ const postsContent: Record<string, { title: string; date: string; category: stri
 "strong-days": {
   title: "Some days I'm strong, some days I'm just tired",
   date: "December 30, 2025",
-    category: "Healing",
+  category: "Healing",
   content: [
     "I’ve learned that strength doesn’t always look loud.",
     "Some days, it’s simply getting through the day without explaining why you feel heavy.",
