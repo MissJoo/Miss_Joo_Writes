@@ -13,7 +13,6 @@ const allPosts = [
     category: "Healing",
     slug: "some-days-im-strong",
   },
-
   {
     title: "Learning to embrace the quiet moments",
     excerpt: "There's something profoundly beautiful about sitting with silence. Not the uncomfortable kind that begs to be filled, but the kind that wraps around you like a warm blanket on a winter evening. I've spent so much of my life afraid of stillness...",
