@@ -23,9 +23,9 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   const socialLinks = [
-    { icon: Instagram, href: "https://instagram.com/missjooo98", label: "Instagram" },
+    { icon: Instagram, href: "https://www.instagram.com/missjooo98/", label: "Instagram" },
     { icon: Facebook, href: "https://www.facebook.com/share/1JpvRLVBsj/?mibextid=wwXIfr", label: "Facebook" },
-    { icon: TikTokIcon, href: "https://tiktok.com/@missjooo98", label: "TikTok" },
+    { icon: TikTokIcon, href: "https://www.tiktok.com/@missjooo98", label: "TikTok" },
     { icon: BuyMeCoffeeIcon, href: "https://buymeacoffee.com/missjooo", label: "Buy Me a Coffee" },
     { icon: LinktreeIcon, href: "https://linktr.ee/missjooo98", label: "Linktree" },
   ];
