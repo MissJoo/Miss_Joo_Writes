@@ -7,6 +7,13 @@ const categories = ["All", "Thoughts", "Life", "Healing", "Random"];
 
 const allPosts = [
   {
+    title: "Welcoming 2026 with an open heart",
+    excerpt: "Closing old chapters, opening new beginnings....",
+    date: "December 31, 2025",
+    category: "Life",
+    slug: "new-beginnings",
+  },
+  {
     title: "Some days I'm strong, some days I'm just tired",
     excerpt: "I’ve learned that strength doesn’t always look loud. Some days, it’s simply getting through the day without explaining why you feel heavy....",
     date: "December 30, 2025",
