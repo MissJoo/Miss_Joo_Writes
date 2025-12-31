@@ -131,7 +131,7 @@ const Contact = () => {
                 className="inline-flex items-center gap-2 text-foreground hover:text-primary transition-colors duration-300 group"
               >
                 <Mail size={16} className="group-hover:scale-110 transition-transform duration-300" />
-                <span className="tracking-wide">hello@missjooo.com</span>
+                <span className="tracking-wide">missjodiaries@gmail.com</span>
               </a>
             </div>
           </div>
