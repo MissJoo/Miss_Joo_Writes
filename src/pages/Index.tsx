@@ -21,7 +21,6 @@ const blogPosts = [
     date: "December 30, 2025",
     category: "Healing",
     slug: "strong-days",
-    featured: true,
   },
   {
     title: "Learning to embrace the quiet moments",
