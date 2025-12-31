@@ -15,10 +15,10 @@ const postsContent: Record<string, { title: string; date: string; category: stri
     "As 2026 begins, I’m choosing not to carry what no longer fits. The versions of me that stayed too long. The lessons that were learned the hard way. The feelings that once needed answers but now only need release.",
     "I’m not entering this year with a checklist of resolutions. I’m entering it with space.",
     "Space for new beginnings. Space for softness. Space for things I don’t fully understand yet.",
-    "2025 taught me how to survive. 2026 feels like learning how to live again."
-    "I don’t need everything to be clear. I just need my heart open enough to receive what’s meant for me."
-    "So here’s to closing old chapters with gratitude — not bitterness. And opening new ones with courage — not fear."
-    "This year, I choose beginnings. Even if they start quietly."
+    "2025 taught me how to survive. 2026 feels like learning how to live again.",
+    "I don’t need everything to be clear. I just need my heart open enough to receive what’s meant for me.",
+    "So here’s to closing old chapters with gratitude — not bitterness. And opening new ones with courage — not fear.",
+    "This year, I choose beginnings. Even if they start quietly.",
   ],
 },
 "strong-days": {
