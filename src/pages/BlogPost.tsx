@@ -5,6 +5,22 @@ import { ArrowLeft } from "lucide-react";
 
 // Sample blog post content
 const postsContent: Record<string, { title: string; date: string; category: string; content: string[] }> = {
+"new-beginnings": {
+  title: "Welcoming 2026 with an open heart",
+  date: "December 31, 2025",
+  category: "Life",
+  content: [
+    "There’s something quiet about the moment you decide to let go.",
+    "Not loudly. Not dramatically. Just a soft understanding that some chapters have already ended — even if you kept rereading them.",
+    "As 2026 begins, I’m choosing not to carry what no longer fits. The versions of me that stayed too long. The lessons that were learned the hard way. The feelings that once needed answers but now only need release.",
+    "I’m not entering this year with a checklist of resolutions. I’m entering it with space.",
+    "Space for new beginnings. Space for softness. Space for things I don’t fully understand yet.",
+    "2025 taught me how to survive. 2026 feels like learning how to live again."
+    "I don’t need everything to be clear. I just need my heart open enough to receive what’s meant for me."
+    "So here’s to closing old chapters with gratitude — not bitterness. And opening new ones with courage — not fear."
+    "This year, I choose beginnings. Even if they start quietly."
+  ],
+},
 "strong-days": {
   title: "Some days I'm strong, some days I'm just tired",
   date: "December 30, 2025",
