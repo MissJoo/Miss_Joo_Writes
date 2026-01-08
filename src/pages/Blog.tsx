@@ -6,6 +6,13 @@ import { cn } from "@/lib/utils";
 const categories = ["All", "Thoughts", "Life", "Healing", "Random"];
 
 const allPosts = [
+   {
+    title: "What I'm leaving behind without guilt",
+    excerpt: "Choosing peace over explanations....",
+    date: "Jnauary 08, 2026",
+    category: "Healing",
+    slug: "behind-guilt",
+  },
   {
     title: "Welcoming 2026 with an open heart",
     excerpt: "Closing old chapters, opening new beginnings....",
