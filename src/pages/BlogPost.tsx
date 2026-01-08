@@ -5,6 +5,22 @@ import { ArrowLeft } from "lucide-react";
 
 // Sample blog post content
 const postsContent: Record<string, { title: string; date: string; category: string; content: string[] }> = {
+  "behind-guilt": {
+    title: "What I'm leaving behind without guilt",
+date: "January 08, 2026",
+  category:"Healing",
+  content: [
+"The new year didn’t arrive with clarity. It arrived with silence.",
+"After the countdown ended and the noise settled, I realized something — not everything needs to come with me.",
+"I’m leaving behind the need to explain myself. The habit of staying where I feel tolerated, not chosen. The guilt that comes with choosing rest over proving my worth.",
+"Some things were never meant to be carried into a new year. They did their job. They taught me. And now, they can stay where they belong — in the past.",
+"I used to think letting go required answers. Now I know it only requires honesty.",
+"Honesty with myself. Honesty about what drains me. Honesty about what no longer feels aligned.",
+"This year, I’m choosing to move forward lighter. Not because I’ve healed everything, but because I’m done punishing myself for what I didn’t know back then.",
+"I don’t need closure from everyone. I don’t need permission to grow.",
+"Some things end quietly. And maybe that’s the most peaceful way.",
+],
+  },
 "new-beginnings": {
   title: "Welcoming 2026 with an open heart",
   date: "December 31, 2025",
