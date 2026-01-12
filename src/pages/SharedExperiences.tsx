@@ -1,6 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import { Separator } from "@/components/ui/separator";
-import maisonImage from "@/assets/maison-de-beaute.jpg";
+import maisonImage from "@C:\Users\jvill\OneDrive\Documents\MaisondeBeauteSalon.avif";
 
 const SharedExperiences = () => {
   return (
