@@ -1,5 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import { Separator } from "@/components/ui/separator";
+import maisonImage from "@/assets/maison-de-beaute.jpg";
 
 const SharedExperiences = () => {
   return (
@@ -30,6 +31,15 @@ const SharedExperiences = () => {
 
           {/* First Feature */}
           <article className="mb-20">
+            {/* Feature Image */}
+            <div className="mb-10 -mx-6 md:mx-0">
+              <img 
+                src={maisonImage} 
+                alt="Maison de Beauté Salon interior - a serene beauty space with soft natural lighting and elegant decor"
+                className="w-full h-64 md:h-80 object-cover md:rounded-sm"
+              />
+            </div>
+
             <div className="mb-8">
               <span className="text-xs uppercase tracking-[0.2em] text-muted-foreground/60 font-sans">
                 Feature
