@@ -88,7 +88,17 @@ const SharedExperiences = () => {
                   This felt like a moment of softness I didn't know I needed.
                 </p>
               </div>
+
+              <div className="mt-10 pt-6 border-t border-border/30">
+                <p className="text-center text-muted-foreground leading-relaxed font-light">
+                  <span className="block text-lg mb-2">🤍 A Little Thank You</span>
+                  If you'd like to experience Maison de Beauté Salon for yourself, you can enjoy 10% off by using my exclusive code: <span className="font-medium text-foreground">MDB_MJ10</span>
+                </p>
+              </div>
+            </div>
           </article>
+        </div>
+      </div>
     </Layout>
   );
 };
