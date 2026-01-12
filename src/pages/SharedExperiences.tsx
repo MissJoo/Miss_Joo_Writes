@@ -1,6 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import { Separator } from "@/components/ui/separator";
-import maisonImage from "@/assets/maisondeBeauteSalon.jpg";
+import maisonImage from "@/assets/MaisondeBeauteSalon.jpg";
 
 const SharedExperiences = () => {
   return (
