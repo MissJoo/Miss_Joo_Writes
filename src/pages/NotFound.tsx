@@ -6,10 +6,13 @@ const NotFound = () => {
 
   useEffect(() => {
     // Only log in development to prevent path disclosure in production
-    if (import.meta.env.DEV) {
-      console.error("404 Error: User attempted to access non-existent route:", location.pathname);
-    }
-  }, [location.pathname]);
+    export default function NotFound() {
+  return (
+    <div>
+      <h1>Page not found</h1>
+    </div>
+  )
+}
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted">
