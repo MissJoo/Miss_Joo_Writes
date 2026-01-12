@@ -73,10 +73,10 @@ const SharedExperiences = () => {
                 </p>
                 <p>
                   The team was warm, professional, and attentive in a way that made the experience feel personal rather than transactional.
-                  You leave not only looking refreshed, but feeling lighter.
+                  You leave not only looking refreshed, but feeling lighter, inside and out.
                 </p>
                 <p>
-                  Maison de Beauté is the kind of place you go to when you want to reconnect with yourself — quietly.
+                  Maison de Beauté is the kind of place you chose when you want self-care to feel, gentle, and meaningful.
                 </p>
                 <p>
                   And honestly, that's the kind of luxury I appreciate most.
@@ -88,6 +88,12 @@ const SharedExperiences = () => {
                   This felt like a moment of softness I didn't know I needed.
                 </p>
               </div>
+                <Separator className="mb-16 bg-border/40" />
+                <div className="space-y-6 text-muted-foreground leading-relaxed font-light">
+                <p>
+                  🤍 A Little Thank You
+                  If you’d like to experience Maison de Beauté Salon for yourself, you can enjoy 10% off by using my exclusive code: "MDB_MJ10"
+                </p>
             </div>
           </article>
         </div>
