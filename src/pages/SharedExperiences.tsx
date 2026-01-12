@@ -94,7 +94,6 @@ const SharedExperiences = () => {
                   🤍 A Little Thank You
                   If you’d like to experience Maison de Beauté Salon for yourself, you can enjoy 10% off by using my exclusive code: "MDB_MJ10"
                 </p>
-            </div>
           </article>
         </div>
       </div>
