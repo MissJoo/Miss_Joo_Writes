@@ -161,6 +161,32 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Shared Experiences Section */}
+      <section className="py-section bg-secondary/30">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="max-w-2xl mx-auto text-center space-y-8">
+            <span className="text-xs tracking-widest uppercase text-muted-foreground">Collaborations</span>
+            
+            <h2 className="font-serif text-2xl md:text-3xl">
+              Places and brands I genuinely 
+              <span className="italic text-dusty-rose"> connect </span> 
+              with.
+            </h2>
+
+            <p className="text-muted-foreground font-sans leading-relaxed">
+              Every collaboration shared here is based on real experiences — places I've visited, 
+              services I've tried, and moments that felt aligned with my lifestyle and values.
+            </p>
+
+            <Button variant="journal" size="journal" asChild>
+              <Link to="/shared-experiences" className="text-sm">
+                View shared experiences
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
       {/* Instagram Connection Section */}
       <section className="py-section bg-warm-beige/50">
         <div className="container mx-auto px-6 lg:px-12">
