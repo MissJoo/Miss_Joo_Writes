@@ -5,6 +5,25 @@ import { ArrowLeft } from "lucide-react";
 
 // Sample blog post content
 const postsContent: Record<string, { title: string; date: string; category: string; content: string[] }> = {
+  "version-of-me": {
+    title: "The version of me feels unfamiliar, and that's okay",
+    date: "January 13, 20226",
+    category: "Healing",
+      content: [
+        "Lately, I’ve been meeting a version of myself I don’t fully recognize.",
+        "She reacts differently. She pauses instead of explaining. She chooses rest without guilt.",
+
+        "At first, it felt uncomfortable — like I was losing parts of who I used to be. But maybe I’m not losing anything. Maybe I’m just shedding what no longer fits.",
+        "Growth doesn’t always feel empowering. Sometimes it feels quiet. Sometimes it feels lonely. Sometimes it feels like standing in between who you were and who you’re becoming.",
+        "I don’t have everything figured out. But I know this version of me listens more to her intuition than her fear. She doesn’t chase validation the way she used to. She doesn’t stay where she feels small.",
+
+"And even if she feels unfamiliar, she feels honest.",
+"I’m learning to trust this shift — even when it doesn’t come with clarity. Even when it feels slow. Even when it scares me a little.",
+"Because maybe becoming isn’t about finding yourself. Maybe it’s about allowing yourself to change.",
+"And for now, that’s enough.",
+"Maybe this is part of becoming.",
+        ],
+  },
   "behind-guilt": {
     title: "What I'm leaving behind without guilt",
 date: "January 08, 2026",
