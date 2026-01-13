@@ -7,7 +7,7 @@ import { ArrowLeft } from "lucide-react";
 const postsContent: Record<string, { title: string; date: string; category: string; content: string[] }> = {
   "version-of-me": {
     title: "The version of me feels unfamiliar, and that's okay",
-    date: "January 13, 20226",
+    date: "January 13, 2026",
     category: "Healing",
       content: [
         "Lately, I’ve been meeting a version of myself I don’t fully recognize.",
