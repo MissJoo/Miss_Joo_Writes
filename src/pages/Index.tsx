@@ -8,12 +8,20 @@ import heroImage from "@/assets/hero-image.jpg";
 // Sample blog posts data
 const blogPosts = [
    {
+      title: "This version of me feels unfamiliar, and that's okay",
+      excerpt: "Lately, I’ve been meeting a version of myself I don’t fully recognize....",
+      date: "January 13, 2026",
+      category: "Healing",
+      slug: "version-of-me",
+      featured: true,
+   },
+   {
      title: "What I'm leaving behind without guilt",
     excerpt: "Choosing peace over explanations....",
     date: "January 08, 2026",
     category: "Healing",
     slug: "behind-guilt",
-    featured: true,
+    
   },
   {
      title: "Welcoming 2026 with an open heart",
