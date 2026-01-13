@@ -7,6 +7,13 @@ const categories = ["All", "Thoughts", "Life", "Healing", "Random"];
 
 const allPosts = [
    {
+    title: "This version of me feels unfamiliar, and that's okay",
+      excerpt: "Lately, I’ve been meeting a version of myself I don’t fully recognize....",
+    date: "January 13, 2026",
+    category: "Healing",
+      slug: "version-of-me",
+   },
+   {
     title: "What I'm leaving behind without guilt",
     excerpt: "Choosing peace over explanations....",
     date: "Jnauary 08, 2026",
