@@ -5,84 +5,84 @@ import { ArrowLeft } from "lucide-react";
 
 // Sample blog post content
 const postsContent: Record<string, { title: string; date: string; category: string; content: string[] }> = {
-    "choose-myself": {
+  "choose-myself": {
     title: "I’m learning to choose myself without explaining",
     date: "January 20, 2026",
     category: "Healing",
-      content: [
-        "For a long time, choosing myself came with guilt.",
-        "I felt the need to soften my decisions, to explain them carefully, to make sure no one felt uncomfortable because of my growth. As if protecting my peace required permission.",
-        "But lately, something has shifted.",
-        "I’m learning that choosing myself doesn’t have to be loud or defensive. It doesn’t need a speech. It doesn’t need to be justified.",
-        "Some boundaries don’t come with warnings. Some decisions are made quietly. And some versions of me don’t exist to be understood by everyone.",
-        "I used to think that being kind meant always being available. Now I know it also means being honest with myself.",
-        "Choosing myself doesn’t mean I care less. It means I’m listening more closely to what I need.",
-        "And maybe that’s what growth looks like. Making choices that feel aligned, even when they’re not explained.",
-        "For now, I’m allowing myself that freedom.",
-        <b></b>"Maybe this is part of becoming.",
-      ],
-    },
+    content: [
+      "For a long time, choosing myself came with guilt.",
+      "I felt the need to soften my decisions, to explain them carefully, to make sure no one felt uncomfortable because of my growth. As if protecting my peace required permission.",
+      "But lately, something has shifted.",
+      "I’m learning that choosing myself doesn’t have to be loud or defensive. It doesn’t need a speech. It doesn’t need to be justified.",
+      "Some boundaries don’t come with warnings. Some decisions are made quietly. And some versions of me don’t exist to be understood by everyone.",
+      "I used to think that being kind meant always being available. Now I know it also means being honest with myself.",
+      "Choosing myself doesn’t mean I care less. It means I’m listening more closely to what I need.",
+      "And maybe that’s what growth looks like. Making choices that feel aligned, even when they’re not explained.",
+      "For now, I’m allowing myself that freedom.",
+      "Maybe this is part of becoming.",
+    ],
+  },
   "version-of-me": {
     title: "The version of me feels unfamiliar, and that's okay",
     date: "January 13, 2026",
     category: "Healing",
-      content: [
-        "Lately, I’ve been meeting a version of myself I don’t fully recognize.",
-        "She reacts differently. She pauses instead of explaining. She chooses rest without guilt.","At first, it felt uncomfortable — like I was losing parts of who I used to be. But maybe I’m not losing anything. Maybe I’m just shedding what no longer fits.",
-        "Growth doesn’t always feel empowering. Sometimes it feels quiet. Sometimes it feels lonely. Sometimes it feels like standing in between who you were and who you’re becoming.",
-        "I don’t have everything figured out. But I know this version of me listens more to her intuition than her fear. She doesn’t chase validation the way she used to. She doesn’t stay where she feels small.",
-        "And even if she feels unfamiliar, she feels honest.",
-        "I’m learning to trust this shift — even when it doesn’t come with clarity. Even when it feels slow. Even when it scares me a little.",
-        "Because maybe becoming isn’t about finding yourself. Maybe it’s about allowing yourself to change.",
-        "And for now, that’s enough.",
-        "Maybe this is part of becoming.",
-        ],
+    content: [
+      "Lately, I’ve been meeting a version of myself I don’t fully recognize.",
+      "She reacts differently. She pauses instead of explaining. She chooses rest without guilt.", "At first, it felt uncomfortable — like I was losing parts of who I used to be. But maybe I’m not losing anything. Maybe I’m just shedding what no longer fits.",
+      "Growth doesn’t always feel empowering. Sometimes it feels quiet. Sometimes it feels lonely. Sometimes it feels like standing in between who you were and who you’re becoming.",
+      "I don’t have everything figured out. But I know this version of me listens more to her intuition than her fear. She doesn’t chase validation the way she used to. She doesn’t stay where she feels small.",
+      "And even if she feels unfamiliar, she feels honest.",
+      "I’m learning to trust this shift — even when it doesn’t come with clarity. Even when it feels slow. Even when it scares me a little.",
+      "Because maybe becoming isn’t about finding yourself. Maybe it’s about allowing yourself to change.",
+      "And for now, that’s enough.",
+      "Maybe this is part of becoming.",
+    ],
   },
   "behind-guilt": {
     title: "What I'm leaving behind without guilt",
-date: "January 08, 2026",
-  category:"Healing",
-  content: [
-"The new year didn’t arrive with clarity. It arrived with silence.",
-"After the countdown ended and the noise settled, I realized something — not everything needs to come with me.",
-"I’m leaving behind the need to explain myself. The habit of staying where I feel tolerated, not chosen. The guilt that comes with choosing rest over proving my worth.",
-"Some things were never meant to be carried into a new year. They did their job. They taught me. And now, they can stay where they belong — in the past.",
-"I used to think letting go required answers. Now I know it only requires honesty.",
-"Honesty with myself. Honesty about what drains me. Honesty about what no longer feels aligned.",
-"This year, I’m choosing to move forward lighter. Not because I’ve healed everything, but because I’m done punishing myself for what I didn’t know back then.",
-"I don’t need closure from everyone. I don’t need permission to grow. Some things end quietly. And maybe that’s the most peaceful way.",
-],
-  },
-"new-beginnings": {
-  title: "Welcoming 2026 with an open heart",
-  date: "December 31, 2025",
-  category: "Life",
-  content: [
-    "There’s something quiet about the moment you decide to let go.",
-    "Not loudly. Not dramatically. Just a soft understanding that some chapters have already ended — even if you kept rereading them.",
-    "As 2026 begins, I’m choosing not to carry what no longer fits. The versions of me that stayed too long. The lessons that were learned the hard way. The feelings that once needed answers but now only need release.",
-    "I’m not entering this year with a checklist of resolutions. I’m entering it with space.",
-    "Space for new beginnings. Space for softness. Space for things I don’t fully understand yet.",
-    "2025 taught me how to survive. 2026 feels like learning how to live again.",
-    "I don’t need everything to be clear. I just need my heart open enough to receive what’s meant for me.",
-    "So here’s to closing old chapters with gratitude — not bitterness. And opening new ones with courage — not fear.",
-    "This year, I choose beginnings. Even if they start quietly.",
-  ],
-},
-"strong-days": {
-  title: "Some days I'm strong, some days I'm just tired",
-  date: "December 30, 2025",
-  category: "Healing",
-  content: [
-    "I’ve learned that strength doesn’t always look loud.",
-    "Some days, it’s simply getting through the day without explaining why you feel heavy. Without justifying your silence. Without forcing yourself to be okay for the comfort of others.",
-    "I used to think being strong meant always having answers. Now I know it sometimes means allowing yourself not to have them.",
-    "There are days I feel grounded, clear, and confident. And there are days where everything feels heavier than it should.",
-    "I’m learning not to judge either version of myself.",
-    "Maybe strength is letting both exist. Maybe healing doesn’t need to be rushed.Maybe becoming takes time.",
-    "And today, I’m allowing that.",
+    date: "January 08, 2026",
+    category: "Healing",
+    content: [
+      "The new year didn’t arrive with clarity. It arrived with silence.",
+      "After the countdown ended and the noise settled, I realized something — not everything needs to come with me.",
+      "I’m leaving behind the need to explain myself. The habit of staying where I feel tolerated, not chosen. The guilt that comes with choosing rest over proving my worth.",
+      "Some things were never meant to be carried into a new year. They did their job. They taught me. And now, they can stay where they belong — in the past.",
+      "I used to think letting go required answers. Now I know it only requires honesty.",
+      "Honesty with myself. Honesty about what drains me. Honesty about what no longer feels aligned.",
+      "This year, I’m choosing to move forward lighter. Not because I’ve healed everything, but because I’m done punishing myself for what I didn’t know back then.",
+      "I don’t need closure from everyone. I don’t need permission to grow. Some things end quietly. And maybe that’s the most peaceful way.",
     ],
-},
+  },
+  "new-beginnings": {
+    title: "Welcoming 2026 with an open heart",
+    date: "December 31, 2025",
+    category: "Life",
+    content: [
+      "There’s something quiet about the moment you decide to let go.",
+      "Not loudly. Not dramatically. Just a soft understanding that some chapters have already ended — even if you kept rereading them.",
+      "As 2026 begins, I’m choosing not to carry what no longer fits. The versions of me that stayed too long. The lessons that were learned the hard way. The feelings that once needed answers but now only need release.",
+      "I’m not entering this year with a checklist of resolutions. I’m entering it with space.",
+      "Space for new beginnings. Space for softness. Space for things I don’t fully understand yet.",
+      "2025 taught me how to survive. 2026 feels like learning how to live again.",
+      "I don’t need everything to be clear. I just need my heart open enough to receive what’s meant for me.",
+      "So here’s to closing old chapters with gratitude — not bitterness. And opening new ones with courage — not fear.",
+      "This year, I choose beginnings. Even if they start quietly.",
+    ],
+  },
+  "strong-days": {
+    title: "Some days I'm strong, some days I'm just tired",
+    date: "December 30, 2025",
+    category: "Healing",
+    content: [
+      "I’ve learned that strength doesn’t always look loud.",
+      "Some days, it’s simply getting through the day without explaining why you feel heavy. Without justifying your silence. Without forcing yourself to be okay for the comfort of others.",
+      "I used to think being strong meant always having answers. Now I know it sometimes means allowing yourself not to have them.",
+      "There are days I feel grounded, clear, and confident. And there are days where everything feels heavier than it should.",
+      "I’m learning not to judge either version of myself.",
+      "Maybe strength is letting both exist. Maybe healing doesn’t need to be rushed.Maybe becoming takes time.",
+      "And today, I’m allowing that.",
+    ],
+  },
   "embrace-quiet-moments": {
     title: "Learning to embrace the quiet moments",
     date: "December 28, 2025",
@@ -185,8 +185,8 @@ const BlogPost = () => {
       <section className="pt-8 lg:pt-12">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-2xl mx-auto">
-            <Link 
-              to="/blog" 
+            <Link
+              to="/blog"
               className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300 group"
             >
               <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform duration-300" />
@@ -220,8 +220,8 @@ const BlogPost = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <article className="max-w-2xl mx-auto prose-journal">
             {post.content.map((paragraph, index) => (
-              <p 
-                key={index} 
+              <p
+                key={index}
                 className="text-foreground/90 leading-relaxed opacity-0 animate-fade-in"
                 style={{ animationDelay: `${0.3 + index * 0.1}s`, animationFillMode: "forwards" }}
               >
