@@ -17,9 +17,9 @@ const postsContent: Record<string, { title: string; date: string; category: stri
         "Some boundaries don’t come with warnings. Some decisions are made quietly. And some versions of me don’t exist to be understood by everyone.",
         "I used to think that being kind meant always being available. Now I know it also means being honest with myself.",
         "Choosing myself doesn’t mean I care less. It means I’m listening more closely to what I need.",
-        "And maybe that’s what growth looks like. Making choices that feel aligned, even when they’re not explained."
+        "And maybe that’s what growth looks like. Making choices that feel aligned, even when they’re not explained.",
         "For now, I’m allowing myself that freedom.",
-        <b>"Maybe this is part of becoming.",</b>
+        <b></b>"Maybe this is part of becoming.",
       ],
     },
   "version-of-me": {
