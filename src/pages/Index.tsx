@@ -7,12 +7,19 @@ import heroImage from "@/assets/hero-image.jpg";
 // Sample blog posts data
 const blogPosts = [
   {
+    title: "I learning to choose myself without explaining",
+    excerpt: "For long time, choosing myself came with guilt.....",
+    date: "January 20, 2026",
+    category: "Healing",
+    slug: "choose-myself",
+    featured: true,
+  }
+  {
     title: "This version of me feels unfamiliar, and that's okay",
     excerpt: "Lately, I’ve been meeting a version of myself I don’t fully recognize....",
     date: "January 13, 2026",
     category: "Healing",
     slug: "version-of-me",
-    featured: true,
   },
   {
     title: "What I'm leaving behind without guilt",
