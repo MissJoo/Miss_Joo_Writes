@@ -18,30 +18,30 @@ const Header = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/50">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background/50 backdrop-blur-xl border-b border-border/40 transition-all duration-500">
       <nav className="container mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-20 lg:h-32 transition-all duration-500">
           {/* Logo */}
-          <Link 
-            to="/" 
-            className="font-serif text-xl lg:text-2xl tracking-wide text-foreground hover:text-primary transition-colors duration-300"
+          <Link
+            to="/"
+            className="font-serif text-2xl lg:text-3xl tracking-widest text-foreground hover:text-primary transition-colors duration-500"
           >
-            Miss Joo Writes
+            MISS JOO WRITES
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-10">
+          <div className="hidden md:flex items-center gap-12">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "relative text-sm tracking-widest uppercase font-sans transition-all duration-300",
+                  "relative text-xs tracking-[0.2em] uppercase font-sans font-medium transition-all duration-300",
                   isActive(link.path)
-                    ? "text-foreground"
+                    ? "text-primary"
                     : "text-muted-foreground hover:text-foreground",
-                  "after:absolute after:bottom-0 after:left-0 after:h-px after:bg-foreground after:transition-all after:duration-300",
-                  isActive(link.path) ? "after:w-full" : "after:w-0 hover:after:w-full"
+                  "after:absolute after:bottom-[-4px] after:left-1/2 after:-translate-x-1/2 after:h-[1px] after:bg-primary after:transition-all after:duration-500",
+                  isActive(link.path) ? "after:w-full" : "after:w-0 hover:after:w-2/3"
                 )}
               >
                 {link.name}

@@ -1,43 +1,35 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowDown, Instagram } from "lucide-react";
+import { Instagram } from "lucide-react";
 import Layout from "@/components/layout/Layout";
-import BlogPostCard from "@/components/blog/BlogPostCard";
 import heroImage from "@/assets/hero-image.jpg";
 
 // Sample blog posts data
 const blogPosts = [
-   {
-       title: "I'm learning to choose myself without explaining",
-      excerpt: "For a long time, choosing myself came with guilt....",
-      date: "January 20, 2026",
-      category: "Healing",
-      slug: "choose-myself",
-      featured: true,
-   },
-   {
-      title: "This version of me feels unfamiliar, and that's okay",
-      excerpt: "Lately, I’ve been meeting a version of myself I don’t fully recognize....",
-      date: "January 13, 2026",
-      category: "Healing",
-      slug: "version-of-me",
-   },
-   {
-     title: "What I'm leaving behind without guilt",
+  {
+    title: "This version of me feels unfamiliar, and that's okay",
+    excerpt: "Lately, I’ve been meeting a version of myself I don’t fully recognize....",
+    date: "January 13, 2026",
+    category: "Healing",
+    slug: "version-of-me",
+    featured: true,
+  },
+  {
+    title: "What I'm leaving behind without guilt",
     excerpt: "Choosing peace over explanations....",
     date: "January 08, 2026",
     category: "Healing",
     slug: "behind-guilt",
-    
+
   },
   {
-     title: "Welcoming 2026 with an open heart",
+    title: "Welcoming 2026 with an open heart",
     excerpt: "Closing old chapters, opening new beginnings....",
     date: "December 31, 2025",
     category: "Life",
     slug: "new-beginnings",
   },
-  { 
+  {
     title: "Some days I'm strong, some days I'm just tired",
     excerpt: "I’ve learned that strength doesn’t always look loud. Some days, it’s simply getting through the day without explaining why you feel heavy....",
     date: "December 30, 2025",
@@ -78,36 +70,35 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src={heroImage} 
-            alt="" 
-            className="w-full h-full object-cover opacity-60"
+          <img
+            src={heroImage}
+            alt="Atmospheric texture"
+            className="w-full h-full object-cover opacity-50 contrast-125 saturate-50" // Luxury image treatment
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/60 to-background"></div>
+          <div className="absolute inset-0 bg-background/30 backdrop-blur-[2px]"></div>
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/10"></div>
         </div>
 
         {/* Content */}
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
-          <div className="max-w-3xl mx-auto space-y-8">
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl xl:text-7xl leading-tight animate-fade-in-up text-balance">
-              <span className="italic text-dusty-rose">Some stories</span>
-              <br />
-              are meant to be felt,
-              <br />
-              <span className="text-muted-foreground">not just read.</span>
+          <div className="max-w-4xl mx-auto space-y-12">
+            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl commercial-title animate-fade-in-up text-balance leading-[1.1]">
+              <span className="block text-foreground tracking-tight">The Art of</span>
+              <span className="block italic font-light text-muted-foreground mt-2">Living Slowly</span>
             </h1>
 
-            <p className="text-muted-foreground text-lg md:text-xl font-sans animate-fade-in-delay-1 max-w-xl mx-auto">
-              A digital journal for the thoughts that need more than a caption.
+            <p className="text-balance text-muted-foreground text-lg md:text-xl font-sans tracking-wide animate-fade-in-delay-1 max-w-lg mx-auto leading-relaxed">
+              A digital sanctuary for thoughts that linger, stories that heal, and the beauty found in quiet moments.
             </p>
 
-            <div className="animate-fade-in-delay-2 pt-4">
-              <Button variant="journal" size="journal" asChild>
-                <Link to="/blog" className="text-base tracking-wide">
-                  Read the journal
+            <div className="animate-fade-in-delay-2 pt-8">
+              <Button variant="outline" size="lg" className="rounded-none border-primary/50 text-foreground hover:bg-primary hover:text-primary-foreground tracking-[0.2em] uppercase text-xs px-8 py-6 transition-all duration-500" asChild>
+                <Link to="/blog">
+                  Enter the Journal
                 </Link>
               </Button>
             </div>
@@ -115,115 +106,126 @@ const Index = () => {
 
           {/* Scroll indicator */}
           <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-fade-in-delay-3">
-            <ArrowDown className="w-5 h-5 text-muted-foreground animate-gentle-float" />
+            <span className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-4 block animate-pulse">Scroll</span>
+            <div className="w-[1px] h-12 bg-gradient-to-b from-muted-foreground to-transparent mx-auto"></div>
           </div>
         </div>
       </section>
 
-      {/* About Preview Section */}
-      <section className="py-section bg-secondary/30">
+      {/* About Section - Editorial Style */}
+      <section className="py-24 md:py-32 bg-background border-b border-border/40">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-2xl mx-auto text-center space-y-8">
-            <span className="text-xs tracking-widest uppercase text-muted-foreground">About</span>
-            
-            <h2 className="font-serif text-3xl md:text-4xl leading-relaxed">
-              I write because some feelings 
-              <span className="italic text-dusty-rose"> deserve more </span> 
-              than a fleeting moment.
-            </h2>
+          <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-24">
+            <div className="flex-1 space-y-8 text-center md:text-left">
+              <span className="text-[10px] tracking-[0.3em] uppercase text-primary font-medium">The Author</span>
 
-            <p className="text-muted-foreground font-sans leading-relaxed">
-              This is a space for reflection, for the messy and beautiful parts of life, 
-              for the thoughts that linger long after the moment has passed. 
-              Here, I share my journey through healing, growing, and simply being human.
-            </p>
+              <h2 className="font-serif text-3xl md:text-5xl leading-tight">
+                Embracing the <br />
+                <span className="italic font-light text-muted-foreground">art of slowing down.</span>
+              </h2>
 
-            <Button variant="journal" size="journal" asChild>
-              <Link to="/about" className="text-sm">
-                Learn more about me
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
+              <p className="text-muted-foreground font-sans leading-relaxed text-lg font-light">
+                This space is a curator of moments—the messy, the beautiful, and the quiet ones in between.
+                I write to explore what it means to heal, to grow, and to simply exist with intention.
+              </p>
 
-      {/* Blog Preview Section */}
-      <section className="py-section">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12 lg:mb-16">
-            <div>
-              <span className="text-xs tracking-widest uppercase text-muted-foreground">Latest</span>
-              <h2 className="font-serif text-3xl md:text-4xl mt-2">From the journal</h2>
+              <Button variant="link" className="p-0 h-auto text-foreground hover:text-primary transition-colors text-xs tracking-widest uppercase border-b border-foreground/30 pb-1 rounded-none hover:no-underline" asChild>
+                <Link to="/about">
+                  Read My Story
+                </Link>
+              </Button>
             </div>
-            <Button variant="journal" size="journal" asChild>
-              <Link to="/blog" className="text-sm">
-                View all entries
-              </Link>
-            </Button>
+            {/* Decorative element or simple image placeholder could go here if requested, but keeping text focused for now */}
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Preview Section - Minimal Grid */}
+      <section className="py-24 md:py-32">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="flex items-baseline justify-between mb-16 border-b border-border/40 pb-6">
+            <h2 className="font-serif text-3xl md:text-4xl text-foreground">Journal Entries</h2>
+            <Link to="/blog" className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors">
+              View All
+            </Link>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-16">
-            {blogPosts.map((post, index) => (
-              <div 
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
+            {blogPosts.slice(0, 3).map((post, index) => (
+              <div
                 key={post.slug}
-                className="opacity-0 animate-fade-in-up"
-                style={{ animationDelay: `${index * 0.15}s`, animationFillMode: "forwards" }}
+                className="group cursor-pointer"
               >
-                <BlogPostCard {...post} />
+                <div className="overflow-hidden mb-6 bg-secondary/20 aspect-[4/5]">
+                  {/* Placeholder for post image if we had them, or just a nice colored block */}
+                  <div className="w-full h-full bg-secondary/10 group-hover:scale-105 transition-transform duration-700 ease-out"></div>
+                </div>
+
+                <div className="space-y-4">
+                  <span className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground block">
+                    {post.category} — {post.date}
+                  </span>
+
+                  <h3 className="font-serif text-2xl group-hover:text-primary transition-colors duration-300">
+                    <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                  </h3>
+
+                  <p className="text-muted-foreground text-sm line-clamp-2 leading-relaxed font-light">
+                    {post.excerpt}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Shared Experiences Section */}
-      <section className="py-section bg-secondary/30">
+      {/* Shared Experiences - Feature Block */}
+      <section className="py-24 bg-secondary/20">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-2xl mx-auto text-center space-y-8">
-            <span className="text-xs tracking-widest uppercase text-muted-foreground">Collaborations</span>
-            
-            <h2 className="font-serif text-2xl md:text-3xl">
-              Places and brands I genuinely 
-              <span className="italic text-dusty-rose"> connect </span> 
-              with.
-            </h2>
+          <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
+            <div className="order-2 md:order-1 space-y-8">
+              <span className="text-[10px] tracking-[0.3em] uppercase text-primary font-medium">Curated</span>
 
-            <p className="text-muted-foreground font-sans leading-relaxed">
-              Every collaboration shared here is based on real experiences — places I've visited, 
-              services I've tried, and moments that felt aligned with my lifestyle and values.
-            </p>
+              <h2 className="font-serif text-4xl md:text-5xl leading-tight">
+                Shared <span className="italic font-light text-muted-foreground">Experiences</span>
+              </h2>
 
-            <Button variant="journal" size="journal" asChild>
-              <Link to="/shared-experiences" className="text-sm">
-                View shared experiences
-              </Link>
-            </Button>
+              <p className="text-muted-foreground font-light text-lg leading-relaxed">
+                A collection of places, brands, and moments that align with a slower, more intentional way of living.
+                Genuine connections, rooted in real experiences.
+              </p>
+
+              <Button variant="outline" className="rounded-none border-foreground/20 hover:bg-foreground hover:text-background transition-all uppercase tracking-widest text-xs h-12 px-8" asChild>
+                <Link to="/shared-experiences">
+                  Explore
+                </Link>
+              </Button>
+            </div>
+
+            <div className="order-1 md:order-2 aspect-square bg-white/50 p-8 flex items-center justify-center border border-border/50">
+              {/* Abstract visual or quote */}
+              <div className="text-center space-y-4">
+                <div className="w-16 h-[1px] bg-primary mx-auto"></div>
+                <p className="font-serif italic text-2xl text-muted-foreground">"Connection is the energy that exists between people when they feel seen, heard, and valued."</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Instagram Connection Section */}
-      <section className="py-section bg-warm-beige/50">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-2xl mx-auto text-center space-y-8">
-            <Instagram className="w-8 h-8 mx-auto text-muted-foreground" />
-            
-            <h2 className="font-serif text-2xl md:text-3xl">
-              The visual stories live on Instagram.
-              <br />
-              <span className="text-muted-foreground">The written ones live here.</span>
-            </h2>
-
-            <a
-              href="https://instagram.com/missjooo98"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 text-foreground hover:text-primary transition-colors duration-300 group"
-            >
-              <span className="text-lg tracking-wide">@missjooo98</span>
-              <span className="w-8 h-px bg-foreground/50 group-hover:w-12 transition-all duration-300"></span>
-            </a>
-          </div>
+      {/* Instagram Minimal */}
+      <section className="py-24 border-t border-border/40">
+        <div className="container mx-auto px-6 text-center space-y-8">
+          <Instagram className="w-6 h-6 mx-auto text-foreground/60" />
+          <a
+            href="https://instagram.com/missjooo98"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block font-serif text-3xl md:text-4xl hover:text-primary transition-colors duration-300"
+          >
+            @missjooo98
+          </a>
         </div>
       </section>
     </Layout>

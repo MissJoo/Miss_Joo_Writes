@@ -6,59 +6,67 @@
 
 @layer base {
   :root {
-    /* Warm, intimate color palette */
-    --background: 40 30% 97%;
-    --foreground: 30 25% 18%;
+    /* Luxury / Polished Palette */
+    --background: 40 20% 98%;
+    /* Ivory/Cream */
+    --foreground: 30 10% 15%;
+    /* Deep Charcoal */
 
-    --card: 40 25% 95%;
-    --card-foreground: 30 25% 18%;
+    --card: 40 20% 98%;
+    --card-foreground: 30 10% 15%;
 
-    --popover: 40 30% 97%;
-    --popover-foreground: 30 25% 18%;
+    --popover: 40 20% 98%;
+    --popover-foreground: 30 10% 15%;
 
-    --primary: 30 20% 35%;
-    --primary-foreground: 40 30% 97%;
+    --primary: 35 30% 30%;
+    /* Muted Bronze/Gold */
+    --primary-foreground: 40 20% 98%;
 
-    --secondary: 35 20% 92%;
-    --secondary-foreground: 30 20% 30%;
+    --secondary: 40 10% 94%;
+    /* Soft gray-beige */
+    --secondary-foreground: 30 10% 15%;
 
-    --muted: 35 18% 90%;
-    --muted-foreground: 30 12% 50%;
+    --muted: 40 10% 92%;
+    --muted-foreground: 30 5% 45%;
 
-    --accent: 15 35% 75%;
-    --accent-foreground: 30 25% 18%;
+    --accent: 35 30% 85%;
+    /* Champagne */
+    --accent-foreground: 30 10% 15%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 40 30% 97%;
+    --destructive-foreground: 40 20% 98%;
 
-    --border: 35 20% 88%;
-    --input: 35 20% 88%;
-    --ring: 30 20% 35%;
+    --border: 35 15% 90%;
+    --input: 35 15% 90%;
+    --ring: 35 30% 30%;
 
-    --radius: 0.5rem;
+    --radius: 0.25rem;
+    /* Sharper corners for luxury feel */
 
-    /* Custom tokens */
-    --cream: 40 35% 96%;
-    --warm-beige: 35 25% 90%;
-    --taupe: 30 15% 60%;
-    --dusty-rose: 15 35% 75%;
-    --warm-brown: 30 25% 25%;
-    --soft-gold: 40 40% 70%;
+    /* Custom tokens re-mapped for luxury */
+    --cream: 40 20% 98%;
+    --warm-beige: 35 15% 92%;
+    --taupe: 30 5% 55%;
+    --dusty-rose: 20 20% 80%;
+    /* Muted rose, less pink */
+    --warm-brown: 35 30% 30%;
+    --soft-gold: 40 40% 60%;
 
     /* Typography */
     --font-serif: 'Playfair Display', Georgia, serif;
     --font-sans: 'DM Sans', system-ui, sans-serif;
 
     /* Spacing */
-    --section-padding: clamp(4rem, 10vw, 8rem);
+    --section-padding: clamp(5rem, 12vw, 10rem);
+    /* Increased spacing */
 
     /* Transitions */
-    --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-gentle: all 0.6s cubic-bezier(0.25, 0.1, 0.25, 1);
+    --transition-smooth: all 0.5s cubic-bezier(0.2, 0, 0, 1);
+    --transition-gentle: all 0.7s cubic-bezier(0.2, 0, 0, 1);
 
     /* Shadows */
-    --shadow-soft: 0 4px 20px -4px hsl(30 20% 20% / 0.08);
-    --shadow-hover: 0 8px 30px -8px hsl(30 20% 20% / 0.12);
+    --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+    --shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
   }
 
   .dark {
@@ -103,7 +111,12 @@
     font-feature-settings: "kern" 1, "liga" 1;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-serif;
   }
 
@@ -174,6 +187,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -184,6 +198,7 @@
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -191,9 +206,12 @@
 }
 
 @keyframes gentleFloat {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0);
   }
+
   50% {
     transform: translateY(-8px);
   }
