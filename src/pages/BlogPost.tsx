@@ -5,6 +5,23 @@ import { ArrowLeft } from "lucide-react";
 
 // Sample blog post content
 const postsContent: Record<string, { title: string; date: string; category: string; content: string[] }> = {
+    "choose-myself": {
+    title: "I’m learning to choose myself without explaining",
+    date: "January 20, 2026",
+    category: "Healing",
+      content: [
+        "For a long time, choosing myself came with guilt.",
+        "I felt the need to soften my decisions, to explain them carefully, to make sure no one felt uncomfortable because of my growth. As if protecting my peace required permission.",
+        "But lately, something has shifted.",
+        "I’m learning that choosing myself doesn’t have to be loud or defensive. It doesn’t need a speech. It doesn’t need to be justified.",
+        "Some boundaries don’t come with warnings. Some decisions are made quietly. And some versions of me don’t exist to be understood by everyone.",
+        "I used to think that being kind meant always being available. Now I know it also means being honest with myself.",
+        "Choosing myself doesn’t mean I care less. It means I’m listening more closely to what I need.",
+        "And maybe that’s what growth looks like. Making choices that feel aligned, even when they’re not explained."
+        "For now, I’m allowing myself that freedom.",
+        <b></b>"Maybe this is part of becoming."<b>
+      ],
+    },
   "version-of-me": {
     title: "The version of me feels unfamiliar, and that's okay",
     date: "January 13, 2026",
