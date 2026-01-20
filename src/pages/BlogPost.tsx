@@ -19,7 +19,7 @@ const postsContent: Record<string, { title: string; date: string; category: stri
         "Choosing myself doesn’t mean I care less. It means I’m listening more closely to what I need.",
         "And maybe that’s what growth looks like. Making choices that feel aligned, even when they’re not explained."
         "For now, I’m allowing myself that freedom.",
-        <b></b>"Maybe this is part of becoming."<b>
+        <b>"Maybe this is part of becoming.",</b>
       ],
     },
   "version-of-me": {
