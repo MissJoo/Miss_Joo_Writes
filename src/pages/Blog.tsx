@@ -8,7 +8,7 @@ const categories = ["All", "Thoughts", "Life", "Healing", "Random"];
 const allPosts = [
    {
     title: "I'm learning to choose myself without explaining",
-      excerpt: "For a long time, choosing myself came without guilt....",
+      excerpt: "For a long time, choosing myself came with guilt....",
     date: "January 20, 2026",
     category: "Healing",
       slug: "choose-myself",
