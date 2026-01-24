@@ -13,7 +13,7 @@ const blogPosts = [
     category: "Healing",
     slug: "choose-myself",
     featured: true,
-  }
+  },
   {
     title: "This version of me feels unfamiliar, and that's okay",
     excerpt: "Lately, I’ve been meeting a version of myself I don’t fully recognize....",
