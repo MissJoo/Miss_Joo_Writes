@@ -7,12 +7,19 @@ import heroImage from "@/assets/hero-image.jpg";
 // Sample blog posts data
 const blogPosts = [
   {
+    title: "January taught me to slow down",
+    excerpt: "Not moving was the honest thing I could do.."
+    date: "January 27, 2026",
+    category: "Healing",
+    slug: "slow-down"
+    featured: true,
+  },
+  {
     title: "I learning to choose myself without explaining",
     excerpt: "For long time, choosing myself came with guilt.....",
     date: "January 20, 2026",
     category: "Healing",
     slug: "choose-myself",
-    featured: true,
   },
   {
     title: "This version of me feels unfamiliar, and that's okay",
