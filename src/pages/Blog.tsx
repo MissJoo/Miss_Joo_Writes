@@ -6,21 +6,28 @@ import { cn } from "@/lib/utils";
 const categories = ["All", "Thoughts", "Life", "Healing", "Random"];
 
 const allPosts = [
-   {
+  {
+    title: "January taught me to slow down",
+    excerpt: "Not moving was the honest thing I could do..",
+    date: "January 27, 2026",
+    category: "Healing",
+    slug: "slow-down",
+  },
+  {
     title: "I'm learning to choose myself without explaining",
-      excerpt: "For a long time, choosing myself came with guilt....",
+    excerpt: "For a long time, choosing myself came with guilt....",
     date: "January 20, 2026",
     category: "Healing",
-      slug: "choose-myself",
-   },
-   {
+    slug: "choose-myself",
+  },
+  {
     title: "This version of me feels unfamiliar, and that's okay",
-      excerpt: "Lately, I’ve been meeting a version of myself I don’t fully recognize....",
+    excerpt: "Lately, I’ve been meeting a version of myself I don’t fully recognize....",
     date: "January 13, 2026",
     category: "Healing",
-      slug: "version-of-me",
-   },
-   {
+    slug: "version-of-me",
+  },
+  {
     title: "What I'm leaving behind without guilt",
     excerpt: "Choosing peace over explanations....",
     date: "Jnauary 08, 2026",
@@ -88,8 +95,8 @@ const allPosts = [
 const Blog = () => {
   const [activeCategory, setActiveCategory] = useState("All");
 
-  const filteredPosts = activeCategory === "All" 
-    ? allPosts 
+  const filteredPosts = activeCategory === "All"
+    ? allPosts
     : allPosts.filter(post => post.category === activeCategory);
 
   return (
@@ -135,7 +142,7 @@ const Blog = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="grid md:grid-cols-2 gap-12 lg:gap-16 max-w-4xl mx-auto">
             {filteredPosts.map((post, index) => (
-              <div 
+              <div
                 key={post.slug}
                 className="opacity-0 animate-fade-in-up"
                 style={{ animationDelay: `${index * 0.1}s`, animationFillMode: "forwards" }}
