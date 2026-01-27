@@ -8,10 +8,10 @@ import heroImage from "@/assets/hero-image.jpg";
 const blogPosts = [
   {
     title: "January taught me to slow down",
-    excerpt: "Not moving was the honest thing I could do.."
-    date: "January 27, 2026",
+    excerpt: "Not moving was the honest thing I could do..",
+    date: "January 26, 2026",
     category: "Healing",
-    slug: "slow-down"
+    slug: "slow-down",
     featured: true,
   },
   {
