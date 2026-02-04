@@ -7,12 +7,19 @@ import heroImage from "@/assets/hero-image.jpg";
 // Sample blog posts data
 const blogPosts = [
   {
+    title: "I'm learning to trust myself again",
+    excerpt: "For a long time, I questioned myself more than I listened..",
+    date: "February 04, 2026",
+    category: "Healing",
+    slug: "trust-myself",
+    featured: true,
+  }
+  {
     title: "January taught me to slow down",
     excerpt: "Not moving was the honest thing I could do....",
     date: "January 27, 2026",
     category: "Healing",
     slug: "slow-down",
-    featured: true,
   },
   {
     title: "I learning to choose myself without explaining",
