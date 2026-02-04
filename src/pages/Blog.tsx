@@ -12,7 +12,7 @@ const allPosts = [
     date: "February 04, 2026",
     category: "Healing",
     slug: "trust-myself",
-  }
+  },
   {
     title: "January taught me to slow down",
     excerpt: "Not moving was the honest thing I could do..",
