@@ -5,6 +5,22 @@ import { ArrowLeft } from "lucide-react";
 
 // Sample blog post content
 const postsContent: Record<string, { title: string; date: string; category: string; content: string[] }> = {
+  "trust-myself": {
+    title: "I’m learning to trust myself again",
+    date: "February 04, 2026",
+    category: "Healing",
+    content: [
+      "For a long time, I questioned myself more than I listened",
+      "I looked outward for confirmation. For reassurance. For signs that I was doing the right thing.",
+      "Somewhere along the way, I stopped trusting the quiet voice inside me ... the one that already knew.",
+      "Lately, I’ve been learning how to listen again. Not loudly. Not dramatically. Just honestly.",
+      "Trusting myself doesn’t mean I never feel unsure.",
+      "It means I pause before doubting myself. It means I give my instincts room to speak before I silence them.",
+      "There’s a calm that comes with this kind of trust. A steadiness. A sense of grounding I didn’t know I was missing.",
+      "I’m not asking for permission anymore. I’m paying attention.",
+      "And that feels like progress.",
+    ],
+  },
   "slow-down": {
     title: "January taught me to slow down",
     date: "January 27, 2026",
