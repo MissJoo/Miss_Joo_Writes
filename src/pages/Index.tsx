@@ -9,11 +9,11 @@ const blogPosts = [
   {
     title: "I'm learning to trust myself again",
     excerpt: "For a long time, I questioned myself more than I listened..",
-    date: "February 03, 2026",
+    date: "February 04, 2026",
     category: "Healing",
     slug: "trust-myself",
     featured: true,
-  }
+  },
   {
     title: "January taught me to slow down",
     excerpt: "Not moving was the honest thing I could do....",
