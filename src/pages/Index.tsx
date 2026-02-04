@@ -12,7 +12,7 @@ const blogPosts = [
     date: "February 04, 2026",
     category: "Healing",
     slug: "trust-myself",
-    featured: true,
+    featured: true
   },
   {
     title: "January taught me to slow down",
