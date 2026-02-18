@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Instagram } from "lucide-react";
 import Layout from "@/components/layout/Layout";
+import EmailSignupForm from "@/components/forms/EmailSignupForm";
 import heroImage from "@/assets/hero-image.jpg";
 
 // Sample blog posts data
@@ -231,6 +232,34 @@ const Index = () => {
                 <p className="font-serif italic text-2xl text-muted-foreground">"Connection is the energy that exists between people when they feel seen, heard, and valued."</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Email Signup / Downloads Promotion */}
+      <section className="py-24 md:py-32 bg-gradient-to-b from-background via-secondary/10 to-background border-y border-border/40">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="max-w-2xl mx-auto text-center space-y-8">
+            <span className="text-[10px] tracking-[0.3em] uppercase text-primary font-medium">Free Download</span>
+
+            <h2 className="font-serif text-3xl md:text-5xl leading-tight">
+              Get Your Free
+              <span className="block italic font-light text-muted-foreground mt-2">Reflection Journal</span>
+            </h2>
+
+            <p className="text-muted-foreground font-sans leading-relaxed text-lg font-light max-w-xl mx-auto">
+              Notes on Becoming — January. A gentle guide for anyone learning to move slower and trust what's unfolding.
+            </p>
+
+            <div className="pt-4">
+              <EmailSignupForm variant="compact" />
+            </div>
+
+            <Button variant="link" className="p-0 h-auto text-foreground hover:text-primary transition-colors text-xs tracking-widest uppercase border-b border-foreground/30 pb-1 rounded-none hover:no-underline" asChild>
+              <Link to="/downloads">
+                Learn More
+              </Link>
+            </Button>
           </div>
         </div>
       </section>
