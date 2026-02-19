@@ -41,7 +41,7 @@ const postsContent: Record<string, { title: string; date: string; category: stri
     ],
   },
   "slow-down": {
-    title: "January taught me to slow down",
+    title: "January taught me to slow down"
     date: "January 27, 2026",
     category: "Healing",
     content: [
