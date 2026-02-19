@@ -7,6 +7,13 @@ const categories = ["All", "Thoughts", "Life", "Healing", "Random"];
 
 const allPosts = [
   {
+    title: "I’m becoming more selective with my energy",
+    excerpt: "I've been paying attention on how my body reacts before my mind..",
+    date: "February 12, 2026",
+    category: "Healing",
+    slug: "selective-energy",
+  },
+  {
     title: "I'm learning to trust myself again",
     excerpt: "For a long time, I questioned myself more than I listened..",
     date: "February 04, 2026",

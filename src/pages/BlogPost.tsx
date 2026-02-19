@@ -5,6 +5,25 @@ import { ArrowLeft } from "lucide-react";
 
 // Sample blog post content
 const postsContent: Record<string, { title: string; date: string; category: string; content: string[] }> = {
+  "more-selective": {
+    title: "I’m becoming more selective with my energy",
+    date: "February 12, 2026",
+    category: "Healing",
+    content: [
+      "Lately, I’ve been paying attention to how my body reacts before my mind has time to explain it away.",
+      "What feels light.",
+      "What feels heavy.",
+      "What quietly asks for distance.",
+      "This isn’t about shutting people out. It’s about listening more closely.",
+      "As I learn to trust myself again, I’m also learning that not everything deserves my energy. Not every conversation needs a response. Not every situation requires my presence just because it always has.",
+      "There’s a difference between being available and being aligned.",
+      "I used to think protecting my energy meant being cold or distant. Now I see it as care. For myself, and for the relationships I choose to keep. Showing up fully requires knowing where you don’t need to.",
+      "This season feels less emotional and more intentional. Less reactive. More discerning.",
+      "I’m no longer forcing connections that feel strained, or explaining why I need space. I’m letting my choices speak quietly, and trusting that the right people will understand or not need an explanation at all.",
+      "There’s peace in this kind of selectiveness. A calm confidence that doesn’t ask to be validated.",
+      "And maybe this is what growth looks like now. Not becoming more open but becoming more honest about where I belong.",
+    ],
+  },
   "trust-myself": {
     title: "I’m learning to trust myself again",
     date: "February 04, 2026",
