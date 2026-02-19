@@ -5,14 +5,13 @@ import { ArrowLeft } from "lucide-react";
 
 // Sample blog post content
 const postsContent: Record<string, { title: string; date: string; category: string; content: string[] }> = {
-  "more-selective": {
+  "selective-energy": {
     title: "I’m becoming more selective with my energy",
     date: "February 12, 2026",
     category: "Healing",
     content: [
       "Lately, I’ve been paying attention to how my body reacts before my mind has time to explain it away.",
-      "What feels light.",
-      "What feels heavy.",
+      "What feels light. What feels heavy.",
       "What quietly asks for distance.",
       "This isn’t about shutting people out. It’s about listening more closely.",
       "As I learn to trust myself again, I’m also learning that not everything deserves my energy. Not every conversation needs a response. Not every situation requires my presence just because it always has.",
