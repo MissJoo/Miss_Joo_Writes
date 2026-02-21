@@ -5,6 +5,25 @@ import { ArrowLeft } from "lucide-react";
 
 // Sample blog post content
 const postsContent: Record<string, { title: string; date: string; category: string; content: string[] }> = {
+  "calm-me": {
+    title: "I feel calmer in ways I can't fully explain",
+    date: "February 19, 2026",
+    category: "Healing",
+    content: [
+      "There’s a kind of calm that doesn’t come from everything being perfect.",
+      "It comes from no longer arguing with yourself about what you already know.",
+      "Lately, I’ve noticed that I don’t react the way I used to. Situations that once unsettled me now feel quieter. Conversations that would have stayed in my head for days now pass through me without needing to be replayed.",
+      "Nothing dramatic happened. No sudden breakthrough. Just small decisions, repeated quietly.",
+      "Choosing not to overexplain. Choosing not to chase reassurance. Choosing to pause instead of immediately responding to every feeling that rises.",
+      "And somewhere in those pauses, something shifted.",
+      "I feel calmer, not because life is easier, but because I’m steadier. Because I trust my responses more. Because I no longer feel the need to prove my intentions or defend my boundaries once I’ve set them.",
+      "This calm feels unfamiliar at times. Almost like I’m meeting a version of myself who isn’t constantly questioning whether she’s allowed to feel the way she does.",
+      "I still care deeply. I still notice everything. But I don’t carry it all the same way anymore.",
+      "There’s a quiet confidence growing. The kind that doesn’t need to be announced. The kind that shows up in how I move, how I decide, and how I let certain things simply be.",
+      "Maybe this is what happens when you start trusting yourself and protecting your energy at the same time. You don’t become distant. You become grounded.",
+      "And grounding feels a lot like peace.",
+    ]
+  },
   "selective-energy": {
     title: "I’m becoming more selective with my energy",
     date: "February 12, 2026",
