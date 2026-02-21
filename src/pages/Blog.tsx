@@ -7,6 +7,13 @@ const categories = ["All", "Thoughts", "Life", "Healing", "Random"];
 
 const allPosts = [
   {
+    title: "I feel calmer in ways I can't fully explain",
+    excerpt: "There’s a kind of calm that doesn’t come from everything being perfect.",
+    date: "February 19, 2026",
+    category: "Healing",
+    slug: "calm-me",
+  },
+  {
     title: "I’m becoming more selective with my energy",
     excerpt: "I've been paying attention on how my body reacts before my mind..",
     date: "February 12, 2026",
