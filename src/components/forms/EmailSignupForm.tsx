@@ -13,6 +13,48 @@ const emailSchema = z.object({
 
 type EmailFormData = z.infer<typeof emailSchema>;
 
+// Mailchimp config extracted from your embedded form
+const MAILCHIMP_ACTION_URL =
+    "https://github.us18.list-manage.com/subscribe/post-json?u=80e1467a6cae550ca8829039c&id=f46f720fb3&f_id=0071aee6f0";
+const MAILCHIMP_HONEYPOT = "b_80e1467a6cae550ca8829039c_f46f720fb3";
+
+/**
+ * Submits email to Mailchimp via JSONP (no backend required).
+ * Mailchimp doesn't support CORS, so we inject a <script> tag instead.
+ */
+function submitToMailchimp(email: string): Promise<{ result: string; msg: string }> {
+    return new Promise((resolve, reject) => {
+        const callbackName = `mc_callback_${Date.now()}`;
+        const url = `${MAILCHIMP_ACTION_URL}&EMAIL=${encodeURIComponent(email)}&${MAILCHIMP_HONEYPOT}=&c=${callbackName}`;
+
+        // Attach callback to window so the JSONP script can call it
+        (window as any)[callbackName] = (data: { result: string; msg: string }) => {
+            delete (window as any)[callbackName];
+            document.body.removeChild(script);
+            resolve(data);
+        };
+
+        const script = document.createElement("script");
+        script.src = url;
+        script.onerror = () => {
+            delete (window as any)[callbackName];
+            document.body.removeChild(script);
+            reject(new Error("Network error. Please try again."));
+        };
+
+        document.body.appendChild(script);
+
+        // Fallback timeout — Mailchimp usually responds in < 5s
+        setTimeout(() => {
+            if ((window as any)[callbackName]) {
+                delete (window as any)[callbackName];
+                if (document.body.contains(script)) document.body.removeChild(script);
+                reject(new Error("Request timed out. Please try again."));
+            }
+        }, 10000);
+    });
+}
+
 interface EmailSignupFormProps {
     ctaText?: string;
     onSuccess?: (email: string) => void;
@@ -22,7 +64,7 @@ interface EmailSignupFormProps {
 const EmailSignupForm = ({
     ctaText = "Get the free download",
     onSuccess,
-    variant = "default"
+    variant = "default",
 }: EmailSignupFormProps) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const { toast } = useToast();
@@ -38,26 +80,33 @@ const EmailSignupForm = ({
 
     const onSubmit = async (data: EmailFormData) => {
         setIsSubmitting(true);
-
         try {
-            // TODO: Replace with actual email service integration
-            // For now, simulate API call
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            const response = await submitToMailchimp(data.email);
 
-            console.log("Email submitted:", data.email);
+            if (response.result === "success") {
+                toast({
+                    title: "You're in! 🎉",
+                    description: "Check your inbox — your free download is on its way.",
+                    duration: 6000,
+                });
+                reset();
+                onSuccess?.(data.email);
+            } else {
+                // Mailchimp returns already-subscribed or other soft errors in msg
+                const message = response.msg?.includes("already subscribed")
+                    ? "This email is already subscribed. Check your inbox!"
+                    : response.msg || "Something went wrong. Please try again.";
 
-            toast({
-                title: "Success!",
-                description: "Check your inbox for your free download.",
-                duration: 5000,
-            });
-
-            reset();
-            onSuccess?.(data.email);
-        } catch (error) {
+                toast({
+                    title: "Oops!",
+                    description: message,
+                    variant: "destructive",
+                });
+            }
+        } catch (error: any) {
             toast({
                 title: "Something went wrong",
-                description: "Please try again later.",
+                description: error?.message || "Please try again later.",
                 variant: "destructive",
             });
         } finally {
@@ -65,6 +114,7 @@ const EmailSignupForm = ({
         }
     };
 
+    // ── Compact variant (used on homepage) ────────────────────────────────────
     if (variant === "compact") {
         return (
             <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-md mx-auto">
@@ -93,6 +143,7 @@ const EmailSignupForm = ({
         );
     }
 
+    // ── Default variant (used on Downloads page) ───────────────────────────────
     return (
         <form onSubmit={handleSubmit(onSubmit)} className="w-full max-w-lg mx-auto space-y-6">
             <div className="space-y-3">
@@ -121,7 +172,7 @@ const EmailSignupForm = ({
             </Button>
 
             <p className="text-xs text-muted-foreground text-center font-sans leading-relaxed">
-                By signing up, you'll receive the free download and occasional updates about new content. Unsubscribe anytime.
+                By signing up, you'll receive the free download and occasional updates. Unsubscribe anytime.
             </p>
         </form>
     );
