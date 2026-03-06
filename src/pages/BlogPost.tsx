@@ -5,6 +5,30 @@ import { ArrowLeft } from "lucide-react";
 
 // Sample blog post content
 const postsContent: Record<string, { title: string; date: string; category: string; content: string[] }> = {
+  "no-force": {
+    title: "I no longer force what doesn't flow",
+    date: "February 24, 2026",
+    category: "Healing",
+    content: [
+      "There was a time I believed effort could fix everything.",
+      "If something felt distant, I tried harder.", "If something felt unclear, I overexplained.", "If something felt unstable, I tightened my grip.",
+      "I thought persistence meant strength.",
+      "But lately, I’ve been noticing something different.",
+      "What is meant for me doesn’t require convincing.", "It doesn’t need constant adjustment.", "It doesn’t make me question my worth just to stay.",
+      "I’m no longer forcing conversations that feel strained.",
+      "I’m no longer stretching myself to maintain connections that feel one-sided.",
+      "I’m no longer chasing clarity from people who are comfortable giving confusion.",
+      "This doesn’t come from bitterness. It comes from peace.",
+      "When you begin trusting yourself and protecting your energy, something shifts. You stop negotiating with what already feels misaligned. You stop trying to prove your value in rooms where you feel unseen.",
+      "Flow feels lighter. Flow feels mutual. Flow feels calm.",
+      "And I’m choosing that now.",
+      "Not because I don’t care but because I finally care about my own alignment just as much.",
+      "There’s strength in allowing things to be what they are. There’s maturity in stepping back instead of pushing forward. There’s clarity in not forcing what isn’t naturally unfolding.",
+      "This month hasn’t made me louder. It’s made me steadier.",
+      "And steadiness feels like growth.",
+    ]
+  },
+
   "calm-me": {
     title: "I feel calmer in ways I can't fully explain",
     date: "February 19, 2026",
