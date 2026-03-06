@@ -9,12 +9,19 @@ import { date } from "zod";
 // Sample blog posts data
 const blogPosts = [
   {
+    title: "I no longer force what doesn't flow",
+    excerpt: "There was a time I believed effort could fix everything.. . I tried my best",
+    date: "February 24, 2026",
+    category: "Healing",
+    slug: "no-force",
+    featured: true,
+  },
+  {
     title: "I feel calmer in ways I can't fully explain",
     excerpt: "There’s a kind of calm that doesn’t come from everything being perfect.",
     date: "February 19, 2026",
     category: "Healing",
     slug: "calm-me",
-    featured: true,
   },
   {
     title: "I’m becoming more selective with my energy",
