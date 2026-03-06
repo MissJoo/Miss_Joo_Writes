@@ -7,6 +7,13 @@ const categories = ["All", "Thoughts", "Life", "Healing", "Random"];
 
 const allPosts = [
   {
+    title: "I no longer force what doesn't flow",
+    excerpt: "There was a time I believed effort could fix everything.. . I tried my best",
+    date: "February 24, 2026",
+    category: "Healing",
+    slug: "no-force",
+  },
+  {
     title: "I feel calmer in ways I can't fully explain",
     excerpt: "There’s a kind of calm that doesn’t come from everything being perfect.",
     date: "February 19, 2026",
