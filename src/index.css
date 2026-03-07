@@ -60,41 +60,55 @@
     --section-padding: clamp(5rem, 12vw, 10rem);
     /* Increased spacing */
 
-    /* Transitions */
-    --transition-smooth: all 0.5s cubic-bezier(0.2, 0, 0, 1);
-    --transition-gentle: all 0.7s cubic-bezier(0.2, 0, 0, 1);
-
-    /* Shadows */
-    --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
-    --shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1.2;
   }
 
-  .dark {
-    --background: 30 15% 10%;
-    --foreground: 40 25% 92%;
+  padding-top: 0;
+  padding-bottom: 0;
 
-    --card: 30 15% 12%;
-    --card-foreground: 40 25% 92%;
+  /* Transitions */
+  --transition-smooth: all 0.5s cubic-bezier(0.2, 0, 0, 1);
+  --transition-gentle: all 0.7s cubic-bezier(0.2, 0, 0, 1);
 
-    --popover: 30 15% 10%;
-    --popover-foreground: 40 25% 92%;
+  /* Shadows */
+  --shadow-soft: 0 10px 40px -10px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+}
 
-    --primary: 40 30% 85%;
-    --primary-foreground: 30 15% 10%;
+.dark {
+  --background: 30 15% 10%;
+  --foreground: 40 25% 92%;
 
-    --secondary: 30 12% 18%;
-    --secondary-foreground: 40 25% 92%;
+  --card: 30 15% 12%;
+  --card-foreground: 40 25% 92%;
 
-    --muted: 30 12% 20%;
-    --muted-foreground: 35 15% 60%;
+  --popover: 30 15% 10%;
+  --popover-foreground: 40 25% 92%;
 
-    --accent: 15 25% 45%;
-    --accent-foreground: 40 25% 92%;
+  --primary: 40 30% 85%;
+  --primary-foreground: 30 15% 10%;
 
-    --border: 30 12% 20%;
-    --input: 30 12% 20%;
-    --ring: 40 30% 85%;
-  }
+  --secondary: 30 12% 18%;
+  --secondary-foreground: 40 25% 92%;
+
+  --muted: 30 12% 20%;
+  --muted-foreground: 35 15% 60%;
+
+  --accent: 15 25% 45%;
+  --accent-foreground: 40 25% 92%;
+
+  --border: 30 12% 20%;
+  --input: 30 12% 20%;
+  --ring: 40 30% 85%;
+}
 }
 
 @layer base {
