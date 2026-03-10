@@ -111,20 +111,10 @@
     font-feature-settings: "kern" 1, "liga" 1;
   }
 
-  p {
-    margin: 0 !important;
-    padding: 0 !important;
-    line-height: 1 !important;
-  }
-
-  p+p {
-    margin-top: 0 !important;
-  }
-
   .container,
   .text-block,
   .content {
-    gap: 0 !important;
+    gap: 1 !important;
   }
 
   h1,
