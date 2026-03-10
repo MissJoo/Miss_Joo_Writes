@@ -320,7 +320,7 @@ const BlogPost = () => {
             {post.content.map((paragraph, index) => (
               <p
                 key={index}
-                className="text-foreground/90 leading-relaxed opacity-0 animate-fade-in"
+                className="text-foreground/90 leading-relaxed opacity-0 animate-fade-in mb-0 text-justify"
                 style={{ animationDelay: `${0.3 + index * 0.1}s`, animationFillMode: "forwards" }}
               >
                 {paragraph}
