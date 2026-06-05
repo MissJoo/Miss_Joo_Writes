@@ -7,6 +7,13 @@ const categories = ["All", "Thoughts", "Life", "Healing", "Random"];
 
 const allPosts = [
   {
+    title: "I'm learning to exist without performing",
+    excerpt: "I spent so long curating how I showed up that I forgot what it felt like to just.. be.",
+    date: "June 02, 2026",
+    category: "Healing",
+    slug: "exist-without-performing",
+  },
+  {
     title: "This is the season I stopped shrinking",
     excerpt: "For years, I made myself smaller.. smaller opinions, smaller needs, smaller presence.",
     date: "May 26, 2026",

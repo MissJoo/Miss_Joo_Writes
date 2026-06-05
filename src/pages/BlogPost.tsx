@@ -5,6 +5,24 @@ import { ArrowLeft } from "lucide-react";
 
 // Sample blog post content
 const postsContent: Record<string, { title: string; date: string; category: string; content: string[] }> = {
+  "exist-without-performing": {
+    title: "I'm learning to exist without performing",
+    date: "June 02, 2026",
+    category: "Healing",
+    content: [
+      "I spent so long curating how I showed up that I forgot what it felt like to just.. be.",
+      "Be present without narrating it. Be happy without proving it. Be quiet without it meaning something was wrong.",
+      "There was always an audience in my mind. Even when no one was watching, I was still performing.. adjusting my reactions, choosing words carefully, making sure the version of me that people saw was acceptable. Lovable. Easy.",
+      "But performing is exhausting when it never ends.",
+      "So I stopped.",
+      "Not in one big moment. Just in small, repeated choices. Letting myself sit in silence without filling it. Letting my face rest without smiling on command. Letting a moment pass without documenting it or explaining it to anyone.",
+      "And something unexpected happened.. I started to feel more like myself than I have in years.",
+      "Not the version I built for others. Not the version that made everyone comfortable. Just me. Unfiltered. Unpolished. Unperformed.",
+      "It's quieter here. But it's honest.",
+      "And I think I'd rather be quietly real than loudly curated.",
+      "This is what it feels like to finally stop auditioning for your own life.",
+    ]
+  },
   "stopped-shrinking": {
     title: "This is the season I stopped shrinking",
     date: "May 26, 2026",
