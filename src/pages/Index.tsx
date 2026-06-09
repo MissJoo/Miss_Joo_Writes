@@ -9,12 +9,19 @@ import { date } from "zod";
 // Sample blog posts data
 const blogPosts = [
   {
+    title: "The black coffee rule",
+    excerpt: "For a long time, I took my coffee with a little bit of everything.. until one morning, I poured it black.",
+    date: "June 09, 2026",
+    category: "Reflections",
+    slug: "the-black-coffee-rule",
+    featured: true,
+  },
+  {
     title: "I'm learning to exist without performing",
     excerpt: "I spent so long curating how I showed up that I forgot what it felt like to just.. be.",
     date: "June 02, 2026",
     category: "Healing",
     slug: "exist-without-performing",
-    featured: true,
   },
   {
     title: "This is the season I stopped shrinking",

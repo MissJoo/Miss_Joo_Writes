@@ -5,6 +5,24 @@ import { ArrowLeft } from "lucide-react";
 
 // Sample blog post content
 const postsContent: Record<string, { title: string; date: string; category: string; content: string[] }> = {
+  "the-black-coffee-rule": {
+    title: "The black coffee rule",
+    date: "June 09, 2026",
+    category: "Reflections",
+    content: [
+      "For a long time, I took my coffee with a little bit of everything. Milk to soften the bitterness, sugar to make it easier to swallow, maybe even a dash of cinnamon if I wanted it to look like something out of a magazine. I dressed it up until it barely tasted like coffee anymore.",
+      "And then, one morning, I poured it black. No milk. No sugar. Just the dark, unapologetic reality of it. It was bitter at first.. almost too sharp.. but then I realized I was finally tasting it for what it actually was.",
+      "I call it the black coffee rule. It's the practice of stripping things back to their most honest form.",
+      "Last week, I wrote about learning to exist without performing. The black coffee rule is the natural next step. When you stop performing, you realize how much sugar and milk you've been adding to your life just to make it more palatable for everyone else.",
+      "We soften our boundaries so we don't seem difficult. We sweeten our words so we don't seem harsh. We dilute our true desires so they fit neatly into the cups other people hand us. We dress up our days to look aesthetically pleasing, masking the quiet, ordinary, and sometimes messy reality underneath.",
+      "But what happens when you stop diluting?",
+      "What happens when you let a moment just be a moment, without needing to dress it up for an audience? What happens when you let yourself be exactly who you are, without adding a splash of \"agreeable\" or \"easygoing\"?",
+      "It might feel a little sharp at first. You might notice the strong taste of an honest \"no,\" or the unfiltered quiet of an afternoon spent entirely offline. People who are used to your sweetness might not know what to do with this unadorned version of you.",
+      "But there is so much peace in the unadorned.",
+      "The black coffee rule is about refusing to mask the reality of your life. If a day is quiet and unremarkable, let it be quiet and unremarkable. If you are tired, let yourself be tired without performing productivity. If you are happy, let yourself be happy without needing to document it.",
+      "I'm learning to take my life black. Simple, potent, and exactly as it is. No additions required.",
+    ]
+  },
   "exist-without-performing": {
     title: "I'm learning to exist without performing",
     date: "June 02, 2026",
