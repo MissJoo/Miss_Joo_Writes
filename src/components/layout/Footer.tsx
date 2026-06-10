@@ -73,6 +73,16 @@ const Footer = () => {
             ))}
           </nav>
 
+          {/* Legal Links */}
+          <div className="flex flex-wrap justify-center gap-4 lg:gap-6 mt-2">
+            <Link to="/privacy-policy" className="text-[10px] tracking-wider uppercase text-muted-foreground/60 hover:text-foreground transition-colors duration-300">
+              Privacy Policy
+            </Link>
+            <Link to="/terms" className="text-[10px] tracking-wider uppercase text-muted-foreground/60 hover:text-foreground transition-colors duration-300">
+              Terms & Disclaimer
+            </Link>
+          </div>
+
           {/* Copyright */}
           <p className="text-xs text-muted-foreground/60 tracking-wide">
             © {currentYear} missjooo. All rights reserved.
