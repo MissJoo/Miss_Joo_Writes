@@ -24,7 +24,7 @@ const About = () => {
       <section className="pb-section">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-2xl mx-auto space-y-8 prose-journal">
-            <p className="text-lg text-foreground leading-relaxed animate-fade-in-delay-1">
+            <p className="text-lg text-muted-foreground leading-relaxed animate-fade-in-delay-1">
               I created Miss Joo Writes because some feelings do not fit inside an Instagram caption.
             </p>
 
