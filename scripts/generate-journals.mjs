@@ -488,7 +488,7 @@ const journals = [
       'Trusting myself doesn\'t mean I never feel unsure. It means I pause before doubting myself.',
       'There\'s a difference between being available and being aligned.',
       'There\'s a quiet confidence growing. The kind that doesn\'t need to be announced.',
-      'What is meant for me doesn\'t require convincing.',
+      'What is meant for me will not require me to abandon myself first.',
     ],
     prompts_page1: (month) => `
       ${prompt(1, 'Body check-in', 'Close your eyes for 30 seconds. What does your body feel right now? Where are you holding tension? Write what you notice.', 4)}

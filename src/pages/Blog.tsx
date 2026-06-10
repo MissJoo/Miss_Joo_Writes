@@ -113,7 +113,7 @@ const allPosts = [
   },
   {
     title: "I no longer force what doesn't flow",
-    excerpt: "There was a time I believed effort could fix everything.. . I tried my best",
+    excerpt: "There was a time I thought effort could fix everything. If the conversation felt cold, I tried to make it warm again.",
     date: "February 24, 2026",
     category: "Healing",
     slug: "no-force",
