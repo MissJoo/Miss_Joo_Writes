@@ -14,7 +14,7 @@ const About = () => {
               About
             </span>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl mt-4 animate-fade-in-up">
-              Hello, I'm <span className="font-signature text-primary font-normal not-italic tracking-normal text-[1.4em] translate-y-2 inline-block">Joo</span>
+              Hello, I'm <span className="font-signature text-primary font-normal not-italic tracking-normal text-[1.1em]">Joo</span>
             </h1>
           </div>
         </div>
