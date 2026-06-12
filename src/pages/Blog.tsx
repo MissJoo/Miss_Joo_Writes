@@ -7,6 +7,13 @@ const categories = ["All", "Thoughts", "Life", "Healing", "Random"];
 
 const allPosts = [
   {
+    title: "There is a difference between fighting for love and forcing it",
+    excerpt: "But sometimes, when you care deeply about someone, the difference becomes hard to see.",
+    date: "July 12, 2026",
+    category: "Thoughts",
+    slug: "fighting-vs-forcing-love",
+  },
+  {
     title: "The black coffee rule",
     excerpt: "For a long time, I took my coffee with a little bit of everything.. until one morning, I poured it black.",
     date: "June 09, 2026",
