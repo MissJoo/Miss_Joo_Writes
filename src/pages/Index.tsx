@@ -11,7 +11,7 @@ const blogPosts = [
   {
     title: "There is a difference between fighting for love and forcing it",
     excerpt: "But sometimes, when you care deeply about someone, the difference becomes hard to see.",
-    date: "July 12, 2026",
+    date: "June 12, 2026",
     category: "Thoughts",
     slug: "fighting-vs-forcing-love",
     featured: true,
