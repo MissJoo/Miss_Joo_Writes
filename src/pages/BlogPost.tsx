@@ -12,43 +12,43 @@ const postsContent: Record<string, { title: string; date: string; category: stri
     content: [
       "There is a difference between fighting for love and forcing it.",
       "But sometimes, when you care deeply about someone, the difference becomes hard to see.",
-      "You tell yourself you are being patient. You tell yourself relationships require effort. You tell yourself love is not always easy.",
+      "You tell yourself you are being patient.\nYou tell yourself relationships require effort.\nYou tell yourself love is not always easy.",
       "And that is true.",
-      "Love requires effort. Love requires patience. Love requires understanding.",
+      "Love requires effort.\nLove requires patience.\nLove requires understanding.",
       "But love should not require you to constantly abandon yourself.",
       "Fighting for love feels mutual.",
       "Forcing it feels one-sided.",
-      "When two people are fighting for love, both are willing to communicate, listen, adjust, and grow. There may be difficult days, but the effort does not come from only one person.",
-      "Both people care about repairing the connection. Both people want to understand each other. Both people are willing to protect the relationship.",
+      "When two people are fighting for love, both are willing to communicate, listen, adjust, and grow.\nThere may be difficult days, but the effort does not come from only one person.",
+      "Both people care about repairing the connection.\nBoth people want to understand each other.\nBoth people are willing to protect the relationship.",
       "But when you are forcing it, you feel like you are the only one trying to keep everything together.",
-      "You are the one starting the conversations. You are the one asking for clarity. You are the one forgiving repeatedly. You are the one adjusting, waiting, understanding, and hoping.",
+      "You are the one starting the conversations.\nYou are the one asking for clarity.\nYou are the one forgiving repeatedly.\nYou are the one adjusting, waiting, understanding, and hoping.",
       "And slowly, love starts to feel like chasing.",
       "Fighting for love brings growth.",
       "Forcing it brings exhaustion.",
       "A relationship can go through hard seasons and still be healthy if both people are willing to grow. But if every issue leaves you feeling unheard, unseen, and emotionally drained, you have to ask yourself if the relationship is growing or simply repeating the same pain.",
       "Growth requires changed behavior.",
-      "Not just apologies. Not just promises. Not just temporary sweetness after every conflict.",
+      "Not just apologies.\nNot just promises.\nNot just temporary sweetness after every conflict.",
       "Real growth is consistent.",
       "Fighting for love feels safe.",
       "Forcing it feels confusing.",
       "When someone truly wants to be with you, you may still have disagreements, but you will not always feel unsure about where you stand.",
-      "You will not have to decode their mixed signals. You will not have to beg for basic effort. You will not have to constantly wonder if they still care.",
+      "You will not have to decode their mixed signals.\nYou will not have to beg for basic effort.\nYou will not have to constantly wonder if they still care.",
       "Love should not feel like a guessing game.",
       "Fighting for love means both people are choosing each other.",
       "Forcing it means you are trying to convince someone to choose you.",
       "That is where the pain begins.",
       "Because no matter how much love you have, you cannot make someone meet you where they are not willing to show up.",
-      "You cannot love someone into readiness. You cannot beg someone into commitment. You cannot force someone to value what they are willing to lose.",
+      "You cannot love someone into readiness.\nYou cannot beg someone into commitment.\nYou cannot force someone to value what they are willing to lose.",
       "And sometimes, the hardest part is accepting that you gave your best, but your best was being poured into someone who was not meeting you halfway.",
       "That does not mean you failed.",
       "It means you finally saw the truth.",
       "Love is worth fighting for when both people are willing to fight for it.",
       "But if you are the only one trying, the only one changing, the only one holding on, then maybe it is no longer love you are fighting for.",
-      "Maybe it is attachment. Maybe it is fear. Maybe it is the future you imagined. Maybe it is the version of them you keep hoping will return.",
+      "Maybe it is attachment.\nMaybe it is fear.\nMaybe it is the future you imagined.\nMaybe it is the version of them you keep hoping will return.",
       "You deserve a love that does not make you feel alone in the effort.",
       "You deserve someone who does not only say they care, but shows it.",
       "You deserve a connection that flows with honesty, consistency, and mutual respect.",
-      "Gentle Note: If you are the only one fighting for it, you may not be fighting for love anymore. You may be forcing it.",
+      "Gentle Note:\nIf you are the only one fighting for it, you may not be fighting for love anymore. You may be forcing it.",
     ]
   },
   "the-black-coffee-rule": {
@@ -627,7 +627,7 @@ const BlogPost = () => {
             {post.content.map((paragraph, index) => (
               <p
                 key={index}
-                className="text-foreground/90 leading-relaxed opacity-0 animate-fade-in mb-0 text-justify"
+                className="text-foreground/90 leading-relaxed opacity-0 animate-fade-in mb-0 text-justify whitespace-pre-line"
                 style={{ animationDelay: `${0.3 + index * 0.1}s`, animationFillMode: "forwards" }}
               >
                 {paragraph}
