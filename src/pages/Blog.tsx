@@ -280,7 +280,7 @@ const Blog = () => {
       {/* Posts Grid */}
       <section className="py-16 lg:py-24">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-16 max-w-4xl mx-auto">
+          <div className="flex flex-col space-y-16 max-w-4xl mx-auto">
             {filteredPosts.map((post, index) => (
               <div
                 key={post.slug}

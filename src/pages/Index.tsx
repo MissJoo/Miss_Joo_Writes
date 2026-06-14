@@ -225,104 +225,138 @@ const blogPosts = [
 const Index = () => {
   return (
     <Layout>
-      {/* Hero Section - Morning Light */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden border-b border-border/60">
-        {/* Content */}
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
-          <div className="max-w-4xl mx-auto space-y-12">
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl commercial-title animate-fade-in-up text-balance leading-[1.1]">
-              <span className="block text-foreground tracking-tight">The Art of</span>
-              <span className="block italic font-light text-muted-foreground mt-2">Living Slowly</span>
-            </h1>
-
-            <p className="text-balance text-muted-foreground text-lg md:text-xl font-sans tracking-wide animate-fade-in-delay-1 max-w-lg mx-auto leading-relaxed">
-              A digital sanctuary for thoughts that linger, stories that heal, and the beauty found in quiet moments.
-            </p>
-
-            <div className="animate-fade-in-delay-2 pt-8 flex justify-center">
-              <Link 
-                to="/blog"
-                className="group relative inline-flex items-center justify-center px-10 py-5 text-xs tracking-[0.2em] uppercase text-foreground transition-colors duration-300"
-              >
-                <div className="absolute inset-0 border border-border/60 transition-colors duration-300 group-hover:border-primary/50"></div>
-                <div className="absolute inset-2 border border-border/30 transition-transform duration-300 group-hover:scale-105 group-hover:border-primary/20"></div>
-                <span className="relative z-10 group-hover:text-primary transition-colors">Enter the Journal</span>
-              </Link>
-            </div>
-          </div>
-
-          {/* Scroll indicator */}
-          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-fade-in-delay-3">
-            <span className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-4 block animate-pulse">Scroll</span>
-            <div className="w-[1px] h-12 bg-gradient-to-b from-muted-foreground/50 to-transparent mx-auto"></div>
-          </div>
-        </div>
-      </section>
-
-      {/* About Section - Editorial Style */}
-      <section className="py-24 md:py-32 bg-background border-b border-border/40">
+      {/* Featured Blog Post - Matching the Sample Layout */}
+      <section className="py-12 lg:py-20">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-24">
-            <div className="flex-1 space-y-8 text-center md:text-left">
-              <span className="text-[10px] tracking-[0.3em] uppercase text-primary font-medium">The Author</span>
-
-              <h2 className="font-serif text-3xl md:text-5xl leading-tight">
-                Embracing the <br />
-                <span className="italic font-light text-muted-foreground">art of slowing down.</span>
-              </h2>
-
-              <p className="text-muted-foreground font-sans leading-relaxed text-lg font-light">
-                This space is a curator of moments—the messy, the beautiful, and the quiet ones in between.
-                I write to explore what it means to heal, to grow, and to simply exist with intention.
-              </p>
-
-              <Button variant="link" className="p-0 h-auto text-foreground hover:text-primary transition-colors text-xs tracking-widest uppercase border-b border-foreground/30 pb-1 rounded-none hover:no-underline" asChild>
-                <Link to="/about">
-                  Read My Story
-                </Link>
-              </Button>
-            </div>
-            {/* Decorative element or simple image placeholder could go here if requested, but keeping text focused for now */}
-          </div>
-        </div>
-      </section>
-
-      {/* Blog Preview Section - Minimal Grid */}
-      <section className="py-24 md:py-32">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="flex items-baseline justify-between mb-16 border-b border-border/40 pb-6">
-            <h2 className="font-serif text-3xl md:text-4xl text-foreground">Journal Entries</h2>
-            <Link to="/blog" className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors">
-              View All
-            </Link>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-            {blogPosts.slice(0, 3).map((post, index) => (
-              <div
-                key={post.slug}
-                className="group cursor-pointer"
-              >
-                <div className="overflow-hidden mb-6 bg-secondary/20 aspect-[4/5]">
-                  {/* Placeholder for post image if we had them, or just a nice colored block */}
-                  <div className="w-full h-full bg-secondary/10 group-hover:scale-105 transition-transform duration-700 ease-out"></div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
+            
+            {/* Main Content Area */}
+            <div className="lg:col-span-8">
+              {/* Featured Post */}
+              <article className="group">
+                {/* Featured Image */}
+                <div className="overflow-hidden mb-8">
+                  <img 
+                    src={heroImage} 
+                    alt="A slow morning scene" 
+                    className="w-full h-auto max-h-[500px] object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                  />
                 </div>
 
-                <div className="space-y-4">
-                  <span className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground block">
-                    {post.category} — {post.date}
-                  </span>
+                {/* Post Title */}
+                <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground leading-tight mb-4">
+                  <Link to={`/blog/${blogPosts[0].slug}`} className="hover:text-primary transition-colors duration-300">
+                    {blogPosts[0].title}
+                  </Link>
+                </h2>
 
-                  <h3 className="font-serif text-2xl group-hover:text-primary transition-colors duration-300">
-                    <Link to={`/blog/${post.slug}`}>{post.title}</Link>
-                  </h3>
+                {/* Post Meta */}
+                <div className="flex items-center gap-3 text-xs tracking-[0.15em] uppercase text-muted-foreground mb-6">
+                  <span>Written by Joo</span>
+                  <span>|</span>
+                  <time>{blogPosts[0].date}</time>
+                  <span>|</span>
+                  <span>{blogPosts[0].category}</span>
+                </div>
 
-                  <p className="text-muted-foreground text-sm line-clamp-2 leading-relaxed font-light">
-                    {post.excerpt}
-                  </p>
+                {/* Excerpt */}
+                <p className="text-foreground font-sans leading-relaxed text-base mb-6">
+                  {blogPosts[0].excerpt}
+                </p>
+
+                {/* Read More */}
+                <Link 
+                  to={`/blog/${blogPosts[0].slug}`}
+                  className="inline-flex items-center gap-3 text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors group/link"
+                >
+                  <span>Continue Reading</span>
+                  <span className="w-6 h-[1px] bg-muted-foreground group-hover/link:w-10 group-hover/link:bg-foreground transition-all duration-300"></span>
+                </Link>
+              </article>
+
+              {/* Divider */}
+              <div className="my-16 border-t border-border/50"></div>
+
+              {/* More Recent Entries */}
+              <div className="space-y-12">
+                <h3 className="font-serif text-2xl text-foreground">Recent Entries</h3>
+                {blogPosts.slice(1, 4).map((post) => (
+                  <article 
+                    key={post.slug}
+                    className="group flex flex-col md:flex-row gap-6 pb-10 border-b border-border/30"
+                  >
+                    <div className="flex-1 space-y-3">
+                      <div className="flex items-center gap-3 text-xs tracking-[0.12em] uppercase text-muted-foreground">
+                        <span>{post.category}</span>
+                        <span>—</span>
+                        <time>{post.date}</time>
+                      </div>
+                      <h4 className="font-serif text-xl lg:text-2xl text-foreground group-hover:text-primary transition-colors duration-300 leading-tight">
+                        <Link to={`/blog/${post.slug}`}>
+                          {post.title}
+                        </Link>
+                      </h4>
+                      <p className="text-muted-foreground text-sm leading-relaxed font-light font-sans">
+                        {post.excerpt}
+                      </p>
+                    </div>
+                  </article>
+                ))}
+
+                {/* View All Link */}
+                <div className="pt-4 text-center">
+                  <Link 
+                    to="/blog" 
+                    className="inline-flex items-center gap-4 text-xs tracking-[0.2em] uppercase text-foreground hover:text-primary transition-colors"
+                  >
+                    <span className="w-8 h-[1px] bg-border/60"></span>
+                    View All Journal Entries
+                    <span className="w-8 h-[1px] bg-border/60"></span>
+                  </Link>
                 </div>
               </div>
-            ))}
+            </div>
+
+            {/* Sidebar */}
+            <aside className="lg:col-span-4 space-y-10">
+              {/* Cursive Quote */}
+              <div className="text-center py-8">
+                <p className="font-signature text-3xl lg:text-4xl text-foreground/70 leading-relaxed">
+                  Seek beauty<br />in the subtle.
+                </p>
+              </div>
+
+              {/* Author Photo Placeholder */}
+              <div className="border border-border/50 p-3">
+                <div className="bg-secondary/30 aspect-square flex items-center justify-center">
+                  <span className="font-serif text-lg text-muted-foreground italic">Joo</span>
+                </div>
+              </div>
+
+              {/* Subscription Form */}
+              <div className="text-center space-y-4">
+                <h4 className="font-serif text-lg text-foreground">Subscription form</h4>
+                <EmailSignupForm variant="compact" />
+              </div>
+
+              {/* Divider */}
+              <div className="border-t border-border/40"></div>
+
+              {/* About Blurb */}
+              <div className="space-y-4">
+                <h4 className="font-serif text-lg text-foreground">About Miss Joo</h4>
+                <p className="text-muted-foreground text-sm font-sans leading-relaxed">
+                  This space is a curator of moments—the messy, the beautiful, and the quiet ones in between.
+                  I write to explore what it means to heal, to grow, and to simply exist with intention.
+                </p>
+                <Link 
+                  to="/about"
+                  className="text-xs tracking-[0.15em] uppercase text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Read My Story →
+                </Link>
+              </div>
+            </aside>
           </div>
         </div>
       </section>

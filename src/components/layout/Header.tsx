@@ -19,41 +19,45 @@ const Header = () => {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border/60 transition-all duration-500">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-background transition-all duration-500">
       <nav className="container mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between h-20 lg:h-32 transition-all duration-500">
-          {/* Logo */}
+        {/* Top Row: Logo Centered */}
+        <div className="flex items-center justify-center py-6 lg:py-8">
           <Link
             to="/"
-            className="font-serif text-2xl lg:text-3xl tracking-widest text-foreground hover:text-primary transition-colors duration-500"
+            className="font-serif text-3xl lg:text-4xl tracking-[0.15em] text-foreground hover:text-primary transition-colors duration-500"
           >
-            MISS JOO WRITES
+            Miss Joo Writes
           </Link>
+        </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-12">
-            {navLinks.map((link) => (
+        {/* Desktop Navigation - separated by pipes like the sample */}
+        <div className="hidden md:flex items-center justify-center gap-0 pb-4">
+          {navLinks.map((link, index) => (
+            <div key={link.path} className="flex items-center">
+              {index > 0 && (
+                <span className="text-border mx-4 text-sm select-none">|</span>
+              )}
               <Link
-                key={link.path}
                 to={link.path}
                 className={cn(
-                  "relative text-xs tracking-[0.2em] uppercase font-sans font-medium transition-all duration-300",
+                  "relative text-xs tracking-[0.15em] uppercase font-sans font-medium transition-all duration-300",
                   isActive(link.path)
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground",
-                  "after:absolute after:bottom-[-4px] after:left-1/2 after:-translate-x-1/2 after:h-[1px] after:bg-primary after:transition-all after:duration-500",
-                  isActive(link.path) ? "after:w-full" : "after:w-0 hover:after:w-2/3"
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
                 )}
               >
                 {link.name}
               </Link>
-            ))}
-          </div>
+            </div>
+          ))}
+        </div>
 
-          {/* Mobile Menu Button */}
+        {/* Mobile Menu Button */}
+        <div className="md:hidden flex justify-end -mt-12 pb-4">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-foreground hover:text-primary transition-colors"
+            className="p-2 text-foreground hover:text-primary transition-colors"
             aria-label="Toggle menu"
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -88,6 +92,8 @@ const Header = () => {
           </div>
         </div>
       </nav>
+      {/* Blush/Taupe Banner Strip - like the sample's ripped-edge band */}
+      <div className="w-full h-3 bg-gradient-to-r from-primary/30 via-primary/20 to-primary/30"></div>
     </header>
   );
 };
