@@ -79,7 +79,6 @@ const Footer = () => {
               { name: "About", path: "/about" },
               { name: "Free Journal", path: "/downloads" },
               { name: "Contact", path: "/contact" },
-              { name: "Privacy Policy", path: "/privacy-policy" },
             ].map((link) => (
               <Link
                 key={link.name}
@@ -91,10 +90,21 @@ const Footer = () => {
             ))}
           </nav>
 
-          {/* Copyright */}
-          <p className="text-[11px] text-journal-bg/40 tracking-wider font-sans mt-4">
-            © {currentYear} Miss Joo Writes. All rights reserved.
-          </p>
+          {/* Copyright & Legal */}
+          <div className="flex flex-col items-center gap-2 mt-4">
+            <p className="text-[11px] text-journal-bg/40 tracking-wider font-sans">
+              © {currentYear} Miss Joo Writes. All rights reserved.
+            </p>
+            <div className="flex gap-4 text-[11px] text-journal-bg/40 tracking-wider font-sans">
+              <Link to="/privacy-policy" className="hover:text-journal-champagne transition-colors duration-300">
+                Privacy Policy
+              </Link>
+              <span>|</span>
+              <Link to="/terms-of-use" className="hover:text-journal-champagne transition-colors duration-300">
+                Terms of Use
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
