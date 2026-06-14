@@ -8,7 +8,7 @@ import heroImage from "@/assets/hero-image.jpg";
 const blogPosts = [
   {
     title: "There is a difference between fighting for love and forcing it",
-    excerpt: "But sometimes, when you care deeply about someone, the difference becomes hard to see.",
+    excerpt: "Love should not feel like a guessing game. Fighting for love means both people are choosing each other. Forcing it means you are trying to convince someone to choose you. That is where the pain begins.",
     date: "June 12, 2026",
     category: "Thoughts",
     slug: "fighting-vs-forcing-love",
