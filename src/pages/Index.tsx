@@ -225,20 +225,8 @@ const blogPosts = [
 const Index = () => {
   return (
     <Layout>
-      {/* Hero Section */}
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src={heroImage}
-            alt="Atmospheric texture"
-            className="w-full h-full object-cover opacity-50 contrast-125 saturate-50" // Luxury image treatment
-          />
-          <div className="absolute inset-0 bg-background/30 backdrop-blur-[2px]"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/10"></div>
-        </div>
-
+      {/* Hero Section - Morning Light */}
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden border-b border-border/60">
         {/* Content */}
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
           <div className="max-w-4xl mx-auto space-y-12">
@@ -251,19 +239,22 @@ const Index = () => {
               A digital sanctuary for thoughts that linger, stories that heal, and the beauty found in quiet moments.
             </p>
 
-            <div className="animate-fade-in-delay-2 pt-8">
-              <Button variant="outline" size="lg" className="rounded-none border-primary/50 text-foreground hover:bg-primary hover:text-primary-foreground tracking-[0.2em] uppercase text-xs px-8 py-6 transition-all duration-500" asChild>
-                <Link to="/blog">
-                  Enter the Journal
-                </Link>
-              </Button>
+            <div className="animate-fade-in-delay-2 pt-8 flex justify-center">
+              <Link 
+                to="/blog"
+                className="group relative inline-flex items-center justify-center px-10 py-5 text-xs tracking-[0.2em] uppercase text-foreground transition-colors duration-300"
+              >
+                <div className="absolute inset-0 border border-border/60 transition-colors duration-300 group-hover:border-primary/50"></div>
+                <div className="absolute inset-2 border border-border/30 transition-transform duration-300 group-hover:scale-105 group-hover:border-primary/20"></div>
+                <span className="relative z-10 group-hover:text-primary transition-colors">Enter the Journal</span>
+              </Link>
             </div>
           </div>
 
           {/* Scroll indicator */}
           <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-fade-in-delay-3">
             <span className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-4 block animate-pulse">Scroll</span>
-            <div className="w-[1px] h-12 bg-gradient-to-b from-muted-foreground to-transparent mx-auto"></div>
+            <div className="w-[1px] h-12 bg-gradient-to-b from-muted-foreground/50 to-transparent mx-auto"></div>
           </div>
         </div>
       </section>

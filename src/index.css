@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,54 +6,53 @@
 
 @layer base {
   :root {
-    /* Luxury / Polished Palette */
-    --background: 40 20% 98%;
-    /* Ivory/Cream */
-    --foreground: 30 10% 15%;
-    /* Deep Charcoal */
+    /* Morning Light Palette */
+    --background: 40 33% 98%;
+    /* Warm Cream Paper */
+    --foreground: 210 10% 40%;
+    /* Slate Gray Text */
 
-    --card: 40 20% 98%;
-    --card-foreground: 30 10% 15%;
+    --card: 40 33% 98%;
+    --card-foreground: 210 10% 40%;
 
-    --popover: 40 20% 98%;
-    --popover-foreground: 30 10% 15%;
+    --popover: 40 33% 98%;
+    --popover-foreground: 210 10% 40%;
 
-    --primary: 35 30% 30%;
-    /* Muted Bronze/Gold */
-    --primary-foreground: 40 20% 98%;
+    --primary: 350 40% 80%;
+    /* Delicate Blush Pink */
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 40 10% 94%;
-    /* Soft gray-beige */
-    --secondary-foreground: 30 10% 15%;
+    --secondary: 30 15% 94%;
+    /* Soft Taupe */
+    --secondary-foreground: 210 10% 40%;
 
-    --muted: 40 10% 92%;
-    --muted-foreground: 30 5% 45%;
+    --muted: 30 10% 90%;
+    --muted-foreground: 210 10% 55%;
 
-    --accent: 35 30% 85%;
-    /* Champagne */
-    --accent-foreground: 30 10% 15%;
+    --accent: 30 15% 90%;
+    /* Soft Taupe Background Highlight */
+    --accent-foreground: 210 10% 40%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 40 20% 98%;
+    --destructive-foreground: 40 33% 98%;
 
-    --border: 35 15% 90%;
-    --input: 35 15% 90%;
-    --ring: 35 30% 30%;
+    --border: 35 20% 90%;
+    --input: 35 20% 90%;
+    --ring: 350 40% 80%;
 
-    --radius: 0.25rem;
-    /* Sharper corners for luxury feel */
+    --radius: 0rem;
+    /* Sharp corners for editorial high-fashion feel */
 
-    /* Custom tokens re-mapped for luxury */
-    --cream: 40 20% 98%;
-    --warm-beige: 35 15% 92%;
-    --taupe: 30 5% 55%;
-    --dusty-rose: 20 20% 80%;
-    /* Muted rose, less pink */
-    --warm-brown: 35 30% 30%;
-    --soft-gold: 40 40% 60%;
+    /* Custom tokens */
+    --cream: 40 33% 98%;
+    --warm-beige: 35 20% 90%;
+    --taupe: 30 15% 94%;
+    --dusty-rose: 350 40% 80%;
+    --warm-brown: 30 20% 40%;
+    --soft-gold: 43 60% 70%;
 
     /* Typography */
-    --font-serif: 'Playfair Display', Georgia, serif;
+    --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
     --font-sans: 'DM Sans', system-ui, sans-serif;
 
     /* Spacing */

@@ -31,7 +31,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="border-t border-border/50 bg-secondary/30">
+    <footer className="border-t border-border/60 bg-background/80 backdrop-blur-sm">
       <div className="container mx-auto px-6 lg:px-12 py-12 lg:py-16">
         <div className="flex flex-col items-center gap-8">
           {/* Tagline */}
