@@ -31,9 +31,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-background">
-      {/* Blush Banner Strip */}
-      <div className="w-full h-3 bg-gradient-to-r from-primary/30 via-primary/20 to-primary/30"></div>
+    <footer className="border-t border-border/40 bg-background">
       <div className="container mx-auto px-6 lg:px-12 py-12 lg:py-16">
         <div className="flex flex-col items-center gap-8">
           {/* Tagline */}
