@@ -1,10 +1,8 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Instagram } from "lucide-react";
 import Layout from "@/components/layout/Layout";
 import EmailSignupForm from "@/components/forms/EmailSignupForm";
 import heroImage from "@/assets/hero-image.jpg";
-import { date } from "zod";
 
 // Sample blog posts data
 const blogPosts = [
@@ -226,65 +224,134 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-journal-bg pt-20">
+        {/* Soft Background Texture Overlay */}
+        <div className="absolute inset-0 z-0 select-none pointer-events-none">
           <img
             src={heroImage}
             alt="Atmospheric texture"
-            className="w-full h-full object-cover opacity-50 contrast-125 saturate-50"
+            className="w-full h-full object-cover opacity-[0.06] contrast-75 saturate-0 mix-blend-multiply"
           />
-          <div className="absolute inset-0 bg-background/30 backdrop-blur-[2px]"></div>
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-background/10"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-journal-bg/30 to-journal-bg"></div>
         </div>
 
         {/* Content */}
-        <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center">
-          <div className="max-w-4xl mx-auto space-y-12">
-            <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl commercial-title animate-fade-in-up text-balance leading-[1.1]">
-              <span className="block text-foreground tracking-tight">The Art of</span>
-              <span className="block italic font-light text-muted-foreground mt-2">Living Slowly</span>
+        <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center py-12">
+          <div className="max-w-3xl mx-auto space-y-8">
+            <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block animate-fade-in">
+              “A space where my thoughts learn how to breathe.”
+            </span>
+
+            <h1 className="font-serif text-[34px] md:text-[56px] leading-[1.15] text-journal-text animate-fade-in-up tracking-tight max-w-2xl mx-auto">
+              For the thoughts we never posted, but still needed to feel.
             </h1>
 
-            <p className="text-balance text-muted-foreground text-lg md:text-xl font-sans tracking-wide animate-fade-in-delay-1 max-w-lg mx-auto leading-relaxed">
-              A digital sanctuary for thoughts that linger, stories that heal, and the beauty found in quiet moments.
+            <div className="w-16 h-[1px] bg-journal-champagne/60 mx-auto my-6"></div>
+
+            <p className="text-journal-text-secondary text-base md:text-lg font-sans font-light tracking-wide max-w-xl mx-auto leading-relaxed animate-fade-in-delay-1">
+              A soft editorial journal on healing, becoming, love, solitude, slow living, and the quiet moments that shape us.
             </p>
 
-            <div className="animate-fade-in-delay-2 pt-8">
-              <Button variant="outline" size="lg" className="rounded-none border-primary/50 text-foreground hover:bg-primary hover:text-primary-foreground tracking-[0.2em] uppercase text-xs px-8 py-6 transition-all duration-500" asChild>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6 animate-fade-in-delay-2">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="rounded-full bg-journal-text text-journal-bg hover:bg-journal-gold hover:text-journal-bg border-none tracking-widest uppercase text-[11px] px-8 py-5 transition-all duration-300 shadow-sm"
+                asChild
+              >
                 <Link to="/blog">
                   Enter the Journal
                 </Link>
               </Button>
+              <Link 
+                to="/blog/fighting-vs-forcing-love" 
+                className="text-journal-gold hover:text-journal-text text-xs tracking-wider uppercase underline underline-offset-4 decoration-journal-champagne font-sans font-medium py-2 transition-colors duration-300"
+              >
+                Read the latest reflection
+              </Link>
             </div>
-          </div>
-
-          {/* Scroll indicator */}
-          <div className="absolute bottom-12 left-1/2 -translate-x-1/2 animate-fade-in-delay-3">
-            <span className="text-[10px] uppercase tracking-[0.3em] text-muted-foreground mb-4 block animate-pulse">Scroll</span>
-            <div className="w-[1px] h-12 bg-gradient-to-b from-muted-foreground to-transparent mx-auto"></div>
           </div>
         </div>
       </section>
 
-      {/* About Section - Editorial Style */}
-      <section className="py-24 md:py-32 bg-background border-b border-border/40">
+      {/* Featured Reflection Section */}
+      <section className="py-20 md:py-28 bg-journal-bg border-t border-journal-border/30">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12 md:gap-24">
-            <div className="flex-1 space-y-8 text-center md:text-left">
-              <span className="text-[10px] tracking-[0.3em] uppercase text-primary font-medium">The Author</span>
+          <div className="max-w-5xl mx-auto space-y-10">
+            <div className="text-center">
+              <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">Featured Reflection</h2>
+              <div className="w-8 h-px bg-journal-champagne/40 mx-auto mt-3"></div>
+            </div>
 
-              <h2 className="font-serif text-3xl md:text-5xl leading-tight">
-                Embracing the <br />
-                <span className="italic font-light text-muted-foreground">art of slowing down.</span>
-              </h2>
+            <div className="grid md:grid-cols-12 border border-journal-border bg-journal-card hover:border-journal-champagne/50 transition-all duration-500 overflow-hidden rounded-[2px] shadow-[0_4px_20px_-10px_rgba(0,0,0,0.03)]">
+              {/* Text Side */}
+              <div className="p-8 md:p-12 lg:p-16 md:col-span-7 flex flex-col justify-center space-y-6">
+                <div className="flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted">
+                  <span>JOURNAL</span>
+                  <span className="w-6 h-px bg-journal-border"></span>
+                  <time>June 2026</time>
+                </div>
 
-              <p className="text-muted-foreground font-sans leading-relaxed text-lg font-light">
-                This space is a curator of moments—the messy, the beautiful, and the quiet ones in between.
-                I write to explore what it means to heal, to grow, and to simply exist with intention.
-              </p>
+                <h3 className="font-serif text-2xl lg:text-3.5xl text-journal-text leading-tight font-medium">
+                  I No Longer Force What Doesn’t Flow
+                </h3>
 
-              <Button variant="link" className="p-0 h-auto text-foreground hover:text-primary transition-colors text-xs tracking-widest uppercase border-b border-foreground/30 pb-1 rounded-none hover:no-underline" asChild>
+                <p className="text-journal-text-secondary text-sm md:text-base font-light leading-relaxed">
+                  A quiet reflection on release, softness, and learning to stop chasing what no longer meets you with peace.
+                </p>
+
+                <div className="pt-2">
+                  <Link 
+                    to="/blog/no-force" 
+                    className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-journal-gold hover:text-journal-text transition-colors duration-300 font-medium"
+                  >
+                    <span>Read the entry</span>
+                    <span>→</span>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Graphic Side */}
+              <div className="relative md:col-span-5 min-h-[260px] bg-journal-bg-secondary/40 flex items-center justify-center p-8 select-none border-t md:border-t-0 md:border-l border-journal-border/50">
+                <div className="text-center space-y-4 max-w-[240px]">
+                  <span className="text-xl text-journal-champagne">✦</span>
+                  <p className="font-serif italic text-lg text-journal-text-secondary leading-relaxed">
+                    “Peace is refusing to fight for what is meant to be let go.”
+                  </p>
+                  <div className="w-10 h-px bg-journal-champagne/40 mx-auto"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Preview Section */}
+      <section className="py-20 md:py-28 bg-journal-bg-secondary">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="max-w-3xl mx-auto text-center space-y-8">
+            <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">
+              About Miss Joo
+            </span>
+
+            <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text italic font-light leading-snug">
+              “A space for thoughts that feel too layered for captions.”
+            </h2>
+
+            <p className="text-journal-text-secondary font-sans leading-relaxed text-sm md:text-base font-light max-w-2xl mx-auto">
+              Miss Joo Writes is my quiet corner of the internet — a space for the thoughts that feel too layered for captions and too meaningful to disappear in the scroll. Here, I write about healing, becoming, love, solitude, beauty, and the small moments that teach us how to return to ourselves.
+            </p>
+
+            <div className="font-signature text-3xl text-journal-gold select-none py-1">
+              With softness, Miss Joo
+            </div>
+
+            <div className="pt-2">
+              <Button 
+                variant="outline" 
+                className="rounded-full border border-journal-gold text-journal-gold hover:bg-journal-bg-secondary hover:text-journal-text hover:border-journal-text tracking-widest uppercase text-[11px] h-11 px-8 transition-colors duration-300" 
+                asChild
+              >
                 <Link to="/about">
                   Read My Story
                 </Link>
@@ -294,119 +361,161 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Blog Preview Section - Minimal Grid */}
-      <section className="py-24 md:py-32">
+      {/* Latest Journal Entries Section */}
+      <section className="py-20 md:py-28 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="flex items-baseline justify-between mb-16 border-b border-border/40 pb-6">
-            <h2 className="font-serif text-3xl md:text-4xl text-foreground">Journal Entries</h2>
-            <Link to="/blog" className="text-xs tracking-[0.2em] uppercase text-muted-foreground hover:text-foreground transition-colors">
-              View All
+          <div className="flex flex-col md:flex-row items-baseline justify-between mb-12 border-b border-journal-border/50 pb-5">
+            <div>
+              <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">Latest from the Journal</h2>
+              <p className="text-[11px] text-journal-muted tracking-widest uppercase mt-1">Reflections and quiet lessons</p>
+            </div>
+            <Link 
+              to="/blog" 
+              className="text-xs tracking-[0.2em] uppercase text-journal-gold hover:text-journal-text transition-colors mt-3 md:mt-0 font-medium"
+            >
+              View All Entries
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16">
-            {blogPosts.slice(0, 3).map((post, index) => (
-              <div
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogPosts.slice(0, 3).map((post) => (
+              <article
                 key={post.slug}
-                className="group cursor-pointer"
+                className="group flex flex-col justify-between p-6 border border-journal-border bg-journal-card hover:border-journal-champagne/60 hover:-translate-y-1 transition-all duration-300 rounded-[2px] shadow-sm"
               >
-                <div className="overflow-hidden mb-6 bg-secondary/20 aspect-[4/5]">
-                  <div className="w-full h-full bg-secondary/10 group-hover:scale-105 transition-transform duration-700 ease-out"></div>
-                </div>
-
                 <div className="space-y-4">
-                  <span className="text-[10px] tracking-[0.2em] uppercase text-muted-foreground block">
-                    {post.category} — {post.date}
-                  </span>
+                  <div className="flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted">
+                    <span>{post.category}</span>
+                    <span className="w-4 h-px bg-journal-border"></span>
+                    <time>{post.date}</time>
+                  </div>
 
-                  <h3 className="font-serif text-2xl group-hover:text-primary transition-colors duration-300">
+                  <h3 className="font-serif text-xl group-hover:text-journal-gold transition-colors duration-300 text-journal-text leading-snug">
                     <Link to={`/blog/${post.slug}`}>{post.title}</Link>
                   </h3>
 
-                  <p className="text-muted-foreground text-sm line-clamp-2 leading-relaxed font-light">
+                  <p className="text-journal-text-secondary text-sm font-light leading-relaxed line-clamp-3">
                     {post.excerpt}
                   </p>
                 </div>
-              </div>
+
+                <div className="pt-6 border-t border-journal-border/30 mt-6">
+                  <Link 
+                    to={`/blog/${post.slug}`} 
+                    className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-journal-gold group-hover:text-journal-text transition-colors duration-300 font-medium"
+                  >
+                    <span>Read more</span>
+                    <span>→</span>
+                  </Link>
+                </div>
+              </article>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Shared Experiences - Feature Block */}
-      <section className="py-24 bg-secondary/20">
+      {/* The Curated Edit Section */}
+      <section className="py-20 md:py-28 bg-journal-bg-secondary/40 border-y border-journal-border/30">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-24 items-center">
-            <div className="order-2 md:order-1 space-y-8">
-              <span className="text-[10px] tracking-[0.3em] uppercase text-primary font-medium">Curated</span>
-
-              <h2 className="font-serif text-4xl md:text-5xl leading-tight">
-                Shared <span className="italic font-light text-muted-foreground">Experiences</span>
-              </h2>
-
-              <p className="text-muted-foreground font-light text-lg leading-relaxed">
-                A collection of places, brands, and moments that align with a slower, more intentional way of living.
-                Genuine connections, rooted in real experiences.
-              </p>
-
-              <Button variant="outline" className="rounded-none border-foreground/20 hover:bg-foreground hover:text-background transition-all uppercase tracking-widest text-xs h-12 px-8" asChild>
-                <Link to="/shared-experiences">
-                  Explore
-                </Link>
-              </Button>
-            </div>
-
-            <div className="order-1 md:order-2 aspect-square bg-white/50 p-8 flex items-center justify-center border border-border/50">
-              {/* Abstract visual or quote */}
-              <div className="text-center space-y-4">
-                <div className="w-16 h-[1px] bg-primary mx-auto"></div>
-                <p className="font-serif italic text-2xl text-muted-foreground">"Connection is the energy that exists between people when they feel seen, heard, and valued."</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Email Signup / Downloads Promotion */}
-      <section className="py-24 md:py-32 bg-gradient-to-b from-background via-secondary/10 to-background border-y border-border/40">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-2xl mx-auto text-center space-y-8">
-            <span className="text-[10px] tracking-[0.3em] uppercase text-primary font-medium">Free Download</span>
-
-            <h2 className="font-serif text-3xl md:text-5xl leading-tight">
-              Get Your Free
-              <span className="block italic font-light text-muted-foreground mt-2">Reflection Journal</span>
-            </h2>
-
-            <p className="text-muted-foreground font-sans leading-relaxed text-lg font-light max-w-xl mx-auto">
-              Notes on Becoming — January. A gentle guide for anyone learning to move slower and trust what's unfolding.
+          <div className="max-w-3xl mx-auto text-center mb-16 space-y-3">
+            <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">
+              Curated Edit
+            </span>
+            <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">The Curated Edit</h2>
+            <div className="w-12 h-px bg-journal-champagne/40 mx-auto"></div>
+            <p className="text-journal-text-secondary font-light text-sm md:text-base max-w-md mx-auto">
+              Beauty, places, pieces, and little moments worth remembering.
             </p>
+          </div>
 
-            <div className="pt-4">
-              <EmailSignupForm variant="compact" />
-            </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {[
+              { name: "Beauty", label: "Self-Care Rituals" },
+              { name: "Cafés", label: "Quiet Corners" },
+              { name: "Travel", label: "Slow Journeys" },
+              { name: "Fashion", label: "Capsule Pieces" },
+              { name: "Soft Living", label: "Slowing Down" },
+              { name: "Brand Stories", label: "Intentional Design" }
+            ].map((cat) => (
+              <div 
+                key={cat.name} 
+                className="group flex flex-col p-6 bg-journal-card border border-journal-border hover:border-journal-champagne/50 hover:-translate-y-1 transition-all duration-300 text-center rounded-[2px]"
+              >
+                <div className="w-8 h-8 rounded-full bg-journal-bg flex items-center justify-center mx-auto mb-4 text-journal-gold group-hover:bg-journal-gold group-hover:text-journal-bg transition-colors duration-300 select-none">
+                  <span className="font-serif text-xs">✦</span>
+                </div>
+                <h3 className="font-serif text-sm font-semibold text-journal-text group-hover:text-journal-gold transition-colors">
+                  {cat.name}
+                </h3>
+                <p className="text-[10px] tracking-wider uppercase text-journal-muted mt-2 block leading-snug">
+                  {cat.label}
+                </p>
+              </div>
+            ))}
+          </div>
 
-            <Button variant="link" className="p-0 h-auto text-foreground hover:text-primary transition-colors text-xs tracking-widest uppercase border-b border-foreground/30 pb-1 rounded-none hover:no-underline" asChild>
-              <Link to="/downloads">
-                Learn More
+          <div className="text-center mt-12">
+            <Button variant="outline" className="rounded-full border border-journal-border hover:bg-journal-text hover:text-journal-bg transition-all uppercase tracking-widest text-[11px] h-11 px-8" asChild>
+              <Link to="/lifestyle">
+                Explore The Edit
               </Link>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Instagram Minimal */}
-      <section className="py-24 border-t border-border/40">
-        <div className="container mx-auto px-6 text-center space-y-8">
-          <Instagram className="w-6 h-6 mx-auto text-foreground/60" />
-          <a
-            href="https://instagram.com/missjooo98"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block font-serif text-3xl md:text-4xl hover:text-primary transition-colors duration-300"
-          >
-            @missjooo98
-          </a>
+      {/* Free Journal / Lead Magnet Section */}
+      <section className="py-20 md:py-28 bg-journal-bg border-b border-journal-border/30">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="max-w-2xl mx-auto text-center space-y-8 border border-journal-border bg-journal-card p-8 md:p-12 rounded-[2px] shadow-sm">
+            <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">
+              Free Reflection Journal
+            </span>
+
+            <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text leading-tight">
+              A Soft Gift for Your Becoming
+            </h2>
+
+            <p className="text-journal-text-secondary font-sans leading-relaxed text-sm md:text-base font-light max-w-xl mx-auto">
+              Download Notes on Becoming — a gentle reflection journal for women learning to slow down, let go, and return to themselves.
+            </p>
+
+            <div className="pt-2">
+              <EmailSignupForm variant="compact" />
+            </div>
+
+            <div className="pt-4">
+              <Link 
+                to="/downloads" 
+                className="text-xs uppercase tracking-widest text-journal-gold hover:text-journal-text transition-colors duration-300 font-medium"
+              >
+                Learn more about the collection
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Instagram Minimal Section */}
+      <section className="py-16 md:py-20 bg-journal-bg">
+        <div className="container mx-auto px-6 text-center space-y-6">
+          <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">
+            Follow the Soft Notes
+          </span>
+          <p className="text-journal-text-secondary font-light text-sm md:text-base max-w-sm mx-auto">
+            Small thoughts, quiet moments, and pieces of my becoming.
+          </p>
+          <div className="pt-2">
+            <a
+              href="https://instagram.com/missjooo98"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 font-serif text-xl md:text-2xl text-journal-text hover:text-journal-gold transition-colors duration-300 border-b border-journal-border/60 pb-1"
+            >
+              <span>Connect on Instagram</span>
+              <span className="text-sm font-sans">→</span>
+            </a>
+          </div>
         </div>
       </section>
     </Layout>

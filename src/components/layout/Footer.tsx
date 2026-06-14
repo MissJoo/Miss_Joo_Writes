@@ -31,61 +31,69 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="border-t border-border/40 bg-background">
-      <div className="container mx-auto px-6 lg:px-12 py-12 lg:py-16">
-        <div className="flex flex-col items-center gap-8">
+    <footer className="bg-journal-text text-journal-bg border-t border-journal-text-secondary/20">
+      <div className="container mx-auto px-6 lg:px-12 py-16 lg:py-20">
+        <div className="flex flex-col items-center gap-8 max-w-4xl mx-auto">
+          {/* Logo */}
+          <Link
+            to="/"
+            className="font-serif text-2xl lg:text-3xl font-semibold tracking-[0.08em] text-journal-bg hover:text-journal-champagne transition-colors duration-500"
+          >
+            Miss Joo Writes<span className="text-journal-champagne">.</span>
+          </Link>
+
           {/* Tagline */}
-          <p className="font-serif text-xl lg:text-2xl tracking-wide text-foreground italic text-center">
-            A space where my thoughts learn how to breathe.
+          <p className="font-serif text-lg lg:text-xl tracking-wide text-journal-bg/80 italic text-center max-w-lg leading-relaxed">
+            “A space where my thoughts learn how to breathe.”
           </p>
 
-          {/* Description */}
-          <p className="text-muted-foreground text-center max-w-md font-sans text-sm leading-relaxed">
-            A digital journal for thoughts, reflections, and the beautiful chaos of life.
-          </p>
+          {/* Signature */}
+          <div className="font-signature text-3xl text-journal-champagne mt-1 select-none">
+            With softness, Miss Joo
+          </div>
 
           {/* Social Links */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-6 my-2">
             {socialLinks.map(({ icon: Icon, href, label }) => (
               <a
                 key={label}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-2 text-muted-foreground hover:text-foreground transition-colors duration-300 hover:scale-110 transform"
+                className="text-journal-bg/60 hover:text-journal-champagne transition-colors duration-300 transform hover:scale-105"
                 aria-label={label}
               >
-                <Icon size={20} />
+                <Icon size={18} />
               </a>
             ))}
           </div>
 
+          {/* Divider */}
+          <div className="w-16 h-px bg-journal-champagne/30 my-2"></div>
+
           {/* Navigation */}
-          <nav className="flex flex-wrap justify-center gap-6 lg:gap-10">
-            {["Home", "Journal", "About", "Contact"].map((item) => (
+          <nav className="flex flex-wrap justify-center gap-x-8 gap-y-4">
+            {[
+              { name: "Journal", path: "/blog" },
+              { name: "Lifestyle", path: "/lifestyle" },
+              { name: "About", path: "/about" },
+              { name: "Free Journal", path: "/downloads" },
+              { name: "Contact", path: "/contact" },
+              { name: "Privacy Policy", path: "/privacy-policy" },
+            ].map((link) => (
               <Link
-                key={item}
-                to={item === "Home" ? "/" : item === "Journal" ? "/blog" : `/${item.toLowerCase()}`}
-                className="text-xs tracking-widest uppercase text-muted-foreground hover:text-foreground transition-colors duration-300"
+                key={link.name}
+                to={link.path}
+                className="text-[10px] tracking-[0.2em] uppercase text-journal-bg/70 hover:text-journal-champagne transition-colors duration-300"
               >
-                {item}
+                {link.name}
               </Link>
             ))}
           </nav>
 
-          {/* Legal Links */}
-          <div className="flex flex-wrap justify-center gap-4 lg:gap-6 mt-2">
-            <Link to="/privacy-policy" className="text-[10px] tracking-wider uppercase text-muted-foreground/60 hover:text-foreground transition-colors duration-300">
-              Privacy Policy
-            </Link>
-            <Link to="/terms" className="text-[10px] tracking-wider uppercase text-muted-foreground/60 hover:text-foreground transition-colors duration-300">
-              Terms & Disclaimer
-            </Link>
-          </div>
-
           {/* Copyright */}
-          <p className="text-xs text-muted-foreground/60 tracking-wide">
-            © {currentYear} missjooo. All rights reserved.
+          <p className="text-[11px] text-journal-bg/40 tracking-wider font-sans mt-4">
+            © {currentYear} Miss Joo Writes. All rights reserved.
           </p>
         </div>
       </div>

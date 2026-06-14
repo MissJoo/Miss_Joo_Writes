@@ -15,7 +15,7 @@ export default {
     extend: {
       fontFamily: {
         serif: ['Cormorant Garamond', 'Playfair Display', 'Georgia', 'serif'],
-        sans: ['DM Sans', 'system-ui', 'sans-serif'],
+        sans: ['Inter', 'system-ui', 'sans-serif'],
         signature: ['Great Vibes', 'cursive'],
       },
       colors: {
@@ -58,6 +58,15 @@ export default {
         "dusty-rose": "hsl(var(--dusty-rose))",
         "warm-brown": "hsl(var(--warm-brown))",
         "soft-gold": "hsl(var(--soft-gold))",
+        "journal-bg": "#FAF7F2",
+        "journal-bg-secondary": "#F5E8DD",
+        "journal-card": "#FFFDF9",
+        "journal-text": "#2B2118",
+        "journal-text-secondary": "#5B4636",
+        "journal-muted": "#8A7566",
+        "journal-gold": "#8C6A43",
+        "journal-champagne": "#C8A96A",
+        "journal-border": "#E6D8C8",
       },
       borderRadius: {
         lg: "var(--radius)",

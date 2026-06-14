@@ -57,44 +57,38 @@ const Downloads = () => {
     return (
         <Layout>
             {/* Hero Section */}
-            <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+            <section className="relative min-h-[65vh] flex items-center justify-center overflow-hidden bg-journal-bg pt-20">
                 {/* Background Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-b from-secondary/30 via-background to-background"></div>
-
-                {/* Decorative Elements */}
-                <div className="absolute inset-0 opacity-5">
-                    <div className="absolute top-20 left-10 w-64 h-64 bg-primary rounded-full blur-3xl"></div>
-                    <div className="absolute bottom-20 right-10 w-96 h-96 bg-primary rounded-full blur-3xl"></div>
-                </div>
+                <div className="absolute inset-0 bg-gradient-to-b from-transparent via-journal-bg/30 to-journal-bg z-0"></div>
 
                 {/* Content */}
-                <div className="relative z-10 container mx-auto px-6 lg:px-12 py-24">
-                    <div className="max-w-3xl mx-auto text-center space-y-12">
+                <div className="relative z-10 container mx-auto px-6 lg:px-12 py-16">
+                    <div className="max-w-3xl mx-auto text-center space-y-10">
                         {/* Icon */}
                         <div className="animate-fade-in-up">
-                            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
-                                <BookOpen className="w-8 h-8 text-primary" />
+                            <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-journal-bg-secondary text-journal-gold mb-2 border border-journal-border/40 select-none">
+                                <BookOpen className="w-5 h-5" />
                             </div>
                         </div>
 
                         {/* Headline */}
-                        <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl animate-fade-in-up text-balance leading-tight">
+                        <h1 className="font-serif text-3.5xl md:text-5xl leading-tight text-journal-text animate-fade-in-up">
                             Notes on Becoming
-                            <span className="block italic font-light text-muted-foreground mt-2 text-2xl md:text-3xl">
+                            <span className="block font-sans font-light text-journal-muted mt-2 text-sm tracking-[0.25em] uppercase">
                                 The Reflection Journal Collection
                             </span>
                         </h1>
 
                         {/* Subtext */}
-                        <p className="text-muted-foreground text-lg md:text-xl font-sans font-light leading-relaxed animate-fade-in-delay-1 max-w-2xl mx-auto">
+                        <p className="text-journal-text-secondary text-base md:text-lg font-sans font-light leading-relaxed animate-fade-in-delay-1 max-w-xl mx-auto">
                             A gentle monthly companion for anyone learning to move slower, trust what's unfolding, and sit with themselves honestly.
                         </p>
 
                         {/* Email Form / Unlocked Status */}
                         <div className="animate-fade-in-delay-2 pt-4">
                             {!isUnlocked ? (
-                                <div className="space-y-6">
-                                    <p className="font-serif text-lg italic text-muted-foreground">
+                                <div className="space-y-4 max-w-md mx-auto p-6 border border-journal-border bg-journal-card rounded-[2px] shadow-sm">
+                                    <p className="font-serif text-sm italic text-journal-text-secondary">
                                         Join the newsletter to unlock the entire collection.
                                     </p>
                                     <EmailSignupForm 
@@ -103,17 +97,17 @@ const Downloads = () => {
                                     />
                                 </div>
                             ) : (
-                                <div className="inline-flex flex-col items-center p-6 bg-primary/5 rounded-2xl border border-primary/10">
-                                    <Unlock className="w-6 h-6 text-primary mb-3" />
-                                    <p className="font-serif text-lg text-primary">Collection Unlocked</p>
-                                    <p className="text-sm text-muted-foreground mt-2 font-sans">
-                                        Thank you for joining. You can now download all journals below.
+                                <div className="inline-flex flex-col items-center p-6 bg-journal-card rounded-[2px] border border-journal-border shadow-sm max-w-md">
+                                    <Unlock className="w-5 h-5 text-journal-gold mb-3 animate-pulse" />
+                                    <p className="font-serif text-base text-journal-text font-medium">Collection Unlocked</p>
+                                    <p className="text-xs text-journal-text-secondary mt-2 font-sans max-w-xs leading-relaxed">
+                                        Thank you for joining. You can now download all reflection journals below.
                                     </p>
                                     <button 
                                         onClick={() => document.getElementById("journals-collection")?.scrollIntoView({ behavior: "smooth" })}
-                                        className="mt-6 text-xs uppercase tracking-widest text-primary hover:text-primary/80 transition-colors flex items-center gap-2"
+                                        className="mt-5 text-[10px] uppercase tracking-widest text-journal-gold hover:text-journal-text transition-colors flex items-center gap-2 font-medium"
                                     >
-                                        View Journals <ArrowDownToLine className="w-3 h-3" />
+                                        View Journals <ArrowDownToLine className="w-3.5 h-3.5" />
                                     </button>
                                 </div>
                             )}
@@ -123,52 +117,53 @@ const Downloads = () => {
             </section>
 
             {/* Collection Grid Section */}
-            <section id="journals-collection" className="py-24 bg-background relative">
+            <section id="journals-collection" className="py-20 md:py-24 bg-journal-bg border-t border-journal-border/30">
                 <div className="container mx-auto px-6 lg:px-12">
-                    <div className="max-w-6xl mx-auto">
-                        <div className="text-center mb-16">
-                            <h2 className="font-serif text-3xl md:text-4xl">
-                                The <span className="italic font-light text-muted-foreground">Collection</span>
+                    <div className="max-w-5xl mx-auto">
+                        <div className="text-center mb-16 space-y-2">
+                            <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">
+                                The Collection
                             </h2>
-                            <div className="w-12 h-[1px] bg-primary mx-auto mt-6"></div>
+                            <div className="w-8 h-px bg-journal-champagne/40 mx-auto mt-3"></div>
+                            <p className="text-[10px] tracking-widest text-journal-muted uppercase font-sans">Monthly Guides</p>
                         </div>
 
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {journals.map((journal, index) => (
+                            {journals.map((journal) => (
                                 <div 
                                     key={journal.month}
-                                    className="group relative flex flex-col p-8 bg-secondary/10 border border-border/50 transition-all duration-500 hover:bg-secondary/20 hover:border-primary/30"
+                                    className="group relative flex flex-col justify-between p-8 bg-journal-card border border-journal-border hover:border-journal-champagne/60 hover:-translate-y-1 transition-all duration-300 rounded-[2px] shadow-sm"
                                 >
-                                    <div className="absolute top-0 right-0 p-4 opacity-10">
-                                        <BookOpen className="w-24 h-24 text-primary" />
+                                    <div className="absolute top-0 right-0 p-6 opacity-[0.03] select-none">
+                                        <BookOpen className="w-20 h-20 text-journal-text" />
                                     </div>
                                     
-                                    <div className="relative z-10 flex-1">
-                                        <div className="text-xs font-sans uppercase tracking-[0.3em] text-primary mb-4">
+                                    <div className="relative z-10 flex-1 space-y-4">
+                                        <div className="text-[10px] font-sans font-medium uppercase tracking-[0.25em] text-journal-gold">
                                             {journal.month}
                                         </div>
-                                        <h3 className="font-serif text-2xl mb-4 text-balance">
+                                        <h3 className="font-serif text-xl text-journal-text leading-snug font-medium">
                                             {journal.title}
                                         </h3>
-                                        <p className="text-sm text-muted-foreground font-sans font-light leading-relaxed mb-8">
+                                        <p className="text-xs md:text-sm text-journal-text-secondary font-sans font-light leading-relaxed pb-6">
                                             {journal.desc}
                                         </p>
                                     </div>
 
-                                    <div className="relative z-10 pt-6 border-t border-border/50">
+                                    <div className="relative z-10 pt-5 border-t border-journal-border/30">
                                         {isUnlocked ? (
                                             <a 
                                                 href={journal.file}
                                                 download
-                                                className="inline-flex items-center justify-between w-full text-sm font-sans uppercase tracking-widest text-primary hover:text-primary/80 transition-colors group/btn"
+                                                className="inline-flex items-center justify-between w-full text-[11px] font-sans uppercase tracking-widest text-journal-gold hover:text-journal-text transition-colors group/btn font-medium"
                                             >
                                                 <span>Download PDF</span>
-                                                <Download className="w-4 h-4 transition-transform group-hover/btn:-translate-y-1" />
+                                                <Download className="w-3.5 h-3.5 transition-transform group-hover/btn:-translate-y-0.5" />
                                             </a>
                                         ) : (
-                                            <div className="inline-flex items-center justify-between w-full text-sm font-sans uppercase tracking-widest text-muted-foreground/60 cursor-not-allowed">
+                                            <div className="inline-flex items-center justify-between w-full text-[11px] font-sans uppercase tracking-widest text-journal-muted/60 cursor-not-allowed">
                                                 <span>Locked</span>
-                                                <Lock className="w-4 h-4" />
+                                                <Lock className="w-3.5 h-3.5" />
                                             </div>
                                         )}
                                     </div>
@@ -180,38 +175,42 @@ const Downloads = () => {
             </section>
 
             {/* What's Inside Section */}
-            <section className="py-24 bg-secondary/20 border-y border-border/40">
+            <section className="py-20 md:py-24 bg-journal-bg-secondary/35 border-y border-journal-border/30">
                 <div className="container mx-auto px-6 lg:px-12">
-                    <div className="max-w-4xl mx-auto">
-                        <h2 className="font-serif text-3xl md:text-4xl text-center mb-16">
-                            What's <span className="italic font-light text-muted-foreground">Inside</span>
-                        </h2>
+                  <div className="max-w-4xl mx-auto space-y-12">
+                        <div className="text-center space-y-2">
+                            <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">What's Inside</span>
+                            <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">
+                                The Journal Structure
+                            </h2>
+                            <div className="w-12 h-px bg-journal-champagne/40 mx-auto"></div>
+                        </div>
 
-                        <p className="text-center text-muted-foreground mb-12 font-light max-w-2xl mx-auto">
+                        <p className="text-center text-journal-text-secondary mb-12 font-light text-sm md:text-base max-w-xl mx-auto leading-relaxed">
                             Each 8-page monthly journal is carefully designed with a warm, luxurious aesthetic. Perfect for printing or reading digitally on your tablet.
                         </p>
 
-                        <div className="grid md:grid-cols-3 gap-12">
+                        <div className="grid md:grid-cols-3 gap-8 md:gap-12">
                             <div className="text-center space-y-4">
-                                <div className="w-12 h-[1px] bg-primary mx-auto mb-6"></div>
-                                <h3 className="font-serif text-xl">Guided Reflections</h3>
-                                <p className="text-muted-foreground font-sans text-sm leading-relaxed font-light">
+                                <div className="w-12 h-[1px] bg-journal-champagne/30 mx-auto mb-4"></div>
+                                <h3 className="font-serif text-lg text-journal-text font-medium">Guided Reflections</h3>
+                                <p className="text-journal-text-secondary font-sans text-xs md:text-sm leading-relaxed font-light">
                                     Thoughtful invitations designed to guide you through moments of pause and self-discovery, tied to the month's theme.
                                 </p>
                             </div>
 
                             <div className="text-center space-y-4">
-                                <div className="w-12 h-[1px] bg-primary mx-auto mb-6"></div>
-                                <h3 className="font-serif text-xl">Creative Activities</h3>
-                                <p className="text-muted-foreground font-sans text-sm leading-relaxed font-light">
+                                <div className="w-12 h-[1px] bg-journal-champagne/30 mx-auto mb-4"></div>
+                                <h3 className="font-serif text-lg text-journal-text font-medium">Creative Activities</h3>
+                                <p className="text-journal-text-secondary font-sans text-xs md:text-sm leading-relaxed font-light">
                                     A unique activity each month.. from energy maps to letters to yourself.. to help you process your growth gently.
                                 </p>
                             </div>
 
                             <div className="text-center space-y-4">
-                                <div className="w-12 h-[1px] bg-primary mx-auto mb-6"></div>
-                                <h3 className="font-serif text-xl">Gratitude & Intentions</h3>
-                                <p className="text-muted-foreground font-sans text-sm leading-relaxed font-light">
+                                <div className="w-12 h-[1px] bg-journal-champagne/30 mx-auto mb-4"></div>
+                                <h3 className="font-serif text-lg text-journal-text font-medium">Gratitude & Intentions</h3>
+                                <p className="text-journal-text-secondary font-sans text-xs md:text-sm leading-relaxed font-light">
                                     Dedicated space to honor what you're grateful for and set a quiet intention for the days ahead.
                                 </p>
                             </div>
@@ -221,14 +220,16 @@ const Downloads = () => {
             </section>
 
             {/* Testimonial / Quote Section */}
-            <section className="py-24">
+            <section className="py-20 md:py-24 bg-journal-bg">
                 <div className="container mx-auto px-6 lg:px-12">
-                    <div className="max-w-3xl mx-auto text-center space-y-8">
-                        <div className="w-16 h-[1px] bg-primary mx-auto"></div>
-                        <blockquote className="font-serif italic text-2xl md:text-3xl text-muted-foreground leading-relaxed">
-                            "Sometimes the most radical thing we can do is slow down and listen to ourselves."
+                    <div className="max-w-2xl mx-auto text-center space-y-6">
+                        <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">
+                            A Quiet Realization
+                        </span>
+                        <blockquote className="font-serif italic text-xl md:text-2.5xl text-journal-gold leading-relaxed">
+                            “Sometimes the most radical thing we can do is slow down and listen to ourselves.”
                         </blockquote>
-                        <div className="w-16 h-[1px] bg-primary mx-auto"></div>
+                        <div className="w-16 h-[1px] bg-journal-champagne/30 mx-auto"></div>
                     </div>
                 </div>
             </section>

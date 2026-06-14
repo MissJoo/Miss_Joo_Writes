@@ -41,28 +41,30 @@ const Contact = () => {
   return (
     <Layout>
       {/* Header */}
-      <section className="py-16 lg:py-24">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-2xl mx-auto text-center space-y-6">
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl animate-fade-in-up">
-              Get in touch
+      <section className="pt-28 pb-12 lg:pt-36 lg:pb-16 bg-journal-bg">
+        <div className="container mx-auto px-6 lg:px-12 text-center">
+          <div className="max-w-2xl mx-auto space-y-4">
+            <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block animate-fade-in">
+              Connect
+            </span>
+            <h1 className="font-serif text-3.5xl md:text-5xl leading-tight text-journal-text animate-fade-in-up font-medium">
+              Get in Touch
             </h1>
-            <p className="text-muted-foreground font-sans text-lg animate-fade-in-delay-1">
-              Have a thought to share? A question? Or just want to say hello?
-              <br />
-              I'd love to hear from you.
+            <div className="w-12 h-px bg-journal-champagne/40 mx-auto mt-2"></div>
+            <p className="text-journal-text-secondary font-sans text-sm md:text-base font-light max-w-md mx-auto leading-relaxed">
+              Have a thought to share, a question, or just want to say hello? I'd love to hear from you.
             </p>
           </div>
         </div>
       </section>
 
       {/* Contact Form */}
-      <section className="pb-section">
+      <section className="pb-20 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-lg mx-auto">
+          <div className="max-w-lg mx-auto bg-journal-card border border-journal-border p-8 md:p-10 rounded-[2px] shadow-sm">
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="space-y-2 animate-fade-in-delay-1">
-                <label htmlFor="name" className="text-xs tracking-widest uppercase text-muted-foreground">
+                <label htmlFor="name" className="text-[10px] tracking-widest uppercase text-journal-gold font-sans font-semibold">
                   Name
                 </label>
                 <Input
@@ -72,13 +74,13 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="bg-transparent border-0 border-b border-border rounded-none px-0 py-3 focus-visible:ring-0 focus-visible:border-foreground transition-colors"
+                  className="bg-transparent border-0 border-b border-journal-border/80 rounded-none px-0 py-3 text-journal-text focus-visible:ring-0 focus-visible:border-journal-gold transition-colors text-sm font-sans placeholder:text-journal-muted/50"
                   placeholder="Your name"
                 />
               </div>
 
               <div className="space-y-2 animate-fade-in-delay-2">
-                <label htmlFor="email" className="text-xs tracking-widest uppercase text-muted-foreground">
+                <label htmlFor="email" className="text-[10px] tracking-widest uppercase text-journal-gold font-sans font-semibold">
                   Email
                 </label>
                 <Input
@@ -88,13 +90,13 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="bg-transparent border-0 border-b border-border rounded-none px-0 py-3 focus-visible:ring-0 focus-visible:border-foreground transition-colors"
+                  className="bg-transparent border-0 border-b border-journal-border/80 rounded-none px-0 py-3 text-journal-text focus-visible:ring-0 focus-visible:border-journal-gold transition-colors text-sm font-sans placeholder:text-journal-muted/50"
                   placeholder="your@email.com"
                 />
               </div>
 
               <div className="space-y-2 animate-fade-in-delay-2">
-                <label htmlFor="message" className="text-xs tracking-widest uppercase text-muted-foreground">
+                <label htmlFor="message" className="text-[10px] tracking-widest uppercase text-journal-gold font-sans font-semibold">
                   Message
                 </label>
                 <Textarea
@@ -103,8 +105,8 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows={6}
-                  className="bg-transparent border-0 border-b border-border rounded-none px-0 py-3 focus-visible:ring-0 focus-visible:border-foreground transition-colors resize-none"
+                  rows={5}
+                  className="bg-transparent border-0 border-b border-journal-border/80 rounded-none px-0 py-3 text-journal-text focus-visible:ring-0 focus-visible:border-journal-gold transition-colors text-sm font-sans placeholder:text-journal-muted/50 resize-none"
                   placeholder="What's on your mind?"
                 />
               </div>
@@ -112,9 +114,8 @@ const Contact = () => {
               <div className="pt-4 animate-fade-in-delay-3">
                 <Button
                   type="submit"
-                  variant="journal-primary"
                   disabled={isSubmitting}
-                  className="w-full sm:w-auto"
+                  className="w-full sm:w-auto rounded-full bg-journal-text hover:bg-journal-gold text-journal-bg border-none tracking-widest uppercase text-[11px] h-12 px-8 transition-colors duration-300 shadow-sm"
                 >
                   {isSubmitting ? "Sending..." : "Send message"}
                 </Button>
@@ -122,15 +123,15 @@ const Contact = () => {
             </form>
 
             {/* Alternative Contact */}
-            <div className="mt-16 pt-16 border-t border-border/50 text-center animate-fade-in-delay-3">
-              <p className="text-muted-foreground text-sm mb-4">
-                Prefer email?
+            <div className="mt-12 pt-8 border-t border-journal-border/30 text-center animate-fade-in-delay-3">
+              <p className="text-journal-muted text-xs mb-3 font-sans">
+                Prefer direct email?
               </p>
               <a
-                href="mailto:hello@missjooo.com"
-                className="inline-flex items-center gap-2 text-foreground hover:text-primary transition-colors duration-300 group"
+                href="mailto:missjodiaries@gmail.com"
+                className="inline-flex items-center gap-2 text-journal-text hover:text-journal-gold transition-colors duration-300 group text-sm font-sans font-medium"
               >
-                <Mail size={16} className="group-hover:scale-110 transition-transform duration-300" />
+                <Mail size={14} className="group-hover:scale-105 transition-transform duration-300 text-journal-gold" />
                 <span className="tracking-wide">missjodiaries@gmail.com</span>
               </a>
             </div>

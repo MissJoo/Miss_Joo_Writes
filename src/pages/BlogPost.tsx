@@ -564,7 +564,6 @@ const postsContent: Record<string, { title: string; date: string; category: stri
     ],
   },
 };
-
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = slug ? postsContent[slug] : null;
@@ -572,10 +571,10 @@ const BlogPost = () => {
   if (!post) {
     return (
       <Layout>
-        <section className="py-section">
-          <div className="container mx-auto px-6 lg:px-12 text-center">
-            <h1 className="font-serif text-3xl mb-4">Post not found</h1>
-            <Button variant="journal" size="journal" asChild>
+        <section className="py-20 bg-journal-bg">
+          <div className="container mx-auto px-6 text-center">
+            <h1 className="font-serif text-3xl mb-4 text-journal-text">Post not found</h1>
+            <Button variant="outline" className="rounded-full border border-journal-border hover:bg-journal-text hover:text-journal-bg transition-colors" asChild>
               <Link to="/blog">Back to journal</Link>
             </Button>
           </div>
@@ -584,64 +583,125 @@ const BlogPost = () => {
     );
   }
 
+  // Find other posts for Read Next
+  const allSlugs = Object.keys(postsContent);
+  const otherSlugs = allSlugs.filter(s => s !== slug).slice(0, 2);
+
+  const intro = post.content[0];
+  const bodyParagraphs = post.content.slice(1);
+
+  // Helper to determine if a paragraph should be styled as a pull quote
+  const isPullQuote = (text: string) => {
+    const cleaned = text.trim();
+    if (cleaned.startsWith("“") && cleaned.endsWith("”")) return true;
+    if (cleaned.startsWith('"') && cleaned.endsWith('"')) return true;
+    if (cleaned.length > 5 && cleaned.length < 80 && !cleaned.includes(".") && !cleaned.includes(",")) return true;
+    return false;
+  };
+
   return (
     <Layout>
       {/* Back Link */}
-      <section className="pt-8 lg:pt-12">
+      <section className="pt-24 lg:pt-28 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-2xl mx-auto">
             <Link
               to="/blog"
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors duration-300 group"
+              className="inline-flex items-center gap-2 text-journal-muted hover:text-journal-gold transition-colors duration-300 group"
             >
-              <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform duration-300" />
-              <span className="text-sm tracking-wide">Back to journal</span>
+              <ArrowLeft size={14} className="group-hover:-translate-x-1 transition-transform duration-300" />
+              <span className="text-xs tracking-wider uppercase font-medium">Back to journal</span>
             </Link>
           </div>
         </div>
       </section>
 
       {/* Post Header */}
-      <section className="py-12 lg:py-16">
+      <section className="pt-10 pb-6 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-2xl mx-auto text-center space-y-6">
             {/* Category & Date */}
-            <div className="flex items-center justify-center gap-4 text-xs tracking-widest uppercase text-muted-foreground animate-fade-in">
-              <span className="text-dusty-rose">{post.category}</span>
-              <span className="w-8 h-px bg-border"></span>
+            <div className="flex items-center justify-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted animate-fade-in">
+              <span className="text-journal-gold font-semibold">{post.category}</span>
+              <span className="text-journal-border">•</span>
               <time>{post.date}</time>
             </div>
 
             {/* Title */}
-            <h1 className="font-serif text-3xl md:text-4xl lg:text-5xl leading-tight animate-fade-in-up">
+            <h1 className="font-serif text-2xl md:text-4.5xl leading-tight text-journal-text animate-fade-in-up font-medium">
               {post.title}
             </h1>
+
+            {/* Intro / Excerpt */}
+            <p className="text-journal-text-secondary/90 italic font-serif text-lg md:text-xl leading-relaxed max-w-xl mx-auto animate-fade-in-delay-1 pt-4 border-t border-journal-border/30">
+              {intro}
+            </p>
           </div>
         </div>
       </section>
 
+      {/* Soft Divider Before Content */}
+      <div className="w-16 h-[1px] bg-journal-border/50 mx-auto my-6"></div>
+
       {/* Post Content */}
-      <section className="pb-section">
+      <section className="pb-16 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
-          <article className="max-w-2xl mx-auto prose-journal">
-            {post.content.map((paragraph, index) => (
-              <p
-                key={index}
-                className="text-foreground/90 leading-relaxed opacity-0 animate-fade-in mb-0 text-justify whitespace-pre-line"
-                style={{ animationDelay: `${0.3 + index * 0.1}s`, animationFillMode: "forwards" }}
-              >
-                {paragraph}
-              </p>
-            ))}
+          <article className="max-w-2xl mx-auto font-sans text-[18px] leading-[1.8] text-journal-text-secondary space-y-6 font-light">
+            {bodyParagraphs.map((paragraph, index) => {
+              if (isPullQuote(paragraph)) {
+                return (
+                  <blockquote 
+                    key={index}
+                    className="border-l-[2px] border-journal-champagne pl-6 my-8 font-serif italic text-lg md:text-xl text-journal-gold leading-relaxed py-1 opacity-0 animate-fade-in"
+                    style={{ animationDelay: `${0.2 + index * 0.05}s`, animationFillMode: "forwards" }}
+                  >
+                    {paragraph}
+                  </blockquote>
+                );
+              }
+              return (
+                <p
+                  key={index}
+                  className="opacity-0 animate-fade-in mb-0 whitespace-pre-line text-left"
+                  style={{ animationDelay: `${0.2 + index * 0.05}s`, animationFillMode: "forwards" }}
+                >
+                  {paragraph}
+                </p>
+              );
+            })}
           </article>
         </div>
       </section>
 
-      {/* End Flourish */}
-      <section className="pb-section">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-2xl mx-auto text-center">
-            <span className="text-2xl text-dusty-rose">✦</span>
+      {/* Soft Divider After Content */}
+      <div className="w-16 h-[1px] bg-journal-border/50 mx-auto my-12"></div>
+
+      {/* Read Next Section */}
+      <section className="py-16 bg-journal-bg-secondary/20 border-t border-journal-border/30">
+        <div className="container mx-auto px-6 lg:px-12 max-w-4xl">
+          <div className="text-center mb-10 space-y-2">
+            <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">Continuing the Journey</span>
+            <h3 className="font-serif text-2xl text-journal-text">Read Next</h3>
+            <div className="w-8 h-px bg-journal-champagne/40 mx-auto mt-2"></div>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8">
+            {otherSlugs.map(otherSlug => {
+              const otherPost = postsContent[otherSlug];
+              return (
+                <Link 
+                  key={otherSlug}
+                  to={`/blog/${otherSlug}`}
+                  className="group flex flex-col justify-between p-6 border border-journal-border bg-journal-card hover:border-journal-champagne/60 hover:-translate-y-1 transition-all duration-300 rounded-[2px]"
+                >
+                  <div className="space-y-3">
+                    <span className="text-[10px] tracking-[0.25em] uppercase text-journal-gold font-medium block">{otherPost.category}</span>
+                    <h4 className="font-serif text-lg text-journal-text group-hover:text-journal-gold transition-colors leading-snug font-medium">{otherPost.title}</h4>
+                  </div>
+                  <span className="text-[11px] text-journal-gold mt-6 block uppercase tracking-wider font-medium">Read entry →</span>
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>

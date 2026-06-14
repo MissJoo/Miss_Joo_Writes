@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,54 +6,48 @@
 
 @layer base {
   :root {
-    /* Morning Light Palette */
-    --background: 40 33% 98%;
-    /* Warm Cream Paper */
-    --foreground: 210 10% 40%;
-    /* Slate Gray Text */
+    /* Quiet Luxury Digital Journal Palette */
+    --background: 38 33% 96.5%; /* #FAF7F2 */
+    --foreground: 28 28% 13%; /* #2B2118 */
 
-    --card: 40 33% 98%;
-    --card-foreground: 210 10% 40%;
+    --card: 40 100% 99%; /* #FFFDF9 */
+    --card-foreground: 28 28% 13%;
 
-    --popover: 40 33% 98%;
-    --popover-foreground: 210 10% 40%;
+    --popover: 40 100% 99%;
+    --popover-foreground: 28 28% 13%;
 
-    --primary: 350 40% 80%;
-    /* Delicate Blush Pink */
-    --primary-foreground: 0 0% 100%;
+    --primary: 28 28% 13%; /* #2B2118 */
+    --primary-foreground: 38 33% 96.5%;
 
-    --secondary: 30 15% 94%;
-    /* Soft Taupe */
-    --secondary-foreground: 210 10% 40%;
+    --secondary: 28 52% 91%; /* #F5E8DD */
+    --secondary-foreground: 28 28% 13%;
 
-    --muted: 30 10% 90%;
-    --muted-foreground: 210 10% 55%;
+    --muted: 28 52% 91%;
+    --muted-foreground: 25 15% 47%; /* #8A7566 */
 
-    --accent: 30 15% 90%;
-    /* Soft Taupe Background Highlight */
-    --accent-foreground: 210 10% 40%;
+    --accent: 32 35% 41%; /* #8C6A43 */
+    --accent-foreground: 38 33% 96.5%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 40 33% 98%;
+    --destructive-foreground: 38 33% 96.5%;
 
-    --border: 35 20% 90%;
-    --input: 35 20% 90%;
-    --ring: 350 40% 80%;
+    --border: 32 37% 84%; /* #E6D8C8 */
+    --input: 32 37% 84%;
+    --ring: 40 47% 60%; /* #C8A96A */
 
-    --radius: 0rem;
-    /* Sharp corners for editorial high-fashion feel */
+    --radius: 0.125rem; /* Soft rounded corners for premium feel, not completely sharp */
 
     /* Custom tokens */
-    --cream: 40 33% 98%;
-    --warm-beige: 35 20% 90%;
-    --taupe: 30 15% 94%;
-    --dusty-rose: 350 40% 80%;
-    --warm-brown: 30 20% 40%;
-    --soft-gold: 43 60% 70%;
+    --cream: 38 33% 96.5%;
+    --warm-beige: 32 37% 84%;
+    --taupe: 28 52% 91%;
+    --dusty-rose: 32 35% 41%;
+    --warm-brown: 26 26% 28%;
+    --soft-gold: 40 47% 60%;
 
     /* Typography */
     --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
-    --font-sans: 'DM Sans', system-ui, sans-serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
 
     /* Spacing */
     --section-padding: clamp(5rem, 12vw, 10rem);

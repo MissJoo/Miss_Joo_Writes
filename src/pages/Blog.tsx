@@ -237,37 +237,43 @@ const Blog = () => {
 
   const filteredPosts = activeCategory === "All"
     ? allPosts
-    : allPosts.filter(post => post.category === activeCategory);
+    : activeCategory === "Thoughts"
+      ? allPosts.filter(post => post.category === "Thoughts" || post.category === "Reflections" || post.category === "Random")
+      : allPosts.filter(post => post.category === activeCategory);
 
   return (
     <Layout>
       {/* Header */}
-      <section className="py-16 lg:py-24 border-b border-border/50">
+      <section className="py-20 lg:py-28 bg-journal-bg border-b border-journal-border/30">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-2xl mx-auto text-center space-y-6">
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl animate-fade-in-up">
+          <div className="max-w-2xl mx-auto text-center space-y-4">
+            <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">
+              The Digital Sanctuary
+            </span>
+            <h1 className="font-serif text-3.5xl md:text-5xl leading-tight text-journal-text">
               The Journal
             </h1>
-            <p className="text-muted-foreground font-sans text-lg animate-fade-in-delay-1">
-              Thoughts, reflections, and the stories that shape who I am.
+            <div className="w-12 h-px bg-journal-champagne/40 mx-auto mt-2"></div>
+            <p className="text-journal-text-secondary font-sans text-sm md:text-base font-light max-w-md mx-auto leading-relaxed">
+              Thoughts, reflections, healing, and the quiet moments that shape who we are.
             </p>
           </div>
         </div>
       </section>
 
       {/* Categories */}
-      <section className="py-8 border-b border-border/50 sticky top-16 lg:top-20 bg-background/95 backdrop-blur-sm z-30">
+      <section className="py-6 border-b border-journal-border/30 sticky top-16 lg:top-20 bg-journal-bg/95 backdrop-blur-md z-30">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="flex flex-wrap justify-center gap-4 lg:gap-8">
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 lg:gap-x-10">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
                 className={cn(
-                  "text-xs tracking-widest uppercase transition-all duration-300 pb-1 border-b-2",
+                  "text-[10px] tracking-[0.25em] uppercase font-medium font-sans pb-1 transition-all duration-300 border-b-[1px]",
                   activeCategory === category
-                    ? "text-foreground border-foreground"
-                    : "text-muted-foreground border-transparent hover:text-foreground hover:border-foreground/30"
+                    ? "text-journal-gold border-journal-gold"
+                    : "text-journal-muted border-transparent hover:text-journal-text hover:border-journal-border/60"
                 )}
               >
                 {category}
@@ -278,14 +284,14 @@ const Blog = () => {
       </section>
 
       {/* Posts Grid */}
-      <section className="py-16 lg:py-24">
+      <section className="py-16 lg:py-24 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="grid md:grid-cols-2 gap-12 lg:gap-16 max-w-4xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-10 max-w-4xl mx-auto">
             {filteredPosts.map((post, index) => (
               <div
                 key={post.slug}
                 className="opacity-0 animate-fade-in-up"
-                style={{ animationDelay: `${index * 0.1}s`, animationFillMode: "forwards" }}
+                style={{ animationDelay: `${index * 0.05}s`, animationFillMode: "forwards" }}
               >
                 <BlogPostCard {...post} />
               </div>
@@ -293,9 +299,9 @@ const Blog = () => {
           </div>
 
           {filteredPosts.length === 0 && (
-            <div className="text-center py-16">
-              <p className="text-muted-foreground font-sans">
-                No posts in this category yet.
+            <div className="text-center py-20 bg-journal-card border border-journal-border max-w-md mx-auto rounded-[2px]">
+              <p className="text-journal-text-secondary font-light text-sm">
+                No entries in this category yet.
               </p>
             </div>
           )}

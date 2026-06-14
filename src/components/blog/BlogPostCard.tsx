@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { cn } from "@/lib/utils";
 
 interface BlogPostCardProps {
   title: string;
@@ -12,35 +13,41 @@ interface BlogPostCardProps {
 const BlogPostCard = ({ title, excerpt, date, category, slug, featured = false }: BlogPostCardProps) => {
   return (
     <article 
-      className={`group ${featured ? 'col-span-full' : ''}`}
+      className={cn(
+        "group flex flex-col justify-between p-6 border border-journal-border bg-journal-card hover:border-journal-champagne/60 hover:-translate-y-1 transition-all duration-300 rounded-[2px] shadow-sm h-full",
+        featured ? 'col-span-full' : ''
+      )}
     >
-      <Link to={`/blog/${slug}`} className="block">
+      <Link to={`/blog/${slug}`} className="flex flex-col justify-between h-full">
         <div className="space-y-4">
           {/* Category & Date */}
-          <div className="flex items-center gap-4 text-xs tracking-widest uppercase text-muted-foreground">
-            <span className="text-dusty-rose">{category}</span>
-            <span className="w-8 h-px bg-border"></span>
+          <div className="flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted">
+            <span className="text-journal-gold font-medium">{category}</span>
+            <span className="w-4 h-px bg-journal-border"></span>
             <time>{date}</time>
           </div>
 
           {/* Title */}
           <h3 
-            className={`font-serif text-foreground group-hover:text-primary transition-colors duration-300 leading-tight ${
-              featured ? 'text-3xl lg:text-4xl' : 'text-xl lg:text-2xl'
-            }`}
+            className={cn(
+              "font-serif text-journal-text group-hover:text-journal-gold transition-colors duration-300 leading-snug font-medium",
+              featured ? 'text-2xl lg:text-3.5xl' : 'text-xl'
+            )}
           >
             {title}
           </h3>
 
           {/* Excerpt */}
-          <p className="text-muted-foreground font-sans leading-relaxed line-clamp-3">
+          <p className="text-journal-text-secondary font-sans leading-relaxed text-sm font-light line-clamp-3">
             {excerpt}
           </p>
+        </div>
 
-          {/* Read More */}
-          <span className="inline-flex items-center gap-2 text-sm text-foreground/70 group-hover:text-foreground transition-colors duration-300">
-            <span className="tracking-wide">Read more</span>
-            <span className="w-6 h-px bg-foreground/50 group-hover:w-10 transition-all duration-300"></span>
+        {/* Read More */}
+        <div className="pt-6 border-t border-journal-border/30 mt-6">
+          <span className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-journal-gold group-hover:text-journal-text transition-colors duration-300 font-medium">
+            <span>Read more</span>
+            <span>→</span>
           </span>
         </div>
       </Link>
