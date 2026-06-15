@@ -4,7 +4,7 @@ const PrivacyPolicy = () => {
     return (
         <Layout>
             <div className="container mx-auto px-6 py-24 max-w-3xl">
-                <div className="prose prose-neutral dark:prose-invert prose-p:font-sans prose-p:font-light prose-p:leading-relaxed prose-headings:font-serif">
+                <div className="prose prose-neutral dark:prose-invert prose-p:font-sans prose-p:font-light prose-p:leading-relaxed prose-headings:font-serif prose-h2:text-2xl prose-h2:md:text-3xl prose-h2:mt-10 prose-h2:mb-4 prose-h3:text-base prose-h3:md:text-lg prose-h3:mt-6 prose-h3:mb-2 prose-p:text-base prose-p:md:text-lg">
                     <h1 className="text-4xl md:text-5xl font-serif mb-4">Privacy Policy</h1>
                     <p className="text-muted-foreground mb-8">Last Updated: June 10, 2026</p>
 

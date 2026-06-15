@@ -100,7 +100,7 @@ const Footer = () => {
                 Privacy Policy
               </Link>
               <span>|</span>
-              <Link to="/terms-of-use" className="hover:text-journal-champagne transition-colors duration-300">
+              <Link to="/terms" className="hover:text-journal-champagne transition-colors duration-300">
                 Terms of Use
               </Link>
             </div>
