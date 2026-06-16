@@ -289,20 +289,20 @@ const Index = () => {
                 <div className="flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted">
                   <span>JOURNAL</span>
                   <span className="w-6 h-px bg-journal-border"></span>
-                  <time>February 24, 2026</time>
+                  <time>June 12, 2026</time>
                 </div>
 
                 <h3 className="font-serif text-2xl lg:text-3.5xl text-journal-text leading-tight font-medium">
-                  I No Longer Force What Doesn’t Flow
+                  There Is a Difference Between Fighting for Love and Forcing It
                 </h3>
 
                 <p className="text-journal-text-secondary text-sm md:text-base font-light leading-relaxed">
-                  A quiet reflection on release, softness, and learning to stop chasing what no longer meets you with peace.
+                  Love should not feel like a guessing game. Fighting for love means both people are choosing each other. Forcing it means you are trying to convince someone to choose you.
                 </p>
 
                 <div className="pt-2">
                   <Link 
-                    to="/blog/no-force" 
+                    to="/blog/fighting-vs-forcing-love" 
                     className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-journal-gold hover:text-journal-text transition-colors duration-300 font-medium"
                   >
                     <span>Read the entry</span>
@@ -316,7 +316,7 @@ const Index = () => {
                 <div className="text-center space-y-4 max-w-[240px]">
                   <span className="text-xl text-journal-champagne">✦</span>
                   <p className="font-serif italic text-lg text-journal-text-secondary leading-relaxed">
-                    “Peace is refusing to fight for what is meant to be let go.”
+                    &ldquo;You deserve a love that does not make you feel alone in the effort.&rdquo;
                   </p>
                   <div className="w-10 h-px bg-journal-champagne/40 mx-auto"></div>
                 </div>
