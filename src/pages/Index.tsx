@@ -12,6 +12,7 @@ const blogPosts = [
     date: "June 16, 2026",
     category: "Healing",
     slug: "emotionally-tired",
+    quote: "You are not asking for too much. You are just tired of asking the wrong person.",
     featured: true,
   },
   {
@@ -20,6 +21,7 @@ const blogPosts = [
     date: "June 12, 2026",
     category: "Thoughts",
     slug: "fighting-vs-forcing-love",
+    quote: "You deserve a love that does not make you feel alone in the effort.",
   },
   {
     title: "The black coffee rule",
@@ -27,6 +29,7 @@ const blogPosts = [
     date: "June 09, 2026",
     category: "Reflections",
     slug: "the-black-coffee-rule",
+    quote: "I'm learning to take my life black. Simple, potent, and exactly as it is. No additions required.",
   },
   {
     title: "I'm learning to exist without performing",
@@ -290,38 +293,47 @@ const Index = () => {
               <div className="w-8 h-px bg-journal-champagne/40 mx-auto mt-3"></div>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="flex flex-col gap-10">
               {blogPosts.slice(0, 3).map((post) => (
-                <article
-                  key={post.slug}
-                  className="group flex flex-col justify-between p-8 border border-journal-border bg-journal-card hover:border-journal-champagne/60 hover:-translate-y-1 transition-all duration-300 rounded-[2px] shadow-sm"
-                >
-                  <div className="space-y-4">
+                <div key={post.slug} className="grid md:grid-cols-12 border border-journal-border bg-journal-card hover:border-journal-champagne/50 transition-all duration-500 overflow-hidden rounded-[2px] shadow-[0_4px_20px_-10px_rgba(0,0,0,0.03)]">
+                  {/* Text Side */}
+                  <div className="p-8 md:p-12 lg:p-16 md:col-span-7 flex flex-col justify-center space-y-6">
                     <div className="flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted">
-                      <span>{post.category}</span>
-                      <span className="w-4 h-px bg-journal-border"></span>
+                      <span>JOURNAL</span>
+                      <span className="w-6 h-px bg-journal-border"></span>
                       <time>{post.date}</time>
                     </div>
 
-                    <h3 className="font-serif text-xl md:text-2xl group-hover:text-journal-gold transition-colors duration-300 text-journal-text leading-snug">
-                      <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                    <h3 className="font-serif text-2xl lg:text-3.5xl text-journal-text leading-tight font-medium">
+                      {post.title}
                     </h3>
 
-                    <p className="text-journal-text-secondary text-sm font-light leading-relaxed line-clamp-4">
+                    <p className="text-journal-text-secondary text-sm md:text-base font-light leading-relaxed">
                       {post.excerpt}
                     </p>
+
+                    <div className="pt-2">
+                      <Link 
+                        to={`/blog/${post.slug}`} 
+                        className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-journal-gold hover:text-journal-text transition-colors duration-300 font-medium"
+                      >
+                        <span>Read the entry</span>
+                        <span>&rarr;</span>
+                      </Link>
+                    </div>
                   </div>
 
-                  <div className="pt-6 border-t border-journal-border/30 mt-6">
-                    <Link 
-                      to={`/blog/${post.slug}`} 
-                      className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-journal-gold group-hover:text-journal-text transition-colors duration-300 font-medium"
-                    >
-                      <span>Read the entry</span>
-                      <span>&rarr;</span>
-                    </Link>
+                  {/* Graphic Side */}
+                  <div className="relative md:col-span-5 min-h-[260px] bg-journal-bg-secondary/40 flex items-center justify-center p-8 select-none border-t md:border-t-0 md:border-l border-journal-border/50">
+                    <div className="text-center space-y-4 max-w-[240px]">
+                      <span className="text-xl text-journal-champagne">✦</span>
+                      <p className="font-serif italic text-lg text-journal-text-secondary leading-relaxed">
+                        &ldquo;{post.quote || post.excerpt}&rdquo;
+                      </p>
+                      <div className="w-10 h-px bg-journal-champagne/40 mx-auto"></div>
+                    </div>
                   </div>
-                </article>
+                </div>
               ))}
             </div>
           </div>
