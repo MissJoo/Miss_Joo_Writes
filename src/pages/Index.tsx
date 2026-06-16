@@ -7,12 +7,19 @@ import heroImage from "@/assets/hero-image.jpg";
 // Sample blog posts data
 const blogPosts = [
   {
+    title: "5 Signs You're Emotionally Tired From Trying Too Hard",
+    excerpt: "There is a kind of tiredness that does not look obvious. You still wake up. You still reply to messages. You still do what you have to do. But inside, something feels heavy.",
+    date: "June 16, 2026",
+    category: "Healing",
+    slug: "emotionally-tired",
+    featured: true,
+  },
+  {
     title: "There is a difference between fighting for love and forcing it",
     excerpt: "Love should not feel like a guessing game. Fighting for love means both people are choosing each other. Forcing it means you are trying to convince someone to choose you. That is where the pain begins.",
     date: "June 12, 2026",
     category: "Thoughts",
     slug: "fighting-vs-forcing-love",
-    featured: true,
   },
   {
     title: "The black coffee rule",
@@ -264,7 +271,7 @@ const Index = () => {
                 </Link>
               </Button>
               <Link 
-                to="/blog/fighting-vs-forcing-love" 
+                to="/blog/emotionally-tired" 
                 className="text-journal-gold hover:text-journal-text text-xs tracking-wider uppercase underline underline-offset-4 decoration-journal-champagne font-sans font-medium py-2 transition-colors duration-300"
               >
                 Read the latest reflection
@@ -289,24 +296,24 @@ const Index = () => {
                 <div className="flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted">
                   <span>JOURNAL</span>
                   <span className="w-6 h-px bg-journal-border"></span>
-                  <time>June 12, 2026</time>
+                  <time>June 16, 2026</time>
                 </div>
 
                 <h3 className="font-serif text-2xl lg:text-3.5xl text-journal-text leading-tight font-medium">
-                  There Is a Difference Between Fighting for Love and Forcing It
+                  5 Signs You&apos;re Emotionally Tired From Trying Too Hard
                 </h3>
 
                 <p className="text-journal-text-secondary text-sm md:text-base font-light leading-relaxed">
-                  Love should not feel like a guessing game. Fighting for love means both people are choosing each other. Forcing it means you are trying to convince someone to choose you.
+                  There is a kind of tiredness that does not look obvious. You still wake up. You still reply to messages. But inside, something feels heavy. Not broken. Just tired.
                 </p>
 
                 <div className="pt-2">
                   <Link 
-                    to="/blog/fighting-vs-forcing-love" 
+                    to="/blog/emotionally-tired" 
                     className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-journal-gold hover:text-journal-text transition-colors duration-300 font-medium"
                   >
                     <span>Read the entry</span>
-                    <span>→</span>
+                    <span>&rarr;</span>
                   </Link>
                 </div>
               </div>
@@ -316,7 +323,7 @@ const Index = () => {
                 <div className="text-center space-y-4 max-w-[240px]">
                   <span className="text-xl text-journal-champagne">✦</span>
                   <p className="font-serif italic text-lg text-journal-text-secondary leading-relaxed">
-                    &ldquo;You deserve a love that does not make you feel alone in the effort.&rdquo;
+                    &ldquo;You are not asking for too much. You are just tired of asking the wrong person.&rdquo;
                   </p>
                   <div className="w-10 h-px bg-journal-champagne/40 mx-auto"></div>
                 </div>
