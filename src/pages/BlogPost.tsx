@@ -633,7 +633,7 @@ const BlogPost = () => {
   const otherSlugs = allSlugs.filter(s => s !== slug).slice(0, 2);
 
   const intro = post.content[0];
-  const bodyParagraphs = post.content.slice(1);
+  const bodyParagraphs = post.content;
 
   // Helper to determine if a paragraph should be styled as a pull quote
   const isPullQuote = (text: string) => {
