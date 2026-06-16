@@ -289,7 +289,7 @@ const Index = () => {
                 <div className="flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted">
                   <span>JOURNAL</span>
                   <span className="w-6 h-px bg-journal-border"></span>
-                  <time>June 2026</time>
+                  <time>February 24, 2026</time>
                 </div>
 
                 <h3 className="font-serif text-2xl lg:text-3.5xl text-journal-text leading-tight font-medium">
