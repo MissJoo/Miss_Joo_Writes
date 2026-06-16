@@ -40,6 +40,7 @@ const Header = () => {
           {/* Logo */}
           <Link
             to="/"
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             className="font-serif text-xl lg:text-2xl font-semibold tracking-[0.08em] text-journal-text hover:text-journal-gold transition-colors duration-500"
           >
             Miss Joo Writes<span className="text-journal-gold">.</span>
