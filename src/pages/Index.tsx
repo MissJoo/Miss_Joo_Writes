@@ -284,50 +284,45 @@ const Index = () => {
       {/* Featured Reflection Section */}
       <section className="py-20 md:py-28 bg-journal-bg border-t border-journal-border/30">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-5xl mx-auto space-y-10">
+          <div className="max-w-6xl mx-auto space-y-10">
             <div className="text-center">
-              <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">Featured Reflection</h2>
+              <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">Featured Reflections</h2>
               <div className="w-8 h-px bg-journal-champagne/40 mx-auto mt-3"></div>
             </div>
 
-            <div className="grid md:grid-cols-12 border border-journal-border bg-journal-card hover:border-journal-champagne/50 transition-all duration-500 overflow-hidden rounded-[2px] shadow-[0_4px_20px_-10px_rgba(0,0,0,0.03)]">
-              {/* Text Side */}
-              <div className="p-8 md:p-12 lg:p-16 md:col-span-7 flex flex-col justify-center space-y-6">
-                <div className="flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted">
-                  <span>JOURNAL</span>
-                  <span className="w-6 h-px bg-journal-border"></span>
-                  <time>June 16, 2026</time>
-                </div>
+            <div className="grid md:grid-cols-3 gap-8">
+              {blogPosts.slice(0, 3).map((post) => (
+                <article
+                  key={post.slug}
+                  className="group flex flex-col justify-between p-8 border border-journal-border bg-journal-card hover:border-journal-champagne/60 hover:-translate-y-1 transition-all duration-300 rounded-[2px] shadow-sm"
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted">
+                      <span>{post.category}</span>
+                      <span className="w-4 h-px bg-journal-border"></span>
+                      <time>{post.date}</time>
+                    </div>
 
-                <h3 className="font-serif text-2xl lg:text-3.5xl text-journal-text leading-tight font-medium">
-                  5 Signs You&apos;re Emotionally Tired From Trying Too Hard
-                </h3>
+                    <h3 className="font-serif text-xl md:text-2xl group-hover:text-journal-gold transition-colors duration-300 text-journal-text leading-snug">
+                      <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                    </h3>
 
-                <p className="text-journal-text-secondary text-sm md:text-base font-light leading-relaxed">
-                  There is a kind of tiredness that does not look obvious. You still wake up. You still reply to messages. But inside, something feels heavy. Not broken. Just tired.
-                </p>
+                    <p className="text-journal-text-secondary text-sm font-light leading-relaxed line-clamp-4">
+                      {post.excerpt}
+                    </p>
+                  </div>
 
-                <div className="pt-2">
-                  <Link 
-                    to="/blog/emotionally-tired" 
-                    className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-journal-gold hover:text-journal-text transition-colors duration-300 font-medium"
-                  >
-                    <span>Read the entry</span>
-                    <span>&rarr;</span>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Graphic Side */}
-              <div className="relative md:col-span-5 min-h-[260px] bg-journal-bg-secondary/40 flex items-center justify-center p-8 select-none border-t md:border-t-0 md:border-l border-journal-border/50">
-                <div className="text-center space-y-4 max-w-[240px]">
-                  <span className="text-xl text-journal-champagne">✦</span>
-                  <p className="font-serif italic text-lg text-journal-text-secondary leading-relaxed">
-                    &ldquo;You are not asking for too much. You are just tired of asking the wrong person.&rdquo;
-                  </p>
-                  <div className="w-10 h-px bg-journal-champagne/40 mx-auto"></div>
-                </div>
-              </div>
+                  <div className="pt-6 border-t border-journal-border/30 mt-6">
+                    <Link 
+                      to={`/blog/${post.slug}`} 
+                      className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-journal-gold group-hover:text-journal-text transition-colors duration-300 font-medium"
+                    >
+                      <span>Read the entry</span>
+                      <span>&rarr;</span>
+                    </Link>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </div>

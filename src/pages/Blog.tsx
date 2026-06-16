@@ -7,6 +7,13 @@ const categories = ["All", "Thoughts", "Life", "Healing", "Random"];
 
 const allPosts = [
   {
+    title: "5 Signs You're Emotionally Tired From Trying Too Hard",
+    excerpt: "There is a kind of tiredness that does not look obvious. You still wake up. You still reply to messages. You still do what you have to do. But inside, something feels heavy.",
+    date: "June 16, 2026",
+    category: "Healing",
+    slug: "emotionally-tired",
+  },
+  {
     title: "There is a difference between fighting for love and forcing it",
     excerpt: "Love should not feel like a guessing game. Fighting for love means both people are choosing each other. Forcing it means you are trying to convince someone to choose you. That is where the pain begins.",
     date: "June 12, 2026",
