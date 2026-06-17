@@ -289,13 +289,12 @@ const Index = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-5xl mx-auto space-y-10">
             <div className="text-center">
-              <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">Featured Reflection</h2>
+              <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">Featured Reflections</h2>
               <div className="w-8 h-px bg-journal-champagne/40 mx-auto mt-3"></div>
             </div>
 
             <div className="flex flex-col gap-10">
-              {/* First Journal (Latest) - Original Large Design */}
-              {blogPosts.slice(0, 1).map((post) => (
+              {blogPosts.slice(0, 3).map((post) => (
                 <div key={post.slug} className="grid md:grid-cols-12 border border-journal-border bg-journal-card hover:border-journal-champagne/50 transition-all duration-500 overflow-hidden rounded-[2px] shadow-[0_4px_20px_-10px_rgba(0,0,0,0.03)]">
                   {/* Text Side */}
                   <div className="p-8 md:p-12 lg:p-16 md:col-span-7 flex flex-col justify-center space-y-6">
@@ -336,42 +335,6 @@ const Index = () => {
                   </div>
                 </div>
               ))}
-
-              {/* Next 2 Journals - Smaller Cards Below */}
-              <div className="grid md:grid-cols-2 gap-8">
-                {blogPosts.slice(1, 3).map((post) => (
-                  <article
-                    key={post.slug}
-                    className="group flex flex-col justify-between p-8 border border-journal-border bg-journal-card hover:border-journal-champagne/60 hover:-translate-y-1 transition-all duration-300 rounded-[2px] shadow-sm"
-                  >
-                    <div className="space-y-4">
-                      <div className="flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted">
-                        <span>{post.category}</span>
-                        <span className="w-4 h-px bg-journal-border"></span>
-                        <time>{post.date}</time>
-                      </div>
-
-                      <h3 className="font-serif text-xl md:text-2xl group-hover:text-journal-gold transition-colors duration-300 text-journal-text leading-snug">
-                        <Link to={`/blog/${post.slug}`}>{post.title}</Link>
-                      </h3>
-
-                      <p className="text-journal-text-secondary text-sm font-light leading-relaxed line-clamp-3">
-                        {post.excerpt}
-                      </p>
-                    </div>
-
-                    <div className="pt-6 border-t border-journal-border/30 mt-6">
-                      <Link 
-                        to={`/blog/${post.slug}`} 
-                        className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-journal-gold group-hover:text-journal-text transition-colors duration-300 font-medium"
-                      >
-                        <span>Read the entry</span>
-                        <span>&rarr;</span>
-                      </Link>
-                    </div>
-                  </article>
-                ))}
-              </div>
             </div>
           </div>
         </div>
