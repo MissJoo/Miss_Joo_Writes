@@ -6,6 +6,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { Mail } from "lucide-react";
 
+const CONTACT_EMAIL = "missjodiaries@gmail.com";
+
 const Contact = () => {
   const { toast } = useToast();
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -15,19 +17,24 @@ const Contact = () => {
     message: "",
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000));
+    const subject = `Message from ${formData.name} via Miss Joo Writes`;
+    const body = [
+      `Name: ${formData.name}`,
+      `Email: ${formData.email}`,
+      "",
+      formData.message,
+    ].join("\n");
 
     toast({
-      title: "Message sent",
-      description: "Thank you for reaching out. I'll get back to you soon.",
+      title: "Opening your email app",
+      description: "Please review the draft and press send so your message reaches my inbox.",
     });
 
-    setFormData({ name: "", email: "", message: "" });
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     setIsSubmitting(false);
   };
 
@@ -117,7 +124,7 @@ const Contact = () => {
                   disabled={isSubmitting}
                   className="w-full sm:w-auto rounded-full bg-journal-text hover:bg-journal-gold text-journal-bg border-none tracking-widest uppercase text-[11px] h-12 px-8 transition-colors duration-300 shadow-sm"
                 >
-                  {isSubmitting ? "Sending..." : "Send message"}
+                  {isSubmitting ? "Opening..." : "Open email draft"}
                 </Button>
               </div>
             </form>
@@ -128,11 +135,11 @@ const Contact = () => {
                 Prefer direct email?
               </p>
               <a
-                href="mailto:missjodiaries@gmail.com"
+                href={`mailto:${CONTACT_EMAIL}`}
                 className="inline-flex items-center gap-2 text-journal-text hover:text-journal-gold transition-colors duration-300 group text-sm font-sans font-medium"
               >
                 <Mail size={14} className="group-hover:scale-105 transition-transform duration-300 text-journal-gold" />
-                <span className="tracking-wide">missjodiaries@gmail.com</span>
+                <span className="tracking-wide">{CONTACT_EMAIL}</span>
               </a>
             </div>
           </div>

@@ -8,10 +8,14 @@ import { useToast } from "@/hooks/use-toast";
 import { Mail } from "lucide-react";
 
 const emailSchema = z.object({
+    name: z.string().optional(),
     email: z.string().email("Please enter a valid email address"),
 });
 
 type EmailFormData = z.infer<typeof emailSchema>;
+type MailchimpResponse = { result: string; msg: string };
+type MailchimpJsonpCallback = (data: MailchimpResponse) => void;
+type MailchimpCallbackStore = Window & Record<string, MailchimpJsonpCallback | undefined>;
 
 // Mailchimp config extracted from your embedded form
 const MAILCHIMP_ACTION_URL =
@@ -22,14 +26,15 @@ const MAILCHIMP_HONEYPOT = "b_80e1467a6cae550ca8829039c_f46f720fb3";
  * Submits email to Mailchimp via JSONP (no backend required).
  * Mailchimp doesn't support CORS, so we inject a <script> tag instead.
  */
-function submitToMailchimp(email: string): Promise<{ result: string; msg: string }> {
+function submitToMailchimp(email: string): Promise<MailchimpResponse> {
     return new Promise((resolve, reject) => {
         const callbackName = `mc_callback_${Date.now()}`;
         const url = `${MAILCHIMP_ACTION_URL}&EMAIL=${encodeURIComponent(email)}&${MAILCHIMP_HONEYPOT}=&c=${callbackName}`;
+        const callbacks = window as MailchimpCallbackStore;
 
         // Attach callback to window so the JSONP script can call it
-        (window as any)[callbackName] = (data: { result: string; msg: string }) => {
-            delete (window as any)[callbackName];
+        callbacks[callbackName] = (data: MailchimpResponse) => {
+            delete callbacks[callbackName];
             document.body.removeChild(script);
             resolve(data);
         };
@@ -37,17 +42,17 @@ function submitToMailchimp(email: string): Promise<{ result: string; msg: string
         const script = document.createElement("script");
         script.src = url;
         script.onerror = () => {
-            delete (window as any)[callbackName];
+            delete callbacks[callbackName];
             document.body.removeChild(script);
             reject(new Error("Network error. Please try again."));
         };
 
         document.body.appendChild(script);
 
-        // Fallback timeout — Mailchimp usually responds in < 5s
+        // Fallback timeout - Mailchimp usually responds in < 5s
         setTimeout(() => {
-            if ((window as any)[callbackName]) {
-                delete (window as any)[callbackName];
+            if (callbacks[callbackName]) {
+                delete callbacks[callbackName];
                 if (document.body.contains(script)) document.body.removeChild(script);
                 reject(new Error("Request timed out. Please try again."));
             }
@@ -103,10 +108,12 @@ const EmailSignupForm = ({
                     variant: "destructive",
                 });
             }
-        } catch (error: any) {
+        } catch (error: unknown) {
+            const message = error instanceof Error ? error.message : "Please try again later.";
+
             toast({
                 title: "Something went wrong",
-                description: error?.message || "Please try again later.",
+                description: message,
                 variant: "destructive",
             });
         } finally {
