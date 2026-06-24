@@ -7,6 +7,13 @@ const categories = ["All", "Thoughts", "Life", "Healing", "Random"];
 
 const allPosts = [
   {
+    title: "What Peace Taught Me About Letting Go",
+    excerpt: "I used to think letting go would feel like one big decision. Like one day I would wake up, feel nothing, and finally be ready. But it did not happen that way.",
+    date: "June 24, 2026",
+    category: "Healing",
+    slug: "what-peace-taught-me",
+  },
+  {
     title: "5 Signs You're Emotionally Tired From Trying Too Hard",
     excerpt: "There is a kind of tiredness that does not look obvious. You still wake up. You still reply to messages. You still do what you have to do. But inside, something feels heavy.",
     date: "June 16, 2026",
@@ -134,13 +141,13 @@ const allPosts = [
   },
   {
     title: "I feel calmer in ways I can't fully explain",
-    excerpt: "There’s a kind of calm that doesn’t come from everything being perfect.",
+    excerpt: "There's a kind of calm that doesn't come from everything being perfect.",
     date: "February 19, 2026",
     category: "Healing",
     slug: "calm-me",
   },
   {
-    title: "I’m becoming more selective with my energy",
+    title: "I'm becoming more selective with my energy",
     excerpt: "I've been paying attention on how my body reacts before my mind..",
     date: "February 12, 2026",
     category: "Healing",
@@ -169,7 +176,7 @@ const allPosts = [
   },
   {
     title: "This version of me feels unfamiliar, and that's okay",
-    excerpt: "Lately, I’ve been meeting a version of myself I don’t fully recognize....",
+    excerpt: "Lately, I've been meeting a version of myself I don't fully recognize....",
     date: "January 13, 2026",
     category: "Healing",
     slug: "version-of-me",
@@ -190,7 +197,7 @@ const allPosts = [
   },
   {
     title: "Some days I'm strong, some days I'm just tired",
-    excerpt: "I’ve learned that strength doesn’t always look loud. Some days, it’s simply getting through the day without explaining why you feel heavy....",
+    excerpt: "I've learned that strength doesn't always look loud. Some days, it's simply getting through the day without explaining why you feel heavy....",
     date: "December 30, 2025",
     category: "Healing",
     slug: "strong-days",

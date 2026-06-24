@@ -5,6 +5,29 @@ import { ArrowLeft } from "lucide-react";
 
 // Sample blog post content
 const postsContent: Record<string, { title: string; date: string; category: string; content: string[] }> = {
+  "what-peace-taught-me": {
+    title: "What Peace Taught Me About Letting Go",
+    date: "June 24, 2026",
+    category: "Healing",
+    content: [
+      "I used to think letting go would feel like one big decision.\nLike one day I would wake up, feel nothing, and finally be ready.\nBut it did not happen that way.",
+      "For me, letting go happened slowly.\nIt happened in the moments I stopped checking.\nIn the messages I no longer typed.\nIn the explanations I no longer gave.\nIn the silence I finally stopped trying to fill.",
+      "It happened when I realized I was more tired than attached.\nAnd maybe that is when peace started to enter quietly.",
+      "Peace taught me that not everything needs a final conversation.",
+      "Some things already ended in the way they made you feel.",
+      "The distance was already an answer.\nThe inconsistency was already an answer.\nThe lack of effort was already an answer.\nThe confusion was already an answer.",
+      "I just kept waiting for words because I did not want to accept the actions.",
+      "Peace taught me that closure is not always something another person gives you.\nSometimes, closure is when you stop asking why someone treated you in a way you would never treat them.\nSometimes, closure is when you stop needing them to admit that they hurt you.\nSometimes, closure is when you finally believe what you felt.",
+      "And what I felt was tired.\nTired of chasing softness.\nTired of waiting for effort.\nTired of trying to understand things that kept hurting me.\nTired of forcing something that only flowed when I carried it.",
+      "Letting go did not make me cold.\nIt made me honest.\nHonest about what I needed.\nHonest about what I kept accepting.\nHonest about the way I was abandoning myself just to keep something alive.",
+      "And maybe peace is not always happiness at first.\nSometimes peace feels unfamiliar.\nQuiet.\nEmpty.\nA little lonely.",
+      "But even loneliness can feel lighter than staying where your heart keeps feeling unwanted.",
+      "I am still learning that letting go does not mean the memories were not real.\nIt does not mean the love was fake.\nIt does not mean I did not care.\nIt only means I care about myself enough now to stop holding what keeps hurting me.",
+      "Some things leave space when they leave.\nAnd maybe that space is not punishment.\nMaybe it is room.",
+      "Room to breathe.\nRoom to heal.\nRoom to become someone who no longer begs to be chosen.",
+      "Miss Joo Reminder:\nSometimes letting go is not losing someone.\nSometimes it is finally getting yourself back.",
+    ]
+  },
   "emotionally-tired": {
     title: "5 Signs You're Emotionally Tired From Trying Too Hard",
     date: "June 16, 2026",

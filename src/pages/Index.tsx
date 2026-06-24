@@ -7,13 +7,21 @@ import heroImage from "@/assets/hero-image.jpg";
 // Sample blog posts data
 const blogPosts = [
   {
+    title: "What Peace Taught Me About Letting Go",
+    excerpt: "I used to think letting go would feel like one big decision. Like one day I would wake up, feel nothing, and finally be ready. But it did not happen that way.",
+    date: "June 24, 2026",
+    category: "Healing",
+    slug: "what-peace-taught-me",
+    quote: "Sometimes letting go is not losing someone. Sometimes it is finally getting yourself back.",
+    featured: true,
+  },
+  {
     title: "5 Signs You're Emotionally Tired From Trying Too Hard",
     excerpt: "There is a kind of tiredness that does not look obvious. You still wake up. You still reply to messages. You still do what you have to do. But inside, something feels heavy.",
     date: "June 16, 2026",
     category: "Healing",
     slug: "emotionally-tired",
     quote: "You are not asking for too much. You are just tired of asking the wrong person.",
-    featured: true,
   },
   {
     title: "There is a difference between fighting for love and forcing it",
