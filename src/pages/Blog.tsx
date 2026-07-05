@@ -7,6 +7,13 @@ const categories = ["All", "Thoughts", "Life", "Healing", "Random"];
 
 const allPosts = [
   {
+    title: "Qatar Days Through a Filipina Woman's Eyes",
+    excerpt: "There are days in Qatar that feel too bright, too hot, too quiet, and too far from everything I once called home.",
+    date: "July 02, 2026",
+    category: "Life",
+    slug: "qatar-days-filipina",
+  },
+  {
     title: "What Peace Taught Me About Letting Go",
     excerpt: "I used to think letting go would feel like one big decision. Like one day I would wake up, feel nothing, and finally be ready. But it did not happen that way.",
     date: "June 24, 2026",
