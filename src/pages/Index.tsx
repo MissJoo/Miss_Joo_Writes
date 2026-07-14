@@ -7,13 +7,21 @@ import heroImage from "@/assets/hero-image.jpg";
 // Sample blog posts data
 const blogPosts = [
   {
+    title: "The Things I Never Expected to Miss Until I Moved to Qatar",
+    excerpt: "I expected the homesickness. I expected to miss birthdays, holidays, and Sunday lunches. What I didn't expect were the little things. The ordinary things.",
+    date: "July 07, 2026",
+    category: "Life",
+    slug: "things-i-never-expected-to-miss",
+    quote: "Maybe home isn't just where you came from. Maybe home is also every place that changes you for the better.",
+    featured: true,
+  },
+  {
     title: "Qatar Days Through a Filipina Woman's Eyes",
     excerpt: "There are days in Qatar that feel too bright, too hot, too quiet, and too far from everything I once called home.",
     date: "July 02, 2026",
     category: "Life",
     slug: "qatar-days-filipina",
     quote: "Qatar days taught me that strength can be quiet. That being far from home does not mean you are lost.",
-    featured: true,
   },
   {
     title: "What Peace Taught Me About Letting Go",

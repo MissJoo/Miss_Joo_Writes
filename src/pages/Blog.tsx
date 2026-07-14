@@ -7,6 +7,13 @@ const categories = ["All", "Thoughts", "Life", "Healing", "Random"];
 
 const allPosts = [
   {
+    title: "The Things I Never Expected to Miss Until I Moved to Qatar",
+    excerpt: "I expected the homesickness. I expected to miss birthdays, holidays, and Sunday lunches. What I didn't expect were the little things. The ordinary things.",
+    date: "July 07, 2026",
+    category: "Life",
+    slug: "things-i-never-expected-to-miss",
+  },
+  {
     title: "Qatar Days Through a Filipina Woman's Eyes",
     excerpt: "There are days in Qatar that feel too bright, too hot, too quiet, and too far from everything I once called home.",
     date: "July 02, 2026",

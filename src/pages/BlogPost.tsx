@@ -5,6 +5,40 @@ import { ArrowLeft } from "lucide-react";
 
 // Sample blog post content
 const postsContent: Record<string, { title: string; date: string; category: string; content: string[] }> = {
+  "things-i-never-expected-to-miss": {
+    title: "The Things I Never Expected to Miss Until I Moved to Qatar",
+    date: "July 07, 2026",
+    category: "Life",
+    content: [
+      "When I first moved to Qatar, I thought the hardest part would be leaving my family behind.",
+      "I expected the homesickness. I expected to miss birthdays, holidays, and Sunday lunches. I knew there would be moments when I would wish I could book the next flight home.",
+      "What I didn't expect were the little things.\n\nThe ordinary things.\nThe things I barely noticed when I was still living in the Philippines.\nFunny how life works that way. We often don't realize something is special until it becomes a memory.",
+      "I miss hearing people speak Filipino everywhere I go.",
+      "Not because English isn't enough, but because there's comfort in hearing your own language without thinking. The jokes land differently. The expressions feel familiar. Even overhearing strangers talking reminds you that you're home.",
+      "I miss rainy afternoons.",
+      "In the Philippines, rain can interrupt your plans, but it also brings a strange kind of comfort. The sound on the roof. The cooler air. The excuse to stay indoors with coffee and something warm to eat.",
+      "Here in Qatar, I find myself smiling whenever the weather changes, no matter how briefly. It reminds me of home.",
+      "I miss spontaneous family visits.",
+      "Back home, someone could knock on your door without texting first. A cousin, an aunt, a neighbor. There was always food to share and stories waiting to be told.",
+      "Living abroad teaches you that relationships become scheduled. Video calls replace dinner conversations. Photos replace hugs.",
+      "I miss grocery shopping without converting prices in my head.",
+      "Every overseas Filipino knows this feeling.\n\n\"Do I really need this?\"\n\"Maybe next payday.\"\n\"I can save that money instead.\"",
+      "Living abroad changes the way you spend because every riyal carries responsibility.",
+      "I miss celebrations that feel effortless.",
+      "Christmas in the Philippines begins early. Streets become brighter. Music fills the air. Families gather without needing months of planning.",
+      "In Qatar, celebrations look different. They're quieter for me, but they have taught me that home isn't always a place. Sometimes it's the people you carry in your heart.",
+      "I miss being understood without explaining myself.",
+      "Living in another country means meeting people from different cultures, backgrounds, and beliefs. It's one of the things I appreciate most about Qatar.",
+      "But there are moments when I miss conversations where people immediately understand my humor, my expressions, and the little cultural references that don't need explaining.",
+      "It's a kind of comfort that's hard to replace.",
+      "Yet, despite everything I miss, I wouldn't call this journey a sad one.",
+      "Because while Qatar has shown me what I miss, it has also shown me what I'm capable of.\nIt has taught me independence.\nIt has taught me resilience.\nIt has taught me patience.\nIt has introduced me to people I never would have met if I had stayed home.\nIt has given me experiences that continue to shape the woman I am becoming.",
+      "Maybe that's what living abroad really is.",
+      "It's learning that your heart can belong to more than one place.\nA part of me will always belong to the Philippines.\nAnother part of me is quietly growing here in Qatar.\nAnd somehow, both can exist at the same time.",
+      "Maybe home isn't just where you came from.",
+      "Maybe home is also every place that changes you for the better.",
+    ]
+  },
   "qatar-days-filipina": {
     title: "Qatar Days Through a Filipina Woman's Eyes",
     date: "July 02, 2026",
