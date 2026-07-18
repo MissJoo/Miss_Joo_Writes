@@ -5,6 +5,34 @@ import { ArrowLeft } from "lucide-react";
 
 // Sample blog post content
 const postsContent: Record<string, { title: string; date: string; category: string; content: string[] }> = {
+  "woman-im-slowly-becoming": {
+    title: "The Woman I'm Slowly Becoming",
+    date: "July 14, 2026",
+    category: "Healing",
+    content: [
+      "There are moments when I catch myself doing something ordinary, and suddenly I stop.\nNot because something is wrong.\nBut because I realize I would have handled that same moment very differently a few years ago.",
+      "Growth doesn't always arrive with a celebration.\nSometimes it arrives so quietly that you only notice it when you look back.",
+      "The other day, I solved a problem without immediately calling someone for advice.",
+      "It wasn't a big problem.\n\nJust one of those everyday situations that used to make me overthink.\nAs I walked away, I smiled to myself.\nNot because everything worked out perfectly.\nBut because I realized I trusted myself first.",
+      "I don't remember exactly when that started happening.\n\nMaybe it happened after enough days of figuring things out on my own.\nMaybe it happened after making mistakes that nobody else could fix for me.\nOr maybe it happened little by little, while life kept asking me to become someone more capable than I ever imagined.",
+      "I've started noticing other small changes too.\nI don't mind eating alone as much anymore.\nI no longer feel the need to fill every quiet moment with noise.\nI've learned that peace can sound different from loneliness.",
+      "There was a time when silence made me uncomfortable.\n\nNow, sometimes it feels like the only place where I can hear myself clearly.",
+      "I still miss home.\nI still miss familiar voices, familiar streets, and the comfort of being surrounded by people who have known me for years.",
+      "Those feelings haven't disappeared.\nI don't think they're supposed to.\nBut I've also stopped believing that missing something means I can't appreciate where I am.",
+      "The heart is more generous than we give it credit for.\n\nIt can carry longing and gratitude at the same time.",
+      "I've become more patient with life, too.\nNot because everything is going according to plan.\n\nIf anything, life still surprises me more often than I'd like.",
+      "There are days when I question myself.\nDays when I wonder if I'm doing enough.\nDays when I feel behind compared to people my age.",
+      "But those thoughts no longer stay as long as they used to.\n\nI've learned that everyone's timeline looks different when you're busy building a life from the ground up.",
+      "Perhaps that's one of the quiet gifts of living far from everything you've ever known.\nIt teaches you to stop measuring your life against someone else's.",
+      "Because no one else is walking your road.",
+      "Sometimes I look at old photos of myself.\nThe woman smiling in those pictures still feels familiar.\nShe still had the same dreams.\n\nThe same heart.\n\nThe same hope that life would somehow make sense.",
+      "But I also notice something different.\nShe was waiting for life to tell her who she was.\n\nThe woman I am today has stopped waiting.",
+      "Not because she has all the answers.\nBut because she's learning that becoming is more important than arriving.",
+      "I don't think I've found the final version of myself.\n\nMaybe there isn't one.\n\nMaybe we're meant to keep growing.\nTo keep unlearning.\nTo keep discovering new pieces of ourselves in places we never expected to call part of our story.",
+      "Some days, I still don't recognize the woman I'm becoming.\n\nNot because she's a stranger.\nBut because she's stronger than the woman I remember leaving behind.",
+      "And perhaps that's the most beautiful part of this journey.\n\nThe changes that matter most rarely happen all at once.\n\nThey happen quietly.\nOne ordinary day at a time.\nUntil one day, you look at your life...\n\nAnd realize you've been becoming the person you needed all along.",
+    ]
+  },
   "things-i-never-expected-to-miss": {
     title: "The Things I Never Expected to Miss Until I Moved to Qatar",
     date: "July 07, 2026",

@@ -7,6 +7,13 @@ const categories = ["All", "Thoughts", "Life", "Healing", "Random"];
 
 const allPosts = [
   {
+    title: "The Woman I'm Slowly Becoming",
+    excerpt: "Growth doesn't always arrive with a celebration. Sometimes it arrives so quietly that you only notice it when you look back.",
+    date: "July 14, 2026",
+    category: "Healing",
+    slug: "woman-im-slowly-becoming",
+  },
+  {
     title: "The Things I Never Expected to Miss Until I Moved to Qatar",
     excerpt: "I expected the homesickness. I expected to miss birthdays, holidays, and Sunday lunches. What I didn't expect were the little things. The ordinary things.",
     date: "July 07, 2026",

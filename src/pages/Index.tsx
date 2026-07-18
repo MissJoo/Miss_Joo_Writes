@@ -7,13 +7,21 @@ import heroImage from "@/assets/hero-image.jpg";
 // Sample blog posts data
 const blogPosts = [
   {
+    title: "The Woman I'm Slowly Becoming",
+    excerpt: "Growth doesn't always arrive with a celebration. Sometimes it arrives so quietly that you only notice it when you look back.",
+    date: "July 14, 2026",
+    category: "Healing",
+    slug: "woman-im-slowly-becoming",
+    quote: "The changes that matter most rarely happen all at once. They happen quietly. One ordinary day at a time.",
+    featured: true,
+  },
+  {
     title: "The Things I Never Expected to Miss Until I Moved to Qatar",
     excerpt: "I expected the homesickness. I expected to miss birthdays, holidays, and Sunday lunches. What I didn't expect were the little things. The ordinary things.",
     date: "July 07, 2026",
     category: "Life",
     slug: "things-i-never-expected-to-miss",
     quote: "Maybe home isn't just where you came from. Maybe home is also every place that changes you for the better.",
-    featured: true,
   },
   {
     title: "Qatar Days Through a Filipina Woman's Eyes",
