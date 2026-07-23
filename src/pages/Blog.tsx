@@ -7,6 +7,13 @@ const categories = ["All", "Thoughts", "Life", "Healing", "Random"];
 
 const allPosts = [
   {
+    title: "The Quiet Pressure to Have It All Figured Out",
+    excerpt: "There was a time when I genuinely believed life would make more sense by now. I thought adulthood would eventually arrive with answers. Instead, it arrived with more questions.",
+    date: "July 21, 2026",
+    category: "Thoughts",
+    slug: "quiet-pressure-figured-out",
+  },
+  {
     title: "The Woman I'm Slowly Becoming",
     excerpt: "Growth doesn't always arrive with a celebration. Sometimes it arrives so quietly that you only notice it when you look back.",
     date: "July 14, 2026",

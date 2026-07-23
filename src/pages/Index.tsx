@@ -7,13 +7,21 @@ import heroImage from "@/assets/hero-image.jpg";
 // Sample blog posts data
 const blogPosts = [
   {
+    title: "The Quiet Pressure to Have It All Figured Out",
+    excerpt: "There was a time when I genuinely believed life would make more sense by now. I thought adulthood would eventually arrive with answers. Instead, it arrived with more questions.",
+    date: "July 21, 2026",
+    category: "Thoughts",
+    slug: "quiet-pressure-figured-out",
+    quote: "Someone else's success does not mean I have failed. Their timing does not make mine wrong. Their path does not cancel the value of mine.",
+    featured: true,
+  },
+  {
     title: "The Woman I'm Slowly Becoming",
     excerpt: "Growth doesn't always arrive with a celebration. Sometimes it arrives so quietly that you only notice it when you look back.",
     date: "July 14, 2026",
     category: "Healing",
     slug: "woman-im-slowly-becoming",
     quote: "The changes that matter most rarely happen all at once. They happen quietly. One ordinary day at a time.",
-    featured: true,
   },
   {
     title: "The Things I Never Expected to Miss Until I Moved to Qatar",
