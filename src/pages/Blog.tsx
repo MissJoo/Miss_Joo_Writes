@@ -232,7 +232,7 @@ const allPosts = [
   },
   {
     title: "Learning to embrace the quiet moments",
-    excerpt: "There's something profoundly beautiful about sitting with silence. Not the uncomfortable kind that begs to be filled, but the kind that wraps around you like a warm blanket on a winter evening. I've spent so much of my life afraid of stillness...",
+    excerpt: "There's something profoundly beautiful about sitting with silence. Not the uncomfortable kind that begs to be filled, but the kind that wraps around you like a warm blanket on a winter evening...",
     date: "December 28, 2025",
     category: "Thoughts",
     slug: "embrace-quiet-moments",
@@ -303,27 +303,35 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Categories */}
-      <section className="py-6 border-b border-journal-border/30 sticky top-16 lg:top-20 bg-journal-bg/95 backdrop-blur-md z-30">
+      {/* Categories — sticky filter */}
+      <div
+        className="py-6 border-b border-journal-border/30 sticky top-16 lg:top-20 z-40"
+        style={{ backgroundColor: "#FAF7F2" }}
+      >
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="flex flex-wrap justify-center gap-x-6 gap-y-3 lg:gap-x-10">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={cn(
-                  "text-[10px] tracking-[0.25em] uppercase font-medium font-sans pb-1 transition-all duration-300 border-b-[1px]",
-                  activeCategory === category
-                    ? "text-journal-gold border-journal-gold"
-                    : "text-journal-muted border-transparent hover:text-journal-text hover:border-journal-border/60"
-                )}
-              >
-                {category}
-              </button>
-            ))}
+          <div className="flex flex-wrap items-center justify-between gap-4">
+            <div className="flex flex-wrap gap-2">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(category)}
+                  className={cn(
+                    "text-[10px] tracking-[0.2em] uppercase font-semibold font-sans px-3 py-1.5 rounded-full border transition-all duration-300",
+                    activeCategory === category
+                      ? "bg-journal-gold text-journal-bg border-journal-gold shadow-sm"
+                      : "text-journal-muted border-journal-border/60 hover:text-journal-text hover:border-journal-gold/50 bg-transparent"
+                  )}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+            <span className="text-[10px] tracking-widest uppercase text-journal-muted font-sans">
+              {filteredPosts.length} {filteredPosts.length === 1 ? "entry" : "entries"}
+            </span>
           </div>
         </div>
-      </section>
+      </div>
 
       {/* Posts Grid */}
       <section className="py-16 lg:py-24 bg-journal-bg">

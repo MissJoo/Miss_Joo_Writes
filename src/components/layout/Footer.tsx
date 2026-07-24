@@ -32,8 +32,8 @@ const Footer = () => {
 
   return (
     <footer className="bg-journal-text text-journal-bg border-t border-journal-text-secondary/20">
-      <div className="container mx-auto px-6 lg:px-12 py-16 lg:py-20">
-        <div className="flex flex-col items-center gap-8 max-w-4xl mx-auto">
+      <div className="container mx-auto px-6 lg:px-12 py-3 lg:py-4">
+        <div className="flex flex-col items-center gap-3 max-w-4xl mx-auto">
           {/* Logo */}
           <Link
             to="/"
@@ -48,12 +48,12 @@ const Footer = () => {
           </p>
 
           {/* Signature */}
-          <div className="font-signature text-3xl text-journal-champagne mt-1 select-none">
+          <div className="font-signature text-2xl text-journal-champagne select-none">
             With softness, Miss Joo
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center gap-6 my-2">
+          <div className="flex items-center gap-6">
             {socialLinks.map(({ icon: Icon, href, label }) => (
               <a
                 key={label}
@@ -69,7 +69,7 @@ const Footer = () => {
           </div>
 
           {/* Divider */}
-          <div className="w-16 h-px bg-journal-champagne/30 my-2"></div>
+          <div className="w-16 h-px bg-journal-champagne/30"></div>
 
           {/* Navigation */}
           <nav className="flex flex-wrap justify-center gap-x-8 gap-y-4">
@@ -91,7 +91,7 @@ const Footer = () => {
           </nav>
 
           {/* Copyright & Legal */}
-          <div className="flex flex-col items-center gap-2 mt-4">
+          <div className="flex flex-col items-center gap-1 mt-1">
             <p className="text-[11px] text-journal-bg/40 tracking-wider font-sans">
               © {currentYear} Miss Joo Writes. All rights reserved.
             </p>

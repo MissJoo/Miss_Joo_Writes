@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
@@ -789,6 +790,19 @@ const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = slug ? postsContent[slug] : null;
 
+  // Reading progress bar
+  const [progress, setProgress] = useState(0);
+  useEffect(() => {
+    const onScroll = () => {
+      const el = document.documentElement;
+      const scrolled = el.scrollTop;
+      const total = el.scrollHeight - el.clientHeight;
+      setProgress(total > 0 ? (scrolled / total) * 100 : 0);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   if (!post) {
     return (
       <Layout>
@@ -814,7 +828,7 @@ const BlogPost = () => {
   // Helper to determine if a paragraph should be styled as a pull quote
   const isPullQuote = (text: string) => {
     const cleaned = text.trim();
-    if (cleaned.startsWith("“") && cleaned.endsWith("”")) return true;
+    if (cleaned.startsWith("\u201c") && cleaned.endsWith("\u201d")) return true;
     if (cleaned.startsWith('"') && cleaned.endsWith('"')) return true;
     if (cleaned.length > 5 && cleaned.length < 80 && !cleaned.includes(".") && !cleaned.includes(",")) return true;
     return false;
@@ -822,6 +836,13 @@ const BlogPost = () => {
 
   return (
     <Layout>
+      {/* Reading progress bar */}
+      <div
+        className="fixed top-0 left-0 z-[999] h-[3px] bg-gradient-to-r from-journal-champagne via-journal-gold to-journal-champagne transition-all duration-100 ease-out"
+        style={{ width: `${progress}%` }}
+        aria-hidden="true"
+      />
+
       {/* Back Link */}
       <section className="pt-24 lg:pt-28 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
@@ -867,13 +888,13 @@ const BlogPost = () => {
       {/* Post Content */}
       <section className="pb-16 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
-          <article className="max-w-2xl mx-auto font-sans text-[18px] leading-[1.8] text-journal-text-secondary space-y-6 font-light">
+          <article className="max-w-2xl mx-auto font-sans text-[17px] leading-[1.85] text-journal-text-secondary space-y-7 font-light">
             {bodyParagraphs.map((paragraph, index) => {
               if (isPullQuote(paragraph)) {
                 return (
-                  <blockquote 
+                  <blockquote
                     key={index}
-                    className="border-l-[2px] border-journal-champagne pl-6 my-8 font-serif italic text-lg md:text-xl text-journal-gold leading-relaxed py-1 opacity-0 animate-fade-in"
+                    className="border-l-[3px] border-journal-champagne pl-6 my-10 font-serif italic text-lg md:text-xl text-journal-gold leading-relaxed py-2 opacity-0 animate-fade-in bg-journal-bg-secondary/30 pr-4 rounded-r-[2px]"
                     style={{ animationDelay: `${0.2 + index * 0.05}s`, animationFillMode: "forwards" }}
                   >
                     {paragraph}
@@ -883,7 +904,11 @@ const BlogPost = () => {
               return (
                 <p
                   key={index}
-                  className="opacity-0 animate-fade-in mb-0 whitespace-pre-line text-left"
+                  className={`opacity-0 animate-fade-in whitespace-pre-line text-left ${
+                    index === 0
+                      ? "first-letter:text-5xl first-letter:font-serif first-letter:font-bold first-letter:text-journal-gold first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:leading-none"
+                      : ""
+                  }`}
                   style={{ animationDelay: `${0.2 + index * 0.05}s`, animationFillMode: "forwards" }}
                 >
                   {paragraph}
@@ -910,16 +935,26 @@ const BlogPost = () => {
             {otherSlugs.map(otherSlug => {
               const otherPost = postsContent[otherSlug];
               return (
-                <Link 
+                <Link
                   key={otherSlug}
                   to={`/blog/${otherSlug}`}
-                  className="group flex flex-col justify-between p-6 border border-journal-border bg-journal-card hover:border-journal-champagne/60 hover:-translate-y-1 transition-all duration-300 rounded-[2px]"
+                  className="group relative flex flex-col justify-between p-6 border border-journal-border bg-journal-card hover:border-journal-champagne/60 hover:-translate-y-[3px] transition-all duration-300 rounded-[3px] overflow-hidden shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10)] hover:shadow-[0_10px_32px_-8px_rgba(139,106,67,0.20)]"
                 >
+                  {/* Accent bar */}
+                  <span className="absolute left-0 top-0 h-full w-[3px] bg-journal-champagne origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-300 rounded-l-[3px]" aria-hidden="true" />
                   <div className="space-y-3">
-                    <span className="text-[10px] tracking-[0.25em] uppercase text-journal-gold font-medium block">{otherPost.category}</span>
+                    <div className="flex items-center gap-2 flex-wrap">
+                      <span className="text-[10px] tracking-[0.2em] uppercase text-journal-gold font-semibold bg-journal-gold/10 border border-journal-gold/20 px-2 py-[2px] rounded-full">{otherPost.category}</span>
+                      <time className="text-[10px] tracking-[0.15em] uppercase text-journal-muted">{otherPost.date}</time>
+                    </div>
                     <h4 className="font-serif text-lg text-journal-text group-hover:text-journal-gold transition-colors leading-snug font-medium">{otherPost.title}</h4>
+                    <p className="text-xs text-journal-text-secondary font-light leading-relaxed line-clamp-2">
+                      {otherPost.content[0]}
+                    </p>
                   </div>
-                  <span className="text-[11px] text-journal-gold mt-6 block uppercase tracking-wider font-medium">Read entry →</span>
+                  <span className="inline-flex items-center gap-1 text-[11px] text-journal-gold mt-5 uppercase tracking-wider font-semibold">
+                    Read entry <span className="group-hover:translate-x-1 transition-transform duration-300 inline-block">→</span>
+                  </span>
                 </Link>
               );
             })}

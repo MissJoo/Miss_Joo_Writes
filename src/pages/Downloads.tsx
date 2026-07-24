@@ -57,7 +57,7 @@ const Downloads = () => {
     return (
         <Layout>
             {/* Hero Section */}
-            <section className="relative min-h-[65vh] flex items-center justify-center overflow-hidden bg-journal-bg pt-20">
+            <section className="relative min-h-[65vh] flex items-center justify-center bg-journal-bg pt-20">
                 {/* Background Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-journal-bg/30 to-journal-bg z-0"></div>
 

@@ -274,7 +274,7 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-journal-bg pt-20">
+      <section className="relative flex items-center justify-center bg-journal-bg pt-20 min-h-[85vh]">
         {/* Soft Background Texture Overlay */}
         <div className="absolute inset-0 z-0 select-none pointer-events-none">
           <img
@@ -314,7 +314,7 @@ const Index = () => {
                 </Link>
               </Button>
               <Link 
-                to="/blog/emotionally-tired" 
+                to="/blog/quiet-pressure-figured-out" 
                 className="text-journal-gold hover:text-journal-text text-xs tracking-wider uppercase underline underline-offset-4 decoration-journal-champagne font-sans font-medium py-2 transition-colors duration-300"
               >
                 Read the latest reflection
@@ -364,13 +364,15 @@ const Index = () => {
                   </div>
 
                   {/* Graphic Side */}
-                  <div className="relative md:col-span-5 min-h-[260px] bg-journal-bg-secondary/40 flex items-center justify-center p-8 select-none border-t md:border-t-0 md:border-l border-journal-border/50">
-                    <div className="text-center space-y-4 max-w-[240px]">
+                  <div className="relative md:col-span-5 min-h-[260px] bg-gradient-to-br from-journal-bg-secondary/50 via-journal-bg-secondary to-journal-bg-secondary/80 flex items-center justify-center p-8 select-none border-t md:border-t-0 md:border-l border-journal-border/50">
+                    {/* Subtle decorative corner */}
+                    <span className="absolute top-4 right-4 text-journal-champagne/30 font-serif text-5xl select-none leading-none">&ldquo;</span>
+                    <div className="text-center space-y-5 max-w-[240px]">
                       <span className="text-xl text-journal-champagne">✦</span>
-                      <p className="font-serif italic text-lg text-journal-text-secondary leading-relaxed">
+                      <p className="font-serif italic text-base md:text-lg text-journal-text-secondary leading-relaxed">
                         &ldquo;{post.quote || post.excerpt}&rdquo;
                       </p>
-                      <div className="w-10 h-px bg-journal-champagne/40 mx-auto"></div>
+                      <div className="w-10 h-px bg-journal-champagne/50 mx-auto"></div>
                     </div>
                   </div>
                 </div>
@@ -435,7 +437,7 @@ const Index = () => {
             {blogPosts.slice(0, 3).map((post) => (
               <article
                 key={post.slug}
-                className="group flex flex-col justify-between p-6 border border-journal-border bg-journal-card hover:border-journal-champagne/60 hover:-translate-y-1 transition-all duration-300 rounded-[2px] shadow-sm"
+                className="group relative flex flex-col justify-between p-6 border border-journal-border bg-journal-card hover:border-journal-champagne/60 hover:-translate-y-[3px] transition-all duration-300 rounded-[3px] shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10),0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_-8px_rgba(139,106,67,0.22),0_4px_16px_-4px_rgba(0,0,0,0.07)] overflow-hidden"
               >
                 <div className="space-y-4">
                   <div className="flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted">
