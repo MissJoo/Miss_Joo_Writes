@@ -62,7 +62,7 @@ const Downloads = () => {
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-journal-bg/30 to-journal-bg z-0"></div>
 
                 {/* Content */}
-                <div className="container relative z-10 mx-auto px-6 py-1 md:py-4 lg:px-12">
+                <div className="container relative z-10 mx-auto -translate-y-1 px-6 py-0 md:py-3 lg:px-12">
                     <div className="mx-auto max-w-3xl space-y-2 text-center md:space-y-4">
                         {/* Icon */}
                         <div className="animate-fade-in-up">
