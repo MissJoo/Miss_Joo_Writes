@@ -286,7 +286,7 @@ const Blog = () => {
   return (
     <Layout>
       {/* Header */}
-      <section className="py-20 lg:py-28 bg-journal-bg border-b border-journal-border/30">
+      <section className="flex min-h-[calc(100svh-85px)] items-center border-b border-journal-border/30 bg-journal-bg py-12 md:min-h-[calc(100svh-5rem)] md:py-16">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-2xl mx-auto text-center space-y-4">
             <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">
@@ -303,20 +303,20 @@ const Blog = () => {
         </div>
       </section>
 
-      {/* Categories — sticky filter */}
+      {/* Categories filter */}
       <div
-        className="py-6 border-b border-journal-border/30 sticky top-16 lg:top-20 z-40"
+        className="border-b border-journal-border/30 py-3 md:py-4"
         style={{ backgroundColor: "#FAF7F2" }}
       >
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="flex flex-wrap items-center justify-between gap-4">
-            <div className="flex flex-wrap gap-2">
+          <div className="flex items-center justify-between gap-4">
+            <div className="-mx-6 flex flex-1 flex-nowrap gap-1.5 overflow-x-auto px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:gap-2 md:px-0">
               {categories.map((category) => (
                 <button
                   key={category}
                   onClick={() => setActiveCategory(category)}
                   className={cn(
-                    "text-[10px] tracking-[0.2em] uppercase font-semibold font-sans px-3 py-1.5 rounded-full border transition-all duration-300",
+                    "shrink-0 rounded-full border px-2 py-1.5 font-sans text-[9px] font-semibold uppercase tracking-[0.15em] transition-all duration-300 md:px-3 md:text-[10px] md:tracking-[0.2em]",
                     activeCategory === category
                       ? "bg-journal-gold text-journal-bg border-journal-gold shadow-sm"
                       : "text-journal-muted border-journal-border/60 hover:text-journal-text hover:border-journal-gold/50 bg-transparent"
@@ -326,7 +326,7 @@ const Blog = () => {
                 </button>
               ))}
             </div>
-            <span className="text-[10px] tracking-widest uppercase text-journal-muted font-sans">
+            <span className="hidden shrink-0 font-sans text-[10px] uppercase tracking-widest text-journal-muted sm:block">
               {filteredPosts.length} {filteredPosts.length === 1 ? "entry" : "entries"}
             </span>
           </div>

@@ -274,7 +274,7 @@ const Index = () => {
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative flex items-center justify-center bg-journal-bg pt-20 min-h-[85vh]">
+      <section className="relative flex min-h-[85vh] items-center justify-center bg-journal-bg">
         {/* Soft Background Texture Overlay */}
         <div className="absolute inset-0 z-0 select-none pointer-events-none">
           <img

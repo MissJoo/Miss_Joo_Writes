@@ -47,30 +47,26 @@ const Contact = () => {
 
   return (
     <Layout>
-      {/* Header */}
-      <section className="pt-28 pb-12 lg:pt-36 lg:pb-16 bg-journal-bg">
-        <div className="container mx-auto px-6 lg:px-12 text-center">
-          <div className="max-w-2xl mx-auto space-y-4">
-            <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block animate-fade-in">
-              Connect
-            </span>
-            <h1 className="font-serif text-3.5xl md:text-5xl leading-tight text-journal-text animate-fade-in-up font-medium">
-              Get in Touch
-            </h1>
-            <div className="w-12 h-px bg-journal-champagne/40 mx-auto mt-2"></div>
-            <p className="text-journal-text-secondary font-sans text-sm md:text-base font-light max-w-md mx-auto leading-relaxed">
-              Have a thought to share, a question, or just want to say hello? I'd love to hear from you.
-            </p>
-          </div>
-        </div>
-      </section>
+      {/* Contact hero and form */}
+      <section className="flex min-h-[calc(100svh-85px)] items-center bg-journal-bg py-2 md:min-h-[calc(100svh-5rem)] md:py-10">
+        <div className="container mx-auto max-w-5xl px-6 lg:px-12">
+          <div className="grid items-center gap-4 md:grid-cols-[0.8fr_1.2fr] md:gap-12">
+            <div className="mx-auto max-w-md space-y-3 text-center md:text-left">
+              <span className="block animate-fade-in font-sans text-[10px] font-medium uppercase tracking-[0.3em] text-journal-gold">
+                Connect
+              </span>
+              <h1 className="animate-fade-in-up font-serif text-3.5xl font-medium leading-tight text-journal-text md:text-5xl">
+                Get in Touch
+              </h1>
+              <div className="mx-auto h-px w-12 bg-journal-champagne/40 md:mx-0"></div>
+              <p className="font-sans text-sm font-light leading-relaxed text-journal-text-secondary md:text-base">
+                Have a thought to share, a question, or just want to say hello? I'd love to hear from you.
+              </p>
+            </div>
 
-      {/* Contact Form */}
-      <section className="pb-20 bg-journal-bg">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-lg mx-auto bg-journal-card border border-journal-border p-8 md:p-10 rounded-[2px] shadow-sm">
-            <form onSubmit={handleSubmit} className="space-y-8">
-              <div className="space-y-2 animate-fade-in-delay-1">
+            <div className="mx-auto w-full max-w-md rounded-[2px] border border-journal-border bg-journal-card p-3 shadow-sm md:p-6">
+              <form onSubmit={handleSubmit} className="space-y-2 md:space-y-4">
+              <div className="space-y-0.5">
                 <label htmlFor="name" className="text-[10px] tracking-widest uppercase text-journal-gold font-sans font-semibold">
                   Name
                 </label>
@@ -81,12 +77,12 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="bg-transparent border-0 border-b border-journal-border/80 rounded-none px-0 py-3 text-journal-text focus-visible:ring-0 focus-visible:border-journal-gold transition-colors text-sm font-sans placeholder:text-journal-muted/50"
+                  className="h-9 rounded-none border-0 border-b border-journal-border/80 bg-transparent px-0 py-2 font-sans text-sm text-journal-text transition-colors placeholder:text-journal-muted/50 focus-visible:border-journal-gold focus-visible:ring-0 md:h-10"
                   placeholder="Your name"
                 />
               </div>
 
-              <div className="space-y-2 animate-fade-in-delay-2">
+              <div className="space-y-0.5">
                 <label htmlFor="email" className="text-[10px] tracking-widest uppercase text-journal-gold font-sans font-semibold">
                   Email
                 </label>
@@ -97,12 +93,12 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="bg-transparent border-0 border-b border-journal-border/80 rounded-none px-0 py-3 text-journal-text focus-visible:ring-0 focus-visible:border-journal-gold transition-colors text-sm font-sans placeholder:text-journal-muted/50"
+                  className="h-9 rounded-none border-0 border-b border-journal-border/80 bg-transparent px-0 py-2 font-sans text-sm text-journal-text transition-colors placeholder:text-journal-muted/50 focus-visible:border-journal-gold focus-visible:ring-0 md:h-10"
                   placeholder="your@email.com"
                 />
               </div>
 
-              <div className="space-y-2 animate-fade-in-delay-2">
+              <div className="space-y-0.5">
                 <label htmlFor="message" className="text-[10px] tracking-widest uppercase text-journal-gold font-sans font-semibold">
                   Message
                 </label>
@@ -112,35 +108,36 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows={5}
-                  className="bg-transparent border-0 border-b border-journal-border/80 rounded-none px-0 py-3 text-journal-text focus-visible:ring-0 focus-visible:border-journal-gold transition-colors text-sm font-sans placeholder:text-journal-muted/50 resize-none"
+                  rows={3}
+                  className="min-h-[60px] resize-none rounded-none border-0 border-b border-journal-border/80 bg-transparent px-0 py-2 font-sans text-sm text-journal-text transition-colors placeholder:text-journal-muted/50 focus-visible:border-journal-gold focus-visible:ring-0 md:min-h-[72px]"
                   placeholder="What's on your mind?"
                 />
               </div>
 
-              <div className="pt-4 animate-fade-in-delay-3">
+              <div>
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full sm:w-auto rounded-full bg-journal-text hover:bg-journal-gold text-journal-bg border-none tracking-widest uppercase text-[11px] h-12 px-8 transition-colors duration-300 shadow-sm"
+                  className="h-9 w-full rounded-full border-none bg-journal-text px-8 text-[11px] uppercase tracking-widest text-journal-bg shadow-sm transition-colors duration-300 hover:bg-journal-gold sm:w-auto md:h-10"
                 >
                   {isSubmitting ? "Opening..." : "Open email draft"}
                 </Button>
               </div>
-            </form>
+              </form>
 
-            {/* Alternative Contact */}
-            <div className="mt-12 pt-8 border-t border-journal-border/30 text-center animate-fade-in-delay-3">
-              <p className="text-journal-muted text-xs mb-3 font-sans">
-                Prefer direct email?
-              </p>
-              <a
-                href={`mailto:${CONTACT_EMAIL}`}
-                className="inline-flex items-center gap-2 text-journal-text hover:text-journal-gold transition-colors duration-300 group text-sm font-sans font-medium"
-              >
-                <Mail size={14} className="group-hover:scale-105 transition-transform duration-300 text-journal-gold" />
-                <span className="tracking-wide">{CONTACT_EMAIL}</span>
-              </a>
+              {/* Alternative Contact */}
+              <div className="mt-3 border-t border-journal-border/30 pt-2 text-center md:mt-4 md:pt-3">
+                <p className="mb-2 font-sans text-xs text-journal-muted">
+                  Prefer direct email?
+                </p>
+                <a
+                  href={`mailto:${CONTACT_EMAIL}`}
+                  className="group inline-flex items-center gap-2 font-sans text-sm font-medium text-journal-text transition-colors duration-300 hover:text-journal-gold"
+                >
+                  <Mail size={14} className="text-journal-gold transition-transform duration-300 group-hover:scale-105" />
+                  <span className="tracking-wide">{CONTACT_EMAIL}</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>

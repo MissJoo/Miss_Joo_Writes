@@ -57,38 +57,38 @@ const Downloads = () => {
     return (
         <Layout>
             {/* Hero Section */}
-            <section className="relative min-h-[65vh] flex items-center justify-center bg-journal-bg pt-20">
+            <section className="relative flex min-h-[calc(100svh-85px)] items-center justify-center bg-journal-bg md:min-h-[calc(100svh-5rem)]">
                 {/* Background Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-journal-bg/30 to-journal-bg z-0"></div>
 
                 {/* Content */}
-                <div className="relative z-10 container mx-auto px-6 lg:px-12 py-16">
-                    <div className="max-w-3xl mx-auto text-center space-y-10">
+                <div className="container relative z-10 mx-auto px-6 py-3 md:py-8 lg:px-12">
+                    <div className="mx-auto max-w-3xl space-y-3 text-center md:space-y-6">
                         {/* Icon */}
                         <div className="animate-fade-in-up">
-                            <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-journal-bg-secondary text-journal-gold mb-2 border border-journal-border/40 select-none">
+                            <div className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-journal-border/40 bg-journal-bg-secondary text-journal-gold md:mb-1 md:h-12 md:w-12">
                                 <BookOpen className="w-5 h-5" />
                             </div>
                         </div>
 
                         {/* Headline */}
-                        <h1 className="font-serif text-3.5xl md:text-5xl leading-tight text-journal-text animate-fade-in-up">
+                        <h1 className="animate-fade-in-up font-serif text-2xl leading-tight text-journal-text md:text-4xl">
                             Notes on Becoming
-                            <span className="block font-sans font-light text-journal-muted mt-2 text-sm tracking-[0.25em] uppercase">
+                            <span className="mt-1.5 block font-sans text-xs font-light uppercase tracking-[0.22em] text-journal-muted md:mt-2 md:text-sm md:tracking-[0.25em]">
                                 The Reflection Journal Collection
                             </span>
                         </h1>
 
                         {/* Subtext */}
-                        <p className="text-journal-text-secondary text-base md:text-lg font-sans font-light leading-relaxed animate-fade-in-delay-1 max-w-xl mx-auto">
+                        <p className="animate-fade-in-delay-1 mx-auto max-w-xl font-sans text-sm font-light leading-relaxed text-journal-text-secondary md:text-base">
                             A gentle monthly companion for anyone learning to move slower, trust what's unfolding, and sit with themselves honestly.
                         </p>
 
                         {/* Email Form / Unlocked Status */}
-                        <div className="animate-fade-in-delay-2 pt-4">
+                        <div className="animate-fade-in-delay-2 pt-1 md:pt-4">
                             {!isUnlocked ? (
-                                <div className="space-y-4 max-w-md mx-auto p-6 border border-journal-border bg-journal-card rounded-[2px] shadow-sm">
-                                    <p className="font-serif text-sm italic text-journal-text-secondary">
+                                <div className="mx-auto max-w-md space-y-3 rounded-[2px] border border-journal-border bg-journal-card p-3 shadow-sm [&_button]:h-10 [&_input]:h-10 md:p-5">
+                                    <p className="font-serif text-xs italic text-journal-text-secondary md:text-sm">
                                         Join the newsletter to unlock the entire collection.
                                     </p>
                                     <EmailSignupForm 

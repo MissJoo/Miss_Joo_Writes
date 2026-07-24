@@ -32,28 +32,28 @@ const Footer = () => {
 
   return (
     <footer className="bg-journal-text text-journal-bg border-t border-journal-text-secondary/20">
-      <div className="container mx-auto px-6 lg:px-12 py-3 lg:py-4">
-        <div className="flex flex-col items-center gap-3 max-w-4xl mx-auto">
+      <div className="container mx-auto px-6 py-4 lg:px-12">
+        <div className="mx-auto flex max-w-4xl flex-col items-center gap-1.5">
           {/* Logo */}
           <Link
             to="/"
-            className="font-serif text-2xl lg:text-3xl font-semibold tracking-[0.08em] text-journal-bg hover:text-journal-champagne transition-colors duration-500"
+            className="font-serif text-lg font-semibold tracking-[0.08em] text-journal-bg transition-colors duration-500 hover:text-journal-champagne"
           >
             Miss Joo Writes<span className="text-journal-champagne">.</span>
           </Link>
 
           {/* Tagline */}
-          <p className="font-serif text-lg lg:text-xl tracking-wide text-journal-bg/80 italic text-center max-w-lg leading-relaxed">
+          <p className="max-w-lg text-center font-serif text-xs italic leading-snug tracking-wide text-journal-bg/80">
             “A space where my thoughts learn how to breathe.”
           </p>
 
           {/* Signature */}
-          <div className="font-signature text-2xl text-journal-champagne select-none">
+          <div className="select-none font-signature text-lg leading-tight text-journal-champagne">
             With softness, Miss Joo
           </div>
 
           {/* Social Links */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-4 py-0.5">
             {socialLinks.map(({ icon: Icon, href, label }) => (
               <a
                 key={label}
@@ -69,10 +69,10 @@ const Footer = () => {
           </div>
 
           {/* Divider */}
-          <div className="w-16 h-px bg-journal-champagne/30"></div>
+          <div className="h-px w-12 bg-journal-champagne/30"></div>
 
           {/* Navigation */}
-          <nav className="flex flex-wrap justify-center gap-x-8 gap-y-4">
+          <nav className="flex flex-wrap justify-center gap-x-5 gap-y-1">
             {[
               { name: "Journal", path: "/blog" },
               { name: "Lifestyle", path: "/lifestyle" },
@@ -91,11 +91,11 @@ const Footer = () => {
           </nav>
 
           {/* Copyright & Legal */}
-          <div className="flex flex-col items-center gap-1 mt-1">
-            <p className="text-[11px] text-journal-bg/40 tracking-wider font-sans">
+          <div className="flex flex-col items-center gap-0.5 text-center">
+            <p className="font-sans text-[9px] tracking-wider text-journal-bg/40">
               © {currentYear} Miss Joo Writes. All rights reserved.
             </p>
-            <div className="flex gap-4 text-[11px] text-journal-bg/40 tracking-wider font-sans">
+            <div className="flex gap-3 font-sans text-[9px] tracking-wider text-journal-bg/40">
               <Link to="/privacy-policy" className="hover:text-journal-champagne transition-colors duration-300">
                 Privacy Policy
               </Link>

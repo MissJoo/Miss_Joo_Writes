@@ -7,7 +7,7 @@ const About = () => {
   return (
     <Layout>
       {/* Header */}
-      <section className="pt-28 pb-12 lg:pt-36 lg:pb-16 bg-journal-bg">
+      <section className="flex min-h-[calc(100svh-85px)] items-center bg-journal-bg py-12 md:min-h-[calc(100svh-5rem)] md:py-16">
         <div className="container mx-auto px-6 lg:px-12 text-center">
           <div className="max-w-2xl mx-auto space-y-3">
             <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block animate-fade-in">
