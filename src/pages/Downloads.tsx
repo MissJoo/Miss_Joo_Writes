@@ -62,11 +62,11 @@ const Downloads = () => {
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-journal-bg/30 to-journal-bg z-0"></div>
 
                 {/* Content */}
-                <div className="container relative z-10 mx-auto px-6 py-3 md:py-8 lg:px-12">
-                    <div className="mx-auto max-w-3xl space-y-3 text-center md:space-y-6">
+                <div className="container relative z-10 mx-auto px-6 py-1 md:py-4 lg:px-12">
+                    <div className="mx-auto max-w-3xl space-y-2 text-center md:space-y-4">
                         {/* Icon */}
                         <div className="animate-fade-in-up">
-                            <div className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-journal-border/40 bg-journal-bg-secondary text-journal-gold md:mb-1 md:h-12 md:w-12">
+                            <div className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-journal-border/40 bg-journal-bg-secondary text-journal-gold md:mb-1 md:h-12 md:w-12">
                                 <BookOpen className="w-5 h-5" />
                             </div>
                         </div>
@@ -87,7 +87,7 @@ const Downloads = () => {
                         {/* Email Form / Unlocked Status */}
                         <div className="animate-fade-in-delay-2 pt-1 md:pt-4">
                             {!isUnlocked ? (
-                                <div className="mx-auto max-w-md space-y-3 rounded-[2px] border border-journal-border bg-journal-card p-3 shadow-sm [&_button]:h-10 [&_input]:h-10 md:p-5">
+                                <div className="mx-auto max-w-md space-y-3 rounded-[2px] border border-journal-border bg-journal-card p-2.5 shadow-sm [&_button]:h-10 [&_input]:h-10 md:p-4">
                                     <p className="font-serif text-xs italic text-journal-text-secondary md:text-sm">
                                         Join the newsletter to unlock the entire collection.
                                     </p>
