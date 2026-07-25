@@ -266,9 +266,9 @@ const allPosts = [
     slug: "art-of-letting-go",
   },
   {
-    title: "Midnight conversations with myself",
+    title: "The Version of Me that Only Appears at 2 AM",
     excerpt: "There's honesty that only comes out at 2 AM, when the world is asleep and you're left with nothing but your thoughts and the soft glow of a bedside lamp...",
-    date: "November 28, 2025",
+    date: "November 25, 2025",
     category: "Thoughts",
     slug: "midnight-conversations",
   },
