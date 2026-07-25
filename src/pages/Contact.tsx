@@ -48,24 +48,24 @@ const Contact = () => {
   return (
     <Layout>
       {/* Contact hero and form */}
-      <section className="flex min-h-[calc(100svh-85px)] items-center bg-journal-bg py-2 md:min-h-[calc(100svh-5rem)] md:py-10">
+      <section className="flex min-h-[calc(100svh-85px)] items-center bg-journal-bg py-6 md:min-h-[calc(100svh-5rem)] md:py-10">
         <div className="container mx-auto max-w-5xl px-6 lg:px-12">
           <div className="grid items-center gap-4 md:grid-cols-[0.8fr_1.2fr] md:gap-12">
-            <div className="mx-auto max-w-md space-y-3 text-center md:text-left">
+            <div className="mx-auto max-w-md space-y-2 text-center md:space-y-3 md:text-left">
               <span className="block animate-fade-in font-sans text-[10px] font-medium uppercase tracking-[0.3em] text-journal-gold">
                 Connect
               </span>
-              <h1 className="animate-fade-in-up font-serif text-3.5xl font-medium leading-tight text-journal-text md:text-5xl">
+              <h1 className="animate-fade-in-up font-serif text-3xl font-medium leading-tight text-journal-text md:text-5xl">
                 Get in Touch
               </h1>
               <div className="mx-auto h-px w-12 bg-journal-champagne/40 md:mx-0"></div>
-              <p className="font-sans text-sm font-light leading-relaxed text-journal-text-secondary md:text-base">
+              <p className="font-sans text-xs font-light leading-relaxed text-journal-text-secondary md:text-base">
                 Have a thought to share, a question, or just want to say hello? I'd love to hear from you.
               </p>
             </div>
 
-            <div className="mx-auto w-full max-w-md rounded-[2px] border border-journal-border bg-journal-card p-3 shadow-sm md:p-6">
-              <form onSubmit={handleSubmit} className="space-y-2 md:space-y-4">
+            <div className="mx-auto flex aspect-square w-full max-w-sm flex-col justify-center rounded-[2px] border border-journal-border bg-journal-card p-2 shadow-sm [&_label]:block [&_label]:leading-none md:p-4">
+              <form onSubmit={handleSubmit} className="space-y-1">
               <div className="space-y-0.5">
                 <label htmlFor="name" className="text-[10px] tracking-widest uppercase text-journal-gold font-sans font-semibold">
                   Name
@@ -77,7 +77,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="h-9 rounded-none border-0 border-b border-journal-border/80 bg-transparent px-0 py-2 font-sans text-sm text-journal-text transition-colors placeholder:text-journal-muted/50 focus-visible:border-journal-gold focus-visible:ring-0 md:h-10"
+                  className="h-8 rounded-none border-0 border-b border-journal-border/80 bg-transparent px-0 py-1.5 font-sans text-sm text-journal-text transition-colors placeholder:text-journal-muted/50 focus-visible:border-journal-gold focus-visible:ring-0"
                   placeholder="Your name"
                 />
               </div>
@@ -93,7 +93,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="h-9 rounded-none border-0 border-b border-journal-border/80 bg-transparent px-0 py-2 font-sans text-sm text-journal-text transition-colors placeholder:text-journal-muted/50 focus-visible:border-journal-gold focus-visible:ring-0 md:h-10"
+                  className="h-8 rounded-none border-0 border-b border-journal-border/80 bg-transparent px-0 py-1.5 font-sans text-sm text-journal-text transition-colors placeholder:text-journal-muted/50 focus-visible:border-journal-gold focus-visible:ring-0"
                   placeholder="your@email.com"
                 />
               </div>
@@ -108,8 +108,8 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows={3}
-                  className="min-h-[60px] resize-none rounded-none border-0 border-b border-journal-border/80 bg-transparent px-0 py-2 font-sans text-sm text-journal-text transition-colors placeholder:text-journal-muted/50 focus-visible:border-journal-gold focus-visible:ring-0 md:min-h-[72px]"
+                  rows={1}
+                  className="min-h-10 resize-none rounded-none border-0 border-b border-journal-border/80 bg-transparent px-0 py-1.5 font-sans text-sm text-journal-text transition-colors placeholder:text-journal-muted/50 focus-visible:border-journal-gold focus-visible:ring-0"
                   placeholder="What's on your mind?"
                 />
               </div>
@@ -118,7 +118,7 @@ const Contact = () => {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="h-9 w-full rounded-full border-none bg-journal-text px-8 text-[11px] uppercase tracking-widest text-journal-bg shadow-sm transition-colors duration-300 hover:bg-journal-gold sm:w-auto md:h-10"
+                  className="h-8 w-full rounded-full border-none bg-journal-text px-8 text-[10px] uppercase tracking-widest text-journal-bg shadow-sm transition-colors duration-300 hover:bg-journal-gold sm:w-auto"
                 >
                   {isSubmitting ? "Opening..." : "Open email draft"}
                 </Button>
@@ -126,10 +126,7 @@ const Contact = () => {
               </form>
 
               {/* Alternative Contact */}
-              <div className="mt-3 border-t border-journal-border/30 pt-2 text-center md:mt-4 md:pt-3">
-                <p className="mb-2 font-sans text-xs text-journal-muted">
-                  Prefer direct email?
-                </p>
+              <div className="mt-2 border-t border-journal-border/30 pt-2 text-center">
                 <a
                   href={`mailto:${CONTACT_EMAIL}`}
                   className="group inline-flex items-center gap-2 font-sans text-sm font-medium text-journal-text transition-colors duration-300 hover:text-journal-gold"

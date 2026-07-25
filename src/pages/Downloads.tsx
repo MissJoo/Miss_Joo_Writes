@@ -62,17 +62,17 @@ const Downloads = () => {
                 <div className="absolute inset-0 bg-gradient-to-b from-transparent via-journal-bg/30 to-journal-bg z-0"></div>
 
                 {/* Content */}
-                <div className="container relative z-10 mx-auto -translate-y-1 px-6 py-0 md:py-3 lg:px-12">
-                    <div className="mx-auto max-w-3xl space-y-2 text-center md:space-y-4">
+                <div className="container relative z-10 mx-auto -translate-y-1 px-6 py-0 md:py-2 lg:px-12">
+                    <div className="mx-auto max-w-3xl space-y-1.5 text-center md:space-y-3">
                         {/* Icon */}
                         <div className="animate-fade-in-up">
-                            <div className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-journal-border/40 bg-journal-bg-secondary text-journal-gold md:mb-1 md:h-12 md:w-12">
-                                <BookOpen className="w-5 h-5" />
+                            <div className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-journal-border/40 bg-journal-bg-secondary text-journal-gold md:mb-1 md:h-10 md:w-10">
+                                <BookOpen className="h-4 w-4" />
                             </div>
                         </div>
 
                         {/* Headline */}
-                        <h1 className="animate-fade-in-up font-serif text-2xl leading-tight text-journal-text md:text-4xl">
+                        <h1 className="animate-fade-in-up font-serif text-xl leading-tight text-journal-text md:text-3xl">
                             Notes on Becoming
                             <span className="mt-1.5 block font-sans text-xs font-light uppercase tracking-[0.22em] text-journal-muted md:mt-2 md:text-sm md:tracking-[0.25em]">
                                 The Reflection Journal Collection
@@ -80,14 +80,14 @@ const Downloads = () => {
                         </h1>
 
                         {/* Subtext */}
-                        <p className="animate-fade-in-delay-1 mx-auto max-w-xl font-sans text-sm font-light leading-relaxed text-journal-text-secondary md:text-base">
+                        <p className="animate-fade-in-delay-1 mx-auto max-w-xl font-sans text-xs font-light leading-relaxed text-journal-text-secondary md:text-sm">
                             A gentle monthly companion for anyone learning to move slower, trust what's unfolding, and sit with themselves honestly.
                         </p>
 
                         {/* Email Form / Unlocked Status */}
                         <div className="animate-fade-in-delay-2 pt-1 md:pt-4">
                             {!isUnlocked ? (
-                                <div className="mx-auto max-w-md space-y-3 rounded-[2px] border border-journal-border bg-journal-card p-2.5 shadow-sm [&_button]:h-10 [&_input]:h-10 md:p-4">
+                                <div className="mx-auto flex aspect-square w-full max-w-xs flex-col justify-center space-y-2 rounded-[2px] border border-journal-border bg-journal-card p-2 shadow-sm [&_button]:h-9 [&_input]:h-9 md:space-y-3 md:p-3">
                                     <p className="font-serif text-xs italic text-journal-text-secondary md:text-sm">
                                         Join the newsletter to unlock the entire collection.
                                     </p>
