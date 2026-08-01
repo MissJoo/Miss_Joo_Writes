@@ -7,6 +7,13 @@ const categories = ["All", "Thoughts", "Life", "Healing", "Random"];
 
 const allPosts = [
   {
+    title: "I Am No Longer Waiting to Become Her",
+    excerpt: "For a long time, I imagined the woman I wanted to become as someone waiting for me in the future. She was confident. She knew what she wanted. But I kept moving the finish line further away.",
+    date: "July 29, 2026",
+    category: "Healing",
+    slug: "no-longer-waiting-to-become-her",
+  },
+  {
     title: "The Quiet Pressure to Have It All Figured Out",
     excerpt: "There was a time when I genuinely believed life would make more sense by now. I thought adulthood would eventually arrive with answers. Instead, it arrived with more questions.",
     date: "July 21, 2026",

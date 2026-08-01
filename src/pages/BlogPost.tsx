@@ -795,6 +795,122 @@ const postsContent: Record<string, { title: string; date: string; category: stri
       "And perhaps that's the greatest gift the night gives us — not the answers, but the courage to ask ourselves the questions we've been too busy to hear.",
     ],
   },
+  "no-longer-waiting-to-become-her": {
+    title: "I Am No Longer Waiting to Become Her",
+    date: "July 29, 2026",
+    category: "Healing",
+    content: [
+      "For a long time, I imagined the woman I wanted to become as someone waiting for me in the future.",
+      "She was confident.",
+      "She knew what she wanted and did not spend hours questioning every decision.",
+      "She spoke without worrying whether her voice was too loud, her opinions were too strong, or her dreams were too ambitious.",
+      "She had accomplished the things I was still working toward. She was successful, certain, and completely comfortable with who she was.",
+      "Whenever I felt unsure of myself, I thought about her.",
+      "One day, I told myself.",
+      "One day, I will become that woman.",
+      "I believed confidence would arrive after the next achievement.",
+      "I would finally be proud of myself when my work became more successful.",
+      "I would trust my abilities when other people recognized them.",
+      "I would feel ready when I had more experience.",
+      "I would begin when I was no longer afraid.",
+      "But every time I reached one goal, I created another condition.",
+      "There was always something else I needed to achieve before I could believe I had become her.",
+      "Without realizing it, I had turned becoming into a destination that kept moving further away.",
+      "##: The Woman I Kept Overlooking",
+      "I used to believe transformation would feel dramatic.",
+      "I imagined there would be one defining moment when everything inside me would change.",
+      "Self-doubt would disappear.",
+      "I would stop comparing myself to other people.",
+      "I would wake up knowing exactly where my life was going.",
+      "But growth did not arrive that way.",
+      "It arrived quietly.",
+      "It appeared every time I continued even when I was uncertain.",
+      "It appeared when I entered a room feeling nervous but chose not to make myself smaller.",
+      "It appeared when I faced a problem and realized I could handle it.",
+      "It appeared when I accepted a responsibility before I felt completely ready and decided to learn what I needed along the way.",
+      "It appeared when I made mistakes, recovered, and continued.",
+      "None of those moments felt life-changing while they were happening.",
+      "They simply felt like ordinary parts of life.",
+      "But when I look back, I can see how much they shaped me.",
+      "The woman I wanted to become was not waiting somewhere far ahead.",
+      "She was being built in every uncomfortable beginning, every difficult decision, and every moment I chose courage over comfort.",
+      "I had been so focused on everything I had not yet achieved that I failed to notice how much of her already existed in me.",
+      "I was waiting to feel confident without recognizing all the moments when I had already acted bravely.",
+      "I was waiting to become strong without acknowledging everything I had already survived.",
+      "I was waiting for permission to believe in myself, even though my own life had already given me proof.",
+      "##: I Was Waiting for Permission",
+      "There is a quiet way many of us postpone becoming ourselves.",
+      "We wait for someone to tell us that we are ready.",
+      "We wait for reassurance that our ideas are valuable.",
+      "We wait for people to understand our choices before we trust them.",
+      "We wait for the perfect opportunity, the perfect timing, or the perfect version of ourselves.",
+      "Sometimes, we are not really waiting for readiness.",
+      "We are waiting for permission.",
+      "Permission to begin.\nPermission to speak.\nPermission to take our work seriously.\nPermission to want more from life.",
+      "For years, I believed confidence had to come before action.",
+      "Now I understand that confidence often grows because we acted while we were still afraid.",
+      "It comes after we send the message.\nAfter we enter the room.\nAfter we share the idea.\nAfter we accept the responsibility.\nAfter we try something without knowing exactly how it will turn out.",
+      "Readiness is not always a feeling.",
+      "Sometimes, readiness is simply deciding that fear will no longer make every decision for us.",
+      "It means accepting that we can feel nervous and still begin.\nWe can doubt ourselves and still speak.\nWe can still be learning and deserve to take up space.\nWe can be unfinished and still be worthy of the life we are trying to build.",
+      "I spent too much time believing that I needed to become fearless.",
+      "But fear is not proof that I am incapable.",
+      "Sometimes, it is proof that I am stepping into something unfamiliar.\nSomething bigger.\nSomething that matters.",
+      "The woman I wanted to become was never someone who felt no fear.",
+      "She was someone who stopped allowing fear to decide the limits of her life.",
+      "##: Becoming Was Never About Perfection",
+      "When I began writing this chapter, I thought becoming meant improving myself until I reached a version I could finally be proud of.",
+      "But perhaps that was the problem.",
+      "I treated myself as though I were a project that constantly needed to be fixed.",
+      "Every weakness became evidence that I still had a long way to go.\nEvery mistake made me question whether I had truly changed.\nEvery delay made me feel as though I was falling behind.",
+      "I now understand that becoming is not about turning into someone flawless.",
+      "It is about becoming more honest.\nHonest about what I want.\nHonest about what no longer feels right.\nHonest about the fears that have been controlling me.\nHonest about the dreams I keep pretending are not important.",
+      "Growth does not always make life easier.",
+      "Sometimes, it makes life clearer.",
+      "And clarity can be uncomfortable.",
+      "It can show us that certain habits no longer support the life we want.\nIt can reveal that some spaces only accept us when we remain quiet.\nIt can make us question plans we once believed would last forever.\nIt can ask us to disappoint people who preferred an older, more agreeable version of us.",
+      "For a long time, I confused humility with hiding.",
+      "I softened my opinions.\nI questioned my instincts.\nI avoided speaking confidently about what I knew because I did not want to appear difficult or overly ambitious.",
+      "I made myself smaller because I believed that was the easiest way to remain accepted.",
+      "But there is nothing humble about denying our own abilities.",
+      "There is nothing graceful about abandoning ourselves to make other people comfortable.",
+      "I can be kind without being silent.\nI can be soft without being weak.\nI can listen to others without allowing every opinion to become more important than my own.\nI can remain grounded while still believing I am capable of more.",
+      "Wanting to grow does not make me ungrateful.\nWanting my work to matter does not make me selfish.\nWanting a life that feels honest does not mean I have failed to appreciate everything I already have.",
+      "I can be grateful for where I am and still feel called to move forward.",
+      "##: I Already Carry Proof",
+      "Self-doubt has a way of making us forget our own history.",
+      "It reminds us of old mistakes.\nIt points toward everything we have not achieved.\nIt tells us we are still the person we used to be.",
+      "But my life carries evidence that says otherwise.",
+      "I have adapted to unfamiliar places.\nI have faced changes I once believed would overwhelm me.\nI have accepted responsibilities without having every answer.\nI have learned new roles, solved difficult problems, and continued during seasons when I questioned myself.",
+      "I have created things that once existed only as ideas.\nI have entered new spaces.\nI have found my voice in moments when silence would have been easier.\nI have started again more than once.",
+      "That is proof.",
+      "Not proof that I will never feel afraid again.\nNot proof that I will never make another mistake.",
+      "But proof that I can trust myself to respond to whatever comes next.",
+      "Perhaps that is the confidence I was looking for all along.",
+      "Not certainty that everything will go according to plan.",
+      "But the belief that even when it does not, I will not abandon myself.",
+      "##: This Is Where I Stop Waiting",
+      "I am no longer waiting for a future achievement to make me worthy.\nI am no longer waiting for everyone to understand my choices.\nI am no longer waiting to become fearless before I begin.\nI am no longer asking the world for permission to believe in myself.",
+      "There are still parts of me that are growing.",
+      "There are still dreams I want to pursue, habits I want to change, and lessons I have not yet learned.",
+      "But unfinished does not mean unready.",
+      "I do not need to reach a final version of myself before I can live fully.",
+      "Perhaps there is no final version.",
+      "Perhaps we are always becoming.\nAlways learning.\nAlways releasing.\nAlways meeting new versions of ourselves as life asks us to grow.",
+      "But I refuse to spend another chapter treating the woman I am today as merely a temporary draft.",
+      "She deserves to be recognized.\nShe deserves to be trusted.\nShe deserves to take up space.\nShe deserves to begin.",
+      "This month, I wrote about change, homesickness, self-doubt, comparison, and the quiet pressure to have everything figured out.",
+      "I thought I was writing about the woman I was becoming.",
+      "Instead, I discovered that she had been here all along.",
+      "She was present every time I continued without applause.\nEvery time I entered a room even though I felt nervous.\nEvery time I chose to learn instead of convincing myself I was incapable.\nEvery time I trusted the quiet voice inside me that said there was more waiting beyond my fear.",
+      "I do not need to chase her anymore.",
+      "I only need to stop leaving her behind.",
+      "So this is not the end of becoming.",
+      "It is the end of waiting.",
+      "I am here.\nI am still growing.\nAnd I am ready to move forward as the woman I already am.",
+      "Until the next page,\n\n— Miss Joo",
+    ],
+  },
 };
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -843,6 +959,9 @@ const BlogPost = () => {
     if (cleaned.length > 5 && cleaned.length < 80 && !cleaned.includes(".") && !cleaned.includes(",")) return true;
     return false;
   };
+
+  // Helper to detect section headings (prefixed with "##:")
+  const isSectionHeading = (text: string) => text.startsWith("##:");
 
   return (
     <Layout>
@@ -900,6 +1019,17 @@ const BlogPost = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <article className="max-w-2xl mx-auto font-sans text-[17px] leading-[1.85] text-journal-text-secondary space-y-7 font-light">
             {bodyParagraphs.map((paragraph, index) => {
+              if (isSectionHeading(paragraph)) {
+                return (
+                  <h2
+                    key={index}
+                    className="font-serif text-xl md:text-2xl text-journal-text font-medium mt-14 mb-2 opacity-0 animate-fade-in"
+                    style={{ animationDelay: `${0.2 + index * 0.05}s`, animationFillMode: "forwards" }}
+                  >
+                    {paragraph.replace("##:", "").trim()}
+                  </h2>
+                );
+              }
               if (isPullQuote(paragraph)) {
                 return (
                   <blockquote
