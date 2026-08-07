@@ -7,6 +7,15 @@ import heroImage from "@/assets/hero-image.jpg";
 // Sample blog posts data
 const blogPosts = [
   {
+    title: "Maybe Belonging Is Not About Fitting In",
+    excerpt: "I used to think belonging was something you could recognize immediately. But the older I get, the more I realize that being welcomed somewhere and actually belonging there are not always the same thing.",
+    date: "August 4, 2026",
+    category: "Thoughts",
+    slug: "maybe-belonging-is-not-about-fitting-in",
+    quote: "Maybe belonging is less about fitting into a space exactly as it is and more about knowing that I do not have to cut pieces from myself just to remain inside it.",
+    featured: true,
+  },
+  {
     title: "I Am No Longer Waiting to Become Her",
     excerpt: "For a long time, I imagined the woman I wanted to become as someone waiting for me in the future. She was confident. She knew what she wanted. But I kept moving the finish line further away.",
     date: "July 29, 2026",
