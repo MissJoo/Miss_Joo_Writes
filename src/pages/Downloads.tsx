@@ -5,6 +5,18 @@ import { Download, BookOpen, Lock, Unlock, ArrowDownToLine } from "lucide-react"
 
 const journals = [
     {
+        month: "July",
+        title: "Becoming & Belonging",
+        desc: "For the woman who stopped waiting to feel ready. A reflection on belonging to yourself first, releasing the need to fit perfectly anywhere, and trusting the version of you already here.",
+        file: "/journals/notes-on-becoming-july.pdf",
+    },
+    {
+        month: "June",
+        title: "Identity & Distance",
+        desc: "For anyone living between two worlds. A quiet space to hold the complexity of homesickness, growth abroad, and the woman you are becoming in the in-between.",
+        file: "/journals/notes-on-becoming-june.pdf",
+    },
+    {
         month: "May",
         title: "Peace & Arrival",
         desc: "For anyone who's done the quiet work of becoming and is finally starting to feel it. A reflection on taking up space without shrinking.",
