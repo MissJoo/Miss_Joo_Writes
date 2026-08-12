@@ -7,6 +7,13 @@ const categories = ["All", "Thoughts", "Life", "Healing", "Random"];
 
 const allPosts = [
   {
+    title: "The Parts of Myself I Changed to Fit In",
+    excerpt: "I used to think adapting was a strength. Then I started noticing how often adjusting meant editing myself — and how easy it was to confuse acceptance with belonging.",
+    date: "August 11, 2026",
+    category: "Thoughts",
+    slug: "parts-of-myself-i-changed-to-fit-in",
+  },
+  {
     title: "Maybe Belonging Is Not About Fitting In",
     excerpt: "I used to think belonging was something you could recognize immediately. But the older I get, the more I realize that being welcomed somewhere and actually belonging there are not always the same thing.",
     date: "August 4, 2026",

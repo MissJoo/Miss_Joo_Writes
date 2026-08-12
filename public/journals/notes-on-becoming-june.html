@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Notes on Becoming — June | Miss Joo Writes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  @page { size: A4; margin: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #FAF8F5;
+    color: #2C2416;
+    font-size: 11pt;
+    line-height: 1.8;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 18mm 20mm;
+    background: #FAF8F5;
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .page:last-child { page-break-after: avoid; }
+
+  /* ── Cover ── */
+  .cover {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 0;
+  }
+
+  .cover-eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 7.5pt;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: #8A7968;
+    margin-bottom: 28px;
+  }
+
+  .cover-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 42pt;
+    font-weight: 700;
+    line-height: 1.1;
+    color: #2C2416;
+    margin-bottom: 6px;
+  }
+
+  .cover-month {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32pt;
+    font-weight: 400;
+    font-style: italic;
+    color: #5C4A32;
+    margin-bottom: 36px;
+  }
+
+  .cover-rule {
+    width: 60px;
+    height: 1px;
+    background: #5C4A32;
+    opacity: 0.4;
+    margin: 0 auto 28px;
+  }
+
+  .cover-subtitle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 12pt;
+    color: #8A7968;
+    max-width: 340px;
+    line-height: 1.6;
+    margin-bottom: 36px;
+  }
+
+  .cover-ornament {
+    font-size: 16pt;
+    color: #5C4A32;
+    opacity: 0.5;
+    margin-bottom: 28px;
+    letter-spacing: 0.3em;
+  }
+
+  .cover-author {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 7.5pt;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #8A7968;
+  }
+
+  /* ── Before You Begin ── */
+  .intro-label {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 7pt;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #8A7968;
+    margin-bottom: 30px;
+  }
+
+  .intro-body {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 13pt;
+    line-height: 1.9;
+    color: #2C2416;
+    max-width: 440px;
+    margin: 0 auto;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .intro-sig {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 12pt;
+    color: #5C4A32;
+    text-align: right;
+    margin-top: 40px;
+  }
+
+  /* ── Article Pages ── */
+  .article-number {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 7pt;
+    font-weight: 500;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #8A7968;
+    margin-bottom: 10px;
+  }
+
+  .article-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22pt;
+    font-weight: 700;
+    line-height: 1.25;
+    color: #2C2416;
+    margin-bottom: 28px;
+    max-width: 420px;
+  }
+
+  .article-rule {
+    width: 100%;
+    height: 1px;
+    background: #5C4A32;
+    opacity: 0.15;
+    margin-bottom: 24px;
+  }
+
+  .article-body {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.9;
+    color: #3A2F20;
+    white-space: pre-line;
+    flex: 1;
+  }
+
+  .article-body p { margin-bottom: 14px; }
+
+  .article-footer {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 10pt;
+    color: #8A7968;
+    text-align: right;
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(92,74,50,0.12);
+  }
+
+  /* ── Reflection Box ── */
+  .reflection-wrap {
+    margin: 20px 0 24px;
+    text-align: center;
+  }
+  .reflection-rule-h { display: inline-block; width: 36px; height: 1px; background: #5C4A32; opacity: 0.3; vertical-align: middle; margin: 0 12px; }
+  .reflection-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 11.5pt;
+    color: #5C4A32;
+    display: inline;
+  }
+
+  /* ── Affirmations ── */
+  .affirmations-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20pt;
+    font-weight: 700;
+    text-align: center;
+    color: #2C2416;
+    margin-bottom: 40px;
+  }
+
+  .affirmation-item {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 12.5pt;
+    color: #3A2F20;
+    text-align: center;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+
+  .affirmation-divider {
+    width: 30px;
+    height: 1px;
+    background: #5C4A32;
+    opacity: 0.25;
+    margin: 0 auto 20px;
+  }
+
+  /* ── Closing ── */
+  .closing-body {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 12pt;
+    line-height: 1.9;
+    color: #2C2416;
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .closing-sig {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 11pt;
+    color: #5C4A32;
+    text-align: right;
+    margin-top: 40px;
+  }
+
+  .closing-ornament {
+    text-align: center;
+    font-size: 14pt;
+    color: #5C4A32;
+    opacity: 0.4;
+    letter-spacing: 0.4em;
+    margin-top: 40px;
+  }
+
+  @media print {
+    body { background: #FAF8F5; }
+    .page { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ COVER ═══ -->
+<div class="page cover">
+  <div class="cover-eyebrow">Miss Joo Writes · Monthly Guide</div>
+  <div class="cover-title">Notes on Becoming</div>
+  <div class="cover-month">June</div>
+  <div class="cover-rule"></div>
+  <div class="cover-subtitle">A quiet journey through letting go, peace, and learning to exist honestly.</div>
+  <div class="cover-ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+  <div class="cover-author">Miss Joo Writes &nbsp;·&nbsp; 2026</div>
+</div>
+
+<!-- ═══ BEFORE YOU BEGIN ═══ -->
+<div class="page" style="text-align:center; justify-content:center;">
+  <div class="intro-label">Before You Begin</div>
+  <div class="intro-body">
+    <div>
+      June asked me to be honest about what I was performing and what I was truly feeling. It showed me the difference between forcing something and letting it simply be. These pages are not here to fix anything. They are here to sit beside you — honestly, gently, without expectation. Bring what you have. That is already enough.
+    </div>
+  </div>
+  <div class="intro-sig">— Joo</div>
+</div>
+
+<!-- ═══ ARTICLE 1: exist-without-performing (June 02) ═══ -->
+<div class="page">
+  <div class="article-number">June · Entry One</div>
+  <div class="article-title">I'm Learning to Exist Without Performing</div>
+  <div class="article-rule"></div>
+  <div class="reflection-wrap">
+    <span class="reflection-rule-h"></span>
+    <span class="reflection-text">There is a difference between showing up and putting on a show.</span>
+    <span class="reflection-rule-h"></span>
+  </div>
+  <div class="article-body">
+    <p>I spent so long curating how I showed up that I forgot what it felt like to just be. Be present without narrating it. Be happy without proving it. Be quiet without it meaning something was wrong.</p>
+    <p>There was always an audience in my mind. Even when no one was watching, I was still performing — adjusting my reactions, choosing words carefully, making sure the version of me that people saw was acceptable. Lovable. Easy.</p>
+    <p>But performing is exhausting when it never ends. So I stopped. Not in one big moment. Just in small, repeated choices. Letting myself sit in silence without filling it. Letting my face rest without smiling on command. Letting a moment pass without documenting it or explaining it to anyone.</p>
+    <p>And something unexpected happened — I started to feel more like myself than I have in years. Not the version I built for others. Not the version that made everyone comfortable. Just me. Unfiltered. Unpolished. Unperformed. It's quieter here. But it's honest.</p>
+    <p>This is what it feels like to finally stop auditioning for your own life.</p>
+  </div>
+  <div class="article-footer">Miss Joo Writes · June 02, 2026</div>
+</div>
+
+<!-- ═══ ARTICLE 2: the-black-coffee-rule (June 09) ═══ -->
+<div class="page">
+  <div class="article-number">June · Entry Two</div>
+  <div class="article-title">The Black Coffee Rule</div>
+  <div class="article-rule"></div>
+  <div class="reflection-wrap">
+    <span class="reflection-rule-h"></span>
+    <span class="reflection-text">Strip things back to their most honest form.</span>
+    <span class="reflection-rule-h"></span>
+  </div>
+  <div class="article-body">
+    <p>For a long time, I took my coffee with a little bit of everything. Milk to soften the bitterness, sugar to make it easier to swallow. I dressed it up until it barely tasted like coffee anymore.</p>
+    <p>And then, one morning, I poured it black. No milk. No sugar. Just the dark, unapologetic reality of it. It was bitter at first — almost too sharp — but then I realized I was finally tasting it for what it actually was.</p>
+    <p>I call it the black coffee rule. It's the practice of stripping things back to their most honest form. We soften our boundaries so we don't seem difficult. We sweeten our words so we don't seem harsh. We dilute our true desires so they fit neatly into the cups other people hand us.</p>
+    <p>But what happens when you stop diluting? What happens when you let a moment just be a moment, without needing to dress it up for an audience? It might feel a little sharp at first. But there is so much peace in the unadorned.</p>
+    <p>The black coffee rule is about refusing to mask the reality of your life. If a day is quiet and unremarkable, let it be. If you are tired, let yourself be tired without performing productivity. If you are happy, let yourself be happy without needing to document it.</p>
+    <p>I'm learning to take my life black. Simple, potent, and exactly as it is. No additions required.</p>
+  </div>
+  <div class="article-footer">Miss Joo Writes · June 09, 2026</div>
+</div>
+
+<!-- ═══ ARTICLE 3: fighting-vs-forcing-love (June 12) ═══ -->
+<div class="page">
+  <div class="article-number">June · Entry Three</div>
+  <div class="article-title">There Is a Difference Between Fighting for Love and Forcing It</div>
+  <div class="article-rule"></div>
+  <div class="reflection-wrap">
+    <span class="reflection-rule-h"></span>
+    <span class="reflection-text">Fighting for love still has love in it. Forcing it only has fear.</span>
+    <span class="reflection-rule-h"></span>
+  </div>
+  <div class="article-body">
+    <p>I used to think fighting for love meant holding on no matter how much it hurt. But now I think there is a difference between fighting for love and forcing it. And sometimes, we only learn the difference after we have already lost so much of ourselves trying.</p>
+    <p>When you are fighting for love, you are not the only one starting the hard conversations. You are not the only one apologizing, adjusting, trying to understand. There is effort from both sides. But when you are forcing it, everything starts to feel one-sided.</p>
+    <p>You become the one who always brings things up. The one who notices the distance. The one who asks, "Are we okay?" And slowly, you start confusing crumbs with effort — feeling grateful for the smallest attention because you have been emotionally hungry for so long.</p>
+    <p>Fighting for love brings repair. Forcing it brings the same wound in different versions. Love can be hard, yes. But it should not constantly feel like you are trying to open a door someone keeps closing.</p>
+    <p>If you are the only one fighting for it, maybe you are not fighting for love anymore. Maybe you are forcing it.</p>
+  </div>
+  <div class="article-footer">Miss Joo Writes · June 12, 2026</div>
+</div>
+
+<!-- ═══ ARTICLE 4: emotionally-tired (June 16) ═══ -->
+<div class="page">
+  <div class="article-number">June · Entry Four</div>
+  <div class="article-title">5 Signs You're Emotionally Tired From Trying Too Hard</div>
+  <div class="article-rule"></div>
+  <div class="reflection-wrap">
+    <span class="reflection-rule-h"></span>
+    <span class="reflection-text">You are not asking for too much. You are just tired of asking the wrong person.</span>
+    <span class="reflection-rule-h"></span>
+  </div>
+  <div class="article-body">
+    <p>There is a kind of tiredness that does not look obvious. You still wake up. You still reply to messages. You still do what you have to do. But inside, something feels heavy. Not broken. Just tired.</p>
+    <p><strong>You no longer want to explain yourself.</strong> You have said it already — in different versions, softly, carefully, even when you were hurting. When nothing really changes, silence starts to feel easier than repeating yourself.</p>
+    <p><strong>You feel guilty for needing basic things.</strong> You are not asking for luxury. You are asking for honesty, consistency, effort. But when you ask the wrong person, even the bare minimum starts to feel like too much.</p>
+    <p><strong>Small things make you emotional.</strong> It is not the small thing that hurts. It is the history behind it. All the times you stayed quiet. All the times you told yourself not to make it a big deal.</p>
+    <p><strong>You miss who you were before this feeling.</strong> The version who did not overthink every reply. The version who still believed love should feel soft.</p>
+    <p><strong>You are holding on because of how it used to be.</strong> Waiting for someone's old version can slowly make you lose your own. And maybe the most honest question is: "Do I still feel like myself while loving them?"</p>
+  </div>
+  <div class="article-footer">Miss Joo Writes · June 16, 2026</div>
+</div>
+
+<!-- ═══ ARTICLE 5: what-peace-taught-me (June 24) ═══ -->
+<div class="page">
+  <div class="article-number">June · Entry Five</div>
+  <div class="article-title">What Peace Taught Me About Letting Go</div>
+  <div class="article-rule"></div>
+  <div class="reflection-wrap">
+    <span class="reflection-rule-h"></span>
+    <span class="reflection-text">Sometimes letting go is not losing someone. Sometimes it is finally getting yourself back.</span>
+    <span class="reflection-rule-h"></span>
+  </div>
+  <div class="article-body">
+    <p>I used to think letting go would feel like one big decision. Like one day I would wake up, feel nothing, and finally be ready. But it did not happen that way.</p>
+    <p>For me, letting go happened slowly. It happened in the moments I stopped checking. In the messages I no longer typed. In the explanations I no longer gave. In the silence I finally stopped trying to fill.</p>
+    <p>Peace taught me that not everything needs a final conversation. Some things already ended in the way they made you feel. The distance was already an answer. The inconsistency was already an answer. I just kept waiting for words because I did not want to accept the actions.</p>
+    <p>Letting go did not make me cold. It made me honest. Honest about what I needed. Honest about what I kept accepting. Honest about the way I was abandoning myself just to keep something alive.</p>
+    <p>Some things leave space when they leave. And maybe that space is not punishment. Maybe it is room — to breathe, to heal, to become someone who no longer begs to be chosen.</p>
+  </div>
+  <div class="article-footer">Miss Joo Writes · June 24, 2026</div>
+</div>
+
+<!-- ═══ AFFIRMATIONS ═══ -->
+<div class="page" style="justify-content:center; text-align:center;">
+  <div class="affirmations-title">Gentle Affirmations</div>
+  <div class="affirmation-item">I am allowed to exist without performing.</div>
+  <div class="affirmation-divider"></div>
+  <div class="affirmation-item">I do not have to dilute myself to be loved.</div>
+  <div class="affirmation-divider"></div>
+  <div class="affirmation-item">Letting go is not losing — it is returning to myself.</div>
+  <div class="affirmation-divider"></div>
+  <div class="affirmation-item">I release what I have been carrying alone.</div>
+  <div class="affirmation-divider"></div>
+  <div class="affirmation-item">Peace is something I am allowed to choose.</div>
+</div>
+
+<!-- ═══ CLOSING ═══ -->
+<div class="page" style="justify-content:center;">
+  <div class="closing-body">
+    <div>
+      June was a month of honesty. It asked me to stop performing and start being. It showed me the difference between love that flows and love that is forced. It gave me the quiet courage to let go of what was no longer choosing me back.<br><br>
+      If this month left you feeling a little lighter — a little more like yourself — then something important has already shifted. Not everything that changes has to be announced. Some of the most important becoming happens quietly.<br><br>
+      Maybe this is part of it. Maybe this is enough.
+    </div>
+  </div>
+  <div class="closing-sig">— Miss Joo Writes</div>
+  <div class="closing-ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+</div>
+
+</body>
+</html>

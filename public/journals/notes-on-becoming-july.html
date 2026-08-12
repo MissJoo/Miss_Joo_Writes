@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Notes on Becoming — July | Miss Joo Writes</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap');
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  @page { size: A4; margin: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #FAF8F5;
+    color: #2C2416;
+    font-size: 11pt;
+    line-height: 1.8;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 18mm 20mm;
+    background: #FAF8F5;
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .page:last-child { page-break-after: avoid; }
+
+  /* Cover */
+  .cover { justify-content: center; align-items: center; text-align: center; }
+  .cover-eyebrow { font-family: 'DM Sans', sans-serif; font-size: 7.5pt; font-weight: 500; letter-spacing: 0.28em; text-transform: uppercase; color: #8A7968; margin-bottom: 28px; }
+  .cover-title { font-family: 'Playfair Display', serif; font-size: 42pt; font-weight: 700; line-height: 1.1; color: #2C2416; margin-bottom: 6px; }
+  .cover-month { font-family: 'Playfair Display', serif; font-size: 32pt; font-weight: 400; font-style: italic; color: #5C4A32; margin-bottom: 36px; }
+  .cover-rule { width: 60px; height: 1px; background: #5C4A32; opacity: 0.4; margin: 0 auto 28px; }
+  .cover-subtitle { font-family: 'Playfair Display', serif; font-style: italic; font-size: 12pt; color: #8A7968; max-width: 340px; line-height: 1.6; margin-bottom: 36px; }
+  .cover-ornament { font-size: 16pt; color: #5C4A32; opacity: 0.5; margin-bottom: 28px; letter-spacing: 0.3em; }
+  .cover-author { font-family: 'DM Sans', sans-serif; font-size: 7.5pt; letter-spacing: 0.25em; text-transform: uppercase; color: #8A7968; }
+
+  /* Intro */
+  .intro-label { font-family: 'DM Sans', sans-serif; font-size: 7pt; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: #8A7968; margin-bottom: 30px; }
+  .intro-body { font-family: 'Playfair Display', serif; font-style: italic; font-size: 13pt; line-height: 1.9; color: #2C2416; max-width: 440px; margin: 0 auto; text-align: center; flex: 1; display: flex; align-items: center; }
+  .intro-sig { font-family: 'Playfair Display', serif; font-style: italic; font-size: 12pt; color: #5C4A32; text-align: right; margin-top: 40px; }
+
+  /* Articles */
+  .article-number { font-family: 'DM Sans', sans-serif; font-size: 7pt; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: #8A7968; margin-bottom: 10px; }
+  .article-title { font-family: 'Playfair Display', serif; font-size: 22pt; font-weight: 700; line-height: 1.25; color: #2C2416; margin-bottom: 28px; max-width: 420px; }
+  .article-rule { width: 100%; height: 1px; background: #5C4A32; opacity: 0.15; margin-bottom: 24px; }
+  .article-body { font-family: 'DM Sans', sans-serif; font-size: 10.5pt; line-height: 1.9; color: #3A2F20; flex: 1; }
+  .article-body p { margin-bottom: 14px; }
+  .article-footer { font-family: 'Playfair Display', serif; font-style: italic; font-size: 10pt; color: #8A7968; text-align: right; margin-top: 24px; padding-top: 16px; border-top: 1px solid rgba(92,74,50,0.12); }
+
+  /* Reflection */
+  .reflection-wrap { margin: 20px 0 24px; text-align: center; }
+  .reflection-rule-h { display: inline-block; width: 36px; height: 1px; background: #5C4A32; opacity: 0.3; vertical-align: middle; margin: 0 12px; }
+  .reflection-text { font-family: 'Playfair Display', serif; font-style: italic; font-size: 11.5pt; color: #5C4A32; display: inline; }
+
+  /* Affirmations */
+  .affirmations-title { font-family: 'Playfair Display', serif; font-size: 20pt; font-weight: 700; text-align: center; color: #2C2416; margin-bottom: 40px; }
+  .affirmation-item { font-family: 'Playfair Display', serif; font-style: italic; font-size: 12.5pt; color: #3A2F20; text-align: center; margin-bottom: 20px; line-height: 1.5; }
+  .affirmation-divider { width: 30px; height: 1px; background: #5C4A32; opacity: 0.25; margin: 0 auto 20px; }
+
+  /* Closing */
+  .closing-body { font-family: 'Playfair Display', serif; font-style: italic; font-size: 12pt; line-height: 1.9; color: #2C2416; flex: 1; display: flex; align-items: center; }
+  .closing-sig { font-family: 'Playfair Display', serif; font-style: italic; font-size: 11pt; color: #5C4A32; text-align: right; margin-top: 40px; }
+  .closing-ornament { text-align: center; font-size: 14pt; color: #5C4A32; opacity: 0.4; letter-spacing: 0.4em; margin-top: 40px; }
+
+  @media print {
+    body { background: #FAF8F5; }
+    .page { box-shadow: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══ COVER ═══ -->
+<div class="page cover">
+  <div class="cover-eyebrow">Miss Joo Writes · Monthly Guide</div>
+  <div class="cover-title">Notes on Becoming</div>
+  <div class="cover-month">July</div>
+  <div class="cover-rule"></div>
+  <div class="cover-subtitle">A quiet journey through belonging, growth, living abroad, and becoming the woman you already are.</div>
+  <div class="cover-ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+  <div class="cover-author">Miss Joo Writes &nbsp;·&nbsp; 2026</div>
+</div>
+
+<!-- ═══ BEFORE YOU BEGIN ═══ -->
+<div class="page" style="text-align:center; justify-content:center;">
+  <div class="intro-label">Before You Begin</div>
+  <div class="intro-body">
+    <div>
+      July asked me to stop waiting. To stop treating the woman I am today as a rough draft of the woman I am becoming. These pages were written in the middle of ordinary days — on a metro in Doha, in a quiet room after a long shift, on a morning when the light came through differently. Wherever you are reading this, I hope it finds you gently.
+    </div>
+  </div>
+  <div class="intro-sig">— Joo</div>
+</div>
+
+<!-- ═══ ARTICLE 1: qatar-days-filipina (July 02) ═══ -->
+<div class="page">
+  <div class="article-number">July · Entry One</div>
+  <div class="article-title">Qatar Days Through a Filipina Woman's Eyes</div>
+  <div class="article-rule"></div>
+  <div class="reflection-wrap">
+    <span class="reflection-rule-h"></span>
+    <span class="reflection-text">You can grow quietly, even while you are still figuring things out.</span>
+    <span class="reflection-rule-h"></span>
+  </div>
+  <div class="article-body">
+    <p>There are days in Qatar that feel too bright, too hot, too quiet, and too far from everything I once called home. The sun rises with a kind of strength that does not ask for permission. And some mornings, I look outside and see the same city I have been living in for years, yet it still feels like I am learning how to belong here.</p>
+    <p>Life in Qatar, through my eyes as a Filipina woman, is a quiet combination of survival, adjustment, longing, gratitude, and becoming someone I am still learning how to be. It is waking up early even when your heart feels heavy. It is going to work while carrying private worries. It is smiling professionally even when you miss your family.</p>
+    <p>There is a different kind of silence when you live abroad. You start asking yourself questions you used to avoid: Am I happy here? Am I becoming better? Is this sacrifice worth it? These are not questions you always say out loud. Sometimes they come at night, when the city lights look beautiful but your heart feels tired.</p>
+    <p>Being strong does not always look dramatic. Sometimes strength is simply showing up. It is doing your job properly. It is keeping your softness alive even as life keeps requiring you to be strong.</p>
+    <p>Qatar, through my eyes, is not just a place where I live. It is a chapter that is still teaching me how to grow quietly, love myself deeper, and become stronger without losing the gentle parts of who I am.</p>
+  </div>
+  <div class="article-footer">Miss Joo Writes · July 02, 2026</div>
+</div>
+
+<!-- ═══ ARTICLE 2: things-i-never-expected-to-miss (July 07) ═══ -->
+<div class="page">
+  <div class="article-number">July · Entry Two</div>
+  <div class="article-title">The Things I Never Expected to Miss Until I Moved to Qatar</div>
+  <div class="article-rule"></div>
+  <div class="reflection-wrap">
+    <span class="reflection-rule-h"></span>
+    <span class="reflection-text">Your heart can belong to more than one place.</span>
+    <span class="reflection-rule-h"></span>
+  </div>
+  <div class="article-body">
+    <p>When I first moved to Qatar, I thought the hardest part would be leaving my family behind. I expected to miss birthdays, holidays, and Sunday lunches. What I didn't expect were the little things. The ordinary things.</p>
+    <p>I miss hearing people speak Filipino everywhere I go. Not because English isn't enough, but because there's comfort in hearing your own language without thinking. The jokes land differently. The expressions feel familiar.</p>
+    <p>I miss rainy afternoons — the sound on the roof, the cooler air, the excuse to stay indoors with coffee and something warm to eat. I miss spontaneous family visits. Back home, someone could knock on your door without texting first. Living abroad teaches you that relationships become scheduled. Video calls replace dinner conversations. Photos replace hugs.</p>
+    <p>I miss being understood without explaining myself. There are moments when I miss conversations where people immediately understand my humor, my expressions, and the little cultural references that don't need explaining. It's a kind of comfort that's hard to replace.</p>
+    <p>Yet, despite everything I miss, I wouldn't call this journey a sad one. Because while Qatar has shown me what I miss, it has also shown me what I'm capable of. Maybe home isn't just where you came from. Maybe home is also every place that changes you for the better.</p>
+  </div>
+  <div class="article-footer">Miss Joo Writes · July 07, 2026</div>
+</div>
+
+<!-- ═══ ARTICLE 3: woman-im-slowly-becoming (July 14) ═══ -->
+<div class="page">
+  <div class="article-number">July · Entry Three</div>
+  <div class="article-title">The Woman I'm Slowly Becoming</div>
+  <div class="article-rule"></div>
+  <div class="reflection-wrap">
+    <span class="reflection-rule-h"></span>
+    <span class="reflection-text">Growth doesn't always arrive with a celebration. Sometimes it arrives so quietly that you only notice it when you look back.</span>
+    <span class="reflection-rule-h"></span>
+  </div>
+  <div class="article-body">
+    <p>There are moments when I catch myself doing something ordinary, and suddenly I stop. Not because something is wrong. But because I realize I would have handled that same moment very differently a few years ago.</p>
+    <p>The other day, I solved a problem without immediately calling someone for advice. It wasn't a big problem. Just one of those everyday situations that used to make me overthink. As I walked away, I smiled to myself — not because everything worked out perfectly, but because I realized I trusted myself first.</p>
+    <p>I've started noticing other small changes. I don't mind eating alone as much anymore. I no longer feel the need to fill every quiet moment with noise. I've learned that peace can sound different from loneliness. There was a time when silence made me uncomfortable. Now, sometimes it feels like the only place where I can hear myself clearly.</p>
+    <p>Perhaps that's one of the quiet gifts of living far from everything you've ever known. It teaches you to stop measuring your life against someone else's. Because no one else is walking your road.</p>
+    <p>Maybe we're meant to keep growing. To keep unlearning. To keep discovering new pieces of ourselves in places we never expected to call part of our story. The changes that matter most rarely happen all at once. They happen quietly. One ordinary day at a time.</p>
+  </div>
+  <div class="article-footer">Miss Joo Writes · July 14, 2026</div>
+</div>
+
+<!-- ═══ ARTICLE 4: quiet-pressure-figured-out (July 21) ═══ -->
+<div class="page">
+  <div class="article-number">July · Entry Four</div>
+  <div class="article-title">The Quiet Pressure to Have It All Figured Out</div>
+  <div class="article-rule"></div>
+  <div class="reflection-wrap">
+    <span class="reflection-rule-h"></span>
+    <span class="reflection-text">Moving slowly does not mean I am standing still.</span>
+    <span class="reflection-rule-h"></span>
+  </div>
+  <div class="article-body">
+    <p>There was a time when I genuinely believed life would make more sense by now. I thought adulthood would eventually arrive with answers. Instead, it arrived with more questions: Am I doing enough? Am I moving in the right direction? Why does everyone else seem to know exactly what they are doing?</p>
+    <p>I can be genuinely happy for someone and still feel a quiet discomfort inside me. Their achievement becomes a mirror, and suddenly I begin examining everything I believe I have not yet accomplished. But comparison is rarely fair. We see the announcement, but not the years of uncertainty behind it.</p>
+    <p>Living abroad sometimes makes those thoughts feel even heavier. When you leave home, people expect your life to improve in obvious ways. But living abroad also means rebuilding parts of yourself quietly — learning how to survive difficult days without the people who once made life feel familiar.</p>
+    <p>Some of the most important changes in me were never announced. They happened when I learned to sit with disappointment without letting it convince me that I had failed. They happened when I stopped seeing every delay as proof that I was falling behind.</p>
+    <p>I still have questions about my future. But I no longer want to treat my unfinished life as an unsuccessful one. There is still time. Time to begin, time to change, time to try again. Perhaps I only need enough courage for the next decision. Enough patience for the season I am in.</p>
+  </div>
+  <div class="article-footer">Miss Joo Writes · July 21, 2026</div>
+</div>
+
+<!-- ═══ ARTICLE 5: no-longer-waiting-to-become-her (July 29) ═══ -->
+<div class="page">
+  <div class="article-number">July · Entry Five</div>
+  <div class="article-title">I Am No Longer Waiting to Become Her</div>
+  <div class="article-rule"></div>
+  <div class="reflection-wrap">
+    <span class="reflection-rule-h"></span>
+    <span class="reflection-text">Unfinished does not mean unready.</span>
+    <span class="reflection-rule-h"></span>
+  </div>
+  <div class="article-body">
+    <p>For a long time, I imagined the woman I wanted to become as someone waiting for me in the future. She was confident. She knew what she wanted. She had accomplished the things I was still working toward. Whenever I felt unsure, I thought: one day, I will become that woman.</p>
+    <p>But every time I reached one goal, I created another condition. There was always something else I needed to achieve before I could believe I had become her. Without realizing it, I had turned becoming into a destination that kept moving further away.</p>
+    <p>Growth did not arrive dramatically. It appeared every time I continued even when I was uncertain. It appeared when I entered a room feeling nervous but chose not to make myself smaller. It appeared when I made mistakes, recovered, and continued. The woman I wanted to become was not waiting somewhere far ahead. She was being built in every uncomfortable beginning and every moment I chose courage over comfort.</p>
+    <p>I was waiting for permission to believe in myself, even though my own life had already given me proof. I am no longer waiting for a future achievement to make me worthy. I am no longer waiting to become fearless before I begin. I am no longer asking the world for permission to believe in myself.</p>
+    <p>Perhaps there is no final version. Perhaps we are always becoming. But I refuse to spend another chapter treating the woman I am today as merely a temporary draft.</p>
+  </div>
+  <div class="article-footer">Miss Joo Writes · July 29, 2026</div>
+</div>
+
+<!-- ═══ AFFIRMATIONS ═══ -->
+<div class="page" style="justify-content:center; text-align:center;">
+  <div class="affirmations-title">Gentle Affirmations</div>
+  <div class="affirmation-item">I am not a temporary draft. I am already becoming.</div>
+  <div class="affirmation-divider"></div>
+  <div class="affirmation-item">The woman I am today carries proof of everything I have survived.</div>
+  <div class="affirmation-divider"></div>
+  <div class="affirmation-item">I do not need to have it all figured out to keep moving forward.</div>
+  <div class="affirmation-divider"></div>
+  <div class="affirmation-item">My heart is allowed to belong to more than one place.</div>
+  <div class="affirmation-divider"></div>
+  <div class="affirmation-item">Growing quietly is still growing.</div>
+</div>
+
+<!-- ═══ CLOSING ═══ -->
+<div class="page" style="justify-content:center;">
+  <div class="closing-body">
+    <div>
+      July was a month that asked me to stop waiting. To stop moving the finish line. To stop treating my unfinished life as proof that I had failed.<br><br>
+      It showed me that the woman I kept searching for in the future was already here — in every ordinary day I survived, every moment I trusted myself, every time I kept going when staying still would have been easier.<br><br>
+      If this month left you with even one moment of recognition — one quiet thought of, "yes, that's me too" — then something important has already passed between these pages and your heart.<br><br>
+      You were never waiting to become her. You were becoming her all along.
+    </div>
+  </div>
+  <div class="closing-sig">— Miss Joo Writes</div>
+  <div class="closing-ornament">✦ &nbsp; ✦ &nbsp; ✦</div>
+</div>
+
+</body>
+</html>
