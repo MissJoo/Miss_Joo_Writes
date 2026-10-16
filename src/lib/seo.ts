@@ -251,6 +251,12 @@ export const getSitemapRoutes = () => {
 /** Update when the static pages (about, contact, legal...) change. */
 export const SITE_PAGES_UPDATED = "2026-10-16";
 
+/** Old post URLs that now live elsewhere. GitHub Pages has no server redirects, so each gets a redirect page. */
+export const getRedirects = () =>
+  posts.flatMap((post) =>
+    (post.previousSlugs ?? []).map((slug) => ({ from: `/blog/${slug}`, to: canonicalUrl(`/blog/${post.slug}`) })),
+  );
+
 /** Routes rendered at build time, including aliases that are not in the sitemap. */
 export const getPrerenderRoutes = () => [
   ...getSitemapRoutes().map((route) => route.path),

@@ -11,7 +11,7 @@ const ssrDir = path.join(projectRoot, "dist-ssr");
 
 process.env.NODE_ENV = "production";
 
-const { render, headFor, notFoundHead, getPrerenderRoutes, getSitemapRoutes, SITE_URL } = await import(
+const { render, headFor, notFoundHead, getPrerenderRoutes, getRedirects, getSitemapRoutes, SITE_URL } = await import(
   pathToFileURL(path.join(ssrDir, "entry-server.js")).href
 );
 
@@ -36,6 +36,31 @@ for (const route of routes) {
   await writeFile(target, html);
 }
 
+// Old post URLs: a tiny page that points search engines (canonical) and visitors (refresh) at the new URL.
+const redirects = getRedirects();
+for (const { from, to } of redirects) {
+  const target = outputPath(from);
+  await mkdir(path.dirname(target), { recursive: true });
+  await writeFile(
+    target,
+    `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting…</title>
+  <link rel="canonical" href="${to}" />
+  <meta name="robots" content="noindex" />
+  <meta http-equiv="refresh" content="0; url=${to}" />
+  <script>location.replace(${JSON.stringify(to)} + location.hash);</script>
+</head>
+<body>
+  <p>This essay has moved to <a href="${to}">${to}</a>.</p>
+</body>
+</html>
+`,
+  );
+}
+
 // GitHub Pages serves 404.html (with a 404 status) for any unknown path.
 await writeFile(path.join(distDir, "404.html"), page(notFoundHead(), render("/__not-found__")));
 
@@ -53,4 +78,6 @@ await writeFile(path.join(distDir, "sitemap.xml"), sitemap);
 
 await rm(ssrDir, { recursive: true, force: true });
 
-console.log(`Prerendered ${routes.length} routes + 404.html, sitemap with ${getSitemapRoutes().length} URLs.`);
+console.log(
+  `Prerendered ${routes.length} routes + 404.html, ${redirects.length} redirects, sitemap with ${getSitemapRoutes().length} URLs.`,
+);
