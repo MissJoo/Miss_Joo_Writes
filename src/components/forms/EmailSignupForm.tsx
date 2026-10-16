@@ -99,7 +99,7 @@ const EmailSignupForm = ({
         </Button>
 
         {errors.email && (
-          <p className="text-red-700 text-xs mt-2 font-sans text-center">{errors.email.message}</p>
+          <p className="text-red-700 dark:text-red-300 text-xs mt-2 font-sans text-center">{errors.email.message}</p>
         )}
       </form>
     );
@@ -133,7 +133,7 @@ const EmailSignupForm = ({
           />
         </div>
         {errors.email && (
-          <p className="text-red-700 text-xs font-sans pl-1">{errors.email.message}</p>
+          <p className="text-red-700 dark:text-red-300 text-xs font-sans pl-1">{errors.email.message}</p>
         )}
       </div>
 

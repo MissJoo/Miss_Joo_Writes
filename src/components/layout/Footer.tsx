@@ -31,7 +31,7 @@ const Footer = () => {
   ];
 
   return (
-    <footer className="bg-journal-text text-journal-bg border-t border-journal-text-secondary/20">
+    <footer className="keep-light-palette bg-journal-text text-journal-bg border-t border-journal-text-secondary/20">
       <div className="container mx-auto px-6 py-4 lg:px-12">
         <div className="mx-auto flex max-w-4xl flex-col items-center gap-1.5">
           {/* Logo */}

@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { pillars } from "@/data/pillars";
+import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -101,17 +102,21 @@ const Header = () => {
                 {link.name}
               </Link>
             ))}
+            <ThemeToggle className="-ml-2 lg:-ml-4" />
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile: theme toggle + menu button */}
+          <div className="flex items-center gap-1 md:hidden">
+          <ThemeToggle />
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="md:hidden p-2 text-journal-text hover:text-journal-gold transition-colors"
+            className="p-2 text-journal-text hover:text-journal-gold transition-colors"
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}

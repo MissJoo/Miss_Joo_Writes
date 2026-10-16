@@ -92,7 +92,7 @@ const NewsletterSignup = ({
       )}
 
       {status.state === "error" && (
-        <p id={`${id}-error`} role="alert" className="text-red-800 text-xs font-sans">
+        <p id={`${id}-error`} role="alert" className="text-red-800 dark:text-red-300 text-xs font-sans">
           {status.message}
         </p>
       )}

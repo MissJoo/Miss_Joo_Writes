@@ -23,8 +23,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .sc-theme {
-    --sc-bg: #1d1814;
-    --sc-surface: #27201b;
+    --sc-bg: #17130f;
+    --sc-surface: #201a15;
     --sc-fg: #f1e9e0;
     --sc-muted: #b4a394;
     --sc-line: #3d332b;
@@ -42,8 +42,8 @@
   }
 }
 :root[data-theme="dark"] .sc-theme {
-  --sc-bg: #1d1814;
-  --sc-surface: #27201b;
+  --sc-bg: #17130f;
+  --sc-surface: #201a15;
   --sc-fg: #f1e9e0;
   --sc-muted: #b4a394;
   --sc-line: #3d332b;

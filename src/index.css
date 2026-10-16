@@ -4,6 +4,17 @@
 
 @layer base {
   :root {
+    /* Journal palette (RGB channels, used by the journal-* Tailwind colours) */
+    --journal-bg: 250 247 242;
+    --journal-bg-secondary: 245 232 221;
+    --journal-card: 255 253 249;
+    --journal-text: 43 33 24;
+    --journal-text-secondary: 91 70 54;
+    --journal-muted: 122 101 86;
+    --journal-gold: 140 106 67;
+    --journal-champagne: 200 169 106;
+    --journal-border: 230 216 200;
+
     /* Quiet Luxury Digital Journal Palette */
     --background: 38 33% 96.5%; /* #FAF7F2 */
     --foreground: 28 28% 13%; /* #2B2118 */
@@ -61,10 +72,20 @@
   }
 
   .dark {
-    --background: 30 15% 10%;
-    --foreground: 40 25% 92%;
+    --journal-bg: 23 19 15;
+    --journal-bg-secondary: 42 33 26;
+    --journal-card: 32 26 21;
+    --journal-text: 241 233 224;
+    --journal-text-secondary: 208 192 174;
+    --journal-muted: 174 156 141;
+    --journal-gold: 212 178 124;
+    --journal-champagne: 184 154 98;
+    --journal-border: 58 47 38;
 
-    --card: 30 15% 12%;
+    --background: 30 18% 7.5%; /* #17130F */
+    --foreground: 31 39% 91%;
+
+    --card: 27 21% 10.4%;
     --card-foreground: 40 25% 92%;
 
     --popover: 30 15% 10%;
@@ -84,7 +105,21 @@
 
     --border: 30 12% 20%;
     --input: 30 12% 20%;
-    --ring: 40 30% 85%;
+    --ring: 37 52% 66%;
+    color-scheme: dark;
+  }
+
+  /* The footer keeps its dark brown look in both themes */
+  .dark .keep-light-palette {
+    --journal-bg: 250 247 242;
+    --journal-bg-secondary: 245 232 221;
+    --journal-card: 255 253 249;
+    --journal-text: 43 33 24;
+    --journal-text-secondary: 91 70 54;
+    --journal-muted: 122 101 86;
+    --journal-gold: 140 106 67;
+    --journal-champagne: 200 169 106;
+    --journal-border: 230 216 200;
   }
 }
 

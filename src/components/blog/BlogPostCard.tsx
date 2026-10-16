@@ -12,11 +12,11 @@ interface BlogPostCardProps {
 }
 
 const categoryColors: Record<string, string> = {
-  Healing:    "bg-rose-50 text-rose-700/80 border-rose-200",
-  Thoughts:   "bg-amber-50 text-amber-700/80 border-amber-200",
-  Life:       "bg-sky-50 text-sky-700/80 border-sky-200",
-  Random:     "bg-violet-50 text-violet-700/80 border-violet-200",
-  Reflections:"bg-emerald-50 text-emerald-700/80 border-emerald-200",
+  Healing:    "bg-rose-50 text-rose-700/80 border-rose-200 dark:bg-rose-950/40 dark:text-rose-200 dark:border-rose-900/70",
+  Thoughts:   "bg-amber-50 text-amber-700/80 border-amber-200 dark:bg-amber-950/40 dark:text-amber-200 dark:border-amber-900/70",
+  Life:       "bg-sky-50 text-sky-700/80 border-sky-200 dark:bg-sky-950/40 dark:text-sky-200 dark:border-sky-900/70",
+  Random:     "bg-violet-50 text-violet-700/80 border-violet-200 dark:bg-violet-950/40 dark:text-violet-200 dark:border-violet-900/70",
+  Reflections:"bg-emerald-50 text-emerald-700/80 border-emerald-200 dark:bg-emerald-950/40 dark:text-emerald-200 dark:border-emerald-900/70",
 };
 
 const BlogPostCard = ({ title, excerpt, date, category, slug, featured = false, readingTime }: BlogPostCardProps) => {

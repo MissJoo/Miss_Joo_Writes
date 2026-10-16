@@ -4,6 +4,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Theme: the reader's saved choice, else the device setting. Runs before paint to avoid a flash. -->
+  <script>
+    (function () {
+      var theme;
+      try { theme = localStorage.getItem('mj-theme'); } catch (e) {}
+      if (theme !== 'light' && theme !== 'dark') {
+        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      var root = document.documentElement;
+      if (theme === 'dark') root.classList.add('dark');
+      root.setAttribute('data-theme', theme);
+      root.style.colorScheme = theme;
+    }());
+  </script>
 
   <!-- Google tag (gtag.js) -->
   <script>

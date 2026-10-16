@@ -41,8 +41,7 @@ const Blog = () => {
 
       {/* Categories filter */}
       <div
-        className="border-b border-journal-border/30 py-3 md:py-4"
-        style={{ backgroundColor: "#FAF7F2" }}
+        className="border-b border-journal-border/30 bg-journal-bg py-3 md:py-4"
       >
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between gap-4">
