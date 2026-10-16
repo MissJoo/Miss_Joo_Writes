@@ -1,7 +1,7 @@
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import maisonImage from "@/assets/MaisondeBeauteSalon.jpg";
+import maisonImage from "@/assets/MaisondeBeauteSalon.webp";
 import { Instagram } from "lucide-react";
 
 const Lifestyle = () => {
@@ -91,7 +91,11 @@ const Lifestyle = () => {
                     <div className="aspect-[3/2] overflow-hidden bg-journal-bg border-b border-journal-border/50">
                       <img 
                         src={maisonImage} 
-                        alt="Maison de Beauté" 
+                        alt="Maison de Beauté Salon interior, a serene beauty space with soft natural light"
+                        width={1200}
+                        height={674}
+                        loading="lazy"
+                        decoding="async"
                         className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                       />
                     </div>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Cookie } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,7 +12,12 @@ import {
 } from "@/lib/cookieConsent";
 
 const CookieConsent = () => {
-  const [consent, setConsent] = useState<CookieConsentValue | null>(() => getCookieConsent());
+  // "pending" until mounted: prerendered HTML has no cookie access, so the banner is decided in the browser.
+  const [consent, setConsent] = useState<CookieConsentValue | "pending" | null>("pending");
+
+  useEffect(() => {
+    setConsent(getCookieConsent());
+  }, []);
 
   if (consent) {
     return null;

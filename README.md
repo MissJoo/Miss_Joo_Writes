@@ -2,7 +2,7 @@
 
 > *A digital sanctuary for thoughts that linger, stories that heal, and the beauty found in quiet moments.*
 
-**Live Site**: [missjoo.com](https://missjoo.com)  
+**Live Site**: [missjoowrites.com](https://missjoowrites.com)  
 **Instagram**: [@missjooo98](https://instagram.com/missjooo98)
 
 ---
@@ -29,7 +29,7 @@
 | **Vite** | Lightning-fast build tool |
 | **TailwindCSS** | Utility-first styling |
 | **shadcn/ui** | Accessible component library (Radix UI) |
-| **React Router** | Client-side routing |
+| **React Router** | Routing (prerendered at build time) |
 | **React Hook Form + Zod** | Form validation |
 
 ### Design System
@@ -148,18 +148,23 @@ src/
 
 ## 🌐 Deployment
 
-The site is configured for **GitHub Pages** deployment:
+The site deploys to **GitHub Pages** (custom domain missjoowrites.com) from `main` via `.github/workflows/deploy.yml`.
 
-1. Build the project: `npm run build`
-2. Deploy the `dist` folder to GitHub Pages
-3. The app uses `/Miss_Joo_Writes/` as the base path
-4. SPA routing is handled by redirect scripts in `index.html` and `404.html`
+`npm run build` does three things:
+
+1. `vite build` builds the browser bundle into `dist/`
+2. `vite build --ssr src/entry-server.tsx` builds a server renderer into `dist-ssr/`
+3. `scripts/prerender.mjs` renders every route to `dist/<route>/index.html` with its own title, description,
+   canonical, Open Graph/Twitter tags and JSON-LD, then writes `dist/sitemap.xml` and a real `dist/404.html`
+
+Pages therefore show their full content without JavaScript; React hydrates them in the browser.
+Per-page meta lives in `src/lib/seo.ts`.
 
 ### Environment Notes
 
-- **Base URL**: Configured in `App.tsx` as `/Miss_Joo_Writes/`
-- **Canonical URL**: https://missjoo.com
-- **Social Images**: Hosted on Google Cloud Storage
+- **Canonical URLs** use a trailing slash (`https://missjoowrites.com/about/`), matching how GitHub Pages serves folders
+- **Newsletter**: set the repo variable `VITE_NEWSLETTER_ENDPOINT` (Settings → Secrets and variables → Actions → Variables)
+  to send signups to a new provider (e.g. beehiiv). Without it, signups go to the existing Mailchimp audience.
 
 ---
 
@@ -178,34 +183,34 @@ npm run lint        # Run ESLint
 
 ### Adding a New Blog Post
 
-Blog posts are currently hardcoded in:
+Every post lives in **`src/data/posts.ts`**. Add a new entry at the **top** of the `posts` array (newest first):
 
-1. **`src/pages/Blog.tsx`** - Add post metadata to `allPosts` array:
-   ```typescript
-   {
-     title: "Your Post Title",
-     excerpt: "Brief preview of your post...",
-     date: "Month DD, YYYY",
-     category: "Healing" | "Life" | "Thoughts" | "Random",
-     slug: "your-url-slug"
-   }
-   ```
+```typescript
+{
+  slug: "your-url-slug",
+  title: "Your Post Title",
+  excerpt: "Brief preview of your post...",
+  date: "August 18, 2026",          // shown on the site
+  datePublished: "2026-08-18",      // used for SEO and the sitemap
+  category: "Thoughts",             // Thoughts | Life | Healing | Random (Journal filter)
+  pillar: "womanhood",              // topic hub, see src/data/pillars.ts
+  quote: "Optional pull quote for the homepage feature card.",
+  image: "/images/blog/your-url-slug.webp", // optional; falls back to /social-cover.png
+  content: [
+    "First paragraph...",
+    "##: A section heading",
+    "Second paragraph...",
+  ],
+},
+```
 
-2. **`src/pages/BlogPost.tsx`** - Add full content to `postsContent` object:
-   ```typescript
-   "your-url-slug": {
-     title: "Your Post Title",
-     date: "Month DD, YYYY",
-     category: "Category",
-     content: [
-       "First paragraph...",
-       "Second paragraph...",
-       // Array of strings, one per paragraph
-     ]
-   }
-   ```
+The homepage, Journal, topic hub, related essays, reading time, sitemap and meta tags all update from that one entry.
+When you edit a published post, add `dateModified: "YYYY-MM-DD"`.
 
-3. **`src/pages/Index.tsx`** - Optionally add to `blogPosts` array for homepage preview
+### Topic Hubs & Feed
+
+- Hub names and intro copy: `src/data/pillars.ts`
+- "From the Feed" homepage cards (Instagram/TikTok → essay): `src/data/feed.json`
 
 ### Updating Colors
 
@@ -261,7 +266,7 @@ This is a personal blog. Please respect the content and design.
 
 ## 📬 Connect
 
-- **Website**: [missjoo.com](https://missjoo.com)
+- **Website**: [missjoowrites.com](https://missjoowrites.com)
 - **Instagram**: [@missjooo98](https://instagram.com/missjooo98)
 
 ---

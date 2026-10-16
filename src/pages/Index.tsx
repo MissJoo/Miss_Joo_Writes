@@ -2,291 +2,12 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import EmailSignupForm from "@/components/forms/EmailSignupForm";
-import heroImage from "@/assets/hero-image.jpg";
+import heroImage from "@/assets/hero-image.webp";
+import NewsletterSignup from "@/components/NewsletterSignup";
+import FromTheFeed from "@/components/FromTheFeed";
+import { posts, readingTime } from "@/data/posts";
 
-// Sample blog posts data
-const blogPosts = [
-  {
-    title: "Maybe Belonging Is Not About Fitting In",
-    excerpt: "For most of my life, I thought I would know belonging the moment I felt it. But the older I get, the more I notice that being welcomed somewhere and belonging there are two different things.",
-    date: "August 4, 2026",
-    category: "Thoughts",
-    slug: "maybe-belonging-is-not-about-fitting-in",
-    quote: "Belonging may never have been about fitting into a space exactly as it is. It may simply be knowing that I don't have to cut pieces off myself just to stay inside it.",
-    featured: true,
-  },
-  {
-    title: "I Am No Longer Waiting to Become Her",
-    excerpt: "For a long time, I imagined the woman I wanted to become as someone waiting for me in the future. She was confident. She knew what she wanted. But I kept moving the finish line further away.",
-    date: "July 29, 2026",
-    category: "Healing",
-    slug: "no-longer-waiting-to-become-her",
-    quote: "Unfinished does not mean unready. I do not need to reach a final version of myself before I can live fully.",
-    featured: true,
-  },
-  {
-    title: "The Quiet Pressure to Have It All Figured Out",
-    excerpt: "There was a time when I genuinely believed life would make more sense by now. I thought adulthood would eventually arrive with answers. Instead, it arrived with more questions.",
-    date: "July 21, 2026",
-    category: "Thoughts",
-    slug: "quiet-pressure-figured-out",
-    quote: "Someone else's success does not mean I have failed. Their timing does not make mine wrong. Their path does not cancel the value of mine.",
-    featured: true,
-  },
-  {
-    title: "The Woman I'm Slowly Becoming",
-    excerpt: "Growth doesn't always arrive with a celebration. Sometimes it arrives so quietly that you only notice it when you look back.",
-    date: "July 14, 2026",
-    category: "Healing",
-    slug: "woman-im-slowly-becoming",
-    quote: "The changes that matter most rarely happen all at once. They happen quietly. One ordinary day at a time.",
-  },
-  {
-    title: "The Things I Never Expected to Miss Until I Moved to Qatar",
-    excerpt: "I expected the homesickness. I expected to miss birthdays, holidays, and Sunday lunches. What I didn't expect were the little things. The ordinary things.",
-    date: "July 07, 2026",
-    category: "Life",
-    slug: "things-i-never-expected-to-miss",
-    quote: "Maybe home isn't just where you came from. Maybe home is also every place that changes you for the better.",
-  },
-  {
-    title: "Qatar Days Through a Filipina Woman's Eyes",
-    excerpt: "There are days in Qatar that feel too bright, too hot, too quiet, and too far from everything I once called home.",
-    date: "July 02, 2026",
-    category: "Life",
-    slug: "qatar-days-filipina",
-    quote: "Qatar days taught me that strength can be quiet. That being far from home does not mean you are lost.",
-  },
-  {
-    title: "What Peace Taught Me About Letting Go",
-    excerpt: "I used to think letting go would feel like one big decision. Like one day I would wake up, feel nothing, and finally be ready. But it did not happen that way.",
-    date: "June 24, 2026",
-    category: "Healing",
-    slug: "what-peace-taught-me",
-    quote: "Sometimes letting go is not losing someone. Sometimes it is finally getting yourself back.",
-  },
-  {
-    title: "5 Signs You're Emotionally Tired From Trying Too Hard",
-    excerpt: "There is a kind of tiredness that does not look obvious. You still wake up. You still reply to messages. You still do what you have to do. But inside, something feels heavy.",
-    date: "June 16, 2026",
-    category: "Healing",
-    slug: "emotionally-tired",
-    quote: "You are not asking for too much. You are just tired of asking the wrong person.",
-  },
-  {
-    title: "There is a difference between fighting for love and forcing it",
-    excerpt: "Love should not feel like a guessing game. Fighting for love means both people are choosing each other. Forcing it means you are trying to convince someone to choose you. That is where the pain begins.",
-    date: "June 12, 2026",
-    category: "Thoughts",
-    slug: "fighting-vs-forcing-love",
-    quote: "You deserve a love that does not make you feel alone in the effort.",
-  },
-  {
-    title: "The black coffee rule",
-    excerpt: "For a long time, I took my coffee with a little bit of everything.. until one morning, I poured it black.",
-    date: "June 09, 2026",
-    category: "Reflections",
-    slug: "the-black-coffee-rule",
-    quote: "I'm learning to take my life black. Simple, potent, and exactly as it is. No additions required.",
-  },
-  {
-    title: "I'm learning to exist without performing",
-    excerpt: "I spent so long curating how I showed up that I forgot what it felt like to just.. be.",
-    date: "June 02, 2026",
-    category: "Healing",
-    slug: "exist-without-performing",
-  },
-  {
-    title: "This is the season I stopped shrinking",
-    excerpt: "For years, I made myself smaller.. smaller opinions, smaller needs, smaller presence.",
-    date: "May 26, 2026",
-    category: "Life",
-    slug: "stopped-shrinking",
-  },
-  {
-    title: "Gratitude for the version of me who kept going",
-    excerpt: "I don't say this to her enough.. the version of me who woke up on the hardest mornings and still showed up.",
-    date: "May 19, 2026",
-    category: "Healing",
-    slug: "gratitude-for-me",
-  },
-  {
-    title: "I don't need to prove I've changed",
-    excerpt: "There was a time when I wanted everyone to see my growth.. as if growth only mattered when someone acknowledged it.",
-    date: "May 12, 2026",
-    category: "Thoughts",
-    slug: "dont-need-to-prove",
-  },
-  {
-    title: "What peace actually looks like for me",
-    excerpt: "For a long time, I imagined peace as the absence of problems.. but that's not peace.",
-    date: "May 05, 2026",
-    category: "Healing",
-    slug: "what-peace-looks-like",
-  },
-  {
-    title: "I'm no longer the version they remember",
-    excerpt: "Some people still see the old me when they look at me.. the one who apologized too much.",
-    date: "April 28, 2026",
-    category: "Healing",
-    slug: "no-longer-that-version",
-  },
-  {
-    title: "A quiet Monday that felt like healing",
-    excerpt: "Nothing significant happened today.. I woke up slowly, made tea instead of coffee.",
-    date: "April 21, 2026",
-    category: "Random",
-    slug: "quiet-monday",
-  },
-  {
-    title: "Softness is not weakness",
-    excerpt: "Somewhere along the way, I learned to harden.. to mistake sharpness for strength.",
-    date: "April 14, 2026",
-    category: "Thoughts",
-    slug: "softness-not-weakness",
-  },
-  {
-    title: "Allowing myself to enjoy things without guilt",
-    excerpt: "I caught myself smiling the other day.. genuinely, without thinking.",
-    date: "April 07, 2026",
-    category: "Life",
-    slug: "enjoy-without-guilt",
-  },
-  {
-    title: "I stopped waiting for the right moment",
-    excerpt: "I spent a long time waiting.. waiting to feel ready, waiting for the fear to pass.",
-    date: "March 31, 2026",
-    category: "Healing",
-    slug: "stopped-waiting",
-  },
-  {
-    title: "The people who stay don't need convincing",
-    excerpt: "I used to exhaust myself trying to keep people close.. explaining, adjusting, dimming.",
-    date: "March 24, 2026",
-    category: "Healing",
-    slug: "people-who-stay",
-  },
-  {
-    title: "Spring came before I felt ready",
-    excerpt: "The weather changed before I did.. one morning the light came through differently.",
-    date: "March 17, 2026",
-    category: "Life",
-    slug: "spring-before-ready",
-  },
-  {
-    title: "I'm starting to feel at home in my own company",
-    excerpt: "There was a time when being alone felt like something was missing..",
-    date: "March 10, 2026",
-    category: "Thoughts",
-    slug: "my-own-company",
-  },
-  {
-    title: "Some shifts don't need to be announced",
-    excerpt: "There are changes happening inside me that I don't know how to explain yet..",
-    date: "March 03, 2026",
-    category: "Healing",
-    slug: "quiet-shifts",
-  },
-  {
-    title: "I no longer force what doesn't flow",
-    excerpt: "There was a time I thought effort could fix everything. If the conversation felt cold, I tried to make it warm again.",
-    date: "February 24, 2026",
-    category: "Healing",
-    slug: "no-force",
-  },
-  {
-    title: "I feel calmer in ways I can't fully explain",
-    excerpt: "There’s a kind of calm that doesn’t come from everything being perfect.",
-    date: "February 19, 2026",
-    category: "Healing",
-    slug: "calm-me",
-  },
-  {
-    title: "I’m becoming more selective with my energy",
-    excerpt: "I've been paying attention on how my body reacts before my mind.. ",
-    date: "February 12, 2026",
-    category: "Healing",
-    slug: "selective-energy",
-  },
-  {
-    title: "I'm learning to trust myself again",
-    excerpt: "For a long time, I questioned myself more than I listened..",
-    date: "February 04, 2026",
-    category: "Healing",
-    slug: "trust-myself",
-  },
-  {
-    title: "January taught me to slow down",
-    excerpt: "Not moving was the honest thing I could do....",
-    date: "January 27, 2026",
-    category: "Healing",
-    slug: "slow-down",
-  },
-  {
-    title: "I learning to choose myself without explaining",
-    excerpt: "For long time, choosing myself came with guilt.....",
-    date: "January 20, 2026",
-    category: "Healing",
-    slug: "choose-myself",
-  },
-  {
-    title: "This version of me feels unfamiliar, and that's okay",
-    excerpt: "Lately, I’ve been meeting a version of myself I don’t fully recognize....",
-    date: "January 13, 2026",
-    category: "Healing",
-    slug: "version-of-me",
-  },
-  {
-    title: "What I'm leaving behind without guilt",
-    excerpt: "Choosing peace over explanations....",
-    date: "January 08, 2026",
-    category: "Healing",
-    slug: "behind-guilt",
-
-  },
-  {
-    title: "Welcoming 2026 with an open heart",
-    excerpt: "Closing old chapters, opening new beginnings....",
-    date: "December 31, 2025",
-    category: "Life",
-    slug: "new-beginnings",
-  },
-  {
-    title: "Some days I'm strong, some days I'm just tired",
-    excerpt: "I’ve learned that strength doesn’t always look loud. Some days, it’s simply getting through the day without explaining why you feel heavy....",
-    date: "December 30, 2025",
-    category: "Healing",
-    slug: "strong-days",
-  },
-  {
-    title: "Learning to embrace the quiet moments",
-    excerpt: "There's something profoundly beautiful about sitting with silence. Not the uncomfortable kind that begs to be filled, but the kind that wraps around you like a warm blanket on a winter evening...",
-    date: "December 28, 2025",
-    category: "Thoughts",
-    slug: "embrace-quiet-moments",
-  },
-  {
-    title: "On growing through change",
-    excerpt: "Change has always felt like losing pieces of myself. But lately, I've started to see it differently—as collecting new pieces, adding to who I am...",
-    date: "December 20, 2025",
-    category: "Healing",
-    slug: "growing-through-change",
-  },
-  {
-    title: "Letters I never sent",
-    excerpt: "Sometimes the most important conversations happen in the space between what we say and what we mean. These are the words I've been holding...",
-    date: "December 15, 2025",
-    category: "Life",
-    slug: "letters-never-sent",
-  },
-  {
-    title: "A random Tuesday in December",
-    excerpt: "Not every day needs to be remarkable. Sometimes the most beautiful moments are the ones that pass without fanfare...",
-    date: "December 10, 2025",
-    category: "Random",
-    slug: "random-tuesday",
-  },
-];
+const blogPosts = posts;
 
 const Index = () => {
   return (
@@ -297,7 +18,10 @@ const Index = () => {
         <div className="absolute inset-0 z-0 select-none pointer-events-none">
           <img
             src={heroImage}
-            alt="Atmospheric texture"
+            alt=""
+            width={1600}
+            height={900}
+            {...{ fetchpriority: "high" }}
             className="w-full h-full object-cover opacity-[0.06] contrast-75 saturate-0 mix-blend-multiply"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-journal-bg/30 to-journal-bg"></div>
@@ -332,7 +56,7 @@ const Index = () => {
                 </Link>
               </Button>
               <Link 
-                to="/blog/quiet-pressure-figured-out" 
+                to={`/blog/${blogPosts[0].slug}`} 
                 className="text-journal-gold hover:text-journal-text text-xs tracking-wider uppercase underline underline-offset-4 decoration-journal-champagne font-sans font-medium py-2 transition-colors duration-300"
               >
                 Read the latest reflection
@@ -359,11 +83,15 @@ const Index = () => {
                     <div className="flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted">
                       <span>JOURNAL</span>
                       <span className="w-6 h-px bg-journal-border"></span>
-                      <time>{post.date}</time>
+                      <time dateTime={post.datePublished}>{post.date}</time>
+                      <span className="w-6 h-px bg-journal-border"></span>
+                      <span>{readingTime(post)}</span>
                     </div>
 
                     <h3 className="font-serif text-2xl lg:text-3.5xl text-journal-text leading-tight font-medium">
-                      {post.title}
+                      <Link to={`/blog/${post.slug}`} className="hover:text-journal-gold transition-colors duration-300">
+                        {post.title}
+                      </Link>
                     </h3>
 
                     <p className="text-journal-text-secondary text-sm md:text-base font-light leading-relaxed">
@@ -461,7 +189,9 @@ const Index = () => {
                   <div className="flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted">
                     <span>{post.category}</span>
                     <span className="w-4 h-px bg-journal-border"></span>
-                    <time>{post.date}</time>
+                    <time dateTime={post.datePublished}>{post.date}</time>
+                    <span className="w-4 h-px bg-journal-border"></span>
+                    <span>{readingTime(post)}</span>
                   </div>
 
                   <h3 className="font-serif text-xl group-hover:text-journal-gold transition-colors duration-300 text-journal-text leading-snug">
@@ -485,6 +215,13 @@ const Index = () => {
               </article>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <section className="pb-20 md:pb-28 bg-journal-bg">
+        <div className="container mx-auto px-6 lg:px-12">
+          <NewsletterSignup source="home" />
         </div>
       </section>
 
@@ -569,6 +306,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <FromTheFeed />
 
       {/* Instagram Minimal Section */}
       <section className="py-16 md:py-20 bg-journal-bg">

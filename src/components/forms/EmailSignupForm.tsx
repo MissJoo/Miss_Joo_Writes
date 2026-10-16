@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useToast } from "@/hooks/use-toast";
 import { Mail } from "lucide-react";
+import { subscribe } from "@/lib/newsletter";
 
 const emailSchema = z.object({
     name: z.string().optional(),
@@ -13,53 +14,6 @@ const emailSchema = z.object({
 });
 
 type EmailFormData = z.infer<typeof emailSchema>;
-type MailchimpResponse = { result: string; msg: string };
-type MailchimpJsonpCallback = (data: MailchimpResponse) => void;
-type MailchimpCallbackStore = Window & Record<string, MailchimpJsonpCallback | undefined>;
-
-// Mailchimp config extracted from your embedded form
-const MAILCHIMP_ACTION_URL =
-    "https://github.us18.list-manage.com/subscribe/post-json?u=80e1467a6cae550ca8829039c&id=f46f720fb3&f_id=0071aee6f0";
-const MAILCHIMP_HONEYPOT = "b_80e1467a6cae550ca8829039c_f46f720fb3";
-
-/**
- * Submits email to Mailchimp via JSONP (no backend required).
- * Mailchimp doesn't support CORS, so we inject a <script> tag instead.
- */
-function submitToMailchimp(email: string): Promise<MailchimpResponse> {
-    return new Promise((resolve, reject) => {
-        const callbackName = `mc_callback_${Date.now()}`;
-        const url = `${MAILCHIMP_ACTION_URL}&EMAIL=${encodeURIComponent(email)}&${MAILCHIMP_HONEYPOT}=&c=${callbackName}`;
-        const callbacks = window as MailchimpCallbackStore;
-
-        // Attach callback to window so the JSONP script can call it
-        callbacks[callbackName] = (data: MailchimpResponse) => {
-            delete callbacks[callbackName];
-            document.body.removeChild(script);
-            resolve(data);
-        };
-
-        const script = document.createElement("script");
-        script.src = url;
-        script.onerror = () => {
-            delete callbacks[callbackName];
-            document.body.removeChild(script);
-            reject(new Error("Network error. Please try again."));
-        };
-
-        document.body.appendChild(script);
-
-        // Fallback timeout - Mailchimp usually responds in < 5s
-        setTimeout(() => {
-            if (callbacks[callbackName]) {
-                delete callbacks[callbackName];
-                if (document.body.contains(script)) document.body.removeChild(script);
-                reject(new Error("Request timed out. Please try again."));
-            }
-        }, 10000);
-    });
-}
-
 interface EmailSignupFormProps {
     ctaText?: string;
     onSuccess?: (email: string) => void;
@@ -85,10 +39,9 @@ const EmailSignupForm = ({
 
     const onSubmit = async (data: EmailFormData) => {
         setIsSubmitting(true);
+        const result = await subscribe(data.email, "free-journal");
         try {
-            const response = await submitToMailchimp(data.email);
-
-            if (response.result === "success") {
+            if (result.ok) {
                 toast({
                     title: "You're in! 🎉",
                     description: "Check your inbox — your free download is on its way.",
@@ -97,25 +50,12 @@ const EmailSignupForm = ({
                 reset();
                 onSuccess?.(data.email);
             } else {
-                // Mailchimp returns already-subscribed or other soft errors in msg
-                const message = response.msg?.includes("already subscribed")
-                    ? "This email is already subscribed. Check your inbox!"
-                    : response.msg || "Something went wrong. Please try again.";
-
                 toast({
                     title: "Oops!",
-                    description: message,
+                    description: result.message,
                     variant: "destructive",
                 });
             }
-        } catch (error: unknown) {
-            const message = error instanceof Error ? error.message : "Please try again later.";
-
-            toast({
-                title: "Something went wrong",
-                description: message,
-                variant: "destructive",
-            });
         } finally {
             setIsSubmitting(false);
         }

@@ -15,7 +15,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ['Cormorant Garamond', 'Playfair Display', 'Georgia', 'serif'],
+        serif: ['Cormorant Garamond', 'Georgia', 'serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
         signature: ['Great Vibes', 'cursive'],
       },
@@ -64,7 +64,7 @@ export default {
         "journal-card": "#FFFDF9",
         "journal-text": "#2B2118",
         "journal-text-secondary": "#5B4636",
-        "journal-muted": "#8A7566",
+        "journal-muted": "#7A6556",
         "journal-gold": "#8C6A43",
         "journal-champagne": "#C8A96A",
         "journal-border": "#E6D8C8",

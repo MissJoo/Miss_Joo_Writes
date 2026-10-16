@@ -39,6 +39,10 @@ jobs:
 
       - name: Build
         run: npm run build
+        env:
+          # Optional newsletter provider endpoint (repo Settings > Secrets and variables > Actions > Variables).
+          # When empty, signups go to the existing Mailchimp audience.
+          VITE_NEWSLETTER_ENDPOINT: ${{ vars.VITE_NEWSLETTER_ENDPOINT }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4

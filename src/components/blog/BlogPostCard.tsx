@@ -8,15 +8,8 @@ interface BlogPostCardProps {
   category: string;
   slug: string;
   featured?: boolean;
+  readingTime: string;
 }
-
-// Rough reading time estimate
-const readingTime = (excerpt: string) => {
-  const words = excerpt.split(" ").length;
-  // Estimate full post at ~15x the excerpt length, read at 200 WPM
-  const mins = Math.max(1, Math.round((words * 15) / 200));
-  return `${mins} min read`;
-};
 
 const categoryColors: Record<string, string> = {
   Healing:    "bg-rose-50 text-rose-700/80 border-rose-200",
@@ -26,7 +19,7 @@ const categoryColors: Record<string, string> = {
   Reflections:"bg-emerald-50 text-emerald-700/80 border-emerald-200",
 };
 
-const BlogPostCard = ({ title, excerpt, date, category, slug, featured = false }: BlogPostCardProps) => {
+const BlogPostCard = ({ title, excerpt, date, category, slug, featured = false, readingTime }: BlogPostCardProps) => {
   const pillClass = categoryColors[category] ?? "bg-journal-bg-secondary text-journal-gold border-journal-border";
 
   return (
@@ -89,7 +82,7 @@ const BlogPostCard = ({ title, excerpt, date, category, slug, featured = false }
           </span>
           {/* Reading time */}
           <span className="text-[10px] text-journal-muted tracking-wide font-sans">
-            {readingTime(excerpt)}
+            {readingTime}
           </span>
         </div>
       </Link>
