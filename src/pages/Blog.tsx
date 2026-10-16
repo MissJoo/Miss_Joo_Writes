@@ -15,7 +15,7 @@ const allPosts = [
   },
   {
     title: "Maybe Belonging Is Not About Fitting In",
-    excerpt: "I used to think belonging was something you could recognize immediately. But the older I get, the more I realize that being welcomed somewhere and actually belonging there are not always the same thing.",
+    excerpt: "For most of my life, I thought I would know belonging the moment I felt it. But the older I get, the more I notice that being welcomed somewhere and belonging there are two different things.",
     date: "August 4, 2026",
     category: "Thoughts",
     slug: "maybe-belonging-is-not-about-fitting-in",

@@ -8,11 +8,11 @@ import heroImage from "@/assets/hero-image.jpg";
 const blogPosts = [
   {
     title: "Maybe Belonging Is Not About Fitting In",
-    excerpt: "I used to think belonging was something you could recognize immediately. But the older I get, the more I realize that being welcomed somewhere and actually belonging there are not always the same thing.",
+    excerpt: "For most of my life, I thought I would know belonging the moment I felt it. But the older I get, the more I notice that being welcomed somewhere and belonging there are two different things.",
     date: "August 4, 2026",
     category: "Thoughts",
     slug: "maybe-belonging-is-not-about-fitting-in",
-    quote: "Maybe belonging is less about fitting into a space exactly as it is and more about knowing that I do not have to cut pieces from myself just to remain inside it.",
+    quote: "Belonging may never have been about fitting into a space exactly as it is. It may simply be knowing that I don't have to cut pieces off myself just to stay inside it.",
     featured: true,
   },
   {
