@@ -191,7 +191,7 @@ const BlogPost = () => {
                   <span className="absolute left-0 top-0 h-full w-[3px] bg-journal-champagne origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-300 rounded-l-[3px]" aria-hidden="true" />
                   <div className="space-y-3">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-[10px] tracking-[0.2em] uppercase text-journal-gold font-semibold bg-journal-gold/10 border border-journal-gold/20 px-2 py-[2px] rounded-full">{getPillar(otherPost.pillar)?.navLabel ?? otherPost.category}</span>
+                      <span className="text-[10px] tracking-[0.2em] uppercase text-journal-gold font-semibold bg-journal-gold/10 border border-journal-gold/20 px-2 py-[2px] rounded-full">{otherPost.category}</span>
                       <time dateTime={otherPost.datePublished} className="text-[10px] tracking-[0.15em] uppercase text-journal-muted">{otherPost.date}</time>
                       <span className="text-[10px] tracking-[0.15em] uppercase text-journal-muted">· {readingTime(otherPost)}</span>
                     </div>

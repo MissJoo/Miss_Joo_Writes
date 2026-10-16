@@ -5,6 +5,7 @@ import EmailSignupForm from "@/components/forms/EmailSignupForm";
 import heroImage from "@/assets/hero-image.webp";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import FromTheFeed from "@/components/FromTheFeed";
+import ReadByMood from "@/components/ReadByMood";
 import { posts, readingTime } from "@/data/posts";
 
 const blogPosts = posts;
@@ -66,67 +67,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Featured Reflection Section */}
-      <section className="py-20 md:py-28 bg-journal-bg border-t border-journal-border/30">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-5xl mx-auto space-y-10">
-            <div className="text-center">
-              <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">Featured Reflections</h2>
-              <div className="w-8 h-px bg-journal-champagne/40 mx-auto mt-3"></div>
-            </div>
-
-            <div className="flex flex-col gap-10">
-              {blogPosts.slice(0, 3).map((post) => (
-                <div key={post.slug} className="grid md:grid-cols-12 border border-journal-border bg-journal-card hover:border-journal-champagne/50 transition-all duration-500 overflow-hidden rounded-[2px] shadow-[0_4px_20px_-10px_rgba(0,0,0,0.03)]">
-                  {/* Text Side */}
-                  <div className="p-8 md:p-12 lg:p-16 md:col-span-7 flex flex-col justify-center space-y-6">
-                    <div className="flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted">
-                      <span>JOURNAL</span>
-                      <span className="w-6 h-px bg-journal-border"></span>
-                      <time dateTime={post.datePublished}>{post.date}</time>
-                      <span className="w-6 h-px bg-journal-border"></span>
-                      <span>{readingTime(post)}</span>
-                    </div>
-
-                    <h3 className="font-serif text-2xl lg:text-3.5xl text-journal-text leading-tight font-medium">
-                      <Link to={`/blog/${post.slug}`} className="hover:text-journal-gold transition-colors duration-300">
-                        {post.title}
-                      </Link>
-                    </h3>
-
-                    <p className="text-journal-text-secondary text-sm md:text-base font-light leading-relaxed">
-                      {post.excerpt}
-                    </p>
-
-                    <div className="pt-2">
-                      <Link 
-                        to={`/blog/${post.slug}`} 
-                        className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-journal-gold hover:text-journal-text transition-colors duration-300 font-medium"
-                      >
-                        <span>Read the entry</span>
-                        <span>&rarr;</span>
-                      </Link>
-                    </div>
-                  </div>
-
-                  {/* Graphic Side */}
-                  <div className="relative md:col-span-5 min-h-[260px] bg-gradient-to-br from-journal-bg-secondary/50 via-journal-bg-secondary to-journal-bg-secondary/80 flex items-center justify-center p-8 select-none border-t md:border-t-0 md:border-l border-journal-border/50">
-                    {/* Subtle decorative corner */}
-                    <span className="absolute top-4 right-4 text-journal-champagne/30 font-serif text-5xl select-none leading-none">&ldquo;</span>
-                    <div className="text-center space-y-5 max-w-[240px]">
-                      <span className="text-xl text-journal-champagne">✦</span>
-                      <p className="font-serif italic text-base md:text-lg text-journal-text-secondary leading-relaxed">
-                        &ldquo;{post.quote || post.excerpt}&rdquo;
-                      </p>
-                      <div className="w-10 h-px bg-journal-champagne/50 mx-auto"></div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
+      <ReadByMood />
 
       {/* About Preview Section */}
       <section className="py-20 md:py-28 bg-journal-bg-secondary">
