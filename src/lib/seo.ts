@@ -76,6 +76,8 @@ interface StaticPage {
   noindex?: boolean;
   /** For alias routes that duplicate another page */
   canonicalPath?: string;
+  /** Social preview image, if not the default cover */
+  image?: string;
 }
 
 const staticPages: Record<string, StaticPage> = {
@@ -109,6 +111,11 @@ const staticPages: Record<string, StaticPage> = {
     title: "Work With Me | MISS JOO",
     description:
       "Editorial collaborations, UGC and brand partnerships with MISS JOO, a writer and creator based in Qatar.",
+  },
+  "/the-suitcase": {
+    title: "The Suitcase | MISS JOO",
+    description: "An interactive reflection on living abroad. Unpack the suitcase and discover what you still carry.",
+    image: "/images/the-suitcase-og.png",
   },
   "/privacy-policy": {
     title: "Privacy Policy | MISS JOO",
@@ -202,7 +209,7 @@ export const getPageMeta = (rawPathname: string): PageMeta => {
       title: page.title,
       description: page.description,
       canonical: page.canonicalPath ? canonicalUrl(page.canonicalPath) : canonical,
-      image: defaultImage,
+      image: page.image ? absolute(page.image) : defaultImage,
       type: "website",
       noindex: page.noindex,
       jsonLd:
@@ -249,7 +256,7 @@ export const getSitemapRoutes = () => {
 };
 
 /** Update when the static pages (about, contact, legal...) change. */
-export const SITE_PAGES_UPDATED = "2026-10-16";
+export const SITE_PAGES_UPDATED = "2026-10-17";
 
 /** Old post URLs that now live elsewhere. GitHub Pages has no server redirects, so each gets a redirect page. */
 export const getRedirects = () =>

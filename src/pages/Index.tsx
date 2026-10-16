@@ -6,6 +6,7 @@ import heroImage from "@/assets/hero-image.webp";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import FromTheFeed from "@/components/FromTheFeed";
 import ReadByMood from "@/components/ReadByMood";
+import { SuitcaseHomeTeaser } from "@/components/suitcase/SuitcaseTeasers";
 import { posts, readingTime } from "@/data/posts";
 
 const blogPosts = posts;
@@ -158,6 +159,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <SuitcaseHomeTeaser />
 
       {/* Newsletter */}
       <section className="pb-20 md:pb-28 bg-journal-bg">

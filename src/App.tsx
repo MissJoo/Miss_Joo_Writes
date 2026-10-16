@@ -18,6 +18,7 @@ import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
 import PillarHub from "./pages/PillarHub";
 import WorkWithMe from "./pages/WorkWithMe";
+import TheSuitcase from "./pages/TheSuitcase";
 import NotFound from "./pages/NotFound";
 import { pillars } from "./data/pillars";
 
@@ -42,6 +43,7 @@ const App = () => (
         <Route path="/downloads" element={<Downloads />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/work-with-me" element={<WorkWithMe />} />
+        <Route path="/the-suitcase" element={<TheSuitcase />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/terms" element={<Terms />} />
         {pillars.map((pillar) => (

@@ -5,6 +5,8 @@ import PillarNav from "@/components/blog/PillarNav";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import { getPillar, type PillarSlug } from "@/data/pillars";
 import { getPostsByPillar, readingTime } from "@/data/posts";
+import { suitcase } from "@/data/suitcase";
+import { SuitcaseHubFeature } from "@/components/suitcase/SuitcaseTeasers";
 
 const PillarHub = ({ slug }: { slug: PillarSlug }) => {
   const pillar = getPillar(slug)!;
@@ -30,6 +32,7 @@ const PillarHub = ({ slug }: { slug: PillarSlug }) => {
 
       <section className="py-16 lg:py-24 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
+          {slug === suitcase.pillar && <SuitcaseHubFeature />}
           {pillarPosts.length > 0 ? (
             <>
               <h2 className="text-center font-sans text-[10px] font-normal uppercase tracking-widest text-journal-muted mb-10">

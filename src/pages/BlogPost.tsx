@@ -8,6 +8,8 @@ import NotFound from "@/pages/NotFound";
 import { getPost, getRelatedPosts, readingTime } from "@/data/posts";
 import { getPillar } from "@/data/pillars";
 import { canonicalUrl } from "@/lib/seo";
+import { suitcase } from "@/data/suitcase";
+import { SuitcasePostLine } from "@/components/suitcase/SuitcaseTeasers";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -169,6 +171,14 @@ const BlogPost = () => {
           <NewsletterSignup source="post" />
         </div>
       </section>
+
+      {post.pillar === suitcase.pillar && (
+        <section className="pb-16 bg-journal-bg">
+          <div className="container mx-auto px-6 lg:px-12">
+            <SuitcasePostLine />
+          </div>
+        </section>
+      )}
 
       {/* Read Next Section */}
       <section className="py-16 bg-journal-bg-secondary/20 border-t border-journal-border/30">
