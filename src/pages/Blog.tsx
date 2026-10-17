@@ -1,22 +1,20 @@
 import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import BlogPostCard from "@/components/blog/BlogPostCard";
-import PillarNav from "@/components/blog/PillarNav";
 import { cn } from "@/lib/utils";
 import { posts, readingTime } from "@/data/posts";
+import { pillars, type PillarSlug } from "@/data/pillars";
 
-const categories = ["All", "Thoughts", "Life", "Healing", "Random"];
-
-const allPosts = posts;
+// "All" shows every post, including Journal-only posts that have no topic
+const filters: { key: PillarSlug | "all"; label: string }[] = [
+  { key: "all", label: "All" },
+  ...pillars.map((pillar) => ({ key: pillar.slug, label: pillar.navLabel })),
+];
 
 const Blog = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeFilter, setActiveFilter] = useState<PillarSlug | "all">("all");
 
-  const filteredPosts = activeCategory === "All"
-    ? allPosts
-    : activeCategory === "Thoughts"
-      ? allPosts.filter(post => post.category === "Thoughts" || post.category === "Reflections" || post.category === "Random")
-      : allPosts.filter(post => post.category === activeCategory);
+  const filteredPosts = activeFilter === "all" ? posts : posts.filter((post) => post.pillar === activeFilter);
 
   return (
     <Layout>
@@ -34,30 +32,31 @@ const Blog = () => {
             <p className="text-journal-text-secondary font-sans text-sm md:text-base font-light max-w-md mx-auto leading-relaxed">
               Thoughts, reflections, healing, and the quiet moments that shape who we are.
             </p>
-            <PillarNav className="pt-6" />
           </div>
         </div>
       </section>
 
-      {/* Categories filter */}
+      {/* Topic filter */}
       <div
         className="border-b border-journal-border/30 bg-journal-bg py-3 md:py-4"
       >
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between gap-4">
             <div className="-mx-6 flex flex-1 flex-nowrap gap-1.5 overflow-x-auto px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:gap-2 md:px-0">
-              {categories.map((category) => (
+              {filters.map((filter) => (
                 <button
-                  key={category}
-                  onClick={() => setActiveCategory(category)}
+                  key={filter.key}
+                  type="button"
+                  aria-pressed={activeFilter === filter.key}
+                  onClick={() => setActiveFilter(filter.key)}
                   className={cn(
                     "shrink-0 rounded-full border px-2 py-1.5 font-sans text-[9px] font-semibold uppercase tracking-[0.15em] transition-all duration-300 md:px-3 md:text-[10px] md:tracking-[0.2em]",
-                    activeCategory === category
+                    activeFilter === filter.key
                       ? "bg-journal-gold text-journal-bg border-journal-gold shadow-sm"
                       : "text-journal-muted border-journal-border/60 hover:text-journal-text hover:border-journal-gold/50 bg-transparent"
                   )}
                 >
-                  {category}
+                  {filter.label}
                 </button>
               ))}
             </div>
@@ -86,7 +85,7 @@ const Blog = () => {
           {filteredPosts.length === 0 && (
             <div className="text-center py-20 bg-journal-card border border-journal-border max-w-md mx-auto rounded-[2px]">
               <p className="text-journal-text-secondary font-light text-sm">
-                No entries in this category yet.
+                No entries in this topic yet.
               </p>
             </div>
           )}

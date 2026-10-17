@@ -235,7 +235,9 @@ export const getPageMeta = (rawPathname: string): PageMeta => {
 
 /** Every route that should be prerendered and listed in the sitemap. */
 export const getSitemapRoutes = () => {
-  const latest = (list: Post[]) => list.map((p) => p.dateModified ?? p.datePublished).sort().at(-1);
+  // Listing pages change when a post changes or when the site's structure does (SITE_PAGES_UPDATED)
+  const latest = (list: Post[]) =>
+    [...list.map((p) => p.dateModified ?? p.datePublished), SITE_PAGES_UPDATED].sort().at(-1);
   const newest = latest(posts);
 
   return [

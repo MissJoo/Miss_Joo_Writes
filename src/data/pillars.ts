@@ -16,6 +16,8 @@ export interface Pillar {
   intro: string;
   /** Meta description for search results and link previews */
   description: string;
+  /** Next planned titles, shown as "Coming soon" until the topic has its first post */
+  comingSoon?: string[];
 }
 
 // Placeholder intro copy, to be replaced.
@@ -30,8 +32,8 @@ export const pillars: Pillar[] = [
   },
   {
     slug: "psychology",
-    name: "Psychology & Self-Growth",
-    navLabel: "Psychology",
+    name: "Psychology & Growth",
+    navLabel: "Psychology & Growth",
     intro:
       "Reflections on healing, letting go, emotional tiredness, peace, and the patterns we slowly learn to see in ourselves.",
     description: "Essays on psychology, healing and self-growth: letting go, peace, and emotional patterns. By MISS JOO.",
@@ -58,6 +60,7 @@ export const pillars: Pillar[] = [
     navLabel: "Fashion",
     intro: "Considered pieces, personal style, and dressing as a form of self-respect.",
     description: "Essays on fashion and personal style. By MISS JOO.",
+    comingSoon: ["I Started Dressing for the Woman I'm Becoming", "What Living in Doha Taught Me About Elegance"],
   },
   {
     slug: "beauty",
@@ -65,6 +68,7 @@ export const pillars: Pillar[] = [
     navLabel: "Beauty",
     intro: "Skincare, self-care rituals, and beauty as a quiet act of attention.",
     description: "Essays on beauty, skincare and self-care rituals. By MISS JOO.",
+    comingSoon: ["My Skin Noticed the Move Before I Did", "The Only Ten Minutes Nobody Asks Anything of Me"],
   },
   {
     slug: "travel",
@@ -72,7 +76,11 @@ export const pillars: Pillar[] = [
     navLabel: "Travel",
     intro: "Slow journeys, new cities, and what travel teaches us about home.",
     description: "Essays on slow travel and the places that change us. By MISS JOO.",
+    comingSoon: ["Going Home Feels Like Travel Now", "A Weekend in Doha for Friends Who Think There's Nothing to Do"],
   },
 ];
 
 export const getPillar = (slug: string | undefined) => pillars.find((pillar) => pillar.slug === slug);
+
+/** Label shown on cards: the post's topic, or "Journal" for posts without one. */
+export const topicLabel = (pillar: PillarSlug | undefined) => getPillar(pillar)?.navLabel ?? "Journal";

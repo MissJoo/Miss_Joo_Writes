@@ -8,6 +8,7 @@ import FromTheFeed from "@/components/FromTheFeed";
 import ReadByMood from "@/components/ReadByMood";
 import { SuitcaseHomeTeaser } from "@/components/suitcase/SuitcaseTeasers";
 import { posts, readingTime } from "@/data/posts";
+import { topicLabel } from "@/data/pillars";
 
 const blogPosts = posts;
 
@@ -129,7 +130,7 @@ const Index = () => {
               >
                 <div className="space-y-4">
                   <div className="flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted">
-                    <span>{post.category}</span>
+                    <span>{topicLabel(post.pillar)}</span>
                     <span className="w-4 h-px bg-journal-border"></span>
                     <time dateTime={post.datePublished}>{post.date}</time>
                     <span className="w-4 h-px bg-journal-border"></span>

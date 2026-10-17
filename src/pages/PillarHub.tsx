@@ -47,6 +47,19 @@ const PillarHub = ({ slug }: { slug: PillarSlug }) => {
           ) : (
             <div className="text-center py-16 px-6 bg-journal-card border border-journal-border max-w-md mx-auto rounded-[2px] space-y-4">
               <p className="font-serif italic text-lg text-journal-text-secondary">The first essays here are still being written.</p>
+              {/* Planned titles from src/data/pillars.ts; disappears once the topic has a post */}
+              {pillar.comingSoon && pillar.comingSoon.length > 0 && (
+                <div className="pt-4 pb-2 space-y-3">
+                  <h2 className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium">Coming soon:</h2>
+                  <ul className="space-y-2">
+                    {pillar.comingSoon.map((title) => (
+                      <li key={title} className="font-serif text-xl text-journal-text leading-snug">
+                        {title}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
               <Link
                 to="/blog"
                 className="inline-block text-xs uppercase tracking-widest text-journal-gold hover:text-journal-text transition-colors font-medium"
@@ -56,7 +69,11 @@ const PillarHub = ({ slug }: { slug: PillarSlug }) => {
             </div>
           )}
 
-          <NewsletterSignup source={`hub-${slug}`} className="mt-20" />
+          <NewsletterSignup
+            source={`hub-${slug}`}
+            className="mt-20"
+            {...(pillarPosts.length === 0 && { title: "Get the first one in your inbox." })}
+          />
         </div>
       </section>
     </Layout>

@@ -192,8 +192,7 @@ Every post lives in **`src/data/posts.ts`**. Add a new entry at the **top** of t
   excerpt: "Brief preview of your post...",
   date: "August 18, 2026",          // shown on the site
   datePublished: "2026-08-18",      // used for SEO and the sitemap
-  category: "Thoughts",             // Thoughts | Life | Healing | Random (Journal filter)
-  pillar: "womanhood",              // topic hub, see src/data/pillars.ts
+  pillar: "womanhood",              // topic, see src/data/pillars.ts; leave out for "Journal only"
   quote: "Optional pull quote for the homepage feature card.",
   image: "/images/blog/your-url-slug.webp", // optional; falls back to /social-cover.png
   content: [
@@ -209,7 +208,7 @@ When you edit a published post, add `dateModified: "YYYY-MM-DD"`.
 
 ### Topic Hubs & Feed
 
-- Hub names and intro copy: `src/data/pillars.ts`
+- Topic names, intro copy and "Coming soon" titles: `src/data/pillars.ts`
 - "From the Feed" homepage cards (Instagram/TikTok → essay): `src/data/feed.json`
 
 ### Updating Colors

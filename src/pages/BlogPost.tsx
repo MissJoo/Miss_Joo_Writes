@@ -6,7 +6,7 @@ import ShareButtons from "@/components/blog/ShareButtons";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import NotFound from "@/pages/NotFound";
 import { getPost, getRelatedPosts, readingTime } from "@/data/posts";
-import { getPillar } from "@/data/pillars";
+import { getPillar, topicLabel } from "@/data/pillars";
 import { canonicalUrl } from "@/lib/seo";
 import { suitcase } from "@/data/suitcase";
 import { SuitcasePostLine } from "@/components/suitcase/SuitcaseTeasers";
@@ -79,14 +79,14 @@ const BlogPost = () => {
       <section className="pt-10 pb-6 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-2xl mx-auto text-center space-y-6">
-            {/* Category & Date */}
+            {/* Topic & Date */}
             <div className="flex items-center justify-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted animate-fade-in">
               {pillar ? (
                 <Link to={`/${pillar.slug}`} className="text-journal-gold font-semibold hover:text-journal-text transition-colors">
-                  {pillar.name}
+                  {pillar.navLabel}
                 </Link>
               ) : (
-                <span className="text-journal-gold font-semibold">{post.category}</span>
+                <span className="text-journal-gold font-semibold">{topicLabel(post.pillar)}</span>
               )}
               <span className="text-journal-border">•</span>
               <time dateTime={post.datePublished}>{post.date}</time>
@@ -201,7 +201,7 @@ const BlogPost = () => {
                   <span className="absolute left-0 top-0 h-full w-[3px] bg-journal-champagne origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-300 rounded-l-[3px]" aria-hidden="true" />
                   <div className="space-y-3">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <span className="text-[10px] tracking-[0.2em] uppercase text-journal-gold font-semibold bg-journal-gold/10 border border-journal-gold/20 px-2 py-[2px] rounded-full">{otherPost.category}</span>
+                      <span className="text-[10px] tracking-[0.2em] uppercase text-journal-gold font-semibold bg-journal-gold/10 border border-journal-gold/20 px-2 py-[2px] rounded-full">{topicLabel(otherPost.pillar)}</span>
                       <time dateTime={otherPost.datePublished} className="text-[10px] tracking-[0.15em] uppercase text-journal-muted">{otherPost.date}</time>
                       <span className="text-[10px] tracking-[0.15em] uppercase text-journal-muted">· {readingTime(otherPost)}</span>
                     </div>

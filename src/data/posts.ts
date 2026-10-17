@@ -12,10 +12,8 @@ export interface Post {
   datePublished: string;
   /** ISO date of the last meaningful edit, if any */
   dateModified?: string;
-  /** Mood tag shown on cards and used by the Journal filter */
-  category: string;
-  /** Topic hub this essay belongs to */
-  pillar: PillarSlug;
+  /** Topic hub this essay belongs to. Leave out for "Journal only" posts (shown under All, never on a topic page). */
+  pillar?: PillarSlug;
   /** Pull quote for the homepage feature card */
   quote?: string;
   /** Featured image path (e.g. "/images/blog/my-post.webp"); falls back to the social cover */
@@ -32,7 +30,6 @@ export const posts: Post[] = [
     excerpt: "There is a list I have been keeping for years: the things I will do once I am ready. I only noticed how long it had become when I stood in the middle of Gamescom in Cologne.",
     date: "August 30, 2026",
     datePublished: "2026-08-30",
-    category: "Thoughts",
     pillar: "career",
     quote: "You don't need to arrive as the person you hope to become. You only need to show up as the person you are today.",
     content: [
@@ -107,7 +104,6 @@ export const posts: Post[] = [
     excerpt: "One of the hardest things to admit is that something can be good for you once and still not be right for you now. A relationship, a routine, a job, a version of life you spent years building.",
     date: "August 18, 2026",
     datePublished: "2026-08-18",
-    category: "Thoughts",
     pillar: "psychology",
     quote: "Growing is not always about finding somewhere new to belong. Sometimes it is about having the courage to notice that you have already outgrown where you are.",
     content: [
@@ -156,7 +152,6 @@ export const posts: Post[] = [
     excerpt: "I used to think adapting was a strength. Then I started noticing how often adjusting meant editing myself — and how easy it was to confuse acceptance with belonging.",
     date: "August 11, 2026",
     datePublished: "2026-08-11",
-    category: "Thoughts",
     pillar: "womanhood",
     content: [
       "I used to think adapting was a strength.",
@@ -208,7 +203,6 @@ export const posts: Post[] = [
     date: "August 4, 2026",
     datePublished: "2026-08-04",
     dateModified: "2026-10-16",
-    category: "Thoughts",
     pillar: "psychology",
     quote: "Being needed can make us feel important. Being known lets us feel close. I am learning, slowly, to want both.",
     content: [
@@ -259,7 +253,6 @@ export const posts: Post[] = [
     excerpt: "For a long time, I imagined the woman I wanted to become as someone waiting for me in the future. She was confident. She knew what she wanted. But I kept moving the finish line further away.",
     date: "July 29, 2026",
     datePublished: "2026-07-29",
-    category: "Healing",
     pillar: "womanhood",
     quote: "Unfinished does not mean unready. I do not need to reach a final version of myself before I can live fully.",
     content: [
@@ -380,7 +373,6 @@ export const posts: Post[] = [
     excerpt: "There was a time when I genuinely believed life would make more sense by now. I thought adulthood would eventually arrive with answers. Instead, it arrived with more questions.",
     date: "July 21, 2026",
     datePublished: "2026-07-21",
-    category: "Thoughts",
     pillar: "career",
     quote: "Someone else's success does not mean I have failed. Their timing does not make mine wrong. Their path does not cancel the value of mine.",
     content: [
@@ -432,7 +424,6 @@ export const posts: Post[] = [
     excerpt: "Growth doesn't always arrive with a celebration. Sometimes it arrives so quietly that you only notice it when you look back.",
     date: "July 14, 2026",
     datePublished: "2026-07-14",
-    category: "Healing",
     pillar: "womanhood",
     quote: "The changes that matter most rarely happen all at once. They happen quietly. One ordinary day at a time.",
     content: [
@@ -465,7 +456,6 @@ export const posts: Post[] = [
     excerpt: "I expected the homesickness. I expected to miss birthdays, holidays, and Sunday lunches. What I didn't expect were the little things. The ordinary things.",
     date: "July 07, 2026",
     datePublished: "2026-07-07",
-    category: "Life",
     pillar: "life-in-qatar",
     quote: "Maybe home isn't just where you came from. Maybe home is also every place that changes you for the better.",
     content: [
@@ -504,7 +494,6 @@ export const posts: Post[] = [
     excerpt: "There are days in Qatar that feel too bright, too hot, too quiet, and too far from everything I once called home.",
     date: "July 02, 2026",
     datePublished: "2026-07-02",
-    category: "Life",
     pillar: "life-in-qatar",
     quote: "Qatar days taught me that strength can be quiet. That being far from home does not mean you are lost.",
     content: [
@@ -556,7 +545,6 @@ export const posts: Post[] = [
     excerpt: "I used to think letting go would feel like one big decision. Like one day I would wake up, feel nothing, and finally be ready. But it did not happen that way.",
     date: "June 24, 2026",
     datePublished: "2026-06-24",
-    category: "Healing",
     pillar: "psychology",
     quote: "Sometimes letting go is not losing someone. Sometimes it is finally getting yourself back.",
     content: [
@@ -584,7 +572,6 @@ export const posts: Post[] = [
     excerpt: "There is a kind of tiredness that does not look obvious. You still wake up. You still reply to messages. You still do what you have to do. But inside, something feels heavy.",
     date: "June 16, 2026",
     datePublished: "2026-06-16",
-    category: "Healing",
     pillar: "psychology",
     quote: "You are not asking for too much. You are just tired of asking the wrong person.",
     content: [
@@ -637,8 +624,7 @@ export const posts: Post[] = [
     excerpt: "Love should not feel like a guessing game. Fighting for love means both people are choosing each other. Forcing it means you are trying to convince someone to choose you. That is where the pain begins.",
     date: "June 12, 2026",
     datePublished: "2026-06-12",
-    category: "Thoughts",
-    pillar: "womanhood",
+    pillar: "psychology",
     quote: "You deserve a love that does not make you feel alone in the effort.",
     content: [
       "I used to think fighting for love meant holding on no matter how much it hurt.",
@@ -682,8 +668,6 @@ export const posts: Post[] = [
     excerpt: "For a long time, I took my coffee with a little bit of everything.. until one morning, I poured it black.",
     date: "June 09, 2026",
     datePublished: "2026-06-09",
-    category: "Reflections",
-    pillar: "womanhood",
     quote: "I'm learning to take my life black. Simple, potent, and exactly as it is. No additions required.",
     content: [
       "For a long time, I took my coffee with a little bit of everything. Milk to soften the bitterness, sugar to make it easier to swallow, maybe even a dash of cinnamon if I wanted it to look like something out of a magazine. I dressed it up until it barely tasted like coffee anymore.",
@@ -705,7 +689,6 @@ export const posts: Post[] = [
     excerpt: "I spent so long curating how I showed up that I forgot what it felt like to just.. be.",
     date: "June 02, 2026",
     datePublished: "2026-06-02",
-    category: "Healing",
     pillar: "womanhood",
     content: [
       "I spent so long curating how I showed up that I forgot what it felt like to just.. be.",
@@ -727,7 +710,6 @@ export const posts: Post[] = [
     excerpt: "For years, I made myself smaller.. smaller opinions, smaller needs, smaller presence.",
     date: "May 26, 2026",
     datePublished: "2026-05-26",
-    category: "Life",
     pillar: "womanhood",
     content: [
       "For years, I made myself smaller.",
@@ -751,8 +733,7 @@ export const posts: Post[] = [
     excerpt: "I don't say this to her enough.. the version of me who woke up on the hardest mornings and still showed up.",
     date: "May 19, 2026",
     datePublished: "2026-05-19",
-    category: "Healing",
-    pillar: "womanhood",
+    pillar: "psychology",
     content: [
       "I don't say this to her enough.",
       "The version of me who woke up on the hardest mornings and still showed up. The one who cried in private and smiled in public because she didn't know what else to do. The one who made messy decisions, loved the wrong things, and still.. somehow.. kept going.",
@@ -772,7 +753,6 @@ export const posts: Post[] = [
     excerpt: "There was a time when I wanted everyone to see my growth.. as if growth only mattered when someone acknowledged it.",
     date: "May 12, 2026",
     datePublished: "2026-05-12",
-    category: "Thoughts",
     pillar: "womanhood",
     content: [
       "There was a time when I wanted everyone to see my growth.",
@@ -793,7 +773,6 @@ export const posts: Post[] = [
     excerpt: "For a long time, I imagined peace as the absence of problems.. but that's not peace.",
     date: "May 5, 2026",
     datePublished: "2026-05-05",
-    category: "Healing",
     pillar: "psychology",
     content: [
       "For a long time, I imagined peace as the absence of problems.",
@@ -814,7 +793,6 @@ export const posts: Post[] = [
     excerpt: "Some people still see the old me when they look at me.. the one who apologized too much.",
     date: "April 28, 2026",
     datePublished: "2026-04-28",
-    category: "Healing",
     pillar: "womanhood",
     content: [
       "Some people still see the old me when they look at me.",
@@ -836,8 +814,6 @@ export const posts: Post[] = [
     excerpt: "Nothing significant happened today.. I woke up slowly, made tea instead of coffee.",
     date: "April 21, 2026",
     datePublished: "2026-04-21",
-    category: "Random",
-    pillar: "psychology",
     content: [
       "Nothing significant happened today.",
       "I woke up slowly. Made tea instead of coffee. Opened the window and let the morning air sit in the room before I did anything else.",
@@ -857,7 +833,6 @@ export const posts: Post[] = [
     excerpt: "Somewhere along the way, I learned to harden.. to mistake sharpness for strength.",
     date: "April 14, 2026",
     datePublished: "2026-04-14",
-    category: "Thoughts",
     pillar: "womanhood",
     content: [
       "Somewhere along the way, I learned to harden.",
@@ -879,8 +854,6 @@ export const posts: Post[] = [
     excerpt: "I caught myself smiling the other day.. genuinely, without thinking.",
     date: "April 7, 2026",
     datePublished: "2026-04-07",
-    category: "Life",
-    pillar: "womanhood",
     content: [
       "I caught myself smiling the other day.. genuinely, without thinking.. and my first instinct was to question it.",
       "As if joy needed justification. As if I hadn't earned the right to feel light.",
@@ -900,8 +873,7 @@ export const posts: Post[] = [
     excerpt: "I spent a long time waiting.. waiting to feel ready, waiting for the fear to pass.",
     date: "March 31, 2026",
     datePublished: "2026-03-31",
-    category: "Healing",
-    pillar: "psychology",
+    pillar: "career",
     content: [
       "I spent a long time waiting.",
       "Waiting to feel ready. Waiting for the fear to pass. Waiting for some invisible signal that it was finally okay to move.",
@@ -921,8 +893,7 @@ export const posts: Post[] = [
     excerpt: "I used to exhaust myself trying to keep people close.. explaining, adjusting, dimming.",
     date: "March 24, 2026",
     datePublished: "2026-03-24",
-    category: "Healing",
-    pillar: "womanhood",
+    pillar: "psychology",
     content: [
       "I used to exhaust myself trying to keep people close.",
       "Explaining my feelings so they'd understand. Adjusting my tone so they wouldn't leave. Dimming parts of myself so I'd be easier to love. I thought that was what connection required.. constant maintenance, constant proof that I was worth staying for.",
@@ -943,8 +914,6 @@ export const posts: Post[] = [
     excerpt: "The weather changed before I did.. one morning the light came through differently.",
     date: "March 17, 2026",
     datePublished: "2026-03-17",
-    category: "Life",
-    pillar: "psychology",
     content: [
       "The weather changed before I did.",
       "One morning the light came through the window differently.. warmer, softer, almost insistent.. and I realized the season had moved on without waiting for me to catch up.",
@@ -963,7 +932,6 @@ export const posts: Post[] = [
     excerpt: "There was a time when being alone felt like something was missing..",
     date: "March 10, 2026",
     datePublished: "2026-03-10",
-    category: "Thoughts",
     pillar: "womanhood",
     content: [
       "There was a time when being alone felt like something was missing.",
@@ -984,7 +952,6 @@ export const posts: Post[] = [
     excerpt: "There are changes happening inside me that I don't know how to explain yet..",
     date: "March 3, 2026",
     datePublished: "2026-03-03",
-    category: "Healing",
     pillar: "psychology",
     content: [
       "There are changes happening inside me that I don't know how to explain yet.",
@@ -1003,7 +970,6 @@ export const posts: Post[] = [
     excerpt: "There was a time I thought effort could fix everything. If the conversation felt cold, I tried to make it warm again.",
     date: "February 24, 2026",
     datePublished: "2026-02-24",
-    category: "Healing",
     pillar: "psychology",
     content: [
       "There was a time I thought effort could fix everything.",
@@ -1031,7 +997,6 @@ export const posts: Post[] = [
     excerpt: "There's a kind of calm that doesn't come from everything being perfect.",
     date: "February 19, 2026",
     datePublished: "2026-02-19",
-    category: "Healing",
     pillar: "psychology",
     content: [
       "There’s a kind of calm that doesn’t come from everything being perfect.",
@@ -1054,7 +1019,6 @@ export const posts: Post[] = [
     excerpt: "I've been paying attention on how my body reacts before my mind..",
     date: "February 12, 2026",
     datePublished: "2026-02-12",
-    category: "Healing",
     pillar: "psychology",
     content: [
       "Lately, I’ve been paying attention to how my body reacts before my mind has time to explain it away.",
@@ -1076,7 +1040,6 @@ export const posts: Post[] = [
     excerpt: "For a long time, I questioned myself more than I listened..",
     date: "February 04, 2026",
     datePublished: "2026-02-04",
-    category: "Healing",
     pillar: "psychology",
     content: [
       "For a long time, I questioned myself more than I listened",
@@ -1096,8 +1059,6 @@ export const posts: Post[] = [
     excerpt: "Not moving was the honest thing I could do..",
     date: "January 27, 2026",
     datePublished: "2026-01-27",
-    category: "Healing",
-    pillar: "psychology",
     content: [
       "I entered January expecting movement.",
       "Not loud movement; but something. A sign. A shift I could name.",
@@ -1121,8 +1082,7 @@ export const posts: Post[] = [
     excerpt: "For a long time, choosing myself came with guilt....",
     date: "January 20, 2026",
     datePublished: "2026-01-20",
-    category: "Healing",
-    pillar: "psychology",
+    pillar: "womanhood",
     content: [
       "For a long time, choosing myself came with guilt.",
       "I felt the need to soften my decisions, to explain them carefully, to make sure no one felt uncomfortable because of my growth. As if protecting my peace required permission.",
@@ -1142,7 +1102,6 @@ export const posts: Post[] = [
     excerpt: "Lately, I've been meeting a version of myself I don't fully recognize....",
     date: "January 13, 2026",
     datePublished: "2026-01-13",
-    category: "Healing",
     pillar: "womanhood",
     content: [
       "Lately, I’ve been meeting a version of myself I don’t fully recognize.",
@@ -1163,7 +1122,6 @@ export const posts: Post[] = [
     excerpt: "Choosing peace over explanations....",
     date: "January 08, 2026",
     datePublished: "2026-01-08",
-    category: "Healing",
     pillar: "psychology",
     content: [
       "The new year didn’t arrive with clarity. It arrived with silence.",
@@ -1182,8 +1140,6 @@ export const posts: Post[] = [
     excerpt: "Closing old chapters, opening new beginnings....",
     date: "December 31, 2025",
     datePublished: "2025-12-31",
-    category: "Life",
-    pillar: "womanhood",
     content: [
       "There’s something quiet about the moment you decide to let go.",
       "Not loudly. Not dramatically. Just a soft understanding that some chapters have already ended — even if you kept rereading them.",
@@ -1202,7 +1158,6 @@ export const posts: Post[] = [
     excerpt: "I've learned that strength doesn't always look loud. Some days, it's simply getting through the day without explaining why you feel heavy....",
     date: "December 30, 2025",
     datePublished: "2025-12-30",
-    category: "Healing",
     pillar: "psychology",
     content: [
       "I’ve learned that strength doesn’t always look loud.",
@@ -1220,8 +1175,6 @@ export const posts: Post[] = [
     excerpt: "There's something profoundly beautiful about sitting with silence. Not the uncomfortable kind that begs to be filled, but the kind that wraps around you like a warm blanket on a winter evening...",
     date: "December 28, 2025",
     datePublished: "2025-12-28",
-    category: "Thoughts",
-    pillar: "psychology",
     content: [
       "There's something profoundly beautiful about sitting with silence. Not the uncomfortable kind that begs to be filled, but the kind that wraps around you like a warm blanket on a winter evening.",
       "I've spent so much of my life afraid of stillness. Afraid that in the quiet, I would have to face the thoughts I'd been running from. Afraid that without noise, I would feel truly alone.",
@@ -1237,7 +1190,6 @@ export const posts: Post[] = [
     excerpt: "Change has always felt like losing pieces of myself. But lately, I've started to see it differently—as collecting new pieces, adding to who I am rather than subtracting from it...",
     date: "December 20, 2025",
     datePublished: "2025-12-20",
-    category: "Healing",
     pillar: "psychology",
     content: [
       "Change has always felt like losing pieces of myself. Every transition, every ending, every new beginning—they all seemed to take something from me.",
@@ -1253,7 +1205,6 @@ export const posts: Post[] = [
     excerpt: "Sometimes the most important conversations happen in the space between what we say and what we mean. These are the words I've been holding onto, the things I wish I could have said...",
     date: "December 15, 2025",
     datePublished: "2025-12-15",
-    category: "Life",
     pillar: "psychology",
     content: [
       "Sometimes the most important conversations happen in the space between what we say and what we mean. These are the words I've been holding onto.",
@@ -1269,8 +1220,6 @@ export const posts: Post[] = [
     excerpt: "Not every day needs to be remarkable. Sometimes the most beautiful moments are the ones that pass without fanfare, the quiet Tuesdays that become treasured memories...",
     date: "December 10, 2025",
     datePublished: "2025-12-10",
-    category: "Random",
-    pillar: "psychology",
     content: [
       "Not every day needs to be remarkable. Sometimes the most beautiful moments are the ones that pass without fanfare.",
       "Today was a random Tuesday. I woke up later than intended, made coffee that was slightly too strong, and spent the morning doing nothing of particular importance.",
@@ -1286,7 +1235,6 @@ export const posts: Post[] = [
     excerpt: "Letting go doesn't mean forgetting. It means making peace with the memories, allowing them to exist without the weight of what could have been...",
     date: "December 5, 2025",
     datePublished: "2025-12-05",
-    category: "Healing",
     pillar: "psychology",
     content: [
       "Letting go doesn't mean forgetting. It means making peace with the memories, allowing them to exist without the weight of what could have been.",
@@ -1302,8 +1250,7 @@ export const posts: Post[] = [
     excerpt: "There's honesty that only comes out at 2 AM, when the world is asleep and you're left with nothing but your thoughts and the soft glow of a bedside lamp...",
     date: "November 25, 2025",
     datePublished: "2025-11-25",
-    category: "Thoughts",
-    pillar: "womanhood",
+    pillar: "psychology",
     content: [
       "There is a kind of honesty that only visits after midnight.",
       "When the world finally quiets down and there is no one left to impress, no deadlines to chase, and no distractions loud enough to drown your thoughts.",
@@ -1341,7 +1288,7 @@ export const readingTime = (post: Pick<Post, "content">) => `${readingMinutes(po
 /** Same-pillar essays first, then the most recent others, never the post itself. */
 export const getRelatedPosts = (post: Post, count = 2) => {
   const others = posts.filter((p) => p.slug !== post.slug);
-  const samePillar = others.filter((p) => p.pillar === post.pillar);
-  const rest = others.filter((p) => p.pillar !== post.pillar);
+  const samePillar = post.pillar ? others.filter((p) => p.pillar === post.pillar) : [];
+  const rest = others.filter((p) => !samePillar.includes(p));
   return [...samePillar, ...rest].slice(0, count);
 };

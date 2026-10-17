@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { moods } from "@/data/moods";
 import { getPost, readingTime } from "@/data/posts";
 import { cn } from "@/lib/utils";
+import { topicLabel } from "@/data/pillars";
 
 /** Homepage section: pick a mood, get the essay for it. Pairings live in src/data/moods.ts. */
 const ReadByMood = () => {
@@ -61,7 +62,7 @@ const ReadByMood = () => {
           >
             <div className="space-y-4">
               <div className="flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted">
-                <span>{post.category}</span>
+                <span>{topicLabel(post.pillar)}</span>
                 <span className="w-4 h-px bg-journal-border"></span>
                 <span>{readingTime(post)}</span>
               </div>
