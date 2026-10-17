@@ -261,3 +261,28 @@
 
 .sc-story, .sc-story * { animation: none !important; transition: none !important; }
 .sc-env-hint { position: relative; z-index: 5; text-shadow: 0 1px 10px rgba(0, 0, 0, 0.55); }
+
+/* Launch lock: latches flip open, keyholes fade */
+.sc-svg-latch { transform-box: fill-box; transform-origin: 50% 0%; transition: transform 0.7s cubic-bezier(0.3, 1.4, 0.5, 1); }
+.sc-svg-latch.is-unlocking { transform: translateY(-3px) rotate(-28deg); }
+.sc-svg-keyhole { transition: opacity 0.4s ease; }
+.sc-svg-latch.is-unlocking .sc-svg-keyhole { opacity: 0; }
+.sc-unlocking-case { animation: sc-unlock-bounce 0.9s ease 0.35s both; }
+@keyframes sc-unlock-bounce { 0%, 100% { transform: none; } 40% { transform: translateY(-6px); } 70% { transform: translateY(2px); } }
+
+/* Sealed page */
+.sc-sealed { display: grid; gap: 28px; justify-items: center; text-align: center; max-width: 640px; margin: 0 auto; }
+.sc-sealed .sc-header { justify-items: center; }
+.sc-sealed-art { width: min(300px, 80%); filter: drop-shadow(0 18px 24px rgba(40, 25, 15, 0.25)); }
+.sc-countdown { display: flex; gap: clamp(10px, 4vw, 28px); justify-content: center; font-variant-numeric: tabular-nums; }
+.sc-countdown-unit { display: grid; gap: 4px; min-width: 3.2ch; }
+.sc-countdown-num { font-family: var(--sc-display); font-size: clamp(44px, 11vw, 72px); line-height: 1; color: var(--sc-fg); }
+.sc-countdown-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sc-muted); }
+.sc-countdown-sep { font-family: var(--sc-display); font-size: clamp(30px, 7vw, 48px); line-height: 1.2; color: var(--sc-brass); }
+.sc-opens { color: var(--sc-muted); font-size: 14px; letter-spacing: 0.06em; margin: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sc-svg-latch, .sc-svg-keyhole, .sc-unlocking-case { transition: none !important; animation: none !important; }
+}
+/* Stale prerendered HTML after launch: hide the locked bits until the page switches to the live game */
+.suitcase-open .sc-when-locked { display: none !important; }

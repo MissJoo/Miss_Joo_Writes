@@ -9,6 +9,13 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+  # Rebuild after The Suitcase opens so the prerendered pages show the live game.
+  # SUITCASE_LAUNCH (src/data/suitcase.ts) is 2026-10-20 20:00 Doha = 17:00 UTC. Cron is in UTC and has no year,
+  # so this also runs (harmlessly) each 20 October. Update it if the launch time changes.
+  schedule:
+    - cron: "5 17 20 10 *"
+    - cron: "35 18 20 10 *"
+
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read

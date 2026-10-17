@@ -1,4 +1,5 @@
 import type { SuitcaseIcon } from "@/data/suitcase";
+import "./suitcase.css";
 
 export const ItemIcon = ({ id }: { id: SuitcaseIcon }) => {
   switch (id) {
@@ -54,15 +55,35 @@ export const ItemIcon = ({ id }: { id: SuitcaseIcon }) => {
   }
 };
 
-/** Closed suitcase illustration for teasers. Also the basis of public/images/the-suitcase-og.png. */
-export const ClosedSuitcase = ({ className }: { className?: string }) => (
-  <svg viewBox="0 0 200 160" className={className} role="img" aria-label="A closed leather suitcase">
+type LatchState = "open" | "locked" | "unlocking";
+
+/** One brass latch. Locked: flat with a keyhole. Unlocking: flips up (CSS, skipped for reduced motion). */
+const Latch = ({ x, state }: { x: number; state: LatchState }) => (
+  <g className={`sc-svg-latch${state === "unlocking" ? " is-unlocking" : ""}${state === "open" ? " is-open" : ""}`}>
+    <rect x={x} y="74" width="22" height="16" rx="3" fill="#C8A96A" />
+    {state !== "open" && (
+      <g className="sc-svg-keyhole">
+        <circle cx={x + 11} cy="80.5" r="2.2" fill="#573925" />
+        <path d={`M${x + 11} 81.5v4`} stroke="#573925" strokeWidth="1.8" strokeLinecap="round" />
+      </g>
+    )}
+  </g>
+);
+
+/** Closed suitcase illustration for teasers and the sealed page. Also the basis of public/images/the-suitcase-og.png. */
+export const ClosedSuitcase = ({ className, latches = "open" }: { className?: string; latches?: LatchState }) => (
+  <svg
+    viewBox="0 0 200 160"
+    className={className}
+    role="img"
+    aria-label={latches === "open" ? "A closed leather suitcase" : "A closed leather suitcase with its brass latches locked"}
+  >
     <path d="M72 34V22a10 10 0 0 1 10-10h36a10 10 0 0 1 10 10v12" fill="none" stroke="#573925" strokeWidth="8" strokeLinecap="round" />
     <rect x="14" y="34" width="172" height="112" rx="18" fill="#7B5236" />
     <rect x="14" y="34" width="172" height="112" rx="18" fill="none" stroke="#573925" strokeWidth="3" />
     <path d="M14 82h172" stroke="#573925" strokeWidth="3" />
-    <rect x="44" y="74" width="22" height="16" rx="3" fill="#C8A96A" />
-    <rect x="134" y="74" width="22" height="16" rx="3" fill="#C8A96A" />
+    <Latch x={44} state={latches} />
+    <Latch x={134} state={latches} />
     <path d="M52 34v112M148 34v112" stroke="#573925" strokeWidth="2" opacity="0.55" />
     <rect x="86" y="104" width="40" height="26" rx="3" fill="#FDF9F4" transform="rotate(-6 106 117)" />
     <path d="M93 113h24M93 120h16" stroke="#8C6A43" strokeWidth="2" strokeLinecap="round" transform="rotate(-6 106 117)" />

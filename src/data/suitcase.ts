@@ -2,6 +2,12 @@
 // Placeholders in curly braces, like {name}, are filled in by the game.
 import type { PillarSlug } from "./pillars";
 
+/**
+ * Launch moment for The Suitcase. Write it in Doha time with its +03:00 offset; every countdown, lock check and
+ * "Opens ..." line reads from here. If you change it, also update the scheduled rebuild in .github/workflows/deploy.yml.
+ */
+export const SUITCASE_LAUNCH = "2026-10-20T20:00:00+03:00";
+
 export type SuitcaseIcon = "photo" | "coffee" | "jacket" | "phone" | "ticket" | "notebook";
 
 export interface SuitcaseItem {
@@ -237,6 +243,19 @@ export const suitcase = {
     eyebrow: "Keep reading",
     /** Essay slugs from src/data/posts.ts; titles come from the posts */
     essays: ["things-i-never-expected-to-miss", "parts-of-myself-i-changed-to-fit-in", "outgrow-the-places-that-once-held-you"],
+  },
+
+  /** Shown until SUITCASE_LAUNCH. {opensLong} and {opensShort} come from the launch time. */
+  locked: {
+    line: "Something for everyone who left home with one suitcase.",
+    opens: "{opensLong}",
+    newsletterTitle: "Get a letter the moment it opens.",
+    units: { days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds" },
+    teaserLine: "{opensShort}",
+    teaserButton: "See what's inside soon",
+    hubLine: "{opensShort}",
+    postLineBefore: "Living abroad too?",
+    postLineLink: "The Suitcase {opensShortLower}.",
   },
 
   /** Homepage teaser */

@@ -79,7 +79,7 @@ const NewsletterSignup = ({
             disabled={status.state === "sending"}
             aria-invalid={status.state === "error"}
             aria-describedby={status.state === "error" ? `${id}-error` : undefined}
-            className="flex-1 h-12 px-5 rounded-full border border-journal-border bg-journal-bg text-journal-text text-sm placeholder:text-journal-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne"
+            className="w-full sm:flex-1 h-12 shrink-0 px-5 rounded-full border border-journal-border bg-journal-bg text-journal-text text-sm placeholder:text-journal-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne"
           />
           <button
             type="submit"

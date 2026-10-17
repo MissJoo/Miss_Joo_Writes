@@ -11,7 +11,7 @@ const ssrDir = path.join(projectRoot, "dist-ssr");
 
 process.env.NODE_ENV = "production";
 
-const { render, headFor, notFoundHead, getPrerenderRoutes, getRedirects, getSitemapRoutes, SITE_URL } = await import(
+const { render, headFor, notFoundHead, getPrerenderRoutes, getRedirects, getSitemapRoutes, SITE_URL, LAUNCH_MS } = await import(
   pathToFileURL(path.join(ssrDir, "entry-server.js")).href
 );
 
@@ -22,8 +22,12 @@ if (!template.includes(HEAD_MARKER) || !template.includes(ROOT_MARKER)) {
   throw new Error("index.html is missing the <!--seo-head--> marker or the empty #root div");
 }
 
+// If this HTML is served after The Suitcase launch (before the post-launch rebuild), hide the locked bits at once
+const launchScript = `<script>if(Date.now()>=${LAUNCH_MS})document.documentElement.classList.add("suitcase-open")</script>`;
+
 const page = (head, body) =>
-  template.replace(HEAD_MARKER, head).replace(ROOT_MARKER, `<div id="root">${body}</div>`);
+  template.replace(HEAD_MARKER, `${head}
+    ${launchScript}`).replace(ROOT_MARKER, `<div id="root">${body}</div>`);
 
 const outputPath = (route) =>
   route === "/" ? path.join(distDir, "index.html") : path.join(distDir, ...route.slice(1).split("/"), "index.html");

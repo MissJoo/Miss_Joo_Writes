@@ -10,6 +10,7 @@ import {
   renderHeadTags,
   SITE_URL,
 } from "./lib/seo";
+import { LAUNCH_MS } from "./lib/launch";
 
 export const render = (url: string) =>
   renderToString(
@@ -21,4 +22,4 @@ export const render = (url: string) =>
 export const headFor = (url: string) => renderHeadTags(getPageMeta(url));
 export const notFoundHead = () => renderHeadTags(NOT_FOUND_META);
 
-export { getPrerenderRoutes, getRedirects, getSitemapRoutes, SITE_URL };
+export { getPrerenderRoutes, getRedirects, getSitemapRoutes, SITE_URL, LAUNCH_MS };
