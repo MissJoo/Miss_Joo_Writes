@@ -2,6 +2,7 @@ import { useId, useState, type FormEvent } from "react";
 import { subscribe, SUBSCRIBE_ERROR, type SignupSource } from "@/lib/newsletter";
 import PostcardConfirmation from "@/components/newsletter/PostcardConfirmation";
 import Honeypot from "@/components/newsletter/Honeypot";
+import ConsentCheckbox, { CONSENT_REQUIRED } from "@/components/newsletter/ConsentCheckbox";
 import { cn } from "@/lib/utils";
 
 interface NewsletterSignupProps {
@@ -31,6 +32,7 @@ const NewsletterSignup = ({
   const id = useId();
   const [email, setEmail] = useState("");
   const [company, setCompany] = useState("");
+  const [consent, setConsent] = useState(false);
   const [status, setStatus] = useState<Status>({ state: "idle" });
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -39,8 +41,12 @@ const NewsletterSignup = ({
       setStatus({ state: "error", message: "Please enter a valid email address." });
       return;
     }
+    if (!consent) {
+      setStatus({ state: "error", message: CONSENT_REQUIRED });
+      return;
+    }
     setStatus({ state: "sending" });
-    const result = await subscribe({ email: email.trim(), source, detail, company });
+    const result = await subscribe({ email: email.trim(), source, detail, company, consent });
     if (result.ok) {
       setStatus({ state: "success" });
       setEmail("");
@@ -69,8 +75,9 @@ const NewsletterSignup = ({
       {status.state === "success" ? (
         <PostcardConfirmation />
       ) : (
-        <form onSubmit={handleSubmit} noValidate className="relative flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-2">
+        <form onSubmit={handleSubmit} noValidate className="relative max-w-md mx-auto pt-2 space-y-4">
           <Honeypot value={company} onChange={(event) => setCompany(event.target.value)} />
+          <div className="flex flex-col sm:flex-row gap-3">
           <label htmlFor={`${id}-email`} className="sr-only">
             Email address
           </label>
@@ -94,6 +101,13 @@ const NewsletterSignup = ({
           >
             {status.state === "sending" ? "Sending…" : "Subscribe"}
           </button>
+          </div>
+          <ConsentCheckbox
+            id={`${id}-consent`}
+            checked={consent}
+            onChange={(event) => setConsent(event.target.checked)}
+            disabled={status.state === "sending"}
+          />
         </form>
       )}
 

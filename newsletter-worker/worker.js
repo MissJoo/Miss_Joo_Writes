@@ -1,7 +1,7 @@
-// Cloudflare Worker that adds website signups to beehiiv. The site posts { email, source, detail, company } here;
+// Cloudflare Worker that adds website signups to beehiiv. The site posts { email, source, detail, company, consent } here;
 // the beehiiv API key never reaches the browser. Setup steps: newsletter-worker/README.md
 //
-// Set in Cloudflare (Workers & Pages > missjoo-newsletter > Settings > Variables and Secrets), never in git:
+// Set in Cloudflare (Workers & Pages > miss-joo-newsletter > Settings > Variables and Secrets), never in git:
 //   BEEHIIV_API_KEY               secret
 //   BEEHIIV_PUBLICATION_ID        secret, pub_... id of the publication
 // In wrangler.toml:
@@ -38,10 +38,17 @@ export default {
     if (request.method === "OPTIONS") return new Response(null, { status: isAllowed ? 204 : 403, headers: cors });
     if (request.method !== "POST") return json({ ok: false, error: "method-not-allowed" }, 405, cors);
     if (!isAllowed) return json({ ok: false, error: "origin-not-allowed" }, 403, cors);
-    if (!env.BEEHIIV_API_KEY || !env.BEEHIIV_PUBLICATION_ID) {
+    // Forgive stray spaces, quotes or a pasted "Bearer " around the dashboard values
+    const tidy = (value) => String(value || "").trim().replace(/^["']|["']$/g, "").replace(/^Bearer\s+/i, "").trim();
+    const apiKey = tidy(env.BEEHIIV_API_KEY);
+    const publicationId = tidy(env.BEEHIIV_PUBLICATION_ID);
+    if (!apiKey || !publicationId) {
       console.error("BEEHIIV_API_KEY or BEEHIIV_PUBLICATION_ID is not set");
       return json({ ok: false, error: "not-configured" }, 500, cors);
     }
+    // Setup mistakes worth naming (no secret values are returned)
+    if (apiKey.startsWith("pub_")) return json({ ok: false, error: "api-key-is-publication-id" }, 500, cors);
+    if (!publicationId.startsWith("pub_")) return json({ ok: false, error: "publication-id-not-pub" }, 500, cors);
 
     let input;
     try {
@@ -53,6 +60,9 @@ export default {
     // Hidden field people never see; bots fill it in. Answer as if it worked so they move on.
     if (clip(input.company, 200)) return json({ ok: true }, 200, cors);
 
+    // beehiiv requires consent: the reader must have ticked the Terms and Privacy Policy box
+    if (input.consent !== true) return json({ ok: false, error: "consent-required" }, 400, cors);
+
     const email = clip(input.email, 254).toLowerCase();
     if (!EMAIL_PATTERN.test(email)) return json({ ok: false, error: "invalid-email" }, 400, cors);
 
@@ -60,9 +70,9 @@ export default {
     const detail = clip(input.detail, 120);
 
     const beehiiv = (path, body) =>
-      fetch(`${API}/publications/${env.BEEHIIV_PUBLICATION_ID}${path}`, {
+      fetch(`${API}/publications/${publicationId}${path}`, {
         method: "POST",
-        headers: { Authorization: `Bearer ${env.BEEHIIV_API_KEY}`, "Content-Type": "application/json" },
+        headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
 
@@ -82,7 +92,10 @@ export default {
       if (!response.ok) {
         // 401/403 here usually means a wrong key, or a plan without API access: check `npx wrangler tail`
         console.error("beehiiv subscribe failed", response.status, JSON.stringify(created));
-        return json({ ok: false, error: `beehiiv-${response.status}` }, 502, cors);
+        // beehiiv's own reason (never contains the key), so setup problems show in the response
+        const reasons = created && Array.isArray(created.errors) ? created.errors.map((e) => e && e.message).filter(Boolean) : [];
+        const reason = reasons.join("; ").slice(0, 300);
+        return json({ ok: false, error: `beehiiv-${response.status}`, ...(reason && { reason }) }, 502, cors);
       }
     } catch (error) {
       console.error("beehiiv unreachable", String(error));

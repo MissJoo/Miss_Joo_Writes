@@ -9,6 +9,7 @@ import { Mail } from "lucide-react";
 import { subscribe, SUBSCRIBE_ERROR } from "@/lib/newsletter";
 import PostcardConfirmation from "@/components/newsletter/PostcardConfirmation";
 import Honeypot from "@/components/newsletter/Honeypot";
+import ConsentCheckbox, { CONSENT_REQUIRED } from "@/components/newsletter/ConsentCheckbox";
 
 /** Set after a free-journal signup; the Free Journal page reads it to unlock the downloads. */
 export const JOURNALS_UNLOCKED_KEY = "mj_journals_unlocked";
@@ -17,6 +18,7 @@ const emailSchema = z.object({
     name: z.string().optional(),
     email: z.string().email("Please enter a valid email address"),
     company: z.string().optional(),
+    consent: z.boolean().refine((value) => value, CONSENT_REQUIRED),
 });
 
 type EmailFormData = z.infer<typeof emailSchema>;
@@ -43,12 +45,13 @@ const EmailSignupForm = ({
         reset,
     } = useForm<EmailFormData>({
         resolver: zodResolver(emailSchema),
+        defaultValues: { consent: false },
     });
 
     const onSubmit = async (data: EmailFormData) => {
         setIsSubmitting(true);
         setSubmitError("");
-        const result = await subscribe({ email: data.email, source: "free-journal", company: data.company });
+        const result = await subscribe({ email: data.email, source: "free-journal", company: data.company, consent: data.consent });
         try {
             if (result.ok) {
                 try {
@@ -68,7 +71,7 @@ const EmailSignupForm = ({
         }
     };
 
-  const errorMessage = errors.email?.message || submitError;
+  const errorMessage = errors.email?.message || errors.consent?.message || submitError;
 
   // ── Compact/Home Page variant ────────────────────────────────────
   if (variant === "compact" && isDone) {
@@ -112,6 +115,8 @@ const EmailSignupForm = ({
             />
           </div>
         </div>
+
+        <ConsentCheckbox id="consent-input" {...register("consent")} disabled={isSubmitting} />
         
         <Button
           type="submit"
@@ -156,6 +161,7 @@ const EmailSignupForm = ({
             disabled={isSubmitting}
           />
         </div>
+        <ConsentCheckbox id="default-consent-input" className="pl-1" {...register("consent")} disabled={isSubmitting} />
         {errorMessage && (
           <p role="alert" className="text-red-700 dark:text-red-300 text-xs font-sans pl-1">{errorMessage}</p>
         )}

@@ -6,10 +6,11 @@ export type SignupSource = "homepage" | "post" | "topic-page" | "free-journal" |
 export const SUBSCRIBE_ERROR = "Something went wrong. Please try again in a moment.";
 
 /**
- * URL of the newsletter worker (newsletter-worker/), set at build time. The worker holds the beehiiv API key and
- * publication ID and adds the subscriber to beehiiv; nothing secret is in the browser.
+ * URL of the newsletter worker (newsletter-worker/). Not secret: the worker holds the beehiiv API key and
+ * publication ID and adds the subscriber to beehiiv. VITE_NEWSLETTER_ENDPOINT overrides it, e.g. for local tests.
  */
-const NEWSLETTER_ENDPOINT = import.meta.env.VITE_NEWSLETTER_ENDPOINT as string | undefined;
+const NEWSLETTER_ENDPOINT =
+  (import.meta.env.VITE_NEWSLETTER_ENDPOINT as string | undefined) || "https://miss-joo-newsletter.missjodiaries.workers.dev";
 
 interface SubscribeInput {
   email: string;
@@ -18,6 +19,8 @@ interface SubscribeInput {
   detail?: string;
   /** Hidden honeypot field; real readers leave it empty */
   company?: string;
+  /** Reader ticked the Terms and Privacy Policy box (the worker refuses signups without it) */
+  consent: boolean;
 }
 
 export async function subscribe(input: SubscribeInput): Promise<SubscribeResult> {

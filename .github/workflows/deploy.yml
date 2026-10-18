@@ -47,8 +47,8 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          # URL of the beehiiv newsletter worker (newsletter-worker/README.md), set under repo Settings >
-          # Secrets and variables > Actions > Variables. Not secret: the API key lives only in the worker.
+          # Optional override for the beehiiv newsletter worker URL (default is in src/lib/newsletter.ts),
+          # under repo Settings > Secrets and variables > Actions > Variables. The API key lives only in the worker.
           VITE_NEWSLETTER_ENDPOINT: ${{ vars.VITE_NEWSLETTER_ENDPOINT }}
 
       - name: Setup Pages

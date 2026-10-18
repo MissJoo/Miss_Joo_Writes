@@ -17,14 +17,14 @@ under **Analytics → Acquisition** (by UTM medium) or **Audience → Subscriber
 
 ## Where the API key goes
 
-Cloudflare dashboard → **Workers & Pages** → **missjoo-newsletter** → **Settings** → **Variables and Secrets** →
+Cloudflare dashboard → **Workers & Pages** → **miss-joo-newsletter** → **Settings** → **Variables and Secrets** →
 **Add**. Choose type **Secret** each time and click **Deploy**:
 
 - `BEEHIIV_API_KEY`: from beehiiv → Settings → Integrations → API → *Create new API key*
 - `BEEHIIV_PUBLICATION_ID`: `pub_c384ba58-cc97-4bd8-a784-47c153d7a2c8`
 
-The site needs one non-secret setting: GitHub repo → Settings → Secrets and variables → Actions → **Variables** →
-`VITE_NEWSLETTER_ENDPOINT` = the worker URL (`https://missjoo-newsletter.<account>.workers.dev`).
+The site posts to `https://miss-joo-newsletter.missjodiaries.workers.dev` (set in `src/lib/newsletter.ts`; the
+`VITE_NEWSLETTER_ENDPOINT` repo variable can override it).
 
 ## Deploying changes to the worker
 

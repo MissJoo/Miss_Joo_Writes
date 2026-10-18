@@ -165,8 +165,7 @@ Per-page meta lives in `src/lib/seo.ts`.
 - **Canonical URLs** use a trailing slash (`https://missjoowrites.com/about/`), matching how GitHub Pages serves folders
 - **Newsletter**: every signup form posts to a small Cloudflare Worker (`newsletter-worker/`) that adds the subscriber
   to beehiiv with `utm_medium` set to the form (`homepage`, `post`, `topic-page`, `free-journal`, `suitcase`).
-  The beehiiv API key lives only in the worker. Set the repo variable `VITE_NEWSLETTER_ENDPOINT` (Settings → Secrets
-  and variables → Actions → Variables) to the worker URL.
+  The beehiiv API key lives only in the worker. The worker URL is in `src/lib/newsletter.ts`.
   Setup: `newsletter-worker/README.md`.
 
 ---

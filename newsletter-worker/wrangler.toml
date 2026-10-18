@@ -1,4 +1,4 @@
-name = "missjoo-newsletter"
+name = "miss-joo-newsletter"
 main = "worker.js"
 compatibility_date = "2026-09-01"
 # Keep the API key and publication ID that are set in the Cloudflare dashboard when redeploying
