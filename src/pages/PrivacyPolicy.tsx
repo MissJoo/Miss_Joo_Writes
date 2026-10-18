@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
             <div className="container mx-auto px-6 py-24 max-w-2xl">
                 <div className="text-center mb-10">
                     <h1 className="text-4xl md:text-5xl font-serif mb-4">Privacy Policy</h1>
-                    <p className="text-muted-foreground font-sans text-sm tracking-wide">Last Updated: June 10, 2026</p>
+                    <p className="text-muted-foreground font-sans text-sm tracking-wide">Last Updated: October 18, 2026</p>
                 </div>
 
                 <article className="font-sans text-sm leading-[1.8] text-foreground/80 font-light space-y-4">
@@ -62,6 +62,9 @@ const PrivacyPolicy = () => {
                     <p className="text-justify">
                         We use beehiiv to manage email newsletter subscriptions. If you subscribe to our newsletter, your email address, the form you signed up through, and related subscription information are processed by beehiiv for email delivery and list management.
                     </p>
+                    <p className="text-justify">
+                        By subscribing, you also agree to beehiiv&apos;s <a href="https://www.beehiiv.com/tou" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-journal-gold transition-colors">Terms of Use</a> and <a href="https://www.beehiiv.com/privacy" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-journal-gold transition-colors">Privacy Policy</a>, which govern how beehiiv handles your information.
+                    </p>
 
                     <p className="text-justify">These third-party services may process information according to their own privacy policies and terms.</p>
 
@@ -79,6 +82,9 @@ const PrivacyPolicy = () => {
                     <h2 className="text-base md:text-lg font-serif pt-4">5. Email Newsletter and Unsubscribe</h2>
                     <p className="text-justify">
                         If you subscribe to our newsletter, we will use your email address to send updates, blog content, journal downloads, and related communications.
+                    </p>
+                    <p className="text-justify">
+                        We only add you to the newsletter when you enter your email and tick the box agreeing to our Terms and this Privacy Policy. Ticking it also confirms your consent for your email to be processed by beehiiv, as described in Section 3.
                     </p>
                     <p className="text-justify">
                         You may unsubscribe at any time by clicking the unsubscribe link included in our emails or by contacting us through the Contact page.

@@ -10,7 +10,7 @@ interface ConsentCheckboxProps extends InputHTMLAttributes<HTMLInputElement> {
   className?: string;
 }
 
-/** Required before any signup: the reader agrees to the site's and beehiiv's terms and privacy policies. */
+/** Required before any signup. beehiiv's own terms are covered in the site's Privacy Policy and Terms, which this links to. */
 const ConsentCheckbox = forwardRef<HTMLInputElement, ConsentCheckboxProps>(({ id, className, ...props }, ref) => (
   <div className={cn("flex items-start gap-2.5 text-left", className)}>
     <input
@@ -23,9 +23,7 @@ const ConsentCheckbox = forwardRef<HTMLInputElement, ConsentCheckboxProps>(({ id
     <label htmlFor={id} className="text-[11px] leading-relaxed text-journal-text-secondary font-sans cursor-pointer">
       I agree to receive emails from Miss Joo Writes and accept the{" "}
       <Link to="/terms" className={linkClass}>Terms</Link> and{" "}
-      <Link to="/privacy-policy" className={linkClass}>Privacy Policy</Link>, and beehiiv&apos;s{" "}
-      <a href="https://www.beehiiv.com/tou" target="_blank" rel="noopener noreferrer" className={linkClass}>Terms of Use</a> and{" "}
-      <a href="https://www.beehiiv.com/privacy" target="_blank" rel="noopener noreferrer" className={linkClass}>Privacy Policy</a>.
+      <Link to="/privacy-policy" className={linkClass}>Privacy Policy</Link>.
     </label>
   </div>
 ));

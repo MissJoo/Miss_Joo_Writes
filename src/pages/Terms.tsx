@@ -8,7 +8,7 @@ const Terms = () => {
                     <h1 className="text-4xl md:text-5xl font-serif mb-4">Terms of Use</h1>
                     <p className="text-muted-foreground font-sans text-sm tracking-wide">Miss Joo Writes</p>
                     <p className="text-muted-foreground font-sans text-sm tracking-wide">Website: missjoowrites.com</p>
-                    <p className="text-muted-foreground font-sans text-sm tracking-wide mt-1">Last Updated: June 15, 2026</p>
+                    <p className="text-muted-foreground font-sans text-sm tracking-wide mt-1">Last Updated: October 18, 2026</p>
                 </div>
 
                 <article className="font-sans text-sm leading-[1.8] text-foreground/80 font-light space-y-4">
@@ -120,6 +120,9 @@ const Terms = () => {
                     </p>
                     <p className="text-justify">
                         Please review our Privacy Policy to understand how personal information may be collected, used, stored, and protected.
+                    </p>
+                    <p className="text-justify">
+                        Our newsletter is delivered through beehiiv. By subscribing, you agree to receive emails from Miss Joo Writes and to beehiiv&apos;s <a href="https://www.beehiiv.com/tou" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-journal-gold transition-colors">Terms of Use</a> and <a href="https://www.beehiiv.com/privacy" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2 hover:text-journal-gold transition-colors">Privacy Policy</a>. You can unsubscribe at any time using the link in any email.
                     </p>
 
                     <h2 className="text-base md:text-lg font-serif pt-4">11. Limitation of Liability</h2>

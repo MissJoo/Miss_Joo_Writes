@@ -258,7 +258,7 @@ export const getSitemapRoutes = () => {
 };
 
 /** Update when the static pages (about, contact, legal...) change. */
-export const SITE_PAGES_UPDATED = "2026-10-17";
+export const SITE_PAGES_UPDATED = "2026-10-18";
 
 /** Old post URLs that now live elsewhere. GitHub Pages has no server redirects, so each gets a redirect page. */
 export const getRedirects = () =>
