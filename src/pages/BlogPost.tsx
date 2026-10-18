@@ -39,9 +39,11 @@ const BlogPost = () => {
   const intro = post.content[0];
   const bodyParagraphs = post.content;
 
-  // Helper to determine if a paragraph should be styled as a pull quote
+  // Helper to determine if a paragraph should be styled as a pull quote (">>:" marks one by hand)
+  const PULL_QUOTE_MARK = ">>:";
   const isPullQuote = (text: string) => {
     const cleaned = text.trim();
+    if (cleaned.startsWith(PULL_QUOTE_MARK)) return true;
     if (cleaned.startsWith("\u201c") && cleaned.endsWith("\u201d")) return true;
     if (cleaned.startsWith('"') && cleaned.endsWith('"')) return true;
     if (cleaned.length > 5 && cleaned.length < 80 && !cleaned.includes(".") && !cleaned.includes(",")) return true;
@@ -130,10 +132,10 @@ const BlogPost = () => {
                 return (
                   <blockquote
                     key={index}
-                    className="border-l-[3px] border-journal-champagne pl-6 my-10 font-serif italic text-lg md:text-xl text-journal-gold leading-relaxed py-2 opacity-0 animate-fade-in bg-journal-bg-secondary/30 pr-4 rounded-r-[2px]"
+                    className="border-l-[3px] border-journal-champagne pl-6 my-10 font-serif italic text-lg md:text-xl text-journal-gold leading-relaxed py-2 opacity-0 animate-fade-in bg-journal-bg-secondary/30 pr-4 rounded-r-[2px] whitespace-pre-line"
                     style={{ animationDelay: `${0.2 + Math.min(index, 8) * 0.05}s`, animationFillMode: "forwards" }}
                   >
-                    {paragraph}
+                    {paragraph.replace(PULL_QUOTE_MARK, "").trim()}
                   </blockquote>
                 );
               }
