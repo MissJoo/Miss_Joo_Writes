@@ -168,7 +168,7 @@ const BlogPost = () => {
       {/* Newsletter */}
       <section className="pb-16 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
-          <NewsletterSignup source="post" />
+          <NewsletterSignup source="post" detail={post.slug} />
         </div>
       </section>
 

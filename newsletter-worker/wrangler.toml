@@ -1,0 +1,12 @@
+name = "missjoo-newsletter"
+main = "worker.js"
+compatibility_date = "2026-09-01"
+# Keep the API key and publication ID that are set in the Cloudflare dashboard when redeploying
+keep_vars = true
+
+[vars]
+ALLOWED_ORIGINS = "https://missjoowrites.com,https://www.missjoowrites.com"
+# Optional: a beehiiv automation (aut_...) that emails the free journal to free-journal signups
+FREE_JOURNAL_AUTOMATION_ID = ""
+
+# BEEHIIV_API_KEY and BEEHIIV_PUBLICATION_ID are secrets, set in the Cloudflare dashboard, never written here.

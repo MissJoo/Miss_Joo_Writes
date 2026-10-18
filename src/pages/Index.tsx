@@ -166,7 +166,7 @@ const Index = () => {
       {/* Newsletter */}
       <section className="pb-20 md:pb-28 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
-          <NewsletterSignup source="home" />
+          <NewsletterSignup source="homepage" />
         </div>
       </section>
 

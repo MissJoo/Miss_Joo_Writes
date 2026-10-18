@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import Layout from "@/components/layout/Layout";
-import EmailSignupForm from "@/components/forms/EmailSignupForm";
+import EmailSignupForm, { JOURNALS_UNLOCKED_KEY } from "@/components/forms/EmailSignupForm";
+import PostcardConfirmation from "@/components/newsletter/PostcardConfirmation";
 import { Download, BookOpen, Lock, Unlock, ArrowDownToLine } from "lucide-react";
 
 const journals = [
@@ -50,20 +51,21 @@ const journals = [
 
 const Downloads = () => {
     const [isUnlocked, setIsUnlocked] = useState(false);
+    // True only right after signing up here, to show the postcard; returning readers just see the unlocked panel
+    const [justJoined, setJustJoined] = useState(false);
 
     useEffect(() => {
-        const unlocked = localStorage.getItem("mj_journals_unlocked") === "true";
-        if (unlocked) {
-            setIsUnlocked(true);
+        try {
+            if (localStorage.getItem(JOURNALS_UNLOCKED_KEY) === "true") setIsUnlocked(true);
+        } catch {
+            // Storage blocked: the visitor signs up again to unlock
         }
     }, []);
 
     const handleSignupSuccess = () => {
-        localStorage.setItem("mj_journals_unlocked", "true");
         setIsUnlocked(true);
-        
-        // Scroll to the journals section smoothly
-        document.getElementById("journals-collection")?.scrollIntoView({ behavior: "smooth" });
+        // Stay here so the postcard is seen; "View Journals" below it scrolls to the downloads
+        setJustJoined(true);
     };
 
     return (
@@ -110,6 +112,7 @@ const Downloads = () => {
                                 </div>
                             ) : (
                                 <div className="inline-flex flex-col items-center p-6 bg-journal-card rounded-[2px] border border-journal-border shadow-sm max-w-md">
+                                    {justJoined && <PostcardConfirmation className="mb-6" />}
                                     <Unlock className="w-5 h-5 text-journal-gold mb-3 animate-pulse" />
                                     <p className="font-serif text-base text-journal-text font-medium">Collection Unlocked</p>
                                     <p className="text-xs text-journal-text-secondary mt-2 font-sans max-w-xs leading-relaxed">

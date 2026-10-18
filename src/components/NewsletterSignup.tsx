@@ -1,10 +1,14 @@
 import { useId, useState, type FormEvent } from "react";
-import { subscribe } from "@/lib/newsletter";
+import { subscribe, SUBSCRIBE_ERROR, type SignupSource } from "@/lib/newsletter";
+import PostcardConfirmation from "@/components/newsletter/PostcardConfirmation";
+import Honeypot from "@/components/newsletter/Honeypot";
 import { cn } from "@/lib/utils";
 
 interface NewsletterSignupProps {
-  /** Where the signup happened, sent to the provider (e.g. "post", "home") */
-  source: string;
+  /** Which form this is; sent to beehiiv as utm_medium */
+  source: SignupSource;
+  /** Extra context saved with the signup, such as the post or topic slug */
+  detail?: string;
   eyebrow?: string;
   title?: string;
   description?: string;
@@ -18,6 +22,7 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 /** Inline newsletter block with success and error states. No pop-ups. */
 const NewsletterSignup = ({
   source,
+  detail,
   eyebrow = "The Letter",
   title = "New essays, straight to your inbox",
   description = "One thoughtful letter when a new essay is published. No noise, unsubscribe anytime.",
@@ -25,6 +30,7 @@ const NewsletterSignup = ({
 }: NewsletterSignupProps) => {
   const id = useId();
   const [email, setEmail] = useState("");
+  const [company, setCompany] = useState("");
   const [status, setStatus] = useState<Status>({ state: "idle" });
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -34,12 +40,13 @@ const NewsletterSignup = ({
       return;
     }
     setStatus({ state: "sending" });
-    const result = await subscribe(email.trim(), source);
+    const result = await subscribe({ email: email.trim(), source, detail, company });
     if (result.ok) {
       setStatus({ state: "success" });
       setEmail("");
     } else {
-      setStatus({ state: "error", message: result.message ?? "Something went wrong. Please try again." });
+      // Keep the email so the reader can just try again
+      setStatus({ state: "error", message: SUBSCRIBE_ERROR });
     }
   };
 
@@ -60,11 +67,10 @@ const NewsletterSignup = ({
       </p>
 
       {status.state === "success" ? (
-        <p role="status" className="font-serif italic text-lg text-journal-gold pt-2">
-          Thank you. Please check your inbox to confirm.
-        </p>
+        <PostcardConfirmation />
       ) : (
-        <form onSubmit={handleSubmit} noValidate className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-2">
+        <form onSubmit={handleSubmit} noValidate className="relative flex flex-col sm:flex-row gap-3 max-w-md mx-auto pt-2">
+          <Honeypot value={company} onChange={(event) => setCompany(event.target.value)} />
           <label htmlFor={`${id}-email`} className="sr-only">
             Email address
           </label>

@@ -70,7 +70,8 @@ const PillarHub = ({ slug }: { slug: PillarSlug }) => {
           )}
 
           <NewsletterSignup
-            source={`hub-${slug}`}
+            source="topic-page"
+            detail={slug}
             className="mt-20"
             {...(pillarPosts.length === 0 && { title: "Get the first one in your inbox." })}
           />

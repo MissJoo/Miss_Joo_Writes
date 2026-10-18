@@ -47,8 +47,8 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          # Optional newsletter provider endpoint (repo Settings > Secrets and variables > Actions > Variables).
-          # When empty, signups go to the existing Mailchimp audience.
+          # URL of the beehiiv newsletter worker (newsletter-worker/README.md), set under repo Settings >
+          # Secrets and variables > Actions > Variables. Not secret: the API key lives only in the worker.
           VITE_NEWSLETTER_ENDPOINT: ${{ vars.VITE_NEWSLETTER_ENDPOINT }}
 
       - name: Setup Pages

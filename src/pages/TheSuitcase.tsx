@@ -51,7 +51,7 @@ const TheSuitcase = () => {
             </header>
             <Countdown remaining={remaining} />
             <p className="sc-opens">{fill(suitcase.locked.opens, launchLabels)}</p>
-            <NewsletterSignup source="suitcase-launch" title={suitcase.locked.newsletterTitle} className="w-full mt-6" />
+            <NewsletterSignup source="suitcase" title={suitcase.locked.newsletterTitle} className="w-full mt-6" />
           </div>
         )}
       </div>

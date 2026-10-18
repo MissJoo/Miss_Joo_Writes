@@ -252,3 +252,25 @@
 .animate-gentle-float {
   animation: gentleFloat 4s ease-in-out infinite;
 }
+/* Signup confirmation postcard */
+.postcard-in {
+  animation: postcardIn 0.9s ease-out both;
+}
+
+@keyframes postcardIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .postcard-in {
+    animation: none;
+  }
+}

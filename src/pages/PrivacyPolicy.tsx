@@ -58,9 +58,9 @@ const PrivacyPolicy = () => {
                         We use Google AdSense to display advertisements. Third-party vendors, including Google, use cookies to serve ads based on a user&apos;s prior visits to this website or other websites. Google&apos;s use of advertising cookies enables Google and its partners to serve ads to users based on their visits to this website and/or other websites on the Internet.
                     </p>
 
-                    <h3 className="text-sm md:text-base font-serif font-medium uppercase tracking-wide">Mailchimp</h3>
+                    <h3 className="text-sm md:text-base font-serif font-medium uppercase tracking-wide">beehiiv</h3>
                     <p className="text-justify">
-                        We may use Mailchimp to manage email newsletter subscriptions. If you subscribe to our newsletter, your email address and related subscription information may be processed by Mailchimp for email delivery and list management.
+                        We use beehiiv to manage email newsletter subscriptions. If you subscribe to our newsletter, your email address, the form you signed up through, and related subscription information are processed by beehiiv for email delivery and list management.
                     </p>
 
                     <p className="text-justify">These third-party services may process information according to their own privacy policies and terms.</p>
@@ -87,7 +87,7 @@ const PrivacyPolicy = () => {
                     <h2 className="text-base md:text-lg font-serif pt-4">6. Data Sharing</h2>
                     <p className="text-justify">We do not sell your personal information.</p>
                     <p className="text-justify">
-                        We may share limited information with trusted third-party service providers that help us operate the website, send emails, analyze traffic, display ads, or protect the website. These may include Google, Mailchimp, hosting providers, analytics providers, and advertising partners.
+                        We may share limited information with trusted third-party service providers that help us operate the website, send emails, analyze traffic, display ads, or protect the website. These may include Google, beehiiv, hosting providers, analytics providers, and advertising partners.
                     </p>
                     <p className="text-justify">
                         We may also disclose information if required by law, legal process, or to protect our rights, users, website, or others.
