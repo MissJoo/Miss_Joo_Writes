@@ -75,7 +75,7 @@ const Index = () => {
       <section className="py-20 md:py-28 bg-journal-bg-secondary">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mx-auto text-center space-y-8">
-            <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">
+            <span className="text-[11px] tracking-[0.2em] text-journal-gold font-sans font-medium block">
               About Miss Joo
             </span>
 

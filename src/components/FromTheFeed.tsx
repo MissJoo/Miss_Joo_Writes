@@ -24,7 +24,7 @@ const FromTheFeed = () => {
     <section className="py-20 md:py-28 bg-journal-bg">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="max-w-3xl mx-auto text-center mb-12 space-y-3">
-          <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">
+          <span className="text-[11px] tracking-[0.2em] text-journal-gold font-sans font-medium block">
             @missjooo98
           </span>
           <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">From the Feed</h2>

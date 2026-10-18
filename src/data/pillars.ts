@@ -28,7 +28,7 @@ export const pillars: Pillar[] = [
     navLabel: "Womanhood",
     intro:
       "Essays on becoming, softness, self-worth, and the quiet work of learning who you are as a woman, without shrinking to fit.",
-    description: "Essays on womanhood, self-worth, softness and becoming. By MISS JOO.",
+    description: "Essays on womanhood, self-worth, softness and becoming. By Miss Joo.",
   },
   {
     slug: "psychology",
@@ -36,7 +36,7 @@ export const pillars: Pillar[] = [
     navLabel: "Psychology & Growth",
     intro:
       "Reflections on healing, letting go, emotional tiredness, peace, and the patterns we slowly learn to see in ourselves.",
-    description: "Essays on psychology, healing and self-growth: letting go, peace, and emotional patterns. By MISS JOO.",
+    description: "Essays on psychology, healing and self-growth: letting go, peace, and emotional patterns. By Miss Joo.",
   },
   {
     slug: "career",
@@ -44,7 +44,7 @@ export const pillars: Pillar[] = [
     navLabel: "Career",
     intro:
       "Notes on work, ambition, belonging in professional rooms, and the pressure to have it all figured out.",
-    description: "Essays on career, ambition and belonging at work. By MISS JOO.",
+    description: "Essays on career, ambition and belonging at work. By Miss Joo.",
   },
   {
     slug: "life-in-qatar",
@@ -52,14 +52,14 @@ export const pillars: Pillar[] = [
     navLabel: "Life in Qatar",
     intro:
       "Life abroad, observed from Qatar: homesickness, small rituals, and what it means to build a life far from where you started.",
-    description: "Essays on life abroad in Qatar through a Filipina woman's eyes. By MISS JOO.",
+    description: "Essays on life abroad in Qatar through a Filipina woman's eyes. By Miss Joo.",
   },
   {
     slug: "fashion",
     name: "Fashion",
     navLabel: "Fashion",
     intro: "Considered pieces, personal style, and dressing as a form of self-respect.",
-    description: "Essays on fashion and personal style. By MISS JOO.",
+    description: "Essays on fashion and personal style. By Miss Joo.",
     comingSoon: ["I Started Dressing for the Woman I'm Becoming", "What Living in Doha Taught Me About Elegance"],
   },
   {
@@ -67,7 +67,7 @@ export const pillars: Pillar[] = [
     name: "Beauty & Skincare",
     navLabel: "Beauty",
     intro: "Skincare, self-care rituals, and beauty as a quiet act of attention.",
-    description: "Essays on beauty, skincare and self-care rituals. By MISS JOO.",
+    description: "Essays on beauty, skincare and self-care rituals. By Miss Joo.",
     comingSoon: ["My Skin Noticed the Move Before I Did", "The Only Ten Minutes Nobody Asks Anything of Me"],
   },
   {
@@ -75,7 +75,7 @@ export const pillars: Pillar[] = [
     name: "Travel",
     navLabel: "Travel",
     intro: "Slow journeys, new cities, and what travel teaches us about home.",
-    description: "Essays on slow travel and the places that change us. By MISS JOO.",
+    description: "Essays on slow travel and the places that change us. By Miss Joo.",
     comingSoon: ["Going Home Feels Like Travel Now", "A Weekend in Doha for Friends Who Think There's Nothing to Do"],
   },
 ];

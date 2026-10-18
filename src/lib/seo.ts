@@ -2,11 +2,11 @@ import { getPost, posts, type Post } from "@/data/posts";
 import { getPillar, pillars } from "@/data/pillars";
 
 export const SITE_URL = "https://missjoowrites.com";
-export const SITE_NAME = "MISS JOO";
-export const AUTHOR_NAME = "MISS JOO";
-export const DEFAULT_TITLE = "MISS JOO | Essays on Life, Growth and Womanhood";
+export const SITE_NAME = "Miss Joo";
+export const AUTHOR_NAME = "Miss Joo";
+export const DEFAULT_TITLE = "Miss Joo | Essays on Life, Growth and Womanhood";
 export const DEFAULT_DESCRIPTION =
-  "Essays on womanhood, psychology, career and life abroad, observed from Qatar. By MISS JOO (@missjooo98).";
+  "Essays on womanhood, psychology, career and life abroad, observed from Qatar. By Miss Joo (@missjooo98).";
 export const DEFAULT_IMAGE = "/social-cover.png";
 export const SOCIAL_PROFILES = [
   "https://www.instagram.com/missjooo98/",
@@ -82,53 +82,53 @@ interface StaticPage {
 
 const staticPages: Record<string, StaticPage> = {
   "/blog": {
-    title: "The Journal | MISS JOO",
-    description: "Every essay from MISS JOO: womanhood, psychology and self-growth, career, and life abroad in Qatar.",
+    title: "The Journal | Miss Joo",
+    description: "Every essay from Miss Joo: womanhood, psychology and self-growth, career, and life abroad in Qatar.",
   },
   "/about": {
-    title: "About | MISS JOO",
+    title: "About | Miss Joo",
     description:
-      "About MISS JOO: a Filipina writer in Qatar writing essays on womanhood, psychology, career and life abroad.",
+      "About Miss Joo: a Filipina writer in Qatar writing essays on womanhood, psychology, career and life abroad.",
   },
   "/lifestyle": {
-    title: "The Curated Edit | MISS JOO",
-    description: "Beauty, cafés, travel and fashion: the places, pieces and rituals MISS JOO returns to.",
+    title: "The Curated Edit | Miss Joo",
+    description: "Beauty, cafés, travel and fashion: the places, pieces and rituals Miss Joo returns to.",
   },
   "/shared-experiences": {
-    title: "The Curated Edit | MISS JOO",
-    description: "Beauty, cafés, travel and fashion: the places, pieces and rituals MISS JOO returns to.",
+    title: "The Curated Edit | Miss Joo",
+    description: "Beauty, cafés, travel and fashion: the places, pieces and rituals Miss Joo returns to.",
     canonicalPath: "/lifestyle",
   },
   "/downloads": {
-    title: "Notes on Becoming: Free Monthly Journals | MISS JOO",
-    description: "Free monthly reflection journals from MISS JOO for slowing down, letting go and returning to yourself.",
+    title: "Notes on Becoming: Free Monthly Journals | Miss Joo",
+    description: "Free monthly reflection journals from Miss Joo for slowing down, letting go and returning to yourself.",
   },
   "/contact": {
-    title: "Contact | MISS JOO",
-    description: "Get in touch with MISS JOO for questions, collaborations or a kind word.",
+    title: "Contact | Miss Joo",
+    description: "Get in touch with Miss Joo for questions, collaborations or a kind word.",
   },
   "/work-with-me": {
-    title: "Work With Me | MISS JOO",
+    title: "Work With Me | Miss Joo",
     description:
-      "Editorial collaborations, UGC and brand partnerships with MISS JOO, a writer and creator based in Qatar.",
+      "Editorial collaborations, UGC and brand partnerships with Miss Joo, a writer and creator based in Qatar.",
   },
   "/the-suitcase": {
-    title: "The Suitcase | MISS JOO",
+    title: "The Suitcase | Miss Joo",
     description: "An interactive reflection on living abroad. Unpack the suitcase and discover what you still carry.",
     image: "/images/the-suitcase-og.png",
   },
   "/privacy-policy": {
-    title: "Privacy Policy | MISS JOO",
-    description: "How MISS JOO collects, uses and protects information on missjoowrites.com.",
+    title: "Privacy Policy | Miss Joo",
+    description: "How Miss Joo collects, uses and protects information on missjoowrites.com.",
   },
   "/terms": {
-    title: "Terms of Use | MISS JOO",
+    title: "Terms of Use | Miss Joo",
     description: "The terms for using missjoowrites.com and its content.",
   },
 };
 
 export const NOT_FOUND_META: PageMeta = {
-  title: "Page not found | MISS JOO",
+  title: "Page not found | Miss Joo",
   description: DEFAULT_DESCRIPTION,
   canonical: `${SITE_URL}/`,
   image: absolute(DEFAULT_IMAGE),
@@ -171,7 +171,7 @@ export const getPageMeta = (rawPathname: string): PageMeta => {
     if (!post) return NOT_FOUND_META;
     const image = absolute(post.image ?? DEFAULT_IMAGE);
     return {
-      title: `${post.title} | MISS JOO`,
+      title: `${post.title} | Miss Joo`,
       description: post.excerpt,
       canonical,
       image,
@@ -185,7 +185,7 @@ export const getPageMeta = (rawPathname: string): PageMeta => {
   const pillar = getPillar(pathname.slice(1));
   if (pillar) {
     return {
-      title: `${pillar.name} | MISS JOO`,
+      title: `${pillar.name} | Miss Joo`,
       description: pillar.description,
       canonical,
       image: defaultImage,
@@ -194,7 +194,7 @@ export const getPageMeta = (rawPathname: string): PageMeta => {
         {
           "@context": "https://schema.org",
           "@type": "CollectionPage",
-          name: `${pillar.name}: essays by MISS JOO`,
+          name: `${pillar.name}: essays by Miss Joo`,
           description: pillar.description,
           url: canonical,
           isPartOf: { "@id": `${SITE_URL}/#website` },

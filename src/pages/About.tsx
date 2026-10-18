@@ -111,7 +111,7 @@ const About = () => {
               className="inline-flex items-center gap-3 px-8 py-3.5 bg-journal-text hover:bg-journal-gold text-journal-bg rounded-full transition-all duration-300 font-sans text-[11px] tracking-widest uppercase font-medium shadow-sm"
             >
               <Instagram size={14} />
-              <span>@missjooo98</span>
+              <span className="normal-case tracking-wider">@missjooo98</span>
             </a>
             
             <Button 

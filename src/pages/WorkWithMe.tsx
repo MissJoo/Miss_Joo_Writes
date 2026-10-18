@@ -42,9 +42,9 @@ const WorkWithMe = () => (
     <section className="py-16 md:py-20 bg-journal-bg">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="max-w-2xl mx-auto space-y-6 text-journal-text-secondary leading-[1.8] font-sans text-[17px] font-light">
-          <h2 className="font-serif text-2xl text-journal-text text-center">About MISS JOO</h2>
+          <h2 className="font-serif text-2xl text-journal-text text-center">About Miss Joo</h2>
           <p>
-            MISS JOO is a Filipina writer based in Qatar, writing elegant, reflective essays on womanhood, psychology and
+            Miss Joo is a Filipina writer based in Qatar, writing elegant, reflective essays on womanhood, psychology and
             self-growth, career, and life abroad. The journal is read by women who want depth rather than noise, and who
             are building lives with intention.
           </p>
@@ -77,7 +77,7 @@ const WorkWithMe = () => (
               const content = (
                 <>
                   <span className="block font-serif text-lg text-journal-text">{platform.name}</span>
-                  <span className="block text-[11px] tracking-[0.2em] uppercase text-journal-muted mt-1">{platform.detail}</span>
+                  <span className="block text-xs tracking-wide text-journal-muted mt-1">{platform.detail}</span>
                 </>
               );
               const className =
@@ -112,7 +112,7 @@ const WorkWithMe = () => (
           <p className="font-serif text-xl text-journal-text select-all">{CONTACT_EMAIL}</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <a
-              href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Collaboration with MISS JOO")}`}
+              href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Collaboration with Miss Joo")}`}
               className="inline-flex h-11 items-center rounded-full bg-journal-text px-8 text-[11px] uppercase tracking-widest text-journal-bg hover:bg-journal-gold transition-colors"
             >
               Email me
