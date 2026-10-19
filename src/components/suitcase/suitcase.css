@@ -279,6 +279,13 @@
 .sc-countdown-num { font-family: var(--sc-display); font-size: clamp(44px, 11vw, 72px); line-height: 1; color: var(--sc-fg); }
 .sc-countdown-label { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sc-muted); }
 .sc-countdown-sep { font-family: var(--sc-display); font-size: clamp(30px, 7vw, 48px); line-height: 1.2; color: var(--sc-brass); }
+/* Small phones (iPhone SE and narrower): keep all four units on one line */
+@media (max-width: 380px) {
+  .sc-countdown { gap: 6px; }
+  .sc-countdown-num { font-size: 38px; }
+  .sc-countdown-label { font-size: 9px; letter-spacing: 0.1em; }
+  .sc-countdown-sep { font-size: 26px; }
+}
 .sc-opens { color: var(--sc-muted); font-size: 14px; letter-spacing: 0.06em; margin: 0; }
 
 @media (prefers-reduced-motion: reduce) {

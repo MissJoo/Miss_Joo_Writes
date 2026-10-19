@@ -3,6 +3,7 @@ import Layout from "@/components/layout/Layout";
 import EmailSignupForm, { JOURNALS_UNLOCKED_KEY } from "@/components/forms/EmailSignupForm";
 import PostcardConfirmation from "@/components/newsletter/PostcardConfirmation";
 import { publicFileExists } from "@/lib/publicFiles";
+import { scrollToTarget } from "@/lib/smoothScroll";
 import { Download, BookOpen, Lock, Unlock, ArrowDownToLine, Clock } from "lucide-react";
 
 interface Journal {
@@ -145,7 +146,7 @@ const Downloads = () => {
                                         Thank you for joining. You can now download all reflection journals below.
                                     </p>
                                     <button 
-                                        onClick={() => document.getElementById("journals-collection")?.scrollIntoView({ behavior: "smooth" })}
+                                        onClick={() => { const el = document.getElementById("journals-collection"); if (el) scrollToTarget(el, { offset: -80 }); }}
                                         className="mt-5 text-[10px] uppercase tracking-widest text-journal-gold hover:text-journal-text transition-colors flex items-center gap-2 font-medium"
                                     >
                                         View Journals <ArrowDownToLine className="w-3.5 h-3.5" />

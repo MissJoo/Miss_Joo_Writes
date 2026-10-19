@@ -1,9 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { pillars } from "@/data/pillars";
 import ThemeToggle from "./ThemeToggle";
+import { scrollToTarget } from "@/lib/smoothScroll";
+
+interface NavLink {
+  name: string;
+  path: string;
+  /** Shown in a small dropdown under this link (desktop) or indented under it (mobile) */
+  children?: { name: string; path: string }[];
+}
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,16 +26,47 @@ const Header = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "Journal", path: "/blog" },
+  // Thin gold bar along the bottom of the menu that fills as the page is read
+  const progressRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    let frame = 0;
+    const update = () => {
+      frame = 0;
+      const el = document.documentElement;
+      const total = el.scrollHeight - el.clientHeight;
+      const ratio = total > 0 ? Math.min(1, Math.max(0, window.scrollY / total)) : 0;
+      if (progressRef.current) progressRef.current.style.transform = `scaleX(${ratio})`;
+    };
+    const onScroll = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("resize", onScroll);
+      cancelAnimationFrame(frame);
+    };
+  }, [location.pathname]);
+
+  const navLinks: NavLink[] = [
+    {
+      name: "Journal",
+      path: "/blog",
+      children: [
+        { name: "All Essays", path: "/blog" },
+        { name: "Free Journal", path: "/downloads" },
+      ],
+    },
     { name: "Lifestyle", path: "/lifestyle" },
     { name: "About", path: "/about" },
-    { name: "Free Journal", path: "/downloads" },
     { name: "Work With Me", path: "/work-with-me" },
     { name: "Contact", path: "/contact" },
   ];
 
   const isActive = (path: string) => location.pathname.replace(/\/+$/, "") === path;
+  const isLinkActive = (link: NavLink) => isActive(link.path) || !!link.children?.some((child) => isActive(child.path));
   const isTopicActive = pillars.some((pillar) => isActive(`/${pillar.slug}`));
 
   return (
@@ -44,7 +83,7 @@ const Header = () => {
           {/* Logo */}
           <Link
             to="/"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={() => scrollToTarget(0)}
             className="shrink-0 whitespace-nowrap font-serif text-xl lg:text-2xl font-semibold tracking-[0.08em] text-journal-text hover:text-journal-gold transition-colors duration-500"
           >
             Miss Joo Writes
@@ -87,22 +126,51 @@ const Header = () => {
                 </ul>
               </div>
             </div>
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={cn(
-                  "relative whitespace-nowrap text-[10px] lg:text-[11px] tracking-[0.12em] lg:tracking-[0.18em] xl:tracking-[0.25em] uppercase font-sans font-medium transition-all duration-300 py-1",
-                  isActive(link.path)
-                    ? "text-journal-gold"
-                    : "text-journal-text hover:text-journal-gold",
-                  "after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[1px] after:bg-journal-gold after:transition-all after:duration-500",
-                  isActive(link.path) ? "after:w-full" : "after:w-0 hover:after:w-2/3"
-                )}
-              >
-                {link.name}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const linkClass = cn(
+                "relative inline-flex items-center gap-1 whitespace-nowrap text-[10px] lg:text-[11px] tracking-[0.12em] lg:tracking-[0.18em] xl:tracking-[0.25em] uppercase font-sans font-medium transition-all duration-300 py-1",
+                isLinkActive(link) ? "text-journal-gold" : "text-journal-text hover:text-journal-gold",
+                "after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[1px] after:bg-journal-gold after:transition-all after:duration-500",
+                isLinkActive(link) ? "after:w-full" : "after:w-0 hover:after:w-2/3",
+              );
+              if (!link.children) {
+                return (
+                  <Link key={link.path} to={link.path} className={linkClass}>
+                    {link.name}
+                  </Link>
+                );
+              }
+              // A link with a small menu: opens on hover or keyboard focus, like Topics
+              return (
+                <div key={link.path} className="group relative">
+                  <Link to={link.path} className={linkClass} aria-haspopup="true">
+                    {link.name}
+                    <ChevronDown
+                      size={12}
+                      aria-hidden="true"
+                      className="transition-transform duration-300 group-hover:rotate-180 group-focus-within:rotate-180"
+                    />
+                  </Link>
+                  <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 opacity-0 transition-all duration-300 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                    <ul className="min-w-[180px] border border-journal-border bg-journal-bg py-3 shadow-[0_12px_40px_-12px_rgba(139,106,67,0.25)] rounded-[2px]">
+                      {link.children.map((child) => (
+                        <li key={child.path}>
+                          <Link
+                            to={child.path}
+                            className={cn(
+                              "block whitespace-nowrap px-5 py-2 text-[11px] tracking-[0.2em] uppercase font-sans transition-colors duration-300",
+                              isActive(child.path) ? "text-journal-gold" : "text-journal-text hover:text-journal-gold",
+                            )}
+                          >
+                            {child.name}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              );
+            })}
             <ThemeToggle className="-ml-2 lg:-ml-4" />
           </div>
 
@@ -129,21 +197,37 @@ const Header = () => {
         >
           <div className="flex flex-col gap-6 items-center">
             {navLinks.map((link, index) => (
-              <Link
+              <div
                 key={link.path}
-                to={link.path}
-                onClick={() => setIsMenuOpen(false)}
-                className={cn(
-                  "text-lg tracking-[0.2em] font-serif uppercase transition-all duration-300 py-1",
-                  isActive(link.path)
-                    ? "text-journal-gold font-medium"
-                    : "text-journal-text hover:text-journal-gold",
-                  "opacity-0 animate-fade-in"
-                )}
+                className="flex flex-col items-center gap-2 opacity-0 animate-fade-in"
                 style={{ animationDelay: `${index * 0.08}s`, animationFillMode: "forwards" }}
               >
-                {link.name}
-              </Link>
+                <Link
+                  to={link.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={cn(
+                    "text-lg tracking-[0.2em] font-serif uppercase transition-all duration-300 py-1",
+                    isActive(link.path) ? "text-journal-gold font-medium" : "text-journal-text hover:text-journal-gold",
+                  )}
+                >
+                  {link.name}
+                </Link>
+                {link.children
+                  ?.filter((child) => child.path !== link.path)
+                  .map((child) => (
+                    <Link
+                      key={child.path}
+                      to={child.path}
+                      onClick={() => setIsMenuOpen(false)}
+                      className={cn(
+                        "text-[11px] tracking-[0.25em] uppercase font-sans transition-colors duration-300",
+                        isActive(child.path) ? "text-journal-gold" : "text-journal-muted hover:text-journal-gold",
+                      )}
+                    >
+                      {child.name}
+                    </Link>
+                  ))}
+              </div>
             ))}
             <div className="w-10 h-px bg-journal-champagne/40" aria-hidden="true" />
             <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium">Topics</span>
@@ -165,6 +249,12 @@ const Header = () => {
           </div>
         </div>
       </nav>
+      <div
+        ref={progressRef}
+        className="pointer-events-none absolute bottom-0 left-0 h-[2px] w-full origin-left bg-gold"
+        style={{ transform: "scaleX(0)" }}
+        aria-hidden="true"
+      />
     </header>
   );
 };

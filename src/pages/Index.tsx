@@ -3,7 +3,6 @@ import { Button } from "@/components/ui/button";
 import Layout from "@/components/layout/Layout";
 import EmailSignupForm from "@/components/forms/EmailSignupForm";
 import heroImage from "@/assets/hero-image.webp";
-import NewsletterSignup from "@/components/NewsletterSignup";
 import FromTheFeed from "@/components/FromTheFeed";
 import ReadByMood from "@/components/ReadByMood";
 import { SuitcaseHomeTeaser } from "@/components/suitcase/SuitcaseTeasers";
@@ -163,13 +162,6 @@ const Index = () => {
 
       <SuitcaseHomeTeaser />
 
-      {/* Newsletter */}
-      <section className="pb-20 md:pb-28 bg-journal-bg">
-        <div className="container mx-auto px-6 lg:px-12">
-          <NewsletterSignup source="homepage" />
-        </div>
-      </section>
-
       {/* The Curated Edit Section */}
       <section className="py-20 md:py-28 bg-journal-bg-secondary/40 border-y border-journal-border/30">
         <div className="container mx-auto px-6 lg:px-12">
@@ -220,8 +212,39 @@ const Index = () => {
         </div>
       </section>
 
+      <FromTheFeed />
+
+      {/* Instagram Minimal Section */}
+      <section className="pt-16 pb-6 md:pt-20 md:pb-8 bg-journal-bg">
+        <div className="container mx-auto px-6 text-center space-y-6">
+          <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">
+            Follow the Soft Notes
+          </span>
+          <p className="text-journal-text-secondary font-light text-sm md:text-base max-w-sm mx-auto">
+            Small thoughts, quiet moments, and pieces of my becoming.
+          </p>
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+            {[
+              { name: "Instagram", href: "https://www.instagram.com/missjooo98/" },
+              { name: "TikTok", href: "https://www.tiktok.com/@missjooo98" },
+            ].map((profile) => (
+              <a
+                key={profile.name}
+                href={profile.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-serif text-xl md:text-2xl text-journal-text hover:text-journal-gold transition-colors duration-300 border-b border-journal-border/60 pb-1"
+              >
+                <span>{profile.name}</span>
+                <span className="text-sm font-sans">→</span>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Free Journal / Lead Magnet Section */}
-      <section className="py-20 md:py-28 bg-journal-bg border-b border-journal-border/30">
+      <section className="pt-10 pb-14 md:pt-12 md:pb-16 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-2xl mx-auto text-center space-y-8 border border-journal-border bg-journal-card p-8 md:p-12 rounded-[2px] shadow-sm">
             <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">
@@ -248,37 +271,6 @@ const Index = () => {
                 Learn more about the collection
               </Link>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <FromTheFeed />
-
-      {/* Instagram Minimal Section */}
-      <section className="py-16 md:py-20 bg-journal-bg">
-        <div className="container mx-auto px-6 text-center space-y-6">
-          <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">
-            Follow the Soft Notes
-          </span>
-          <p className="text-journal-text-secondary font-light text-sm md:text-base max-w-sm mx-auto">
-            Small thoughts, quiet moments, and pieces of my becoming.
-          </p>
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-            {[
-              { name: "Instagram", href: "https://www.instagram.com/missjooo98/" },
-              { name: "TikTok", href: "https://www.tiktok.com/@missjooo98" },
-            ].map((profile) => (
-              <a
-                key={profile.name}
-                href={profile.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 font-serif text-xl md:text-2xl text-journal-text hover:text-journal-gold transition-colors duration-300 border-b border-journal-border/60 pb-1"
-              >
-                <span>{profile.name}</span>
-                <span className="text-sm font-sans">→</span>
-              </a>
-            ))}
           </div>
         </div>
       </section>

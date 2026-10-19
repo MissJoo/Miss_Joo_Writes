@@ -1,5 +1,4 @@
 import { useParams, Link } from "react-router-dom";
-import { useEffect, useState } from "react";
 import Layout from "@/components/layout/Layout";
 import { ArrowLeft } from "lucide-react";
 import ShareButtons from "@/components/blog/ShareButtons";
@@ -14,19 +13,6 @@ import { SuitcasePostLine } from "@/components/suitcase/SuitcaseTeasers";
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
   const post = getPost(slug);
-
-  // Reading progress bar
-  const [progress, setProgress] = useState(0);
-  useEffect(() => {
-    const onScroll = () => {
-      const el = document.documentElement;
-      const scrolled = el.scrollTop;
-      const total = el.scrollHeight - el.clientHeight;
-      setProgress(total > 0 ? (scrolled / total) * 100 : 0);
-    };
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   if (!post) {
     return <NotFound />;
@@ -57,13 +43,6 @@ const BlogPost = () => {
 
   return (
     <Layout>
-      {/* Reading progress bar */}
-      <div
-        className="fixed top-0 left-0 z-[999] h-[3px] bg-gradient-to-r from-journal-champagne via-journal-gold to-journal-champagne transition-all duration-100 ease-out"
-        style={{ width: `${progress}%` }}
-        aria-hidden="true"
-      />
-
       {/* Back Link */}
       <section className="pt-24 lg:pt-28 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">

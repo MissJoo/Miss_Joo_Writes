@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Routes, Route } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
+import SmoothScroll from "./components/SmoothScroll";
 import AnalyticsTracker from "./components/AnalyticsTracker";
 import CookieConsent from "./components/CookieConsent";
 import HeadManager from "./components/HeadManager";
@@ -31,6 +32,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <ScrollToTop />
+      <SmoothScroll />
       <AnalyticsTracker />
       <HeadManager />
       <Routes>
