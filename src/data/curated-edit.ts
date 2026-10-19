@@ -46,7 +46,7 @@ export const curatedEdit: CuratedCard[] = [
     category: "Beauty",
     title: "Maison de Beauté Salon",
     subtitle: "A quiet kind of self-care.",
-    text: "Some places don't just offer a service — they offer a feeling. Maison de Beauté feels like one of those spaces where time slows down. Use my exclusive code MDB_MJ10 for 10% off.",
+    text: "Some places don't just offer a service. They offer a feeling. Maison de Beauté feels like one of those spaces where time slows down. Use my exclusive code MDB_MJ10 for 10% off.",
     quote: "Simple pleasures require no justification.",
     note: "Partner pick. I only share places I'd go back to.",
     image: {

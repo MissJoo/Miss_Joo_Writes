@@ -59,6 +59,13 @@ export default {
         "dusty-rose": "hsl(var(--dusty-rose))",
         "warm-brown": "hsl(var(--warm-brown))",
         "soft-gold": "hsl(var(--soft-gold))",
+        // 60-30-10 colour system (src/index.css :root)
+        ivory: "var(--ivory)",
+        "ivory-soft": "var(--ivory-soft)",
+        espresso: "var(--espresso)",
+        "espresso-text": "var(--espresso-text)",
+        gold: "var(--gold)",
+        "gold-hover": "var(--gold-hover)",
         // Values live in src/index.css (light and .dark), so every journal-* class follows the theme
         "journal-bg": "rgb(var(--journal-bg) / <alpha-value>)",
         "journal-bg-secondary": "rgb(var(--journal-bg-secondary) / <alpha-value>)",

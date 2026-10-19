@@ -23,6 +23,7 @@ const Header = () => {
     { name: "Lifestyle", path: "/lifestyle" },
     { name: "About", path: "/about" },
     { name: "Free Journal", path: "/downloads" },
+    { name: "Work With Me", path: "/work-with-me" },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -44,21 +45,21 @@ const Header = () => {
           <Link
             to="/"
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="font-serif text-xl lg:text-2xl font-semibold tracking-[0.08em] text-journal-text hover:text-journal-gold transition-colors duration-500"
+            className="shrink-0 whitespace-nowrap font-serif text-xl lg:text-2xl font-semibold tracking-[0.08em] text-journal-text hover:text-journal-gold transition-colors duration-500"
           >
-            Miss Joo Writes<span className="text-journal-gold">.</span>
+            Miss Joo Writes
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8 lg:gap-12">
+          <div className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-9">
             {/* Topics menu: opens on hover or keyboard focus. Hidden on tablets, where the bar is full. */}
             <div className="group relative hidden lg:block">
               <button
                 type="button"
                 aria-haspopup="true"
                 className={cn(
-                  "inline-flex items-center gap-1 text-[11px] tracking-[0.25em] uppercase font-sans font-medium transition-colors duration-300 py-1",
-                  isTopicActive ? "text-journal-gold" : "text-journal-text-secondary hover:text-journal-gold",
+                  "inline-flex items-center gap-1 whitespace-nowrap text-[11px] tracking-[0.12em] lg:tracking-[0.18em] xl:tracking-[0.25em] uppercase font-sans font-medium transition-colors duration-300 py-1",
+                  isTopicActive ? "text-journal-gold" : "text-journal-text hover:text-journal-gold",
                 )}
               >
                 Topics
@@ -76,7 +77,7 @@ const Header = () => {
                         to={`/${pillar.slug}`}
                         className={cn(
                           "block px-5 py-2 text-[11px] tracking-[0.2em] uppercase font-sans transition-colors duration-300",
-                          isActive(`/${pillar.slug}`) ? "text-journal-gold" : "text-journal-text-secondary hover:text-journal-gold",
+                          isActive(`/${pillar.slug}`) ? "text-journal-gold" : "text-journal-text hover:text-journal-gold",
                         )}
                       >
                         {pillar.navLabel}
@@ -91,10 +92,10 @@ const Header = () => {
                 key={link.path}
                 to={link.path}
                 className={cn(
-                  "relative text-[11px] tracking-[0.25em] uppercase font-sans font-medium transition-all duration-300 py-1",
+                  "relative whitespace-nowrap text-[10px] lg:text-[11px] tracking-[0.12em] lg:tracking-[0.18em] xl:tracking-[0.25em] uppercase font-sans font-medium transition-all duration-300 py-1",
                   isActive(link.path)
                     ? "text-journal-gold"
-                    : "text-journal-text-secondary hover:text-journal-gold",
+                    : "text-journal-text hover:text-journal-gold",
                   "after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[1px] after:bg-journal-gold after:transition-all after:duration-500",
                   isActive(link.path) ? "after:w-full" : "after:w-0 hover:after:w-2/3"
                 )}
@@ -136,7 +137,7 @@ const Header = () => {
                   "text-lg tracking-[0.2em] font-serif uppercase transition-all duration-300 py-1",
                   isActive(link.path)
                     ? "text-journal-gold font-medium"
-                    : "text-journal-text-secondary hover:text-journal-gold",
+                    : "text-journal-text hover:text-journal-gold",
                   "opacity-0 animate-fade-in"
                 )}
                 style={{ animationDelay: `${index * 0.08}s`, animationFillMode: "forwards" }}
@@ -154,7 +155,7 @@ const Header = () => {
                   onClick={() => setIsMenuOpen(false)}
                   className={cn(
                     "text-[11px] tracking-[0.2em] uppercase font-sans transition-colors duration-300",
-                    isActive(`/${pillar.slug}`) ? "text-journal-gold" : "text-journal-text-secondary hover:text-journal-gold",
+                    isActive(`/${pillar.slug}`) ? "text-journal-gold" : "text-journal-text hover:text-journal-gold",
                   )}
                 >
                   {pillar.navLabel}

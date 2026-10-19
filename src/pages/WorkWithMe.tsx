@@ -113,7 +113,7 @@ const WorkWithMe = () => (
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
             <a
               href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Collaboration with Miss Joo")}`}
-              className="inline-flex h-11 items-center rounded-full bg-journal-text px-8 text-[11px] uppercase tracking-widest text-journal-bg hover:bg-journal-gold transition-colors"
+              className="inline-flex h-11 items-center rounded-full bg-gold px-8 text-[11px] uppercase tracking-widest text-espresso hover:bg-gold-hover transition-colors"
             >
               Email me
             </a>

@@ -158,7 +158,7 @@ const Lifestyle = () => {
               I collaborate with brands, spaces, and makers who believe in quality, beauty, and slow living.
             </p>
             <div className="pt-2">
-              <Button variant="outline" className="rounded-full border border-journal-border hover:bg-journal-text hover:text-journal-bg transition-all uppercase tracking-widest text-[11px] h-10 px-8" asChild>
+              <Button variant="outline" className="rounded-full border border-journal-border hover:bg-gold hover:border-gold hover:text-espresso transition-all uppercase tracking-widest text-[11px] h-10 px-8" asChild>
                 <Link to="/contact">
                   Let's Collaborate
                 </Link>

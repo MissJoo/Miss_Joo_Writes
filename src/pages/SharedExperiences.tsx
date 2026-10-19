@@ -17,7 +17,7 @@ const SharedExperiences = () => {
                 This page is a collection of brands and spaces I genuinely connect with.
               </p>
               <p>
-                Every collaboration shared here is based on real experiences — places I've visited, 
+                Every collaboration shared here is based on real experiences: places I've visited, 
                 services I've tried, and moments that felt aligned with my lifestyle and values.
               </p>
               <p className="text-foreground/70">
@@ -55,11 +55,11 @@ const SharedExperiences = () => {
             <div className="prose prose-lg max-w-none">
               <div className="space-y-6 text-muted-foreground leading-relaxed font-light">
                 <p>
-                  Some places don't just offer a service — they offer a feeling.
+                  Some places don't just offer a service. They offer a feeling.
                 </p>
                 <p>
                   Maison de Beauté Salon feels like one of those spaces where time slows down the moment you walk in.
-                  From the calm atmosphere to the attention to detail, everything feels intentional — never rushed.
+                  From the calm atmosphere to the attention to detail, everything feels intentional, never rushed.
                 </p>
                 <p>
                   What stood out to me most was how comfortable the experience felt.
@@ -68,7 +68,7 @@ const SharedExperiences = () => {
                   Just calm, clean, and thoughtfully curated.
                 </p>
                 <p>
-                  It wasn't just about beauty treatments — it was about taking a pause.
+                  It wasn't just about beauty treatments. It was about taking a pause.
                   About allowing yourself to be taken care of without needing to explain or hurry.
                 </p>
                 <p>

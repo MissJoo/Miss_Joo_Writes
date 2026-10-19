@@ -44,14 +44,14 @@ const Index = () => {
             <div className="w-16 h-[1px] bg-journal-champagne/60 mx-auto my-6"></div>
 
             <p className="text-journal-text-secondary text-base md:text-lg font-sans font-light tracking-wide max-w-xl mx-auto leading-relaxed animate-fade-in-delay-1">
-              A soft editorial journal on healing, becoming, love, solitude, slow living, and the quiet moments that shape us.
+              A soft editorial journal on womanhood, growth, career, and the quiet work of building a life far from home.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6 animate-fade-in-delay-2">
               <Button 
                 variant="outline" 
                 size="lg" 
-                className="rounded-full bg-journal-text text-journal-bg hover:bg-journal-gold hover:text-journal-bg border-none tracking-widest uppercase text-[11px] px-8 py-5 transition-all duration-300 shadow-sm"
+                className="rounded-full bg-gold text-espresso hover:bg-gold-hover hover:text-espresso border-none tracking-widest uppercase text-[11px] px-8 py-5 transition-all duration-300 shadow-sm"
                 asChild
               >
                 <Link to="/blog">
@@ -84,7 +84,7 @@ const Index = () => {
             </h2>
 
             <p className="text-journal-text-secondary font-sans leading-relaxed text-sm md:text-base font-light max-w-2xl mx-auto">
-              Miss Joo Writes is my quiet corner of the internet — a space for the thoughts that feel too layered for captions and too meaningful to disappear in the scroll. Here, I write about healing, becoming, love, solitude, beauty, and the small moments that teach us how to return to ourselves.
+              Miss Joo Writes is my quiet corner of the internet, a space for the thoughts that feel too layered for captions and too meaningful to disappear in the scroll. Here, I write about womanhood, growth, career, and what it means to build a life far from home. And the small moments too, the ones that teach us how to return to ourselves.
             </p>
 
             <div className="font-signature text-3xl text-journal-gold select-none py-1">
@@ -211,7 +211,7 @@ const Index = () => {
           </div>
 
           <div className="text-center mt-12">
-            <Button variant="outline" className="rounded-full border border-journal-border hover:bg-journal-text hover:text-journal-bg transition-all uppercase tracking-widest text-[11px] h-11 px-8" asChild>
+            <Button variant="outline" className="rounded-full border border-journal-border hover:bg-gold hover:border-gold hover:text-espresso transition-all uppercase tracking-widest text-[11px] h-11 px-8" asChild>
               <Link to="/lifestyle">
                 Explore The Edit
               </Link>
@@ -233,7 +233,7 @@ const Index = () => {
             </h2>
 
             <p className="text-journal-text-secondary font-sans leading-relaxed text-sm md:text-base font-light max-w-xl mx-auto">
-              Download Notes on Becoming — a gentle reflection journal for women learning to slow down, let go, and return to themselves.
+              Download Notes on Becoming, a gentle reflection journal for women learning to slow down, let go, and return to themselves.
             </p>
 
             <div className="pt-2">
@@ -263,16 +263,22 @@ const Index = () => {
           <p className="text-journal-text-secondary font-light text-sm md:text-base max-w-sm mx-auto">
             Small thoughts, quiet moments, and pieces of my becoming.
           </p>
-          <div className="pt-2">
-            <a
-              href="https://instagram.com/missjooo98"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-serif text-xl md:text-2xl text-journal-text hover:text-journal-gold transition-colors duration-300 border-b border-journal-border/60 pb-1"
-            >
-              <span>Connect on Instagram</span>
-              <span className="text-sm font-sans">→</span>
-            </a>
+          <div className="pt-2 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
+            {[
+              { name: "Instagram", href: "https://www.instagram.com/missjooo98/" },
+              { name: "TikTok", href: "https://www.tiktok.com/@missjooo98" },
+            ].map((profile) => (
+              <a
+                key={profile.name}
+                href={profile.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 font-serif text-xl md:text-2xl text-journal-text hover:text-journal-gold transition-colors duration-300 border-b border-journal-border/60 pb-1"
+              >
+                <span>{profile.name}</span>
+                <span className="text-sm font-sans">→</span>
+              </a>
+            ))}
           </div>
         </div>
       </section>

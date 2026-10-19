@@ -48,7 +48,7 @@ export const feed: FeedItem[] = [
   },
   {
     platform: "instagram",
-    quote: "I'm learning to take my life black.",
+    quote: "I'm learning to take my coffee black.",
     essay: "the-black-coffee-rule",
     essayTitle: "The Black Coffee Rule",
     postUrl: POST_URL_PLACEHOLDER,

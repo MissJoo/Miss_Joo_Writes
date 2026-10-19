@@ -26,7 +26,7 @@ const NewsletterSignup = ({
   detail,
   eyebrow = "The Letter",
   title = "New essays, straight to your inbox",
-  description = "One thoughtful letter when a new essay is published. No noise, unsubscribe anytime.",
+  description = "One thoughtful letter when a new essay is published.\nNo noise, unsubscribe anytime.",
   className,
 }: NewsletterSignupProps) => {
   const id = useId();
@@ -68,7 +68,7 @@ const NewsletterSignup = ({
       <h2 id={`${id}-title`} className="font-serif text-2xl md:text-3xl text-journal-text leading-tight">
         {title}
       </h2>
-      <p className="text-journal-text-secondary font-sans text-sm md:text-base font-light leading-relaxed max-w-md mx-auto">
+      <p className="text-journal-text-secondary font-sans text-sm md:text-base font-light leading-relaxed max-w-md mx-auto whitespace-pre-line">
         {description}
       </p>
 
@@ -97,7 +97,7 @@ const NewsletterSignup = ({
           <button
             type="submit"
             disabled={status.state === "sending"}
-            className="h-12 px-8 rounded-full bg-journal-text hover:bg-journal-gold text-journal-bg tracking-[0.2em] uppercase text-[11px] font-medium transition-colors duration-300 disabled:opacity-60"
+            className="h-12 px-8 rounded-full bg-gold hover:bg-gold-hover text-espresso tracking-[0.2em] uppercase text-[11px] font-medium transition-colors duration-300 disabled:opacity-60"
           >
             {status.state === "sending" ? "Sending…" : "Subscribe"}
           </button>

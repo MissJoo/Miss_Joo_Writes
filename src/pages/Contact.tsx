@@ -118,7 +118,7 @@ const Contact = () => {
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="h-8 w-full rounded-full border-none bg-journal-text px-8 text-[10px] uppercase tracking-widest text-journal-bg shadow-sm transition-colors duration-300 hover:bg-journal-gold sm:w-auto"
+                  className="h-8 w-full rounded-full border-none bg-gold px-8 text-[10px] uppercase tracking-widest text-espresso shadow-sm transition-colors duration-300 hover:bg-gold-hover sm:w-auto"
                 >
                   {isSubmitting ? "Opening..." : "Open email draft"}
                 </Button>

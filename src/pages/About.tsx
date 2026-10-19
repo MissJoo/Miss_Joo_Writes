@@ -36,7 +36,7 @@ const About = () => {
             </p>
 
             <p>
-              For a long time, I carried so many things quietly — the lessons, heartbreaks, overthinking, growth, soft moments, heavy nights, and the kind of feelings I did not always know how to explain. Writing became the place where I could finally let them breathe.
+              For a long time, I carried so many things quietly: the lessons, heartbreaks, overthinking, growth, soft moments, heavy nights, and the kind of feelings I did not always know how to explain. Writing became the place where I could finally let them breathe.
             </p>
 
             <p className="font-medium text-journal-text">
@@ -100,7 +100,7 @@ const About = () => {
           <h2 className="font-serif text-2xl text-journal-text">Let's connect</h2>
           
           <p className="text-journal-text-secondary text-sm md:text-base font-light leading-relaxed">
-            For visual stories, everyday moments, and behind-the-scenes glimpses — find me on Instagram.
+            For visual stories, everyday moments, and behind-the-scenes glimpses, find me on Instagram.
           </p>
 
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -108,7 +108,7 @@ const About = () => {
               href="https://instagram.com/missjooo98"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-3.5 bg-journal-text hover:bg-journal-gold text-journal-bg rounded-full transition-all duration-300 font-sans text-[11px] tracking-widest uppercase font-medium shadow-sm"
+              className="inline-flex items-center gap-3 px-8 py-3.5 bg-gold hover:bg-gold-hover text-espresso rounded-full transition-all duration-300 font-sans text-[11px] tracking-widest uppercase font-medium shadow-sm"
             >
               <Instagram size={14} />
               <span className="normal-case tracking-wider">@missjooo98</span>

@@ -6,7 +6,7 @@ export const SITE_NAME = "Miss Joo";
 export const AUTHOR_NAME = "Miss Joo";
 export const DEFAULT_TITLE = "Miss Joo | Essays on Life, Growth and Womanhood";
 export const DEFAULT_DESCRIPTION =
-  "Essays on womanhood, psychology, career and life abroad, observed from Qatar. By Miss Joo (@missjooo98).";
+  "Essays on womanhood, growth, career and building a life far from home, written from Qatar by Miss Joo (@missjooo98).";
 export const DEFAULT_IMAGE = "/social-cover.png";
 export const SOCIAL_PROFILES = [
   "https://www.instagram.com/missjooo98/",

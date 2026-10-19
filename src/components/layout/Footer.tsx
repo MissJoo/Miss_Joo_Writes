@@ -39,7 +39,7 @@ const Footer = () => {
             to="/"
             className="font-serif text-lg font-semibold tracking-[0.08em] text-journal-bg transition-colors duration-500 hover:text-journal-champagne"
           >
-            Miss Joo Writes<span className="text-journal-champagne">.</span>
+            Miss Joo Writes
           </Link>
 
           {/* Tagline */}

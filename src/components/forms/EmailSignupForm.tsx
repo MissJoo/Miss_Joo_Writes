@@ -79,7 +79,7 @@ const EmailSignupForm = ({
       <PostcardConfirmation>
         <Link
           to="/downloads"
-          className="inline-flex h-12 items-center justify-center px-8 rounded-full bg-journal-text hover:bg-journal-gold text-journal-bg tracking-widest uppercase text-[11px] font-medium transition-all duration-300"
+          className="inline-flex h-12 items-center justify-center px-8 rounded-full bg-gold hover:bg-gold-hover text-espresso tracking-widest uppercase text-[11px] font-medium transition-all duration-300"
         >
           Download your journal
         </Link>
@@ -121,7 +121,7 @@ const EmailSignupForm = ({
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="w-full h-12 px-8 rounded-full bg-journal-text hover:bg-journal-gold text-journal-bg tracking-widest uppercase text-[11px] font-medium transition-all duration-300"
+          className="w-full h-12 px-8 rounded-full bg-gold hover:bg-gold-hover text-espresso tracking-widest uppercase text-[11px] font-medium transition-all duration-300"
         >
           {isSubmitting ? "Sending..." : "Send Me the Journal"}
         </Button>
@@ -171,7 +171,7 @@ const EmailSignupForm = ({
         type="submit"
         disabled={isSubmitting}
         size="lg"
-        className="w-full h-12 rounded-full bg-journal-text hover:bg-journal-gold text-journal-bg tracking-[0.2em] uppercase text-[11px] font-medium transition-all duration-300"
+        className="w-full h-12 rounded-full bg-gold hover:bg-gold-hover text-espresso tracking-[0.2em] uppercase text-[11px] font-medium transition-all duration-300"
       >
         {isSubmitting ? "Sending..." : ctaText}
       </Button>

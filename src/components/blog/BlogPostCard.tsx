@@ -38,7 +38,7 @@ const BlogPostCard = ({ title, excerpt, date, pillar, slug, featured = false, re
         featured ? "col-span-full" : ""
       )}
     >
-      {/* Gold left accent bar — slides in on hover */}
+      {/* Gold left accent bar: slides in on hover */}
       <span
         className="absolute left-0 top-0 h-full w-[3px] bg-journal-champagne origin-top scale-y-0 group-hover:scale-y-100 transition-transform duration-400 ease-out rounded-l-[3px]"
         aria-hidden="true"
