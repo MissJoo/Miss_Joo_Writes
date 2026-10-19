@@ -44,6 +44,8 @@ const BlogPost = () => {
   const isPullQuote = (text: string) => {
     const cleaned = text.trim();
     if (cleaned.startsWith(PULL_QUOTE_MARK)) return true;
+    // A line ending in a colon introduces the next one ("…begins with:"), so it stays plain text
+    if (cleaned.endsWith(":")) return false;
     if (cleaned.startsWith("\u201c") && cleaned.endsWith("\u201d")) return true;
     if (cleaned.startsWith('"') && cleaned.endsWith('"')) return true;
     if (cleaned.length > 5 && cleaned.length < 80 && !cleaned.includes(".") && !cleaned.includes(",")) return true;
