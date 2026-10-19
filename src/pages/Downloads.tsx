@@ -35,13 +35,13 @@ const journals: Journal[] = [
         month: "July",
         title: "Becoming & Belonging",
         desc: "For the woman who stopped waiting to feel ready. A reflection on belonging to yourself first, releasing the need to fit perfectly anywhere, and trusting the version of you already here.",
-        file: "/journals/notes-on-becoming-july.html",
+        file: "/journals/notes-on-becoming-july.pdf",
     },
     {
         month: "June",
         title: "Identity & Distance",
         desc: "For anyone living between two worlds. A quiet space to hold the complexity of homesickness, growth abroad, and the woman you are becoming in the in-between.",
-        file: "/journals/notes-on-becoming-june.html",
+        file: "/journals/notes-on-becoming-june.pdf",
     },
     {
         month: "May",
