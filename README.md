@@ -211,7 +211,8 @@ When you edit a published post, add `dateModified: "YYYY-MM-DD"`.
 ### Topic Hubs & Feed
 
 - Topic names, intro copy and "Coming soon" titles: `src/data/pillars.ts`
-- "From the Feed" homepage cards (Instagram/TikTok → essay): `src/data/feed.json`
+- "From the Feed" homepage cards (Instagram/TikTok → essay): `src/data/feed.ts` (post links + images: see the comment at its top)
+- The Curated Edit cards and monthly picks: `src/data/curated-edit.ts`
 
 ### Updating Colors
 

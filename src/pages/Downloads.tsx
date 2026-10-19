@@ -2,20 +2,46 @@ import { useState, useEffect } from "react";
 import Layout from "@/components/layout/Layout";
 import EmailSignupForm, { JOURNALS_UNLOCKED_KEY } from "@/components/forms/EmailSignupForm";
 import PostcardConfirmation from "@/components/newsletter/PostcardConfirmation";
-import { Download, BookOpen, Lock, Unlock, ArrowDownToLine } from "lucide-react";
+import { publicFileExists } from "@/lib/publicFiles";
+import { Download, BookOpen, Lock, Unlock, ArrowDownToLine, Clock } from "lucide-react";
 
-const journals = [
+interface Journal {
+    month: string;
+    title: string;
+    /** Optional one-word theme, shown next to the month */
+    theme?: string;
+    desc: string;
+    /** Path in public/. Until the file exists, the card shows "Coming soon"; add the file and push to make it downloadable. */
+    file: string;
+}
+
+// Newest first
+const journals: Journal[] = [
+    {
+        month: "September",
+        title: "Rhythm & Renewal",
+        theme: "Rhythm",
+        desc: "For the woman ready to begin again, gently. Building routines that love you back, discipline without harshness, and a rhythm that fits the life you actually have, not the one you think you should.",
+        file: "/downloads/notes-on-becoming-september.pdf",
+    },
+    {
+        month: "August",
+        title: "Rest & Return",
+        theme: "Rest",
+        desc: "For the woman who has been carrying a lot and needs permission to put it down. A gentle space for the slow season: rest without guilt, the journey home and back, and returning to yourself before the next chapter begins.",
+        file: "/downloads/notes-on-becoming-august.pdf",
+    },
     {
         month: "July",
         title: "Becoming & Belonging",
         desc: "For the woman who stopped waiting to feel ready. A reflection on belonging to yourself first, releasing the need to fit perfectly anywhere, and trusting the version of you already here.",
-        file: "/journals/notes-on-becoming-july.pdf",
+        file: "/journals/notes-on-becoming-july.html",
     },
     {
         month: "June",
         title: "Identity & Distance",
         desc: "For anyone living between two worlds. A quiet space to hold the complexity of homesickness, growth abroad, and the woman you are becoming in the in-between.",
-        file: "/journals/notes-on-becoming-june.pdf",
+        file: "/journals/notes-on-becoming-june.html",
     },
     {
         month: "May",
@@ -156,6 +182,7 @@ const Downloads = () => {
                                     <div className="relative z-10 flex-1 space-y-4">
                                         <div className="text-[10px] font-sans font-medium uppercase tracking-[0.25em] text-journal-gold">
                                             {journal.month}
+                                            {journal.theme && <span className="text-journal-muted"> · {journal.theme}</span>}
                                         </div>
                                         <h3 className="font-serif text-xl text-journal-text leading-snug font-medium">
                                             {journal.title}
@@ -166,13 +193,18 @@ const Downloads = () => {
                                     </div>
 
                                     <div className="relative z-10 pt-5 border-t border-journal-border/30">
-                                        {isUnlocked ? (
+                                        {!publicFileExists(journal.file) ? (
+                                            <div className="inline-flex items-center justify-between w-full text-[11px] font-sans uppercase tracking-widest text-journal-muted">
+                                                <span>Coming soon</span>
+                                                <Clock className="w-3.5 h-3.5" />
+                                            </div>
+                                        ) : isUnlocked ? (
                                             <a 
                                                 href={journal.file}
-                                                download
+                                                {...(journal.file.endsWith(".pdf") ? { download: true } : { target: "_blank", rel: "noopener noreferrer" })}
                                                 className="inline-flex items-center justify-between w-full text-[11px] font-sans uppercase tracking-widest text-journal-gold hover:text-journal-text transition-colors group/btn font-medium"
                                             >
-                                                <span>Download PDF</span>
+                                                <span>{journal.file.endsWith(".pdf") ? "Download PDF" : "Open journal"}</span>
                                                 <Download className="w-3.5 h-3.5 transition-transform group-hover/btn:-translate-y-0.5" />
                                             </a>
                                         ) : (

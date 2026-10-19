@@ -1,60 +1,25 @@
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
+import type { ReactNode } from "react";
 import { Button } from "@/components/ui/button";
-import maisonImage from "@/assets/MaisondeBeauteSalon.webp";
-import { Instagram } from "lucide-react";
+import { curatedEdit } from "@/data/curated-edit";
+import { publicFileExists } from "@/lib/publicFiles";
+
+/** Internal paths use the router; anything else opens in a new tab. */
+const SmartLink = ({ to, className, children }: { to: string; className?: string; children: ReactNode }) =>
+  to.startsWith("/") ? (
+    <Link to={to} className={className}>
+      {children}
+    </Link>
+  ) : (
+    <a href={to} target="_blank" rel="noopener noreferrer" className={className}>
+      {children}
+    </a>
+  );
 
 const Lifestyle = () => {
-  const edits = [
-    {
-      category: "Beauty",
-      title: "Maison de Beauté Salon",
-      subtitle: "A quiet kind of self-care",
-      excerpt: "Some places don't just offer a service — they offer a feeling. Maison de Beauté feels like one of those spaces where time slows down. Use my exclusive code MDB_MJ10 for 10% off.",
-      linkText: "Read the story",
-      hasImage: true,
-    },
-    {
-      category: "Cafés",
-      title: "Quiet Corners",
-      subtitle: "Warm light and ceramics",
-      excerpt: "The small, satisfying ritual of choosing a corner table, ordering a black coffee, and watching the city wake up slowly through glass.",
-      hasImage: false,
-      quote: "“Simple pleasures require no justification.”",
-    },
-    {
-      category: "Travel",
-      title: "Slow Journeys",
-      subtitle: "Walking without a map",
-      excerpt: "Notes on leaving early, choosing train rides over flights, and learning the art of arriving in a new place without a rigid itinerary.",
-      hasImage: false,
-      quote: "“Travel returns us to our senses.”",
-    },
-    {
-      category: "Fashion",
-      title: "Capsule Pieces",
-      subtitle: "Investing in longevity",
-      excerpt: "A curation of soft linens, tailored wool coats, and items that feel like shelter. Pieces made to last and tell a quiet, elegant story.",
-      hasImage: false,
-      quote: "“Simplicity is the ultimate sophistication.”",
-    },
-    {
-      category: "Soft Living",
-      title: "Slowing Down",
-      subtitle: "Living with intention",
-      excerpt: "Choosing not to rush. Creating morning spaces, setting gentle boundaries, and learning how to exist without performing productivity.",
-      hasImage: false,
-      quote: "“Rest is an active form of healing.”",
-    },
-    {
-      category: "Brand Stories",
-      title: "Intentional Design",
-      subtitle: "The beauty of craft",
-      excerpt: "Highlighting independent makers who shape clay, spin linen, and bind paper with patience and a deep respect for the material.",
-      hasImage: false,
-      quote: "“Objects hold the care of their creators.”",
-    },
-  ];
+  // Card content lives in src/data/curated-edit.ts
+  const edits = curatedEdit;
 
   return (
     <Layout>
@@ -80,31 +45,45 @@ const Lifestyle = () => {
       <section className="py-16 lg:py-24 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12 max-w-5xl">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {edits.map((item, index) => (
+            {edits.map((item) => {
+              // A pick's photo (once it exists in public/) replaces the card's own image
+              const pickImage = publicFileExists(item.pick?.image) ? item.pick?.image : undefined;
+              const image = pickImage
+                ? { src: pickImage, alt: item.pick!.name, width: 1200, height: 800 }
+                : item.image;
+              const quote = <>&ldquo;{item.quote}&rdquo;</>;
+              const quoteText = item.quoteLink ? (
+                <SmartLink to={item.quoteLink} className="hover:text-journal-gold transition-colors underline decoration-journal-champagne/40 underline-offset-4">
+                  {quote}
+                </SmartLink>
+              ) : (
+                quote
+              );
+              return (
               <article 
-                key={index} 
+                key={item.category} 
                 className="group flex flex-col justify-between border border-journal-border bg-journal-card hover:border-journal-champagne/60 hover:-translate-y-1 transition-all duration-300 rounded-[2px] shadow-sm overflow-hidden"
               >
                 <div>
                   {/* Visual Top Block */}
-                  {item.hasImage ? (
+                  {image ? (
                     <div className="aspect-[3/2] overflow-hidden bg-journal-bg border-b border-journal-border/50">
                       <img 
-                        src={maisonImage} 
-                        alt="Maison de Beauté Salon interior, a serene beauty space with soft natural light"
-                        width={1200}
-                        height={674}
+                        src={image.src} 
+                        alt={image.alt}
+                        width={image.width}
+                        height={image.height}
                         loading="lazy"
                         decoding="async"
                         className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700 ease-out"
                       />
                     </div>
                   ) : (
-                    <div className="aspect-[3/2] bg-journal-bg-secondary/40 flex items-center justify-center p-6 border-b border-journal-border/50 select-none text-center">
+                    <div className="aspect-[3/2] bg-journal-bg-secondary/40 flex items-center justify-center p-6 border-b border-journal-border/50 text-center">
                       <div className="space-y-2">
-                        <span className="text-base text-journal-champagne block">✦</span>
+                        <span className="text-base text-journal-champagne block select-none" aria-hidden="true">✦</span>
                         <p className="font-serif italic text-sm text-journal-text-secondary px-4">
-                          {item.quote}
+                          {quoteText}
                         </p>
                       </div>
                     </div>
@@ -115,32 +94,62 @@ const Lifestyle = () => {
                     <span className="text-[9px] tracking-[0.25em] uppercase text-journal-gold font-medium block">
                       {item.category}
                     </span>
-                    <h2 className="font-serif text-lg font-medium text-journal-text">
-                      {item.title}
-                    </h2>
-                    <h3 className="font-serif italic text-xs text-journal-muted">
-                      {item.subtitle}
-                    </h3>
+                    {item.title ? (
+                      <>
+                        <h2 className="font-serif text-lg font-medium text-journal-text">
+                          {item.title}
+                        </h2>
+                        <h3 className="font-serif italic text-xs text-journal-muted">
+                          {item.subtitle}
+                        </h3>
+                      </>
+                    ) : (
+                      <h2 className="font-serif text-lg font-medium text-journal-text">
+                        {item.subtitle}
+                      </h2>
+                    )}
                     <p className="text-journal-text-secondary font-sans text-xs md:text-sm font-light leading-relaxed pt-2">
-                      {item.excerpt}
+                      {item.text}
                     </p>
+                    {item.note && (
+                      <p className="font-serif italic text-xs text-journal-muted">{item.note}</p>
+                    )}
+                    {item.pick ? (
+                      <p className="text-xs text-journal-text-secondary font-sans pt-1">
+                        <span className="text-[9px] tracking-[0.2em] uppercase text-journal-gold font-medium mr-2">This month</span>
+                        {item.pick.link ? (
+                          <SmartLink to={item.pick.link} className="font-serif text-sm text-journal-text hover:text-journal-gold transition-colors">
+                            {item.pick.name} <span aria-hidden="true">→</span>
+                          </SmartLink>
+                        ) : (
+                          <span className="font-serif text-sm text-journal-text">{item.pick.name}</span>
+                        )}
+                        {item.pick.detail && <span className="block mt-1 font-light">{item.pick.detail}</span>}
+                      </p>
+                    ) : (
+                      item.emptyNote && <p className="font-serif italic text-xs text-journal-muted">{item.emptyNote}</p>
+                    )}
+                    {/* With a photo on top, the quote moves under the text */}
+                    {image && (
+                      <p className="font-serif italic text-sm text-journal-text-secondary pt-1">{quoteText}</p>
+                    )}
                   </div>
                 </div>
 
-                {/* Footer link/action if applicable */}
-                {item.category === "Beauty" && (
+                {item.button && (
                   <div className="p-6 pt-0 mt-2 border-t border-journal-border/20">
                     <Link 
-                      to="/contact" 
+                      to={item.button.to} 
                       className="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest text-journal-gold hover:text-journal-text transition-colors duration-300 font-medium"
                     >
-                      <span>Inquire / Collaborate</span>
-                      <span>→</span>
+                      <span>{item.button.text}</span>
+                      <span aria-hidden="true">→</span>
                     </Link>
                   </div>
                 )}
               </article>
-            ))}
+              );
+            })}
           </div>
 
           <div className="max-w-2xl mx-auto text-center mt-20 p-8 border border-journal-border bg-journal-card rounded-[2px] space-y-4">

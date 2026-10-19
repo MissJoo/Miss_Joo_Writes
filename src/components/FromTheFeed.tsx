@@ -1,23 +1,13 @@
 import { Link } from "react-router-dom";
-import feed from "@/data/feed.json";
+import { feed, POST_URL_PLACEHOLDER, PROFILE_URLS } from "@/data/feed";
 import { getPost } from "@/data/posts";
-
-interface FeedItem {
-  platform: "instagram" | "tiktok";
-  /** Link to the Instagram/TikTok post */
-  url: string;
-  /** Image path in /public (e.g. "/images/feed/belonging.webp"); leave empty for a text card */
-  thumbnail: string;
-  caption: string;
-  /** Slug of the related essay */
-  essay: string;
-}
+import { publicFileExists } from "@/lib/publicFiles";
 
 const platformLabel = { instagram: "Instagram", tiktok: "TikTok" } as const;
 
-/** Homepage section linking social posts to the essays behind them. Edit src/data/feed.json. */
+/** Homepage section linking social posts to the essays behind them. Edit src/data/feed.ts. */
 const FromTheFeed = () => {
-  const items = (feed as FeedItem[]).filter((item) => getPost(item.essay));
+  const items = feed.filter((item) => getPost(item.essay));
   if (items.length === 0) return null;
 
   return (
@@ -37,26 +27,36 @@ const FromTheFeed = () => {
         <ul className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
           {items.map((item) => {
             const post = getPost(item.essay)!;
+            // Until the post link is added, point to the profile
+            const url = item.postUrl && item.postUrl !== POST_URL_PLACEHOLDER ? item.postUrl : PROFILE_URLS[item.platform];
+            const hasImage = publicFileExists(item.image);
             return (
               <li
-                key={`${item.url}-${item.essay}`}
+                key={item.essay}
                 className="flex flex-col border border-journal-border bg-journal-card rounded-[3px] overflow-hidden shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10)]"
               >
-                <a href={item.url} target="_blank" rel="noopener noreferrer" className="group block">
-                  {item.thumbnail ? (
-                    <img
-                      src={item.thumbnail}
-                      alt={item.caption}
-                      width={600}
-                      height={750}
-                      loading="lazy"
-                      decoding="async"
-                      className="aspect-[4/5] w-full object-cover"
-                    />
+                <a href={url} target="_blank" rel="noopener noreferrer" className="group block">
+                  {hasImage ? (
+                    <div className="relative aspect-[4/5] overflow-hidden">
+                      <img
+                        src={item.image}
+                        alt=""
+                        width={600}
+                        height={750}
+                        loading="lazy"
+                        decoding="async"
+                        className="absolute inset-0 h-full w-full object-cover"
+                      />
+                      {/* Soft dark overlay keeps the quote readable on any photo */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20" aria-hidden="true" />
+                      <p className="relative flex h-full items-end p-8 font-serif italic text-lg text-white leading-relaxed [text-shadow:0_1px_8px_rgba(0,0,0,0.35)]">
+                        &ldquo;{item.quote}&rdquo;
+                      </p>
+                    </div>
                   ) : (
                     <div className="aspect-[4/5] flex items-center justify-center bg-gradient-to-br from-journal-bg-secondary/50 via-journal-bg-secondary to-journal-bg-secondary/80 p-8">
                       <p className="font-serif italic text-lg text-journal-text-secondary leading-relaxed text-center">
-                        &ldquo;{item.caption}&rdquo;
+                        &ldquo;{item.quote}&rdquo;
                       </p>
                     </div>
                   )}
@@ -66,14 +66,11 @@ const FromTheFeed = () => {
                   </span>
                 </a>
                 <div className="flex flex-1 flex-col justify-between gap-4 px-6 pb-6 pt-3">
-                  {item.thumbnail && (
-                    <p className="text-sm text-journal-text-secondary font-light leading-relaxed">{item.caption}</p>
-                  )}
                   <Link
                     to={`/blog/${post.slug}`}
                     className="font-serif text-lg text-journal-text hover:text-journal-gold transition-colors leading-snug"
                   >
-                    Read the essay: {post.title} <span aria-hidden="true">→</span>
+                    Read the essay: {item.essayTitle} <span aria-hidden="true">→</span>
                   </Link>
                 </div>
               </li>
