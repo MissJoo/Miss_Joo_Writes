@@ -43,7 +43,7 @@ const Index = () => {
             <div className="w-16 h-[1px] bg-journal-champagne/60 mx-auto my-6"></div>
 
             <p className="text-journal-text-secondary text-base md:text-lg font-sans font-light tracking-wide max-w-xl mx-auto leading-relaxed animate-fade-in-delay-1">
-              A soft editorial journal on womanhood, growth, career, and the quiet work of building a life far from home.
+              A soft editorial on womanhood, healing, growth, career, love, becoming, and the quiet moments that shape us.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6 animate-fade-in-delay-2">
