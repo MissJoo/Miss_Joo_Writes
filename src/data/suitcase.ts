@@ -35,7 +35,7 @@ export const suitcase = {
   pillar: "life-in-qatar" as PillarSlug,
 
   page: {
-    eyebrow: "Life in Qatar · An interactive reflection",
+    eyebrow: "An interactive reflection",
     titleBefore: "The",
     titleEmphasis: "Suitcase",
     intro:
