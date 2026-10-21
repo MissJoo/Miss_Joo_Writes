@@ -118,18 +118,23 @@
     --input: 30 12% 20%;
     --ring: 37 52% 66%;
     color-scheme: dark;
+
+    /* Dark mode keeps its original look: buttons are cream with dark text and a warm gold hover */
+    --gold: rgb(241 233 224);
+    --gold-hover: rgb(212 178 124);
+    --espresso: rgb(23 19 15);
   }
 
   /* The footer keeps its dark brown look in both themes */
   .dark .keep-light-palette {
-    --journal-bg: 247 241 232; /* --ivory */
-    --journal-bg-secondary: 239 230 216; /* --ivory-soft */
-    --journal-card: 239 230 216; /* --ivory-soft */
-    --journal-text: 43 31 23; /* --espresso: headings, nav */
-    --journal-text-secondary: 58 44 34; /* --espresso-text: body text */
-    --journal-muted: 112 92 78; /* #705C4E, small captions; AA on ivory and ivory-soft */
-    --journal-gold: 122 90 54; /* --gold-deep: small gold text on ivory (AA) */
-    --journal-champagne: 200 161 90; /* --gold: accents, dot, signature, dividers */
+    --journal-bg: 250 247 242;
+    --journal-bg-secondary: 245 232 221;
+    --journal-card: 255 253 249;
+    --journal-text: 43 33 24;
+    --journal-text-secondary: 91 70 54;
+    --journal-muted: 122 101 86;
+    --journal-gold: 140 106 67;
+    --journal-champagne: 200 169 106;
     --journal-border: 230 216 200;
   }
 }

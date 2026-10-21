@@ -98,7 +98,7 @@ const Header = () => {
                 aria-haspopup="true"
                 className={cn(
                   "inline-flex items-center gap-1 whitespace-nowrap text-[11px] tracking-[0.12em] lg:tracking-[0.18em] xl:tracking-[0.25em] uppercase font-sans font-medium transition-colors duration-300 py-1",
-                  isTopicActive ? "text-journal-gold" : "text-journal-text hover:text-journal-gold",
+                  isTopicActive ? "text-journal-gold" : "text-journal-text dark:text-journal-text-secondary hover:text-journal-gold",
                 )}
               >
                 Topics
@@ -116,7 +116,7 @@ const Header = () => {
                         to={`/${pillar.slug}`}
                         className={cn(
                           "block px-5 py-2 text-[11px] tracking-[0.2em] uppercase font-sans transition-colors duration-300",
-                          isActive(`/${pillar.slug}`) ? "text-journal-gold" : "text-journal-text hover:text-journal-gold",
+                          isActive(`/${pillar.slug}`) ? "text-journal-gold" : "text-journal-text dark:text-journal-text-secondary hover:text-journal-gold",
                         )}
                       >
                         {pillar.navLabel}
@@ -129,7 +129,7 @@ const Header = () => {
             {navLinks.map((link) => {
               const linkClass = cn(
                 "relative inline-flex items-center gap-1 whitespace-nowrap text-[10px] lg:text-[11px] tracking-[0.12em] lg:tracking-[0.18em] xl:tracking-[0.25em] uppercase font-sans font-medium transition-all duration-300 py-1",
-                isLinkActive(link) ? "text-journal-gold" : "text-journal-text hover:text-journal-gold",
+                isLinkActive(link) ? "text-journal-gold" : "text-journal-text dark:text-journal-text-secondary hover:text-journal-gold",
                 "after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[1px] after:bg-journal-gold after:transition-all after:duration-500",
                 isLinkActive(link) ? "after:w-full" : "after:w-0 hover:after:w-2/3",
               );
@@ -159,7 +159,7 @@ const Header = () => {
                             to={child.path}
                             className={cn(
                               "block whitespace-nowrap px-5 py-2 text-[11px] tracking-[0.2em] uppercase font-sans transition-colors duration-300",
-                              isActive(child.path) ? "text-journal-gold" : "text-journal-text hover:text-journal-gold",
+                              isActive(child.path) ? "text-journal-gold" : "text-journal-text dark:text-journal-text-secondary hover:text-journal-gold",
                             )}
                           >
                             {child.name}
@@ -207,7 +207,7 @@ const Header = () => {
                   onClick={() => setIsMenuOpen(false)}
                   className={cn(
                     "text-lg tracking-[0.2em] font-serif uppercase transition-all duration-300 py-1",
-                    isActive(link.path) ? "text-journal-gold font-medium" : "text-journal-text hover:text-journal-gold",
+                    isActive(link.path) ? "text-journal-gold font-medium" : "text-journal-text dark:text-journal-text-secondary hover:text-journal-gold",
                   )}
                 >
                   {link.name}
@@ -239,7 +239,7 @@ const Header = () => {
                   onClick={() => setIsMenuOpen(false)}
                   className={cn(
                     "text-[11px] tracking-[0.2em] uppercase font-sans transition-colors duration-300",
-                    isActive(`/${pillar.slug}`) ? "text-journal-gold" : "text-journal-text hover:text-journal-gold",
+                    isActive(`/${pillar.slug}`) ? "text-journal-gold" : "text-journal-text dark:text-journal-text-secondary hover:text-journal-gold",
                   )}
                 >
                   {pillar.navLabel}
@@ -251,7 +251,7 @@ const Header = () => {
       </nav>
       <div
         ref={progressRef}
-        className="pointer-events-none absolute bottom-0 left-0 h-[2px] w-full origin-left bg-gold"
+        className="pointer-events-none absolute bottom-0 left-0 h-[2px] w-full origin-left bg-gold dark:bg-journal-gold"
         style={{ transform: "scaleX(0)" }}
         aria-hidden="true"
       />
