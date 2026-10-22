@@ -70,6 +70,7 @@ export default {
         "journal-bg": "rgb(var(--journal-bg) / <alpha-value>)",
         "journal-bg-secondary": "rgb(var(--journal-bg-secondary) / <alpha-value>)",
         "journal-card": "rgb(var(--journal-card) / <alpha-value>)",
+        "journal-nav": "rgb(var(--journal-nav) / <alpha-value>)",
         "journal-text": "rgb(var(--journal-text) / <alpha-value>)",
         "journal-text-secondary": "rgb(var(--journal-text-secondary) / <alpha-value>)",
         "journal-muted": "rgb(var(--journal-muted) / <alpha-value>)",

@@ -99,7 +99,7 @@ const EmailSignupForm = ({
               type="text"
               placeholder="Your name"
               {...register("name")}
-              className="h-12 rounded-full border-journal-border bg-journal-bg dark:bg-journal-card text-journal-text placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne focus-visible:border-journal-champagne"
+              className="h-12 rounded-full border-journal-border bg-journal-bg text-journal-text placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne focus-visible:border-journal-champagne"
               disabled={isSubmitting}
             />
           </div>
@@ -110,7 +110,7 @@ const EmailSignupForm = ({
               type="email"
               placeholder="Your email address"
               {...register("email")}
-              className="h-12 rounded-full border-journal-border bg-journal-bg dark:bg-journal-card text-journal-text placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne focus-visible:border-journal-champagne"
+              className="h-12 rounded-full border-journal-border bg-journal-bg text-journal-text placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne focus-visible:border-journal-champagne"
               disabled={isSubmitting}
             />
           </div>
@@ -145,7 +145,7 @@ const EmailSignupForm = ({
             type="text"
             placeholder="Your Name"
             {...register("name")}
-            className="h-12 px-6 rounded-full border-journal-border bg-journal-bg dark:bg-journal-card text-journal-text placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne"
+            className="h-12 px-6 rounded-full border-journal-border bg-journal-bg text-journal-text placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne"
             disabled={isSubmitting}
           />
         </div>
@@ -157,7 +157,7 @@ const EmailSignupForm = ({
             type="email"
             placeholder="Your Email Address"
             {...register("email")}
-            className="h-12 pl-12 pr-6 rounded-full border-journal-border bg-journal-bg dark:bg-journal-card text-journal-text placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne"
+            className="h-12 pl-12 pr-6 rounded-full border-journal-border bg-journal-bg text-journal-text placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne"
             disabled={isSubmitting}
           />
         </div>

@@ -4,66 +4,67 @@
 
 @layer base {
   :root {
-    /* Colour system, 60-30-10: ivory (60) for pages and soft sections, espresso (30) for text and dark
-       sections, gold (10) only for buttons, links, the signature, the logo dot and hover states. */
-    --ivory: #F7F1E8;
-    --ivory-soft: #EFE6D8;
+    /* Light mode, 60-30-10: off-white and cream (60) for pages, sections and cards; espresso (30) for text and the
+       footer; rich gold (10) only for buttons, links, the signature and hover states. */
+    --ivory: #FBF8F3; /* page background, a bright warm off-white */
+    --ivory-soft: #F3E8D6; /* cream section bands */
     --espresso: #2B1F17;
     --espresso-text: #3A2C22;
-    --gold: #C8A15A;
-    --gold-hover: #B38B45;
-    /* #C8A15A is too light for small text on ivory (about 2.1:1), so small gold text uses this deeper gold (about 5.6:1) */
+    --gold: #C79A45; /* rich gold for buttons (espresso text on it: about 6.2:1) */
+    --gold-hover: #B5862F;
+    /* Small gold text on cream uses this deeper gold so it stays readable (about 5:1 or more) */
     --gold-deep: #7A5A36;
 
-    /* Journal palette (RGB channels, used by the journal-* Tailwind colours), mapped onto the colour system */
-    --journal-bg: 247 241 232; /* --ivory */
-    --journal-bg-secondary: 239 230 216; /* --ivory-soft */
-    --journal-card: 239 230 216; /* --ivory-soft */
+    /* Journal palette (RGB channels, used by the journal-* Tailwind colours) */
+    --journal-bg: 251 248 243; /* --ivory */
+    --journal-bg-secondary: 243 232 214; /* --ivory-soft */
+    --journal-card: 247 240 229; /* warm cream cards, #F7F0E5 */
+    --journal-nav: 242 230 210; /* creamy menu bar, #F2E6D2 */
     --journal-text: 43 31 23; /* --espresso: headings, nav */
     --journal-text-secondary: 58 44 34; /* --espresso-text: body text */
-    --journal-muted: 112 92 78; /* #705C4E, small captions; AA on ivory and ivory-soft */
-    --journal-gold: 122 90 54; /* --gold-deep: small gold text on ivory (AA) */
-    --journal-champagne: 200 161 90; /* --gold: accents, dot, signature, dividers */
-    --journal-border: 230 216 200;
+    --journal-muted: 112 92 78; /* #705C4E, small captions; AA on every cream */
+    --journal-gold: 122 90 54; /* --gold-deep: small gold text (AA) */
+    --journal-champagne: 199 154 69; /* --gold: accents, signature, dividers */
+    --journal-border: 232 219 200; /* #E8DBC8 */
 
     /* Quiet Luxury Digital Journal Palette */
-    --background: 36 48% 94%; /* --ivory */
+    --background: 39 50% 97%; /* --ivory */
     --foreground: 24 30% 13%; /* --espresso */
 
-    --card: 37 42% 89%; /* --ivory-soft */
+    --card: 36 53% 93%; /* journal-card */
     --card-foreground: 24 30% 13%;
 
-    --popover: 36 48% 94%;
+    --popover: 39 50% 97%;
     --popover-foreground: 24 30% 13%;
 
     --primary: 24 30% 13%; /* --espresso */
-    --primary-foreground: 36 48% 94%;
+    --primary-foreground: 39 50% 97%;
 
-    --secondary: 37 42% 89%; /* --ivory-soft */
+    --secondary: 37 55% 90%; /* --ivory-soft */
     --secondary-foreground: 24 30% 13%;
 
-    --muted: 37 42% 89%;
-    --muted-foreground: 25 17% 41%; /* #7A6556 */
+    --muted: 37 55% 90%;
+    --muted-foreground: 25 18% 37%; /* #705C4E */
 
-    --accent: 32 35% 41%; /* #8C6A43 */
-    --accent-foreground: 38 33% 96.5%;
+    --accent: 32 39% 35%; /* --gold-deep */
+    --accent-foreground: 39 50% 97%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 38 33% 96.5%;
+    --destructive-foreground: 39 50% 97%;
 
-    --border: 32 37% 84%; /* #E6D8C8 */
-    --input: 32 37% 84%;
-    --ring: 39 50% 57%; /* --gold */
+    --border: 35 45% 85%; /* #E8DBC8 */
+    --input: 35 45% 85%;
+    --ring: 39 54% 52%; /* --gold */
 
     --radius: 0.125rem; /* Soft rounded corners for premium feel, not completely sharp */
 
     /* Custom tokens */
-    --cream: 38 33% 96.5%;
-    --warm-beige: 32 37% 84%;
-    --taupe: 28 52% 91%;
-    --dusty-rose: 32 35% 41%;
+    --cream: 39 50% 97%;
+    --warm-beige: 35 45% 85%;
+    --taupe: 37 55% 90%;
+    --dusty-rose: 32 39% 35%;
     --warm-brown: 26 26% 28%;
-    --soft-gold: 40 47% 60%;
+    --soft-gold: 39 54% 52%;
 
     /* Typography */
     --font-serif: 'Cormorant Garamond', Georgia, serif;
@@ -83,59 +84,57 @@
   }
 
   .dark {
-    --journal-bg: 23 19 15;
-    --journal-bg-secondary: 42 33 26;
-    --journal-card: 32 26 21;
-    --journal-text: 241 233 224;
-    --journal-text-secondary: 208 192 174;
-    --journal-muted: 174 156 141;
-    --journal-gold: 212 178 124;
-    --journal-champagne: 184 154 98;
-    --journal-border: 58 47 38;
+    /* Dark mode, 60-30-10 around brown: warm brown (60) for pages and sections; cream and latte (30) for text and
+       the lighter brown cards; champagne gold (10) only for buttons, links and accents. */
+    --journal-bg: 42 31 24; /* #2A1F18 warm brown */
+    --journal-bg-secondary: 51 38 29; /* #33261D */
+    --journal-card: 58 43 33; /* #3A2B21 */
+    --journal-nav: 36 26 20; /* #241A14, a deeper brown menu bar */
+    --journal-text: 243 233 220; /* #F3E9DC cream */
+    --journal-text-secondary: 217 199 179; /* #D9C7B3 latte */
+    --journal-muted: 179 158 137; /* #B39E89 */
+    --journal-gold: 221 181 108; /* #DDB56C, gold text */
+    --journal-champagne: 212 168 90; /* #D4A85A, accents */
+    --journal-border: 77 58 44; /* #4D3A2C */
 
-    --background: 30 18% 7.5%; /* #17130F */
-    --foreground: 31 39% 91%;
+    --background: 24 28% 13%; /* #2A1F18 */
+    --foreground: 34 49% 91%; /* #F3E9DC */
 
-    --card: 27 21% 10.4%;
-    --card-foreground: 40 25% 92%;
+    --card: 25 28% 18%; /* #3A2B21 */
+    --card-foreground: 34 49% 91%;
 
-    --popover: 30 15% 10%;
-    --popover-foreground: 40 25% 92%;
+    --popover: 25 28% 18%;
+    --popover-foreground: 34 49% 91%;
 
-    --primary: 40 30% 85%;
-    --primary-foreground: 30 15% 10%;
+    --primary: 34 49% 91%;
+    --primary-foreground: 24 28% 13%;
 
-    --secondary: 30 12% 18%;
-    --secondary-foreground: 40 25% 92%;
+    --secondary: 24 27% 16%; /* #33261D */
+    --secondary-foreground: 34 49% 91%;
 
-    --muted: 30 12% 20%;
-    --muted-foreground: 35 15% 60%;
+    --muted: 24 27% 16%;
+    --muted-foreground: 30 22% 62%; /* #B39E89 */
 
-    --accent: 15 25% 45%;
-    --accent-foreground: 40 25% 92%;
+    --accent: 38 60% 59%; /* #D4A85A */
+    --accent-foreground: 24 28% 13%;
 
-    --border: 30 12% 20%;
-    --input: 30 12% 20%;
-    --ring: 37 52% 66%;
+    --border: 25 27% 24%; /* #4D3A2C */
+    --input: 25 27% 24%;
+    --ring: 38 60% 59%;
     color-scheme: dark;
 
-    /* Dark mode keeps its original look: buttons are cream with dark text and a warm gold hover */
-    --gold: rgb(241 233 224);
-    --gold-hover: rgb(212 178 124);
-    --espresso: rgb(23 19 15);
+    /* Buttons in dark mode: champagne gold with brown text (about 7:1), lighter gold on hover */
+    --gold: rgb(212 168 90);
+    --gold-hover: rgb(226 187 114);
+    --espresso: rgb(42 31 24);
   }
 
-  /* The footer keeps its dark brown look in both themes */
+  /* The footer is the dark band in both themes. In dark mode it is a deeper espresso than the brown page. */
   .dark .keep-light-palette {
-    --journal-bg: 250 247 242;
-    --journal-bg-secondary: 245 232 221;
-    --journal-card: 255 253 249;
-    --journal-text: 43 33 24;
-    --journal-text-secondary: 91 70 54;
-    --journal-muted: 122 101 86;
-    --journal-gold: 140 106 67;
-    --journal-champagne: 200 169 106;
-    --journal-border: 230 216 200;
+    --journal-text: 28 20 15; /* footer background, #1C140F */
+    --journal-bg: 243 233 220; /* footer text, cream */
+    --journal-text-secondary: 77 58 44; /* footer top border */
+    --journal-champagne: 212 168 90; /* signature, hovers */
   }
 }
 

@@ -1,15 +1,15 @@
 /* The Suitcase: the prototype's suitcase, taped note, envelope and boarding pass in the site's palette and fonts. */
 .sc-theme {
-  --sc-bg: #faf7f2;
-  --sc-surface: #fffdf9;
+  --sc-bg: #fbf8f3;
+  --sc-surface: #f7f0e5;
   --sc-fg: #2b2118;
   --sc-muted: #7a6556;
-  --sc-line: #e6d8c8;
+  --sc-line: #e8dbc8;
   --sc-leather: #7b5236;
   --sc-leather-dark: #573925;
-  --sc-lining: #f5e8dd;
+  --sc-lining: #f3e8d6;
   --sc-brass: #8c6a43;
-  --sc-latch: #c8a96a;
+  --sc-latch: #c79a45;
   --sc-tape: #ebdcc0;
   --sc-paper: #fdf9f4;
   --sc-paper-mid: #ecdccd;
@@ -23,40 +23,40 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .sc-theme {
-    --sc-bg: #17130f;
-    --sc-surface: #201a15;
-    --sc-fg: #f1e9e0;
-    --sc-muted: #b4a394;
-    --sc-line: #3d332b;
+    --sc-bg: #2a1f18;
+    --sc-surface: #33261d;
+    --sc-fg: #f3e9dc;
+    --sc-muted: #b39e89;
+    --sc-line: #4d3a2c;
     --sc-leather: #8a5f41;
     --sc-leather-dark: #5f412c;
-    --sc-lining: #352a22;
-    --sc-brass: #d4b27c;
-    --sc-latch: #d4b27c;
-    --sc-tape: #4a3d2c;
-    --sc-paper: #2e2620;
-    --sc-paper-mid: #4a3c31;
-    --sc-paper-deep: #3a2f27;
-    --sc-rule: rgba(241, 233, 224, 0.06);
+    --sc-lining: #3a2b21;
+    --sc-brass: #d4a85a;
+    --sc-latch: #d4a85a;
+    --sc-tape: #5a4532;
+    --sc-paper: #3a2b21;
+    --sc-paper-mid: #4d3a2c;
+    --sc-paper-deep: #43332a;
+    --sc-rule: rgba(243, 233, 220, 0.06);
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] .sc-theme {
-  --sc-bg: #17130f;
-  --sc-surface: #201a15;
-  --sc-fg: #f1e9e0;
-  --sc-muted: #b4a394;
-  --sc-line: #3d332b;
+  --sc-bg: #2a1f18;
+  --sc-surface: #33261d;
+  --sc-fg: #f3e9dc;
+  --sc-muted: #b39e89;
+  --sc-line: #4d3a2c;
   --sc-leather: #8a5f41;
   --sc-leather-dark: #5f412c;
-  --sc-lining: #352a22;
-  --sc-brass: #d4b27c;
-  --sc-latch: #d4b27c;
-  --sc-tape: #4a3d2c;
-  --sc-paper: #2e2620;
-  --sc-paper-mid: #4a3c31;
-  --sc-paper-deep: #3a2f27;
-  --sc-rule: rgba(241, 233, 224, 0.06);
+  --sc-lining: #3a2b21;
+  --sc-brass: #d4a85a;
+  --sc-latch: #d4a85a;
+  --sc-tape: #5a4532;
+  --sc-paper: #3a2b21;
+  --sc-paper-mid: #4d3a2c;
+  --sc-paper-deep: #43332a;
+  --sc-rule: rgba(243, 233, 220, 0.06);
   color-scheme: dark;
 }
 

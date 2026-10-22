@@ -5,7 +5,7 @@ import { ClosedSuitcase } from "./SuitcaseIcons";
 import Countdown from "./Countdown";
 
 const buttonClass =
-  "inline-flex h-11 items-center rounded-full bg-journal-text px-8 text-[11px] uppercase tracking-widest text-journal-bg hover:bg-journal-gold transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-journal-bg";
+  "inline-flex h-11 items-center rounded-full bg-gold px-8 text-[11px] uppercase tracking-widest text-espresso hover:bg-gold-hover transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-journal-bg";
 
 // Every teaser switches by itself at SUITCASE_LAUNCH. Before then the locked bits carry .sc-when-locked,
 // which a head script hides on stale prerendered pages that are served after launch.

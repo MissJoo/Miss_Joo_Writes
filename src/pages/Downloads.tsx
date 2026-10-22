@@ -209,7 +209,7 @@ const Downloads = () => {
                                                 <Download className="w-3.5 h-3.5 transition-transform group-hover/btn:-translate-y-0.5" />
                                             </a>
                                         ) : (
-                                            <div className="inline-flex items-center justify-between w-full text-[11px] font-sans uppercase tracking-widest text-journal-muted/60 cursor-not-allowed">
+                                            <div className="inline-flex items-center justify-between w-full text-[11px] font-sans uppercase tracking-widest text-journal-muted cursor-not-allowed">
                                                 <span>Locked</span>
                                                 <Lock className="w-3.5 h-3.5" />
                                             </div>

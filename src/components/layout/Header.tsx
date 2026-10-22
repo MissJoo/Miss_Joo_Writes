@@ -74,8 +74,8 @@ const Header = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         isScrolled 
-          ? "bg-journal-bg/95 backdrop-blur-md border-b border-journal-border/50 py-4" 
-          : "bg-transparent py-6"
+          ? "bg-journal-nav/95 backdrop-blur-md border-b border-journal-border/70 shadow-[0_6px_24px_-16px_rgba(43,31,23,0.35)] py-4" 
+          : "bg-journal-nav/90 backdrop-blur-sm border-b border-journal-border/40 py-6"
       )}
     >
       <nav className="container mx-auto px-6 lg:px-12">
@@ -109,7 +109,7 @@ const Header = () => {
                 />
               </button>
               <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 opacity-0 transition-all duration-300 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                <ul className="min-w-[200px] border border-journal-border bg-journal-bg py-3 shadow-[0_12px_40px_-12px_rgba(139,106,67,0.25)] rounded-[2px]">
+                <ul className="min-w-[200px] border border-journal-border bg-journal-nav py-3 shadow-[0_12px_40px_-12px_rgba(139,106,67,0.25)] rounded-[2px]">
                   {pillars.map((pillar) => (
                     <li key={pillar.slug}>
                       <Link
@@ -152,7 +152,7 @@ const Header = () => {
                     />
                   </Link>
                   <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 opacity-0 transition-all duration-300 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                    <ul className="min-w-[180px] border border-journal-border bg-journal-bg py-3 shadow-[0_12px_40px_-12px_rgba(139,106,67,0.25)] rounded-[2px]">
+                    <ul className="min-w-[180px] border border-journal-border bg-journal-nav py-3 shadow-[0_12px_40px_-12px_rgba(139,106,67,0.25)] rounded-[2px]">
                       {link.children.map((child) => (
                         <li key={child.path}>
                           <Link
@@ -191,7 +191,7 @@ const Header = () => {
         {/* Mobile Navigation */}
         <div
           className={cn(
-            "md:hidden overflow-hidden transition-all duration-500 ease-in-out bg-journal-bg border-b border-journal-border/30",
+            "md:hidden overflow-hidden transition-all duration-500 ease-in-out bg-journal-nav border-b border-journal-border/30",
             isMenuOpen ? "max-h-screen py-8 mt-4" : "max-h-0"
           )}
         >
