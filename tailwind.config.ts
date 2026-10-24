@@ -14,6 +14,12 @@ export default {
       },
     },
     extend: {
+      // In-between heading sizes used across the pages (they were missing, so those headings fell back to body size)
+      fontSize: {
+        "2.5xl": ["1.75rem", { lineHeight: "2.25rem" }],
+        "3.5xl": ["2.125rem", { lineHeight: "2.5rem" }],
+        "4.5xl": ["2.625rem", { lineHeight: "1.15" }],
+      },
       fontFamily: {
         serif: ['Cormorant Garamond', 'Georgia', 'serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],

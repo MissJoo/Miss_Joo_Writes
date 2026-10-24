@@ -88,7 +88,7 @@ const staticPages: Record<string, StaticPage> = {
   "/about": {
     title: "About | Miss Joo",
     description:
-      "About Miss Joo: a Filipina writer in Qatar writing essays on womanhood, psychology, career and life abroad.",
+      "About Miss Joo: a writer in Qatar writing essays on womanhood, psychology, career and life abroad.",
   },
   "/lifestyle": {
     title: "The Curated Edit | Miss Joo",
@@ -222,7 +222,7 @@ export const getPageMeta = (rawPathname: string): PageMeta => {
                 mainEntity: {
                   ...person,
                   description:
-                    "Filipina writer based in Qatar, writing essays on womanhood, psychology and self-growth, career, and life abroad.",
+                    "Writer based in Qatar, writing essays on womanhood, psychology and self-growth, career, and life abroad.",
                 },
               },
             ]

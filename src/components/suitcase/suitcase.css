@@ -293,3 +293,81 @@
 }
 /* Stale prerendered HTML after launch: hide the locked bits until the page switches to the live game */
 .suitcase-open .sc-when-locked { display: none !important; }
+
+/* Item cards before opening: only "TAKE OUT", centred */
+.sc-item.is-closed, .sc-item.gift-pop { align-content: center; }
+
+/* Gift unwrapping (one card at a time). Pop and glow on the card, gift layer on top. */
+.sc-item.gift-pop {
+  position: relative; z-index: 3;
+  animation: gift-pop 0.35s cubic-bezier(.34, 1.56, .64, 1);
+  will-change: transform;
+}
+.sc-item.gift-pop::after {
+  content: ""; position: absolute; inset: -6px; border-radius: 14px; pointer-events: none;
+  box-shadow: 0 0 18px 6px rgba(212, 175, 99, 0.45), 0 0 0 3px rgba(212, 175, 99, 0.35);
+  opacity: 0; will-change: opacity, transform; animation: gift-glow 0.7s ease-out;
+}
+.sc-item.gift-pop:hover { transform: none; }
+@keyframes gift-pop { 0% { transform: scale(1); } 55% { transform: scale(1.08); } 100% { transform: scale(1); } }
+@keyframes gift-glow { 0% { opacity: 0; transform: scale(0.96); } 40% { opacity: 1; } 100% { opacity: 0; transform: scale(1.06); } }
+.sc-item.gift-pop > .sc-tag { opacity: 0; transition: opacity 0.15s ease; }
+
+.giftwrap {
+  position: absolute; inset: 0; border-radius: 10px; pointer-events: none; will-change: transform, opacity;
+  animation: giftwrap-in 0.4s ease-out both, giftwrap-wiggle 0.3s ease-in-out 0.3s;
+}
+@keyframes giftwrap-in { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+@keyframes giftwrap-wiggle { 0%, 100% { transform: rotate(0deg); } 33% { transform: rotate(-3deg); } 66% { transform: rotate(3deg); } }
+
+/* Paper: deep red candy stripes at 135° with a thin gold pinstripe, in two halves that tear apart */
+.giftwrap-paper {
+  position: absolute; top: 0; bottom: 0; width: 50%;
+  /* Candy stripes at 135deg (#A3192B / #B8202F, thin #D4AF63 pinstripe) as a small tile: drawn once, cheap to animate */
+  background: #B8202F url("data:image/svg+xml,%3Csvg xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22 width%3D%2228%22 height%3D%2228%22%3E%3Crect width%3D%2228%22 height%3D%2228%22 fill%3D%22%23B8202F%22%2F%3E%3Cg stroke%3D%22%23A3192B%22 stroke-width%3D%229%22%3E%3Cpath d%3D%22M-2 2L2-2%22%2F%3E%3Cpath d%3D%22M-2 30L30-2%22%2F%3E%3Cpath d%3D%22M26 30L30 26%22%2F%3E%3C%2Fg%3E%3Cg stroke%3D%22%23D4AF63%22 stroke-width%3D%221%22%3E%3Cpath d%3D%22M-2 9L9-2%22%2F%3E%3Cpath d%3D%22M-2 23L23-2%22%2F%3E%3Cpath d%3D%22M5 30L30 5%22%2F%3E%3Cpath d%3D%22M19 30L30 19%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E") 0 0 / 28px 28px repeat;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.08);
+  will-change: transform, opacity;
+}
+.giftwrap-paper-left { left: 0; border-radius: 10px 0 0 10px; transform-origin: 0% 100%; animation: giftwrap-tear-left 0.6s ease-in 0.8s forwards; }
+.giftwrap-paper-right { right: 0; border-radius: 0 10px 10px 0; transform-origin: 100% 100%; animation: giftwrap-tear-right 0.6s ease-in 0.8s forwards; }
+@keyframes giftwrap-tear-left { to { transform: translateX(-55%) rotate(-16deg); opacity: 0; } }
+@keyframes giftwrap-tear-right { to { transform: translateX(55%) rotate(16deg); opacity: 0; } }
+
+/* Ribbons: gold, crossing at the centre; vertical slides up, horizontal slides right */
+.giftwrap-ribbon { position: absolute; will-change: transform, opacity; }
+.giftwrap-ribbon-v {
+  top: 0; bottom: 0; left: 50%; width: 14%; transform: translateX(-50%);
+  background: linear-gradient(90deg, #E8CB86, #C9A04F, #E8CB86);
+  animation: giftwrap-ribbon-up 0.5s ease-in 0.7s forwards;
+}
+.giftwrap-ribbon-h {
+  left: 0; right: 0; top: 50%; height: 14%; transform: translateY(-50%);
+  background: linear-gradient(180deg, #E8CB86, #C9A04F, #E8CB86);
+  animation: giftwrap-ribbon-right 0.5s ease-in 0.7s forwards;
+}
+@keyframes giftwrap-ribbon-up { to { transform: translate(-50%, -120%); opacity: 0; } }
+@keyframes giftwrap-ribbon-right { to { transform: translate(120%, -50%); opacity: 0; } }
+
+/* Bow: gold, at the centre; lifts, grows a little and fades */
+.giftwrap-bow {
+  position: absolute; left: 50%; top: 50%; width: 46px; height: 28px; transform: translate(-50%, -62%);
+  will-change: transform, opacity;
+  animation: giftwrap-bow-off 0.45s ease-in 0.6s forwards;
+}
+.sc-item .giftwrap-bow svg { width: 100%; height: 100%; fill: #D9B868; stroke: #B8913F; stroke-width: 1; }
+@keyframes giftwrap-bow-off { to { transform: translate(-50%, -150%) scale(1.25); opacity: 0; } }
+
+/* Reveal: icon and name fade in slightly enlarged, with a second, smaller pop */
+.gift-reveal { will-change: transform, opacity; display: grid; justify-items: center; gap: 8px; animation: gift-reveal 1s cubic-bezier(.34, 1.56, .64, 1) both; }
+@keyframes gift-reveal {
+  0% { opacity: 0; transform: scale(0.9); }
+  45% { opacity: 1; transform: scale(1.08); }
+  70% { transform: scale(0.99); }
+  85% { transform: scale(1.03); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sc-item.gift-pop, .sc-item.gift-pop::after, .giftwrap, .giftwrap *, .gift-reveal { animation: none !important; }
+  .giftwrap { display: none; }
+}

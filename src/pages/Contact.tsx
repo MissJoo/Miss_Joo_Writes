@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { Mail } from "lucide-react";
 
 const CONTACT_EMAIL = "missjodiaries@gmail.com";
 
@@ -125,16 +124,6 @@ const Contact = () => {
               </div>
               </form>
 
-              {/* Alternative Contact */}
-              <div className="mt-2 border-t border-journal-border/30 pt-2 text-center">
-                <a
-                  href={`mailto:${CONTACT_EMAIL}`}
-                  className="group inline-flex items-center gap-2 font-sans text-sm font-medium text-journal-text transition-colors duration-300 hover:text-journal-gold"
-                >
-                  <Mail size={14} className="text-journal-gold transition-transform duration-300 group-hover:scale-105" />
-                  <span className="tracking-wide">{CONTACT_EMAIL}</span>
-                </a>
-              </div>
             </div>
           </div>
         </div>

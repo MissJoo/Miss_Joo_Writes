@@ -32,10 +32,6 @@ const Index = () => {
         {/* Content */}
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center py-12">
           <div className="max-w-3xl mx-auto space-y-8">
-            <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block animate-fade-in">
-              “A space where my thoughts learn how to breathe.”
-            </span>
-
             <h1 className="font-serif text-[34px] md:text-[56px] leading-[1.15] text-journal-text animate-fade-in-up tracking-tight max-w-2xl mx-auto">
               For the thoughts we never posted, but still needed to feel.
             </h1>
@@ -74,21 +70,11 @@ const Index = () => {
       <section className="py-20 md:py-28 bg-journal-bg-secondary">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mx-auto text-center space-y-8">
-            <span className="text-[11px] tracking-[0.2em] text-journal-gold font-sans font-medium block">
-              About Miss Joo
-            </span>
-
-            <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text italic font-light leading-snug">
-              “A space for thoughts that feel too layered for captions.”
-            </h2>
+            <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">About Me</h2>
 
             <p className="text-journal-text-secondary font-sans leading-relaxed text-sm md:text-base font-light max-w-2xl mx-auto">
               Miss Joo Writes is my quiet corner of the internet, a space for the thoughts that feel too layered for captions and too meaningful to disappear in the scroll. Here, I write about womanhood, growth, career, and what it means to build a life far from home. And the small moments too, the ones that teach us how to return to ourselves.
             </p>
-
-            <div className="font-signature text-3xl text-journal-gold select-none py-1">
-              With softness, Miss Joo
-            </div>
 
             <div className="pt-2">
               <Button 
@@ -213,35 +199,6 @@ const Index = () => {
       </section>
 
       <FromTheFeed />
-
-      {/* Instagram Minimal Section */}
-      <section className="pt-16 pb-6 md:pt-20 md:pb-8 bg-journal-bg">
-        <div className="container mx-auto px-6 text-center space-y-6">
-          <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">
-            Follow the Soft Notes
-          </span>
-          <p className="text-journal-text-secondary font-light text-sm md:text-base max-w-sm mx-auto">
-            Small thoughts, quiet moments, and pieces of my becoming.
-          </p>
-          <div className="pt-2 flex flex-wrap items-center justify-center gap-x-10 gap-y-4">
-            {[
-              { name: "Instagram", href: "https://www.instagram.com/missjooo98/" },
-              { name: "TikTok", href: "https://www.tiktok.com/@missjooo98" },
-            ].map((profile) => (
-              <a
-                key={profile.name}
-                href={profile.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 font-serif text-xl md:text-2xl text-journal-text hover:text-journal-gold transition-colors duration-300 border-b border-journal-border/60 pb-1"
-              >
-                <span>{profile.name}</span>
-                <span className="text-sm font-sans">→</span>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Free Journal / Lead Magnet Section */}
       <section className="pt-10 pb-14 md:pt-12 md:pb-16 bg-journal-bg">

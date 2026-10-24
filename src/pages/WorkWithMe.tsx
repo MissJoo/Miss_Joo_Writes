@@ -44,7 +44,7 @@ const WorkWithMe = () => (
         <div className="max-w-2xl mx-auto space-y-6 text-journal-text-secondary leading-[1.8] font-sans text-[17px] font-light">
           <h2 className="font-serif text-2xl text-journal-text text-center">About Miss Joo</h2>
           <p>
-            Miss Joo is a Filipina writer based in Qatar, writing elegant, reflective essays on womanhood, psychology and
+            Miss Joo is a writer based in Qatar, writing elegant, reflective essays on womanhood, psychology and
             self-growth, career, and life abroad. The journal is read by women who want depth rather than noise, and who
             are building lives with intention.
           </p>
