@@ -34,33 +34,16 @@ const ReadByMood = () => {
     <section aria-labelledby="read-by-mood-title" className="py-20 md:py-28 bg-journal-bg border-t border-journal-border/30">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="max-w-3xl mx-auto text-center space-y-3">
+          <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">
+            Read by How You Feel
+          </span>
           <h2 id="read-by-mood-title" className="font-serif text-2xl md:text-3.5xl text-journal-text">
             How are you feeling today?
           </h2>
           <div className="w-12 h-px bg-journal-champagne/40 mx-auto"></div>
         </div>
 
-        <figure className="mt-10 mx-auto w-[min(300px,80%)] text-center">
-          {hasPortrait ? (
-            <img
-              src={moodPortrait.src}
-              alt="Miss Joo"
-              width={600}
-              height={750}
-              loading="lazy"
-              decoding="async"
-              className="aspect-[4/5] w-full object-cover rounded-[3px] border border-journal-border shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10)]"
-            />
-          ) : (
-            // Soft empty frame until the photo is added to public/assets
-            <div aria-hidden="true" className="aspect-[4/5] w-full rounded-[3px] border border-journal-border bg-journal-bg-secondary/60" />
-          )}
-          <figcaption className="mt-4 font-serif italic text-lg text-journal-text-secondary leading-relaxed">
-            {moodPortrait.caption}
-          </figcaption>
-        </figure>
-
-        <p className="mt-10 text-center text-journal-text-secondary font-light text-sm md:text-base max-w-md mx-auto">
+        <p className="mt-4 text-center text-journal-text-secondary font-light text-sm md:text-base max-w-md mx-auto">
           Pick one. There&rsquo;s a page for that feeling.
         </p>
 
@@ -132,6 +115,26 @@ const ReadByMood = () => {
             )}
           </article>
         </div>
+
+        <figure className="mt-14 mx-auto w-[min(300px,80%)] text-center">
+          {hasPortrait ? (
+            <img
+              src={moodPortrait.src}
+              alt="Miss Joo"
+              width={600}
+              height={750}
+              loading="lazy"
+              decoding="async"
+              className="aspect-[4/5] w-full object-cover rounded-[3px] border border-journal-border shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10)]"
+            />
+          ) : (
+            // Soft empty frame until the photo is added to public/assets
+            <div aria-hidden="true" className="aspect-[4/5] w-full rounded-[3px] border border-journal-border bg-journal-bg-secondary/60" />
+          )}
+          <figcaption className="mt-4 font-serif italic text-lg text-journal-text-secondary leading-relaxed">
+            {moodPortrait.caption}
+          </figcaption>
+        </figure>
       </div>
     </section>
   );
