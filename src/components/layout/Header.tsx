@@ -249,9 +249,13 @@ const Header = () => {
           </div>
         </div>
       </nav>
+      {/* Essays have their own reading bar at the top of the screen, so this one steps aside there */}
       <div
         ref={progressRef}
-        className="pointer-events-none absolute bottom-0 left-0 h-[2px] w-full origin-left bg-gold dark:bg-journal-gold"
+        className={cn(
+          "pointer-events-none absolute bottom-0 left-0 h-[2px] w-full origin-left bg-gold dark:bg-journal-gold",
+          /^\/blog\/[^/]+\/?$/.test(location.pathname) && "hidden",
+        )}
         style={{ transform: "scaleX(0)" }}
         aria-hidden="true"
       />

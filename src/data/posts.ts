@@ -18,9 +18,25 @@ export interface Post {
   quote?: string;
   /** Featured image path (e.g. "/images/blog/my-post.webp"); falls back to the social cover */
   image?: string;
-  /** Paragraphs. "##:" prefix marks a section heading. */
+  /** One line shown under the title in a framed box. Leave out for none. */
+  hook?: string;
+  /** Line on the homepage "Latest from the Journal" card, ending in "…". Leave out to show the excerpt. */
+  cliffhanger?: string;
+  /** "Pause here" box, shown where the content has "<!-- pause -->". Leave out for none. */
+  pause?: { question: string; button: string; response: string };
+  /**
+   * Paragraphs. "##:" prefix marks a section heading. A paragraph of just "<!-- chapter -->" shows the next
+   * Roman numeral (I, II, III…), and "<!-- pause -->" shows the pause box.
+   */
   content: string[];
 }
+
+export const CHAPTER_MARK = "<!-- chapter -->";
+export const PAUSE_MARK = "<!-- pause -->";
+export const isMarker = (paragraph: string) => paragraph.trim() === CHAPTER_MARK || paragraph.trim() === PAUSE_MARK;
+
+/** The essay's paragraphs without chapter and pause markers. */
+export const textParagraphs = (post: Pick<Post, "content">) => post.content.filter((p) => !isMarker(p));
 
 // Newest first. To publish a post, add it to the top of this list.
 export const posts: Post[] = [
@@ -32,10 +48,18 @@ export const posts: Post[] = [
     datePublished: "2026-09-26",
     pillar: "psychology",
     quote: "A resolution happens once. A choice gets made again and again, especially on the days it's hard.",
+    hook: "What am I carrying into the next chapter of my life, and did I ever actually choose it?",
+    cliffhanger: "Writing a list like this is the easy part. Living it, on an ordinary Tuesday…",
+    pause: {
+      question: "What is one thing you keep choosing, even on the days it's hard?",
+      button: "I know mine",
+      response: "Then you already know where to begin. Write it down before you read on.",
+    },
     content: [
       "At the start of this month, I said I wanted to stop walking into each new year by accident.",
       "I wanted to sort the suitcase.",
       "To look honestly at everything I'd been carrying and decide what came with me.",
+      "<!-- chapter -->",
       "It's the end of September now.",
       "The heat in Doha is slowly breaking. The evenings are a little softer. Another year of my life has quietly begun.",
       "And I have been sitting with everything I wrote this month.",
@@ -45,6 +69,7 @@ export const posts: Post[] = [
       "Just a month of paying attention.",
       "But paying attention changes things.",
       "Once you see what you've been carrying, it gets harder to keep carrying it without thinking.",
+      "<!-- chapter -->",
       "So this is what I am choosing now.",
       "I am choosing softness, without giving up my strength.\nI'll still handle hard things. I'm just going to let people in while I do.",
       "I am choosing to build, not just to stay busy.\nSome part of every week will belong to my own future, even when the rest of it belongs to everyone else.",
@@ -52,6 +77,7 @@ export const posts: Post[] = [
       "I am choosing rest before I'm empty, not as a reward for running myself into the ground.",
       "I am choosing to stop waiting until I feel ready.\nReady rarely comes first. It usually shows up halfway through.",
       "And I am choosing myself on purpose, not as a backup plan after everyone else has been taken care of.",
+      "<!-- chapter -->",
       "I want to be honest about something.",
       "Writing a list like this is the easy part.",
       "Living it, on an ordinary Tuesday when I'm tired and my phone won't stop buzzing, is the real work.",
@@ -59,6 +85,7 @@ export const posts: Post[] = [
       "But that's what makes this a choice, not a resolution.",
       "A resolution happens once.",
       "A choice gets made again and again, especially on the days it's hard.",
+      "<!-- pause -->",
       "This month started with a question:",
       ">>:What am I carrying into the next chapter of my life, and did I ever actually choose it?",
       "I don't think I'll ever be finished answering it.",
@@ -83,6 +110,7 @@ export const posts: Post[] = [
     datePublished: "2026-09-19",
     pillar: "womanhood",
     quote: "You're not too much. You've just stopped settling for too little.",
+    cliffhanger: "And each time I felt uncomfortable, I asked myself the same question…",
     content: [
       "I have been called “too much” before.",
       "Not always in those words.",
@@ -140,6 +168,7 @@ export const posts: Post[] = [
     datePublished: "2026-09-12",
     pillar: "career",
     quote: "Busy is motion. Building is direction.",
+    cliffhanger: "When I asked myself what I had actually built, the answer was much quieter…",
     content: [
       "Last week, someone asked me how I've been.",
       "I said what I always say.",
@@ -1769,7 +1798,7 @@ export const getPostsByPillar = (pillar: PillarSlug) => posts.filter((post) => p
 const WORDS_PER_MINUTE = 220;
 
 export const readingMinutes = (post: Pick<Post, "content">) => {
-  const words = post.content.join(" ").split(/\s+/).filter(Boolean).length;
+  const words = textParagraphs(post).join(" ").split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.round(words / WORDS_PER_MINUTE));
 };
 
@@ -1781,4 +1810,19 @@ export const getRelatedPosts = (post: Post, count = 2) => {
   const samePillar = post.pillar ? others.filter((p) => p.pillar === post.pillar) : [];
   const rest = others.filter((p) => !samePillar.includes(p));
   return [...samePillar, ...rest].slice(0, count);
+};
+
+/** The next older essay; after the oldest, back to the newest. */
+export const getNextPost = (post: Post) => posts[(posts.indexOf(post) + 1) % posts.length];
+
+/**
+ * The start of `text`, stopped partway through so it reads as unfinished: about `share` of its words
+ * (at least 3, at most `max`, never all of them), without trailing punctuation.
+ */
+export const cutMidSentence = (text: string, share = 0.6, max = 20) => {
+  const words = text.replace(/\s+/g, " ").trim().split(" ");
+  let keep = Math.min(words.length - 1, max, Math.max(3, Math.round(words.length * share)));
+  // Never stop right at the end of a sentence
+  if (keep < words.length - 1 && /[.!?…]["”’)]*$/.test(words[keep - 1])) keep += 1;
+  return words.slice(0, Math.max(1, keep)).join(" ").replace(/[\s.,;:!?…"“”'’)-]+$/, "");
 };

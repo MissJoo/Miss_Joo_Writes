@@ -5,6 +5,9 @@ import EmailSignupForm from "@/components/forms/EmailSignupForm";
 import heroImage from "@/assets/hero-image.webp";
 import FromTheFeed from "@/components/FromTheFeed";
 import ReadByMood from "@/components/ReadByMood";
+import TodaysNote from "@/components/home/TodaysNote";
+import WeeklyLetter from "@/components/home/WeeklyLetter";
+import QuizAndPostcard from "@/components/home/QuizAndPostcard";
 import { SuitcaseHomeTeaser } from "@/components/suitcase/SuitcaseTeasers";
 import { posts, readingTime } from "@/data/posts";
 import { topicLabel } from "@/data/pillars";
@@ -66,6 +69,8 @@ const Index = () => {
 
       <ReadByMood />
 
+      <TodaysNote />
+
       {/* About Preview Section */}
       <section className="py-20 md:py-28 bg-journal-bg-secondary">
         <div className="container mx-auto px-6 lg:px-12">
@@ -94,14 +99,14 @@ const Index = () => {
       {/* Latest Journal Entries Section */}
       <section className="py-20 md:py-28 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="flex flex-col md:flex-row items-baseline justify-between mb-12 border-b border-journal-border/50 pb-5">
+          <div className="flex flex-col items-center text-center mb-12 border-b border-journal-border/50 pb-5">
             <div>
               <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">Latest from the Journal</h2>
               <p className="text-[11px] text-journal-muted tracking-widest uppercase mt-1">Reflections and quiet lessons</p>
             </div>
             <Link 
               to="/blog" 
-              className="text-xs tracking-[0.2em] uppercase text-journal-gold hover:text-journal-text transition-colors mt-3 md:mt-0 font-medium"
+              className="text-xs tracking-[0.2em] uppercase text-journal-gold hover:text-journal-text transition-colors mt-3 font-medium"
             >
               View All Entries
             </Link>
@@ -113,8 +118,8 @@ const Index = () => {
                 key={post.slug}
                 className="group relative flex flex-col justify-between p-6 border border-journal-border bg-journal-card hover:border-journal-champagne/60 hover:-translate-y-[3px] transition-all duration-300 rounded-[3px] shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10),0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_-8px_rgba(139,106,67,0.22),0_4px_16px_-4px_rgba(0,0,0,0.07)] overflow-hidden"
               >
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted">
+                <div className="space-y-4 text-center">
+                  <div className="flex items-center justify-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted">
                     <span>{topicLabel(post.pillar)}</span>
                     <span className="w-4 h-px bg-journal-border"></span>
                     <time dateTime={post.datePublished}>{post.date}</time>
@@ -127,11 +132,11 @@ const Index = () => {
                   </h3>
 
                   <p className="text-journal-text-secondary text-sm font-light leading-relaxed line-clamp-3">
-                    {post.excerpt}
+                    {post.cliffhanger || post.excerpt}
                   </p>
                 </div>
 
-                <div className="pt-6 border-t border-journal-border/30 mt-6">
+                <div className="pt-6 border-t border-journal-border/30 mt-6 text-center">
                   <Link 
                     to={`/blog/${post.slug}`} 
                     className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-journal-gold group-hover:text-journal-text transition-colors duration-300 font-medium"
@@ -147,6 +152,8 @@ const Index = () => {
       </section>
 
       <SuitcaseHomeTeaser />
+
+      <WeeklyLetter />
 
       {/* The Curated Edit Section */}
       <section className="py-20 md:py-28 bg-journal-bg-secondary/40 border-y border-journal-border/30">
@@ -231,6 +238,8 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      <QuizAndPostcard />
     </Layout>
   );
 };

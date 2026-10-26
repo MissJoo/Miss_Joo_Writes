@@ -60,12 +60,12 @@ const FromTheFeed = () => {
                       </p>
                     </div>
                   )}
-                  <span className="flex items-center justify-between px-6 pt-5 text-[10px] tracking-[0.25em] uppercase text-journal-muted group-hover:text-journal-gold transition-colors">
+                  <span className="flex items-center justify-center gap-2 px-6 pt-5 text-[10px] tracking-[0.25em] uppercase text-journal-muted group-hover:text-journal-gold transition-colors">
                     <span>View on {platformLabel[item.platform]}</span>
                     <span aria-hidden="true">↗</span>
                   </span>
                 </a>
-                <div className="flex flex-1 flex-col justify-between gap-4 px-6 pb-6 pt-3">
+                <div className="flex flex-1 flex-col justify-between gap-4 px-6 pb-6 pt-3 text-center">
                   <Link
                     to={`/blog/${post.slug}`}
                     className="font-serif text-lg text-journal-text hover:text-journal-gold transition-colors leading-snug"

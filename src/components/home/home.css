@@ -1,0 +1,54 @@
+/* Homepage: "This week's letter" envelope and paper. Colours come from the site's journal tokens, so dark mode follows. */
+.wl-envelope {
+  position: relative; width: min(360px, 100%); aspect-ratio: 7 / 5; margin: 0 auto; perspective: 1200px;
+  filter: drop-shadow(0 18px 24px rgba(40, 25, 15, 0.18));
+}
+.wl-back { position: absolute; inset: 0; border-radius: 6px; background: rgb(var(--journal-bg-secondary)); border: 1px solid rgb(var(--journal-border)); }
+.wl-peek {
+  position: absolute; left: 8%; right: 8%; top: 10%; bottom: 8%; border-radius: 3px; background-color: rgb(var(--journal-card));
+  border: 1px solid rgb(var(--journal-border));
+  background-image: repeating-linear-gradient(transparent 0 17px, rgb(var(--journal-border) / 0.8) 17px 18px); background-position: 0 14px;
+  transition: transform 0.6s ease 0.35s;
+}
+.wl-front {
+  position: absolute; inset: 0; border-radius: 6px; background: rgb(var(--journal-card)); border: 1px solid rgb(var(--journal-border));
+  clip-path: polygon(0 0, 50% 55%, 100% 0, 100% 100%, 0 100%);
+}
+.wl-flap {
+  position: absolute; inset: 0 0 auto 0; height: 58%; background: rgb(var(--journal-bg-secondary));
+  clip-path: polygon(0 0, 100% 0, 50% 100%); transform-origin: top center; z-index: 3;
+  /* Fades as it lifts past upright, so the open flap never covers the heading above */
+  transition: transform 0.6s ease, opacity 0.25s ease 0.25s;
+}
+.wl-seal {
+  position: absolute; left: 50%; top: 58%; z-index: 4; width: 64px; height: 64px; border-radius: 50%; border: none; cursor: pointer;
+  transform: translate(-50%, -50%); background: radial-gradient(circle at 35% 30%, #b3453f, #7d1f24 70%);
+  color: #f7e9de; font-family: "Cormorant Garamond", Georgia, serif; font-size: 22px; font-weight: 600; letter-spacing: 0.04em;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.18), inset 0 0 0 4px rgba(255, 255, 255, 0.08), inset 0 0 0 7px rgba(0, 0, 0, 0.12);
+  transition: transform 0.35s ease, opacity 0.35s ease; animation: wl-pulse 2.4s ease-in-out 1s infinite;
+}
+.wl-seal:focus-visible { outline: 2px solid rgb(var(--journal-champagne)); outline-offset: 4px; }
+@keyframes wl-pulse {
+  0%, 100% { box-shadow: 0 4px 0 rgba(0, 0, 0, 0.18), inset 0 0 0 4px rgba(255, 255, 255, 0.08), inset 0 0 0 7px rgba(0, 0, 0, 0.12), 0 0 0 0 rgba(199, 154, 69, 0.5); }
+  50% { box-shadow: 0 4px 0 rgba(0, 0, 0, 0.18), inset 0 0 0 4px rgba(255, 255, 255, 0.08), inset 0 0 0 7px rgba(0, 0, 0, 0.12), 0 0 0 10px rgba(199, 154, 69, 0); }
+}
+.wl-envelope.is-open .wl-seal { transform: translate(-50%, -50%) scale(0.6); opacity: 0; pointer-events: none; animation: none; }
+.wl-envelope.is-open .wl-flap { transform: rotateX(180deg); opacity: 0; z-index: 0; }
+.wl-envelope.is-open .wl-peek { transform: translateY(-24%); }
+
+.wl-paper {
+  width: min(520px, 100%); margin: 0 auto; padding: 36px 32px 30px; border-radius: 4px; text-align: center;
+  background-color: rgb(var(--journal-card)); border: 1px solid rgb(var(--journal-border));
+  background-image: repeating-linear-gradient(transparent 0 35px, rgb(var(--journal-border) / 0.6) 35px 36px); background-position: 0 26px;
+  box-shadow: 0 24px 48px -24px rgba(40, 25, 15, 0.35); animation: wl-rise 0.6s ease both;
+}
+@keyframes wl-rise { from { opacity: 0; transform: translateY(24px) scale(0.98); } to { opacity: 1; transform: none; } }
+.wl-paper p { margin: 0; font-family: "Cormorant Garamond", Georgia, serif; font-style: italic; font-size: 20px; line-height: 36px; text-wrap: balance; }
+/* Last line fades out mid-sentence */
+.wl-fade { display: inline-block; -webkit-mask-image: linear-gradient(to right, #000 30%, transparent); mask-image: linear-gradient(to right, #000 30%, transparent); }
+
+@media (prefers-reduced-motion: reduce) {
+  .wl-seal { animation: none; }
+  .wl-peek, .wl-flap, .wl-seal { transition: none; }
+  .wl-paper { animation: none; }
+}

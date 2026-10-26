@@ -260,6 +260,7 @@ export const suitcase = {
 
   /** Homepage teaser */
   teaser: {
+    label: "Take What You Need",
     heading: "The Suitcase",
     line: "Open it. See what you still carry.",
     button: "Open the suitcase",
