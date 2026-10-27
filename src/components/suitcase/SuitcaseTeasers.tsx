@@ -6,6 +6,10 @@ import Countdown from "./Countdown";
 
 /** Width and height shared by the homepage Suitcase, letter and quiz boxes, so the three line up */
 export const homeBoxSize = "w-full max-w-3xl mx-auto min-h-[453px] md:min-h-[509px]";
+/** Look shared by those boxes (and the three small boxes under the postcard) */
+export const homeBoxStyle = "border border-journal-border bg-journal-bg-secondary/40 rounded-[2px] px-6 py-8 sm:px-8 sm:py-10 md:px-12";
+/** Every homepage section after the hero: same spacing, thin divider line across the top */
+export const homeSection = "py-20 md:py-28 bg-journal-bg border-t border-journal-border";
 
 const buttonClass =
   "inline-flex h-11 items-center rounded-full bg-gold px-8 text-[11px] uppercase tracking-widest text-espresso hover:bg-gold-hover transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-journal-bg";
@@ -17,9 +21,9 @@ const buttonClass =
 export const SuitcaseHomeTeaser = () => {
   const { open, remaining } = useSuitcaseLaunch();
   return (
-    <section aria-labelledby="suitcase-teaser-title" className="pb-20 md:pb-28 bg-journal-bg">
+    <section aria-labelledby="suitcase-teaser-title" className={homeSection}>
       <div className="container mx-auto px-6 lg:px-12">
-        <div className={`${homeBoxSize} grid gap-8 justify-items-center content-center text-center border border-journal-border bg-journal-bg-secondary/40 px-8 py-10 md:px-12 rounded-[2px]`}>
+        <div className={`${homeBoxSize} ${homeBoxStyle} grid gap-8 justify-items-center content-center text-center`}>
           {/* Label and heading, then the suitcase, then the line and button */}
           <div className="text-center space-y-4">
             <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">

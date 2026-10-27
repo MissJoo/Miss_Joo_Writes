@@ -67,7 +67,8 @@ export const postcard = {
   link: "missjoowrites.com/the-suitcase",
   create: "Create postcard",
   copied: "Copied. Paste it in a message to them.",
-  copyFallback: "Select the text below and copy it.",
+  copyFallback: "Select the text above and copy it.",
+  again: "Make another",
   /** {name}, {message} and {link} are filled in */
   template: "Dear {name},\n\n{message}\n\n{link}",
 };

@@ -29,7 +29,7 @@ const ReadByMood = () => {
   const [firstLine, secondLine] = post ? openingLines(post) : ["", ""];
 
   return (
-    <section aria-labelledby="read-by-mood-title" className="py-20 md:py-28 bg-journal-bg border-t border-journal-border/30">
+    <section aria-labelledby="read-by-mood-title" className="py-20 md:py-28 bg-journal-bg border-t border-journal-border">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="max-w-3xl mx-auto text-center space-y-3">
           <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">

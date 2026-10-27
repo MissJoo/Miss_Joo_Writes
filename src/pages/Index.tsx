@@ -116,7 +116,7 @@ const Index = () => {
       </section>
 
       {/* Latest Journal Entries Section */}
-      <section className="py-20 md:py-28 bg-journal-bg">
+      <section className="py-20 md:py-28 bg-journal-bg border-t border-journal-border">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex flex-col items-center text-center mb-12 border-b border-journal-border/50 pb-5">
             <div>
@@ -227,7 +227,7 @@ const Index = () => {
       <FromTheFeed />
 
       {/* Free Journal / Lead Magnet Section */}
-      <section className="pt-10 pb-14 md:pt-12 md:pb-16 bg-journal-bg">
+      <section className="py-20 md:py-28 bg-journal-bg border-t border-journal-border">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-2xl mx-auto text-center space-y-8 border border-journal-border bg-journal-card p-8 md:p-12 rounded-[2px] shadow-sm">
             <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">
