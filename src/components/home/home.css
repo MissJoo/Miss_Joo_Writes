@@ -1,6 +1,6 @@
 /* Homepage: "This week's letter" envelope and paper. Colours come from the site's journal tokens, so dark mode follows. */
 .wl-envelope {
-  position: relative; width: min(360px, 100%); aspect-ratio: 7 / 5; margin: 0 auto; perspective: 1200px;
+  position: relative; width: min(300px, 100%); aspect-ratio: 7 / 5; margin: 0 auto; perspective: 1200px;
   filter: drop-shadow(0 18px 24px rgba(40, 25, 15, 0.18));
 }
 .wl-back { position: absolute; inset: 0; border-radius: 6px; background: rgb(var(--journal-bg-secondary)); border: 1px solid rgb(var(--journal-border)); }
@@ -37,13 +37,19 @@
 .wl-envelope.is-open .wl-peek { transform: translateY(-24%); }
 
 .wl-paper {
-  width: min(520px, 100%); margin: 0 auto; padding: 36px 32px 30px; border-radius: 4px; text-align: center;
+  width: min(520px, 100%); margin: 0 auto; padding: 24px 24px 22px; border-radius: 4px; text-align: center;
   background-color: rgb(var(--journal-card)); border: 1px solid rgb(var(--journal-border));
   background-image: repeating-linear-gradient(transparent 0 35px, rgb(var(--journal-border) / 0.6) 35px 36px); background-position: 0 26px;
   box-shadow: 0 24px 48px -24px rgba(40, 25, 15, 0.35); animation: wl-rise 0.6s ease both;
 }
 @keyframes wl-rise { from { opacity: 0; transform: translateY(24px) scale(0.98); } to { opacity: 1; transform: none; } }
-.wl-paper p { margin: 0; font-family: "Cormorant Garamond", Georgia, serif; font-style: italic; font-size: 20px; line-height: 36px; text-wrap: balance; }
+.wl-paper p { margin: 0; font-family: "Cormorant Garamond", Georgia, serif; font-style: italic; font-size: 20px; line-height: 32px; text-wrap: balance; }
+.wl-paper { background-image: repeating-linear-gradient(transparent 0 31px, rgb(var(--journal-border) / 0.6) 31px 32px); background-position: 0 22px; }
+/* Phones: tighter letter so the opened box stays the same height as the Suitcase box */
+@media (max-width: 640px) {
+  .wl-paper { padding: 16px 14px 16px; background-image: repeating-linear-gradient(transparent 0 25px, rgb(var(--journal-border) / 0.6) 25px 26px); background-position: 0 14px; }
+  .wl-paper p { font-size: 16px; line-height: 26px; }
+}
 /* Last line fades out mid-sentence */
 .wl-fade { display: inline-block; -webkit-mask-image: linear-gradient(to right, #000 30%, transparent); mask-image: linear-gradient(to right, #000 30%, transparent); }
 

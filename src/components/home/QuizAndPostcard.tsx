@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { moreBoxes, postcard, quiz, quizResult } from "@/data/quiz";
 import { fill, suitcase, type SuitcaseIcon } from "@/data/suitcase";
+import { homeBoxSize } from "@/components/suitcase/SuitcaseTeasers";
 
 const cardClass =
   "flex flex-col border border-journal-border bg-journal-card rounded-[3px] p-8 md:p-10 text-center shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10),0_1px_3px_rgba(0,0,0,0.04)]";
@@ -25,7 +26,7 @@ const Quiz = () => {
   const current = quiz.questions[picks.length];
 
   return (
-    <div className={cardClass} aria-live="polite">
+    <div className={cn(cardClass, homeBoxSize, "justify-center")} aria-live="polite">
       <span className={labelClass}>{letter ? quiz.resultLabel : quiz.label}</span>
       {letter ? (
         <div key="result" className="mt-4 space-y-5 animate-fade-in motion-reduce:animate-none">
