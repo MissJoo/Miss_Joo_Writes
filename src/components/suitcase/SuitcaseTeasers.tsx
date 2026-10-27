@@ -17,14 +17,21 @@ export const SuitcaseHomeTeaser = () => {
     <section aria-labelledby="suitcase-teaser-title" className="pb-20 md:pb-28 bg-journal-bg">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="max-w-3xl mx-auto grid gap-8 justify-items-center text-center border border-journal-border bg-journal-bg-secondary/40 px-8 py-10 md:px-12 rounded-[2px]">
-          <ClosedSuitcase className="w-40 md:w-[200px] mx-auto" latches={open ? "open" : "locked"} />
-          <div className={`text-center space-y-4${open ? "" : " sc-when-locked"}`}>
+          {/* Label and heading, then the suitcase, then the line and button */}
+          <div className="text-center space-y-4">
             <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">
               {suitcase.teaser.label}
             </span>
-            <h2 id="suitcase-teaser-title" className="font-serif text-2xl md:text-3.5xl text-journal-text">
-              {suitcase.teaser.heading}
+            <h2 id="suitcase-teaser-title" className="font-serif text-2xl md:text-3.5xl text-journal-text leading-tight">
+              {suitcase.teaser.heading.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
             </h2>
+          </div>
+          <ClosedSuitcase className="w-40 md:w-[200px] mx-auto" latches={open ? "open" : "locked"} />
+          <div className={`text-center space-y-4${open ? "" : " sc-when-locked"}`}>
             {open ? (
               <p className="text-journal-text-secondary font-light text-sm md:text-base">{suitcase.teaser.line}</p>
             ) : (

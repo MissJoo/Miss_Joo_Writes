@@ -261,7 +261,8 @@ export const suitcase = {
   /** Homepage teaser */
   teaser: {
     label: "Take What You Need",
-    heading: "The Suitcase",
+    /** One entry per line */
+    heading: ["Six things inside.", "One letter at the bottom."],
     line: "Open it. See what you still carry.",
     button: "Open the suitcase",
   },

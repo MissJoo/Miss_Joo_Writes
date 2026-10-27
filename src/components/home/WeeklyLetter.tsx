@@ -39,7 +39,7 @@ const WeeklyLetter = () => {
             Something arrived for you.
           </h2>
           <div className="w-12 h-px bg-journal-champagne/40 mx-auto"></div>
-          <p className="text-journal-text-secondary font-light text-sm md:text-base max-w-md mx-auto">Break the seal.</p>
+          <p className="text-journal-text-secondary font-light text-sm md:text-base max-w-md mx-auto">Click the Seal</p>
         </div>
 
         {stage === "open" ? (

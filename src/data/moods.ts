@@ -16,7 +16,7 @@ export const moods: Mood[] = [
   { label: "Feeling like too much", essay: "my-standards-are-finally-mine" },
 ];
 
-/** Photo above the moods (portrait 4:5). Until the file is in public/, a soft empty frame shows instead. */
+/** Photo in the homepage About Me section (portrait 4:5). It only shows once the file is in public/. */
 export const moodPortrait = {
   src: "/assets/miss-joo-portrait.webp",
   caption: "I'm Miss Joo. I write the things we don't post.",

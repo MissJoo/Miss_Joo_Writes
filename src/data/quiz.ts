@@ -50,22 +50,46 @@ export const quizResult = (picks: SuitcaseIcon[]): SuitcaseIcon => {
   return picks.find((letter) => counts.get(letter) === best)!;
 };
 
-// "Send a postcard" beside the quiz. Nothing is stored or sent: the text is built and copied to the clipboard.
+// "Send a postcard" below the quiz. Nothing is stored or sent: the text is built and copied to the clipboard.
 export const postcard = {
   label: "Send a postcard",
-  heading: "Think of someone?",
+  heading: "Miss someone far away?",
+  line: "Send them a postcard from Doha. Free, and it takes ten seconds.",
   nameLabel: "Their name",
-  namePlaceholder: "Their first name",
-  messagesLabel: "Choose a message",
+  namePlaceholder: "e.g. Ate Rose",
+  messagesLabel: "Your message",
+  /** The first one is chosen to start with */
   messages: [
+    "Thinking of you, wherever you are tonight.",
     "I opened a suitcase today and thought of you.",
-    "Something here made me miss you. Open yours and tell me what you find.",
     "For the one who left home too. This one's for you.",
   ],
   link: "missjoowrites.com/the-suitcase",
-  copy: "Copy my postcard",
+  create: "Create postcard",
   copied: "Copied. Paste it in a message to them.",
   copyFallback: "Select the text below and copy it.",
   /** {name}, {message} and {link} are filled in */
   template: "Dear {name},\n\n{message}\n\n{link}",
 };
+
+// The three boxes under the postcard. href starting with "http" opens in a new tab.
+export const moreBoxes = [
+  {
+    title: "The Curated Edit",
+    line: "Beauty, places, pieces, and little moments worth remembering.",
+    link: "Explore The Edit",
+    href: "/lifestyle",
+  },
+  {
+    title: "From the Feed",
+    line: "Small moments shared on social, and the longer essays behind them.",
+    link: "Follow @missjooo98",
+    href: "https://www.instagram.com/missjooo98/",
+  },
+  {
+    title: "Free Journal",
+    line: "Notes on Becoming, a gentle reflection journal for women learning to slow down.",
+    link: "Get the journal",
+    href: "/downloads",
+  },
+];

@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { moodPortrait, moods } from "@/data/moods";
+import { moods } from "@/data/moods";
 import { cutMidSentence, getPost, readingTime, textParagraphs, type Post } from "@/data/posts";
 import { cn } from "@/lib/utils";
 import { topicLabel } from "@/data/pillars";
-import { publicFileExists } from "@/lib/publicFiles";
 
 /** First sentence of the essay, and the start of the second one (cut off mid-sentence). */
 const openingLines = (post: Post) => {
@@ -28,7 +27,6 @@ const ReadByMood = () => {
   if (options.length === 0) return null;
   const post = selected === null ? null : options[selected].post;
   const [firstLine, secondLine] = post ? openingLines(post) : ["", ""];
-  const hasPortrait = publicFileExists(moodPortrait.src);
 
   return (
     <section aria-labelledby="read-by-mood-title" className="py-20 md:py-28 bg-journal-bg border-t border-journal-border/30">
@@ -116,25 +114,6 @@ const ReadByMood = () => {
           </article>
         </div>
 
-        <figure className="mt-14 mx-auto w-[min(300px,80%)] text-center">
-          {hasPortrait ? (
-            <img
-              src={moodPortrait.src}
-              alt="Miss Joo"
-              width={600}
-              height={750}
-              loading="lazy"
-              decoding="async"
-              className="aspect-[4/5] w-full object-cover rounded-[3px] border border-journal-border shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10)]"
-            />
-          ) : (
-            // Soft empty frame until the photo is added to public/assets
-            <div aria-hidden="true" className="aspect-[4/5] w-full rounded-[3px] border border-journal-border bg-journal-bg-secondary/60" />
-          )}
-          <figcaption className="mt-4 font-serif italic text-lg text-journal-text-secondary leading-relaxed">
-            {moodPortrait.caption}
-          </figcaption>
-        </figure>
       </div>
     </section>
   );

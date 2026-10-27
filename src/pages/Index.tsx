@@ -10,6 +10,8 @@ import WeeklyLetter from "@/components/home/WeeklyLetter";
 import QuizAndPostcard from "@/components/home/QuizAndPostcard";
 import { SuitcaseHomeTeaser } from "@/components/suitcase/SuitcaseTeasers";
 import { posts, readingTime } from "@/data/posts";
+import { moodPortrait } from "@/data/moods";
+import { publicFileExists } from "@/lib/publicFiles";
 import { topicLabel } from "@/data/pillars";
 
 const blogPosts = posts;
@@ -80,6 +82,23 @@ const Index = () => {
             <p className="text-journal-text-secondary font-sans leading-relaxed text-sm md:text-base font-light max-w-2xl mx-auto">
               Miss Joo Writes is my quiet corner of the internet, a space for the thoughts that feel too layered for captions and too meaningful to disappear in the scroll. Here, I write about womanhood, growth, career, and what it means to build a life far from home. And the small moments too, the ones that teach us how to return to ourselves.
             </p>
+
+            {publicFileExists(moodPortrait.src) && (
+              <figure className="mx-auto w-[min(300px,80%)]">
+                <img
+                  src={moodPortrait.src}
+                  alt="Miss Joo"
+                  width={600}
+                  height={750}
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-[4/5] w-full object-cover rounded-[3px] border border-journal-border shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10)]"
+                />
+                <figcaption className="mt-4 font-serif italic text-lg text-journal-text-secondary leading-relaxed">
+                  {moodPortrait.caption}
+                </figcaption>
+              </figure>
+            )}
 
             <div className="pt-2">
               <Button 

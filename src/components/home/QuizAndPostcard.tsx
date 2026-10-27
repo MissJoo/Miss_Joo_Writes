@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { postcard, quiz, quizResult } from "@/data/quiz";
+import { moreBoxes, postcard, quiz, quizResult } from "@/data/quiz";
 import { fill, suitcase, type SuitcaseIcon } from "@/data/suitcase";
 
 const cardClass =
@@ -76,8 +76,11 @@ const Postcard = () => {
     message: postcard.messages[message],
     link: postcard.link,
   });
+  const fieldClass =
+    "h-12 w-full rounded-[3px] border border-journal-border bg-journal-bg px-4 text-center text-sm md:text-base text-journal-text placeholder:text-journal-muted/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne";
+  const fieldLabel = "block mb-3 text-[11px] tracking-[0.2em] uppercase text-journal-muted font-sans font-medium";
 
-  const copy = async () => {
+  const create = async () => {
     try {
       await navigator.clipboard.writeText(text);
       setStatus("copied");
@@ -85,14 +88,16 @@ const Postcard = () => {
       setStatus("fallback");
     }
   };
+  const reset = () => setStatus("idle");
 
   return (
     <div className={cardClass}>
       <span className={labelClass}>{postcard.label}</span>
       <h3 className={cn(headingClass, "mt-4")}>{postcard.heading}</h3>
-      <div className="mt-5 space-y-5 text-left">
+      <p className="mt-3 font-serif text-lg md:text-xl text-journal-text-secondary leading-relaxed">{postcard.line}</p>
+      <div className="mt-6 space-y-5 w-full max-w-xl mx-auto">
         <div>
-          <label htmlFor="postcard-name" className="sr-only">
+          <label htmlFor="postcard-name" className={fieldLabel}>
             {postcard.nameLabel}
           </label>
           <Input
@@ -103,65 +108,102 @@ const Postcard = () => {
             placeholder={postcard.namePlaceholder}
             onChange={(e) => {
               setName(e.target.value);
-              setStatus("idle");
+              reset();
             }}
-            className="h-12 px-6 rounded-full border-journal-border bg-journal-bg text-journal-text text-center placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne"
+            className={cn(fieldClass, "focus-visible:ring-offset-0")}
           />
         </div>
-        <fieldset className="space-y-3">
-          <legend className="mb-3 w-full text-center text-journal-text-secondary font-light text-sm md:text-base">{postcard.messagesLabel}</legend>
-          {postcard.messages.map((option, index) => (
-            <button
-              key={option}
-              type="button"
-              aria-pressed={message === index}
-              onClick={() => {
-                setMessage(index);
-                setStatus("idle");
-              }}
-              className={cn(
-                choiceClass,
-                message === index ? "bg-journal-gold text-journal-bg border-journal-gold shadow-sm" : choiceIdle,
-              )}
-            >
-              {option}
-            </button>
-          ))}
-        </fieldset>
+        <div>
+          <label htmlFor="postcard-message" className={fieldLabel}>
+            {postcard.messagesLabel}
+          </label>
+          <select
+            id="postcard-message"
+            value={message}
+            onChange={(e) => {
+              setMessage(Number(e.target.value));
+              reset();
+            }}
+            className={cn(fieldClass, "cursor-pointer [text-align-last:center]")}
+          >
+            {postcard.messages.map((option, index) => (
+              <option key={option} value={index}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </div>
       </div>
-      {/* What will be copied */}
-      <p className="mt-6 whitespace-pre-line border border-journal-border bg-journal-bg rounded-[3px] px-6 py-5 font-serif italic text-lg text-journal-text-secondary leading-relaxed">
-        {text}
-      </p>
       <div className="mt-6 flex flex-col items-center gap-3">
-        <button type="button" onClick={copy} className={goldButton}>
-          {postcard.copy}
+        <button
+          type="button"
+          onClick={create}
+          className="inline-flex h-12 items-center justify-center rounded-[3px] border border-journal-gold px-9 text-xs md:text-sm uppercase tracking-[0.15em] font-medium text-journal-gold hover:bg-journal-gold hover:text-journal-bg transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-journal-card"
+        >
+          {postcard.create}
         </button>
-        <p aria-live="polite" className="text-xs text-journal-muted min-h-4">
-          {status === "copied" ? postcard.copied : status === "fallback" ? postcard.copyFallback : ""}
-        </p>
-        {status === "fallback" && (
-          <textarea
-            readOnly
-            value={text}
-            rows={6}
-            onFocus={(e) => e.currentTarget.select()}
-            aria-label="Your postcard as text"
-            className="w-full rounded-[3px] border border-journal-border bg-journal-bg p-4 text-sm text-journal-text"
-          />
-        )}
+        <div aria-live="polite" className="w-full max-w-xl">
+          {status !== "idle" && (
+            <div className="space-y-3 animate-fade-in motion-reduce:animate-none">
+              <p className="whitespace-pre-line border border-journal-border bg-journal-bg rounded-[3px] px-6 py-5 font-serif italic text-lg text-journal-text-secondary leading-relaxed">
+                {text}
+              </p>
+              <p className="text-xs text-journal-muted">{status === "copied" ? postcard.copied : postcard.copyFallback}</p>
+              {status === "fallback" && (
+                <textarea
+                  readOnly
+                  value={text}
+                  rows={6}
+                  onFocus={(e) => e.currentTarget.select()}
+                  aria-label="Your postcard as text"
+                  className="w-full rounded-[3px] border border-journal-border bg-journal-bg p-4 text-sm text-journal-text"
+                />
+              )}
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
 };
 
-/** Homepage pair after the newsletter: side by side on desktop, stacked on phones. */
+/** Three small boxes under the postcard, each pointing to a part of the site. */
+const MoreBoxes = () => (
+  <ul className="grid gap-6 md:grid-cols-3">
+    {moreBoxes.map((box) => {
+      const external = box.href.startsWith("http");
+      const linkClass = "inline-flex items-center gap-2 text-xs uppercase tracking-widest text-journal-gold hover:text-journal-text transition-colors duration-300 font-medium";
+      return (
+        <li key={box.title} className={cn(cardClass, "p-6 md:p-8 items-center")}>
+          <h3 className="font-serif text-2xl md:text-3xl text-journal-text leading-snug">{box.title}</h3>
+          <p className="mt-3 flex-1 text-journal-text-secondary font-light text-sm leading-relaxed">{box.line}</p>
+          <div className="mt-5">
+            {external ? (
+              <a href={box.href} target="_blank" rel="noopener noreferrer" className={linkClass}>
+                <span>{box.link}</span>
+                <span aria-hidden="true">↗</span>
+              </a>
+            ) : (
+              <Link to={box.href} className={linkClass}>
+                <span>{box.link}</span>
+                <span aria-hidden="true">→</span>
+              </Link>
+            )}
+          </div>
+        </li>
+      );
+    })}
+  </ul>
+);
+
+/** Homepage block after the newsletter: the quiz, the postcard below it, then the three boxes. */
 const QuizAndPostcard = () => (
   <section aria-label="Which letter are you, and send a postcard" className="pt-10 md:pt-12 pb-20 md:pb-28 bg-journal-bg">
     <div className="container mx-auto px-6 lg:px-12">
-      <div className="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
+      <div className="grid gap-8 max-w-5xl mx-auto">
         <Quiz />
         <Postcard />
+        <MoreBoxes />
       </div>
     </div>
   </section>
