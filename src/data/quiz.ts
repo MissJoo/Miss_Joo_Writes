@@ -57,6 +57,11 @@ export const postcard = {
   line: "Send them a postcard from Doha. Free, and it takes ten seconds.",
   nameLabel: "Their name",
   namePlaceholder: "e.g. Rose",
+  /** The sender, shown in the sign-off at the bottom of the card */
+  fromLabel: "Your name",
+  fromPlaceholder: "e.g. Joo",
+  /** {name} is the sender */
+  from: "From {name}, with love",
   messagesLabel: "Your message",
   /** The first one is chosen to start with */
   messages: [
@@ -64,17 +69,20 @@ export const postcard = {
     "I opened a suitcase today and thought of you.",
     "For the one who left home too. This one's for you.",
   ],
+  /** Empty field under the dropdown; what's typed here replaces the chosen message */
+  noteLabel: "Your own message",
+  notePlaceholder: "Write your custom message",
   create: "Create postcard",
-  /** On the card itself, under the message */
+  /** Heading of the page the shared link opens, and the title when shared from a phone */
   signoff: "From Doha, with love",
-  logoAlt: "Miss Joo Writes",
+  /** Top right of the card */
+  logo: "Miss Joo Writes",
   share: "Send it to them",
   copyLink: "Copy link",
-  /** Opens the phone's share menu, where Instagram and TikTok are */
-  apps: "Instagram, TikTok & more",
   copied: "Link copied. Paste it in a message to them.",
   copiedMessenger: "Link copied. Paste it in Messenger.",
-  copiedApps: "Link copied. Paste it in Instagram or TikTok.",
+  copiedInstagram: "Link copied. Paste it in Instagram.",
+  copiedTiktok: "Link copied. Paste it in TikTok.",
   copyFallback: "Select the link above and copy it.",
   close: "Close",
   /** On the page the shared link opens */

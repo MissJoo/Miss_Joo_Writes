@@ -1,12 +1,12 @@
 import { useState } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { Link } from "react-router-dom";
-import { Link2, Share2 } from "lucide-react";
+import { Instagram, Link2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { moreBoxes, postcard, quiz, quizResult } from "@/data/quiz";
 import { suitcase, type SuitcaseIcon } from "@/data/suitcase";
-import PostcardCard, { POSTCARD_NAME_MAX, postcardLink } from "@/components/home/PostcardCard";
+import PostcardCard, { POSTCARD_NAME_MAX, POSTCARD_NOTE_MAX, postcardLink } from "@/components/home/PostcardCard";
 import { homeBoxSize, homeBoxStyle, homeSection } from "@/components/suitcase/SuitcaseTeasers";
 
 // Same look as the Suitcase box
@@ -28,6 +28,12 @@ const shareButton =
 const MessengerIcon = () => (
   <svg width={14} height={14} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17.16.14.26.35.27.57l.05 1.78a.8.8 0 0 0 1.12.71l1.98-.87a.8.8 0 0 1 .53-.04c.91.25 1.88.38 2.91.38 5.64 0 10-4.13 10-9.7S17.64 2 12 2Zm6 7.46-2.94 4.66a1.5 1.5 0 0 1-2.17.4l-2.34-1.75a.6.6 0 0 0-.72 0l-3.16 2.4c-.42.32-.97-.18-.69-.63l2.94-4.66a1.5 1.5 0 0 1 2.17-.4l2.34 1.75a.6.6 0 0 0 .72 0l3.16-2.4c.42-.32.97.18.69.63Z" />
+  </svg>
+);
+
+const TikTokIcon = () => (
+  <svg width={14} height={14} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
   </svg>
 );
 
@@ -83,16 +89,18 @@ const Quiz = () => {
 /** "Send a postcard": pick a name and a message, then the card opens in a pop-up with a link to share. */
 const Postcard = () => {
   const [name, setName] = useState("");
+  const [from, setFrom] = useState("");
   const [message, setMessage] = useState(0);
+  const [note, setNote] = useState("");
   const [open, setOpen] = useState(false);
-  const [status, setStatus] = useState<"idle" | "copied" | "messenger" | "apps" | "fallback">("idle");
+  const [status, setStatus] = useState<"idle" | "copied" | "messenger" | "instagram" | "tiktok" | "fallback">("idle");
   const [link, setLink] = useState("");
   const fieldClass =
     "h-12 w-full rounded-[3px] border border-journal-border bg-journal-bg px-4 text-center text-sm md:text-base text-journal-text placeholder:text-journal-muted/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne";
   const fieldLabel = "block mb-2 text-[11px] tracking-[0.2em] uppercase text-journal-muted font-sans font-medium";
 
   const create = () => {
-    setLink(postcardLink(name, message));
+    setLink(postcardLink(name, from, message, note));
     setStatus("idle");
     setOpen(true);
   };
@@ -118,20 +126,28 @@ const Postcard = () => {
     }
   };
 
-  // Instagram and TikTok take links only through the phone's own share menu; anywhere without one, copy instead
-  const apps = async () => {
-    if (navigator.share) {
+  // Instagram and TikTok have no web share link. Phones open their share menu, where both apps are listed;
+  // computers copy the link and open the app's messages page.
+  const app = async (which: "instagram" | "tiktok", inbox: string) => {
+    if (navigator.share && window.matchMedia("(pointer: coarse)").matches) {
       try {
         await navigator.share({ title: postcard.signoff, url: link });
       } catch {
         // Closed without sharing
       }
-    } else {
-      await copy("apps");
+    } else if (await copy(which)) {
+      window.open(inbox, "_blank", "noopener,noreferrer");
     }
   };
 
-  const notes = { idle: "", copied: postcard.copied, messenger: postcard.copiedMessenger, apps: postcard.copiedApps, fallback: postcard.copyFallback };
+  const notes = {
+    idle: "",
+    copied: postcard.copied,
+    messenger: postcard.copiedMessenger,
+    instagram: postcard.copiedInstagram,
+    tiktok: postcard.copiedTiktok,
+    fallback: postcard.copyFallback,
+  };
 
   return (
     <div className={cn(cardClass, homeBoxSize, "justify-center")}>
@@ -170,6 +186,34 @@ const Postcard = () => {
             ))}
           </select>
         </div>
+        <div>
+          <label htmlFor="postcard-note" className="sr-only">
+            {postcard.noteLabel}
+          </label>
+          <textarea
+            id="postcard-note"
+            value={note}
+            rows={2}
+            maxLength={POSTCARD_NOTE_MAX}
+            placeholder={postcard.notePlaceholder}
+            onChange={(e) => setNote(e.target.value)}
+            className={cn(fieldClass, "h-auto min-h-[4.5rem] resize-none py-3 leading-snug")}
+          />
+        </div>
+        <div>
+          <label htmlFor="postcard-from" className={fieldLabel}>
+            {postcard.fromLabel}
+          </label>
+          <Input
+            id="postcard-from"
+            value={from}
+            maxLength={POSTCARD_NAME_MAX}
+            autoComplete="off"
+            placeholder={postcard.fromPlaceholder}
+            onChange={(e) => setFrom(e.target.value)}
+            className={cn(fieldClass, "focus-visible:ring-offset-0")}
+          />
+        </div>
       </div>
       <div className="mt-5 sm:mt-6">
         <button
@@ -192,7 +236,7 @@ const Postcard = () => {
             <DialogPrimitive.Title className="sr-only">
               {postcard.label}: Dear {name.trim() || "you"}
             </DialogPrimitive.Title>
-            <PostcardCard name={name.trim()} message={message}>
+            <PostcardCard name={name.trim()} from={from.trim()} message={message} note={note.trim()}>
               <p className="mb-3 text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium">{postcard.share}</p>
               <div className="flex flex-wrap justify-center gap-2">
                 <button type="button" onClick={() => copy("copied")} className={shareButton}>
@@ -203,9 +247,13 @@ const Postcard = () => {
                   <MessengerIcon />
                   <span>Messenger</span>
                 </button>
-                <button type="button" onClick={apps} className={shareButton}>
-                  <Share2 size={14} aria-hidden="true" />
-                  <span>{postcard.apps}</span>
+                <button type="button" onClick={() => app("instagram", "https://www.instagram.com/direct/inbox/")} className={shareButton}>
+                  <Instagram size={14} aria-hidden="true" />
+                  <span>Instagram</span>
+                </button>
+                <button type="button" onClick={() => app("tiktok", "https://www.tiktok.com/messages")} className={shareButton}>
+                  <TikTokIcon />
+                  <span>TikTok</span>
                 </button>
               </div>
               {status === "fallback" && (

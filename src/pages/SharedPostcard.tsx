@@ -21,7 +21,7 @@ const SharedPostcard = () => {
             <h1 className="mt-4 font-serif text-2xl md:text-3.5xl text-journal-text">{postcard.signoff}</h1>
             <div className="mt-8 min-h-[420px] sm:min-h-[260px]">
               {card && (
-                <PostcardCard name={card.name} message={card.message}>
+                <PostcardCard name={card.name} from={card.from} message={card.message} note={card.note}>
                   <Link
                     to="/the-suitcase"
                     className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-gold px-8 text-[11px] uppercase tracking-widest text-espresso hover:bg-gold-hover transition-colors duration-300"
