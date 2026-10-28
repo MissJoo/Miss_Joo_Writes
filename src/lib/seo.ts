@@ -117,6 +117,13 @@ const staticPages: Record<string, StaticPage> = {
     description: "An interactive reflection on living abroad. Unpack the suitcase and discover what you still carry.",
     image: "/images/the-suitcase-og.png",
   },
+  // Shared postcards: each link differs only by its query string, so kept out of search
+  "/postcard": {
+    title: "A postcard from Doha | Miss Joo",
+    description: "Someone far away is thinking of you. Open your postcard from Doha.",
+    image: "/assets/postcard-front.jpg",
+    noindex: true,
+  },
   "/privacy-policy": {
     title: "Privacy Policy | Miss Joo",
     description: "How Miss Joo collects, uses and protects information on missjoowrites.com.",
@@ -269,7 +276,7 @@ export const getRedirects = () =>
 /** Routes rendered at build time, including aliases that are not in the sitemap. */
 export const getPrerenderRoutes = () => [
   ...getSitemapRoutes().map((route) => route.path),
-  ...Object.keys(staticPages).filter((path) => staticPages[path].canonicalPath),
+  ...Object.keys(staticPages).filter((path) => staticPages[path].canonicalPath || staticPages[path].noindex),
 ];
 
 const escapeAttr = (value: string) =>

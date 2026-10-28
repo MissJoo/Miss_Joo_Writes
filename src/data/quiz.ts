@@ -50,7 +50,7 @@ export const quizResult = (picks: SuitcaseIcon[]): SuitcaseIcon => {
   return picks.find((letter) => counts.get(letter) === best)!;
 };
 
-// "Send a postcard" below the quiz. Nothing is stored or sent: the text is built and copied to the clipboard.
+// "Send a postcard" below the quiz. Nothing is stored or sent: the name and message travel in the share link itself.
 export const postcard = {
   label: "Send a postcard",
   heading: "Miss someone far away?",
@@ -64,13 +64,17 @@ export const postcard = {
     "I opened a suitcase today and thought of you.",
     "For the one who left home too. This one's for you.",
   ],
-  link: "missjoowrites.com/the-suitcase",
   create: "Create postcard",
-  copied: "Copied. Paste it in a message to them.",
-  copyFallback: "Select the text above and copy it.",
-  again: "Make another",
-  /** {name}, {message} and {link} are filled in */
-  template: "Dear {name},\n\n{message}\n\n{link}",
+  /** On the card itself, under the message */
+  signoff: "From Doha, with love",
+  logoAlt: "Miss Joo Writes",
+  share: "Copy share link",
+  copied: "Link copied. Paste it in a message to them.",
+  copyFallback: "Select the link above and copy it.",
+  close: "Close",
+  /** On the page the shared link opens */
+  sharedButton: "Open the Suitcase",
+  sharedMake: "Make one of your own",
 };
 
 // The three boxes under the postcard. href starting with "http" opens in a new tab.

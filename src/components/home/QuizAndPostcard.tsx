@@ -1,9 +1,11 @@
 import { useState } from "react";
+import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { moreBoxes, postcard, quiz, quizResult } from "@/data/quiz";
-import { fill, suitcase, type SuitcaseIcon } from "@/data/suitcase";
+import { suitcase, type SuitcaseIcon } from "@/data/suitcase";
+import PostcardCard, { POSTCARD_NAME_MAX, postcardLink } from "@/components/home/PostcardCard";
 import { homeBoxSize, homeBoxStyle, homeSection } from "@/components/suitcase/SuitcaseTeasers";
 
 // Same look as the Suitcase box
@@ -67,23 +69,26 @@ const Quiz = () => {
   );
 };
 
-/** "Send a postcard": builds a short note with the Suitcase link and copies it. Nothing is stored or sent. */
+/** "Send a postcard": pick a name and a message, then the card opens in a pop-up with a link to share. */
 const Postcard = () => {
   const [name, setName] = useState("");
   const [message, setMessage] = useState(0);
+  const [open, setOpen] = useState(false);
   const [status, setStatus] = useState<"idle" | "copied" | "fallback">("idle");
-  const text = fill(postcard.template, {
-    name: name.trim() || "you",
-    message: postcard.messages[message],
-    link: postcard.link,
-  });
+  const [link, setLink] = useState("");
   const fieldClass =
     "h-12 w-full rounded-[3px] border border-journal-border bg-journal-bg px-4 text-center text-sm md:text-base text-journal-text placeholder:text-journal-muted/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne";
   const fieldLabel = "block mb-2 text-[11px] tracking-[0.2em] uppercase text-journal-muted font-sans font-medium";
 
-  const create = async () => {
+  const create = () => {
+    setLink(postcardLink(name, message));
+    setStatus("idle");
+    setOpen(true);
+  };
+
+  const share = async () => {
     try {
-      await navigator.clipboard.writeText(text);
+      await navigator.clipboard.writeText(link);
       setStatus("copied");
     } catch {
       setStatus("fallback");
@@ -91,78 +96,88 @@ const Postcard = () => {
   };
 
   return (
-    <div className={cn(cardClass, homeBoxSize, "justify-center")} aria-live="polite">
+    <div className={cn(cardClass, homeBoxSize, "justify-center")}>
       <span className={labelClass}>{postcard.label}</span>
       <h3 className={cn(headingClass, "mt-4")}>{postcard.heading}</h3>
-      {status === "idle" ? (
-        <>
-          <p className="mt-3 font-serif text-lg md:text-xl text-journal-text-secondary leading-relaxed">{postcard.line}</p>
-          <div className="mt-5 space-y-4 w-full max-w-xl mx-auto">
-            <div>
-              <label htmlFor="postcard-name" className={fieldLabel}>
-                {postcard.nameLabel}
-              </label>
-              <Input
-                id="postcard-name"
-                value={name}
-                maxLength={40}
-                autoComplete="off"
-                placeholder={postcard.namePlaceholder}
-                onChange={(e) => setName(e.target.value)}
-                className={cn(fieldClass, "focus-visible:ring-offset-0")}
-              />
-            </div>
-            <div>
-              <label htmlFor="postcard-message" className={fieldLabel}>
-                {postcard.messagesLabel}
-              </label>
-              <select
-                id="postcard-message"
-                value={message}
-                onChange={(e) => setMessage(Number(e.target.value))}
-                className={cn(fieldClass, "cursor-pointer [text-align-last:center]")}
-              >
-                {postcard.messages.map((option, index) => (
-                  <option key={option} value={index}>
-                    {option}
-                  </option>
-                ))}
-              </select>
-            </div>
-          </div>
-          <div className="mt-5 sm:mt-6">
-            <button
-              type="button"
-              onClick={create}
-              className="inline-flex h-12 items-center justify-center rounded-[3px] border border-journal-gold px-9 text-xs md:text-sm uppercase tracking-[0.15em] font-medium text-journal-gold hover:bg-journal-gold hover:text-journal-bg transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-journal-bg"
-            >
-              {postcard.create}
-            </button>
-          </div>
-        </>
-      ) : (
-        // The finished postcard takes the form's place, so the box keeps its size
-        <div className="mt-5 w-full max-w-xl mx-auto space-y-3 animate-fade-in motion-reduce:animate-none">
-          {status === "fallback" ? (
-            <textarea
-              readOnly
-              value={text}
-              rows={6}
-              onFocus={(e) => e.currentTarget.select()}
-              aria-label="Your postcard as text"
-              className="w-full rounded-[3px] border border-journal-border bg-journal-bg p-4 text-center text-sm text-journal-text"
-            />
-          ) : (
-            <p className="whitespace-pre-line border border-journal-border bg-journal-bg rounded-[3px] px-6 py-5 font-serif italic text-lg text-journal-text-secondary leading-relaxed">
-              {text}
-            </p>
-          )}
-          <p className="text-xs text-journal-muted">{status === "copied" ? postcard.copied : postcard.copyFallback}</p>
-          <button type="button" onClick={() => setStatus("idle")} className={textLink}>
-            {postcard.again}
-          </button>
+      <p className="mt-3 font-serif text-lg md:text-xl text-journal-text-secondary leading-relaxed">{postcard.line}</p>
+      <div className="mt-5 space-y-4 w-full max-w-xl mx-auto">
+        <div>
+          <label htmlFor="postcard-name" className={fieldLabel}>
+            {postcard.nameLabel}
+          </label>
+          <Input
+            id="postcard-name"
+            value={name}
+            maxLength={POSTCARD_NAME_MAX}
+            autoComplete="off"
+            placeholder={postcard.namePlaceholder}
+            onChange={(e) => setName(e.target.value)}
+            className={cn(fieldClass, "focus-visible:ring-offset-0")}
+          />
         </div>
-      )}
+        <div>
+          <label htmlFor="postcard-message" className={fieldLabel}>
+            {postcard.messagesLabel}
+          </label>
+          <select
+            id="postcard-message"
+            value={message}
+            onChange={(e) => setMessage(Number(e.target.value))}
+            className={cn(fieldClass, "cursor-pointer [text-align-last:center]")}
+          >
+            {postcard.messages.map((option, index) => (
+              <option key={option} value={index}>
+                {option}
+              </option>
+            ))}
+          </select>
+        </div>
+      </div>
+      <div className="mt-5 sm:mt-6">
+        <button
+          type="button"
+          onClick={create}
+          className="inline-flex h-12 items-center justify-center rounded-[3px] border border-journal-gold px-9 text-xs md:text-sm uppercase tracking-[0.15em] font-medium text-journal-gold hover:bg-journal-gold hover:text-journal-bg transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-journal-bg"
+        >
+          {postcard.create}
+        </button>
+      </div>
+
+      {/* Pop-up card, no animation */}
+      <DialogPrimitive.Root open={open} onOpenChange={setOpen}>
+        <DialogPrimitive.Portal>
+          <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/70" />
+          <DialogPrimitive.Content
+            aria-describedby={undefined}
+            className="fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-3xl max-h-[calc(100dvh-2rem)] overflow-y-auto -translate-x-1/2 -translate-y-1/2 focus:outline-none"
+          >
+            <DialogPrimitive.Title className="sr-only">
+              {postcard.label}: Dear {name.trim() || "you"}
+            </DialogPrimitive.Title>
+            <PostcardCard name={name.trim()} message={message}>
+              {status === "fallback" ? (
+                <input
+                  readOnly
+                  value={link}
+                  onFocus={(e) => e.currentTarget.select()}
+                  aria-label="Share link"
+                  className="h-11 w-full rounded-[3px] border border-journal-border bg-journal-bg px-3 text-center text-sm text-journal-text"
+                />
+              ) : (
+                <button type="button" onClick={share} className={goldButton}>
+                  {postcard.share}
+                </button>
+              )}
+              <p aria-live="polite" className="mt-2 min-h-[1rem] text-xs text-journal-muted">
+                {status === "copied" ? postcard.copied : status === "fallback" ? postcard.copyFallback : ""}
+              </p>
+            </PostcardCard>
+            <DialogPrimitive.Close className="absolute -top-1 right-0 translate-y-[-100%] px-2 py-1 text-xs uppercase tracking-widest text-white/90 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne">
+              {postcard.close} <span aria-hidden="true">×</span>
+            </DialogPrimitive.Close>
+          </DialogPrimitive.Content>
+        </DialogPrimitive.Portal>
+      </DialogPrimitive.Root>
     </div>
   );
 };

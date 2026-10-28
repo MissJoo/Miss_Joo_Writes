@@ -24,7 +24,7 @@ export const SuitcaseHomeTeaser = () => {
     <section aria-labelledby="suitcase-teaser-title" className={homeSection}>
       <div className="container mx-auto px-6 lg:px-12">
         <div className={`${homeBoxSize} ${homeBoxStyle} grid gap-8 justify-items-center content-center text-center`}>
-          {/* Label and heading, then the suitcase, then the line and button */}
+          {/* Label, heading and line, then the suitcase, then the button */}
           <div className="text-center space-y-4">
             <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">
               {suitcase.teaser.label}
@@ -36,12 +36,11 @@ export const SuitcaseHomeTeaser = () => {
                 </span>
               ))}
             </h2>
+            {open && <p className="text-journal-text-secondary font-light text-sm md:text-base">{suitcase.teaser.line}</p>}
           </div>
           <ClosedSuitcase className="w-40 md:w-[200px] mx-auto" latches={open ? "open" : "locked"} />
           <div className={`text-center space-y-4${open ? "" : " sc-when-locked"}`}>
-            {open ? (
-              <p className="text-journal-text-secondary font-light text-sm md:text-base">{suitcase.teaser.line}</p>
-            ) : (
+            {open ? null : (
               <>
                 <div className="flex justify-center">
                   <Countdown remaining={remaining} compact />
