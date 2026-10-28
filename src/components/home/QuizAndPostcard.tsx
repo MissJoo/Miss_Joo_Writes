@@ -1,6 +1,7 @@
 import { useState } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { Link } from "react-router-dom";
+import { Link2, Share2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { moreBoxes, postcard, quiz, quizResult } from "@/data/quiz";
@@ -19,6 +20,16 @@ const goldButton =
   "inline-flex h-11 items-center justify-center gap-2 rounded-full bg-gold px-8 text-[11px] uppercase tracking-widest text-espresso hover:bg-gold-hover transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-journal-card";
 const textLink =
   "text-xs tracking-wider uppercase text-journal-gold hover:text-journal-text underline underline-offset-4 decoration-journal-champagne font-sans font-medium py-2 transition-colors duration-300";
+
+// Same pill as the essay page's "Share this essay" row
+const shareButton =
+  "inline-flex h-10 items-center gap-2 rounded-full border border-journal-border px-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-journal-text-secondary transition-colors duration-300 hover:border-journal-gold/60 hover:text-journal-gold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne";
+
+const MessengerIcon = () => (
+  <svg width={14} height={14} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17.16.14.26.35.27.57l.05 1.78a.8.8 0 0 0 1.12.71l1.98-.87a.8.8 0 0 1 .53-.04c.91.25 1.88.38 2.91.38 5.64 0 10-4.13 10-9.7S17.64 2 12 2Zm6 7.46-2.94 4.66a1.5 1.5 0 0 1-2.17.4l-2.34-1.75a.6.6 0 0 0-.72 0l-3.16 2.4c-.42.32-.97-.18-.69-.63l2.94-4.66a1.5 1.5 0 0 1 2.17-.4l2.34 1.75a.6.6 0 0 0 .72 0l3.16-2.4c.42-.32.97.18.69.63Z" />
+  </svg>
+);
 
 /** "Which letter are you?": three questions, one at a time, ending on one of the six Suitcase letters. */
 const Quiz = () => {
@@ -74,7 +85,7 @@ const Postcard = () => {
   const [name, setName] = useState("");
   const [message, setMessage] = useState(0);
   const [open, setOpen] = useState(false);
-  const [status, setStatus] = useState<"idle" | "copied" | "fallback">("idle");
+  const [status, setStatus] = useState<"idle" | "copied" | "messenger" | "apps" | "fallback">("idle");
   const [link, setLink] = useState("");
   const fieldClass =
     "h-12 w-full rounded-[3px] border border-journal-border bg-journal-bg px-4 text-center text-sm md:text-base text-journal-text placeholder:text-journal-muted/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne";
@@ -86,14 +97,41 @@ const Postcard = () => {
     setOpen(true);
   };
 
-  const share = async () => {
+  /** Copies the link and shows which note to show underneath. Returns false if the browser blocked it. */
+  const copy = async (done: typeof status) => {
     try {
       await navigator.clipboard.writeText(link);
-      setStatus("copied");
+      setStatus(done);
+      return true;
     } catch {
       setStatus("fallback");
+      return false;
     }
   };
+
+  // Phones open the Messenger app straight away. Computers have no Messenger share link, so copy and open messenger.com.
+  const messenger = async () => {
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      window.location.href = `fb-messenger://share/?link=${encodeURIComponent(link)}`;
+    } else if (await copy("messenger")) {
+      window.open("https://www.messenger.com/", "_blank", "noopener,noreferrer");
+    }
+  };
+
+  // Instagram and TikTok take links only through the phone's own share menu; anywhere without one, copy instead
+  const apps = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: postcard.signoff, url: link });
+      } catch {
+        // Closed without sharing
+      }
+    } else {
+      await copy("apps");
+    }
+  };
+
+  const notes = { idle: "", copied: postcard.copied, messenger: postcard.copiedMessenger, apps: postcard.copiedApps, fallback: postcard.copyFallback };
 
   return (
     <div className={cn(cardClass, homeBoxSize, "justify-center")}>
@@ -155,21 +193,32 @@ const Postcard = () => {
               {postcard.label}: Dear {name.trim() || "you"}
             </DialogPrimitive.Title>
             <PostcardCard name={name.trim()} message={message}>
-              {status === "fallback" ? (
+              <p className="mb-3 text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium">{postcard.share}</p>
+              <div className="flex flex-wrap justify-center gap-2">
+                <button type="button" onClick={() => copy("copied")} className={shareButton}>
+                  <Link2 size={14} aria-hidden="true" />
+                  <span>{postcard.copyLink}</span>
+                </button>
+                <button type="button" onClick={messenger} className={shareButton}>
+                  <MessengerIcon />
+                  <span>Messenger</span>
+                </button>
+                <button type="button" onClick={apps} className={shareButton}>
+                  <Share2 size={14} aria-hidden="true" />
+                  <span>{postcard.apps}</span>
+                </button>
+              </div>
+              {status === "fallback" && (
                 <input
                   readOnly
                   value={link}
                   onFocus={(e) => e.currentTarget.select()}
                   aria-label="Share link"
-                  className="h-11 w-full rounded-[3px] border border-journal-border bg-journal-bg px-3 text-center text-sm text-journal-text"
+                  className="mt-3 h-11 w-full rounded-[3px] border border-journal-border bg-journal-bg px-3 text-center text-sm text-journal-text"
                 />
-              ) : (
-                <button type="button" onClick={share} className={goldButton}>
-                  {postcard.share}
-                </button>
               )}
               <p aria-live="polite" className="mt-2 min-h-[1rem] text-xs text-journal-muted">
-                {status === "copied" ? postcard.copied : status === "fallback" ? postcard.copyFallback : ""}
+                {notes[status]}
               </p>
             </PostcardCard>
             <DialogPrimitive.Close className="absolute -top-1 right-0 translate-y-[-100%] px-2 py-1 text-xs uppercase tracking-widest text-white/90 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne">
