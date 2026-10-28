@@ -48,7 +48,7 @@ const Quiz = () => {
           <p className="text-[10px] tracking-[0.25em] uppercase text-journal-muted">
             {picks.length + 1} of {quiz.questions.length}
           </p>
-          <fieldset className="space-y-3">
+          <fieldset className="space-y-3 w-full max-w-xl mx-auto">
             <legend className="mb-4 text-journal-text-secondary font-light text-sm md:text-base">{current.question}</legend>
             {current.answers.map((answer) => (
               <button
