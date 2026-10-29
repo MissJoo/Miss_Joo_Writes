@@ -1,7 +1,7 @@
 import { useState } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { Link } from "react-router-dom";
-import { Instagram, Link2 } from "lucide-react";
+import { ChevronDown, Instagram, Link2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
 import { moreBoxes, postcard, quiz, quizResult } from "@/data/quiz";
@@ -92,6 +92,10 @@ const Postcard = () => {
   const [from, setFrom] = useState("");
   const [message, setMessage] = useState(0);
   const [note, setNote] = useState("");
+  // The last choice in the dropdown swaps it for a text field in the same spot
+  const custom = message === postcard.messages.length;
+  const shownMessage = custom ? 0 : message;
+  const shownNote = custom ? note.trim() : "";
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState<"idle" | "copied" | "messenger" | "instagram" | "tiktok" | "fallback">("idle");
   const [link, setLink] = useState("");
@@ -99,8 +103,18 @@ const Postcard = () => {
     "h-12 w-full rounded-[3px] border border-journal-border bg-journal-bg px-4 text-center text-sm md:text-base text-journal-text placeholder:text-journal-muted/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne";
   const fieldLabel = "block mb-2 text-[11px] tracking-[0.2em] uppercase text-journal-muted font-sans font-medium";
 
+  // Every pop-up starts from a blank form once it's closed
+  const close = () => {
+    setOpen(false);
+    setName("");
+    setFrom("");
+    setMessage(0);
+    setNote("");
+    setStatus("idle");
+  };
+
   const create = () => {
-    setLink(postcardLink(name, from, message, note));
+    setLink(postcardLink(name, from, shownMessage, shownNote));
     setStatus("idle");
     setOpen(true);
   };
@@ -173,32 +187,43 @@ const Postcard = () => {
           <label htmlFor="postcard-message" className={fieldLabel}>
             {postcard.messagesLabel}
           </label>
-          <select
-            id="postcard-message"
-            value={message}
-            onChange={(e) => setMessage(Number(e.target.value))}
-            className={cn(fieldClass, "cursor-pointer [text-align-last:center]")}
-          >
-            {postcard.messages.map((option, index) => (
-              <option key={option} value={index}>
-                {option}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <label htmlFor="postcard-note" className="sr-only">
-            {postcard.noteLabel}
-          </label>
-          <textarea
-            id="postcard-note"
-            value={note}
-            rows={2}
-            maxLength={POSTCARD_NOTE_MAX}
-            placeholder={postcard.notePlaceholder}
-            onChange={(e) => setNote(e.target.value)}
-            className={cn(fieldClass, "h-auto min-h-[4.5rem] resize-none py-3 leading-snug")}
-          />
+          {custom ? (
+            <div className="relative">
+              <Input
+                id="postcard-message"
+                value={note}
+                maxLength={POSTCARD_NOTE_MAX}
+                autoComplete="off"
+                autoFocus
+                placeholder={postcard.notePlaceholder}
+                onChange={(e) => setNote(e.target.value)}
+                className={cn(fieldClass, "px-10 focus-visible:ring-offset-0")}
+              />
+              <button
+                type="button"
+                onClick={() => setMessage(0)}
+                aria-label={postcard.noteBack}
+                title={postcard.noteBack}
+                className="absolute right-1 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center text-journal-muted hover:text-journal-gold transition-colors duration-300"
+              >
+                <ChevronDown size={16} aria-hidden="true" />
+              </button>
+            </div>
+          ) : (
+            <select
+              id="postcard-message"
+              value={message}
+              onChange={(e) => setMessage(Number(e.target.value))}
+              className={cn(fieldClass, "cursor-pointer [text-align-last:center]")}
+            >
+              {postcard.messages.map((option, index) => (
+                <option key={option} value={index}>
+                  {option}
+                </option>
+              ))}
+              <option value={postcard.messages.length}>{postcard.notePlaceholder}</option>
+            </select>
+          )}
         </div>
         <div>
           <label htmlFor="postcard-from" className={fieldLabel}>
@@ -219,24 +244,30 @@ const Postcard = () => {
         <button
           type="button"
           onClick={create}
-          className="inline-flex h-12 items-center justify-center rounded-[3px] border border-journal-gold px-9 text-xs md:text-sm uppercase tracking-[0.15em] font-medium text-journal-gold hover:bg-journal-gold hover:text-journal-bg transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-journal-bg"
+          className="inline-flex h-12 items-center justify-center rounded-[3px] bg-gold px-9 text-xs md:text-sm uppercase tracking-[0.15em] font-medium text-espresso hover:bg-gold-hover transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-journal-bg"
         >
           {postcard.create}
         </button>
       </div>
 
       {/* Pop-up card, no animation */}
-      <DialogPrimitive.Root open={open} onOpenChange={setOpen}>
+      <DialogPrimitive.Root open={open} onOpenChange={(next) => (next ? setOpen(true) : close())}>
         <DialogPrimitive.Portal>
           <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/70" />
           <DialogPrimitive.Content
             aria-describedby={undefined}
             className="fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-3xl max-h-[calc(100dvh-2rem)] overflow-y-auto -translate-x-1/2 -translate-y-1/2 focus:outline-none"
           >
+            <div className="mb-2 flex justify-end">
+              <DialogPrimitive.Close className="inline-flex h-9 items-center gap-1.5 rounded-full border border-journal-border bg-journal-card px-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-journal-text-secondary hover:border-journal-gold/60 hover:text-journal-gold transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne">
+                <span aria-hidden="true">←</span>
+                <span>{postcard.close}</span>
+              </DialogPrimitive.Close>
+            </div>
             <DialogPrimitive.Title className="sr-only">
               {postcard.label}: Dear {name.trim() || "you"}
             </DialogPrimitive.Title>
-            <PostcardCard name={name.trim()} from={from.trim()} message={message} note={note.trim()}>
+            <PostcardCard name={name.trim()} from={from.trim()} message={shownMessage} note={shownNote}>
               <p className="mb-3 text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium">{postcard.share}</p>
               <div className="flex flex-wrap justify-center gap-2">
                 <button type="button" onClick={() => copy("copied")} className={shareButton}>
@@ -269,9 +300,6 @@ const Postcard = () => {
                 {notes[status]}
               </p>
             </PostcardCard>
-            <DialogPrimitive.Close className="absolute -top-1 right-0 translate-y-[-100%] px-2 py-1 text-xs uppercase tracking-widest text-white/90 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne">
-              {postcard.close} <span aria-hidden="true">×</span>
-            </DialogPrimitive.Close>
           </DialogPrimitive.Content>
         </DialogPrimitive.Portal>
       </DialogPrimitive.Root>

@@ -69,9 +69,9 @@ export const postcard = {
     "I opened a suitcase today and thought of you.",
     "For the one who left home too. This one's for you.",
   ],
-  /** Empty field under the dropdown; what's typed here replaces the chosen message */
-  noteLabel: "Your own message",
+  /** Last choice in the dropdown; picking it turns the dropdown into a text field */
   notePlaceholder: "Write your custom message",
+  noteBack: "Back to the list",
   create: "Create postcard",
   /** Heading of the page the shared link opens, and the title when shared from a phone */
   signoff: "From Doha, with love",
@@ -84,7 +84,7 @@ export const postcard = {
   copiedInstagram: "Link copied. Paste it in Instagram.",
   copiedTiktok: "Link copied. Paste it in TikTok.",
   copyFallback: "Select the link above and copy it.",
-  close: "Close",
+  close: "Back",
   /** On the page the shared link opens */
   sharedButton: "Open the Suitcase",
   sharedMake: "Make one of your own",

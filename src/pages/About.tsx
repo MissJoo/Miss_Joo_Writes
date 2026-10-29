@@ -24,7 +24,7 @@ const About = () => {
       {/* Main Content */}
       <section className="pb-20 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-2xl mx-auto space-y-6 text-journal-text-secondary leading-[1.8] font-sans text-[17px] md:text-[18px] font-light text-left">
+          <div className="max-w-2xl mx-auto space-y-6 text-journal-text-secondary leading-[1.8] font-sans text-[17px] md:text-[18px] font-light text-justify hyphens-auto sm:hyphens-manual">
             <p className="font-serif italic text-lg md:text-xl text-journal-text text-center border-b border-journal-border/30 pb-8 mb-8">
               “I created Miss Joo Writes because some feelings do not fit inside an Instagram caption.”
             </p>

@@ -9,7 +9,7 @@ export const homeBoxSize = "w-full max-w-3xl mx-auto min-h-[453px] md:min-h-[509
 /** Look shared by those boxes (and the three small boxes under the postcard) */
 export const homeBoxStyle = "border border-journal-border bg-journal-bg-secondary/40 rounded-[2px] px-6 py-8 sm:px-8 sm:py-10 md:px-12";
 /** Every homepage section after the hero: same spacing, thin divider line across the top */
-export const homeSection = "py-20 md:py-28 bg-journal-bg border-t border-journal-border";
+export const homeSection = "py-10 md:py-14 bg-journal-bg border-t border-journal-border";
 
 const buttonClass =
   "inline-flex h-11 items-center rounded-full bg-gold px-8 text-[11px] uppercase tracking-widest text-espresso hover:bg-gold-hover transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-journal-bg";

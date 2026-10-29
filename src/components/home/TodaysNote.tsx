@@ -7,7 +7,7 @@ const TodaysNote = () => {
   const [note, setNote] = useState<string | null>(null);
 
   return (
-    <section aria-label="Today's note" className="py-10 md:py-12 bg-journal-bg border-t border-journal-border">
+    <section aria-label="Today's note" className="py-5 md:py-6 bg-journal-bg border-t border-journal-border">
       <div className="container mx-auto px-6 lg:px-12 text-center">
         <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
           <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium">Today&rsquo;s note</span>

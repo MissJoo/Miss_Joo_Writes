@@ -8,7 +8,7 @@ import ReadByMood from "@/components/ReadByMood";
 import TodaysNote from "@/components/home/TodaysNote";
 import WeeklyLetter from "@/components/home/WeeklyLetter";
 import QuizAndPostcard from "@/components/home/QuizAndPostcard";
-import { SuitcaseHomeTeaser } from "@/components/suitcase/SuitcaseTeasers";
+import { SuitcaseHomeTeaser, homeBoxStyle, homeSection } from "@/components/suitcase/SuitcaseTeasers";
 import { posts, readingTime } from "@/data/posts";
 import { moodPortrait } from "@/data/moods";
 import { publicFileExists } from "@/lib/publicFiles";
@@ -74,14 +74,10 @@ const Index = () => {
       <TodaysNote />
 
       {/* About Preview Section */}
-      <section className="py-20 md:py-28 bg-journal-bg-secondary">
+      <section className="py-10 md:py-14 bg-journal-bg-secondary">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mx-auto text-center space-y-8">
             <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">About Me</h2>
-
-            <p className="text-journal-text-secondary font-sans leading-relaxed text-sm md:text-base font-light max-w-2xl mx-auto">
-              Miss Joo Writes is my quiet corner of the internet, a space for the thoughts that feel too layered for captions and too meaningful to disappear in the scroll. Here, I write about womanhood, growth, career, and what it means to build a life far from home. And the small moments too, the ones that teach us how to return to ourselves.
-            </p>
 
             {publicFileExists(moodPortrait.src) && (
               <figure className="mx-auto w-[min(300px,80%)]">
@@ -103,7 +99,7 @@ const Index = () => {
             <div className="pt-2">
               <Button 
                 variant="outline" 
-                className="rounded-full border border-journal-gold text-journal-gold hover:bg-journal-bg-secondary hover:text-journal-text hover:border-journal-text tracking-widest uppercase text-[11px] h-11 px-8 transition-colors duration-300" 
+                className="rounded-full border-0 bg-gold text-espresso hover:bg-gold-hover hover:text-espresso tracking-widest uppercase text-[11px] h-11 px-8 transition-colors duration-300" 
                 asChild
               >
                 <Link to="/about">
@@ -116,7 +112,7 @@ const Index = () => {
       </section>
 
       {/* Latest Journal Entries Section */}
-      <section className="py-20 md:py-28 bg-journal-bg border-t border-journal-border">
+      <section className="py-10 md:py-14 bg-journal-bg border-t border-journal-border">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex flex-col items-center text-center mb-12 border-b border-journal-border/50 pb-5">
             <div>
@@ -174,52 +170,27 @@ const Index = () => {
 
       <WeeklyLetter />
 
-      {/* The Curated Edit Section */}
-      <section className="py-20 md:py-28 bg-journal-bg-secondary/40 border-y border-journal-border/30">
+      {/* The Edit Section */}
+      <section aria-labelledby="the-edit-title" className={homeSection}>
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl mx-auto text-center mb-16 space-y-3">
+          <div className={`w-full max-w-3xl mx-auto ${homeBoxStyle} text-center space-y-5`}>
             <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">
-              Curated Edit
+              Beauty · Places · Little Finds
             </span>
-            <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">The Curated Edit</h2>
-            <div className="w-12 h-px bg-journal-champagne/40 mx-auto"></div>
+            <h2 id="the-edit-title" className="font-serif text-2xl md:text-3.5xl text-journal-text">
+              The Edit
+            </h2>
             <p className="text-journal-text-secondary font-light text-sm md:text-base max-w-md mx-auto">
-              Beauty, places, pieces, and little moments worth remembering.
+              Beauty, places, and the little finds that make ordinary days feel softer.
             </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
-            {[
-              { name: "Beauty", label: "Self-Care Rituals" },
-              { name: "Cafés", label: "Quiet Corners" },
-              { name: "Travel", label: "Slow Journeys" },
-              { name: "Fashion", label: "Capsule Pieces" },
-              { name: "Soft Living", label: "Slowing Down" },
-              { name: "Brand Stories", label: "Intentional Design" }
-            ].map((cat) => (
-              <div 
-                key={cat.name} 
-                className="group flex flex-col p-6 bg-journal-card border border-journal-border hover:border-journal-champagne/50 hover:-translate-y-1 transition-all duration-300 text-center rounded-[2px]"
+            <div className="pt-2">
+              <Link
+                to="/lifestyle"
+                className="inline-flex h-11 items-center rounded-full bg-gold px-8 text-[11px] uppercase tracking-widest text-espresso hover:bg-gold-hover transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-journal-bg"
               >
-                <div className="w-8 h-8 rounded-full bg-journal-bg flex items-center justify-center mx-auto mb-4 text-journal-gold group-hover:bg-journal-gold group-hover:text-journal-bg transition-colors duration-300 select-none">
-                  <span className="font-serif text-xs">✦</span>
-                </div>
-                <h3 className="font-serif text-sm font-semibold text-journal-text group-hover:text-journal-gold transition-colors">
-                  {cat.name}
-                </h3>
-                <p className="text-[10px] tracking-wider uppercase text-journal-muted mt-2 block leading-snug">
-                  {cat.label}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Button variant="outline" className="rounded-full border border-journal-border hover:bg-gold hover:border-gold hover:text-espresso transition-all uppercase tracking-widest text-[11px] h-11 px-8" asChild>
-              <Link to="/lifestyle">
                 Explore The Edit
               </Link>
-            </Button>
+            </div>
           </div>
         </div>
       </section>
@@ -227,7 +198,7 @@ const Index = () => {
       <FromTheFeed />
 
       {/* Free Journal / Lead Magnet Section */}
-      <section className="py-20 md:py-28 bg-journal-bg border-t border-journal-border">
+      <section className="py-10 md:py-14 bg-journal-bg border-t border-journal-border">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-2xl mx-auto text-center space-y-8 border border-journal-border bg-journal-card p-8 md:p-12 rounded-[2px] shadow-sm">
             <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">

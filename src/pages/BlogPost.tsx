@@ -163,7 +163,7 @@ const BlogPost = () => {
               return (
                 <p
                   key={index}
-                  className={`opacity-0 animate-fade-in whitespace-pre-line text-left ${
+                  className={`opacity-0 animate-fade-in whitespace-pre-line text-justify hyphens-auto sm:hyphens-manual ${
                     index === firstTextIndex
                       ? "first-letter:text-5xl first-letter:font-serif first-letter:font-bold first-letter:text-journal-gold first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:leading-none"
                       : ""

@@ -11,7 +11,7 @@ const FromTheFeed = () => {
   if (items.length === 0) return null;
 
   return (
-    <section className="py-20 md:py-28 bg-journal-bg border-t border-journal-border">
+    <section className="py-10 md:py-14 bg-journal-bg border-t border-journal-border">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="max-w-3xl mx-auto text-center mb-12 space-y-3">
           <span className="text-[11px] tracking-[0.2em] text-journal-gold font-sans font-medium block">
