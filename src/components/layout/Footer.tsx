@@ -53,26 +53,6 @@ const Footer = () => {
           {/* Divider */}
           <div className="h-px w-12 bg-journal-champagne/30"></div>
 
-          {/* Navigation */}
-          <nav className="flex flex-wrap justify-center gap-x-5">
-            {[
-              { name: "Journal", path: "/blog" },
-              { name: "Lifestyle", path: "/lifestyle" },
-              { name: "About", path: "/about" },
-              { name: "Free Journal", path: "/downloads" },
-              { name: "Work With Me", path: "/work-with-me" },
-              { name: "Contact", path: "/contact" },
-            ].map((link) => (
-              <Link
-                key={link.name}
-                to={link.path}
-                className="inline-flex min-h-6 items-center text-[10px] tracking-[0.2em] uppercase text-journal-bg/70 hover:text-journal-champagne transition-colors duration-300"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </nav>
-
           {/* Copyright & Legal */}
           <div className="flex flex-col items-center gap-0.5 text-center">
             <p className="font-sans text-[9px] tracking-wider text-journal-bg/60">

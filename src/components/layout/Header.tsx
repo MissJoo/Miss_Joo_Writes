@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { pillars } from "@/data/pillars";
+import { posts } from "@/data/posts";
 import ThemeToggle from "./ThemeToggle";
 import { scrollToTarget } from "@/lib/smoothScroll";
 
@@ -54,12 +55,16 @@ const Header = () => {
     {
       name: "Journal",
       path: "/blog",
+      // Topics with at least one essay; the others join the list once their first essay is posted
       children: [
-        { name: "All Essays", path: "/blog" },
-        { name: "Free Journal", path: "/downloads" },
+        { name: "All Entries", path: "/blog" },
+        ...pillars
+          .filter((pillar) => posts.some((post) => post.pillar === pillar.slug))
+          .map((pillar) => ({ name: pillar.name, path: `/${pillar.slug}` })),
       ],
     },
-    { name: "Lifestyle", path: "/lifestyle" },
+    { name: "Free Journal", path: "/downloads" },
+    { name: "The Edit", path: "/lifestyle" },
     { name: "About", path: "/about" },
     { name: "Work With Me", path: "/work-with-me" },
     { name: "Contact", path: "/contact" },
@@ -67,7 +72,6 @@ const Header = () => {
 
   const isActive = (path: string) => location.pathname.replace(/\/+$/, "") === path;
   const isLinkActive = (link: NavLink) => isActive(link.path) || !!link.children?.some((child) => isActive(child.path));
-  const isTopicActive = pillars.some((pillar) => isActive(`/${pillar.slug}`));
 
   return (
     <header 
@@ -91,41 +95,6 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-9">
-            {/* Topics menu: opens on hover or keyboard focus. Hidden on tablets, where the bar is full. */}
-            <div className="group relative hidden lg:block">
-              <button
-                type="button"
-                aria-haspopup="true"
-                className={cn(
-                  "inline-flex items-center gap-1 whitespace-nowrap text-[11px] tracking-[0.12em] lg:tracking-[0.18em] xl:tracking-[0.25em] uppercase font-sans font-medium transition-colors duration-300 py-1",
-                  isTopicActive ? "text-journal-gold" : "text-journal-text dark:text-journal-text-secondary hover:text-journal-gold",
-                )}
-              >
-                Topics
-                <ChevronDown
-                  size={12}
-                  aria-hidden="true"
-                  className="transition-transform duration-300 group-hover:rotate-180 group-focus-within:rotate-180"
-                />
-              </button>
-              <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 opacity-0 transition-all duration-300 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                <ul className="min-w-[200px] border border-journal-border bg-journal-nav py-3 shadow-[0_12px_40px_-12px_rgba(139,106,67,0.25)] rounded-[2px]">
-                  {pillars.map((pillar) => (
-                    <li key={pillar.slug}>
-                      <Link
-                        to={`/${pillar.slug}`}
-                        className={cn(
-                          "block px-5 py-2 text-[11px] tracking-[0.2em] uppercase font-sans transition-colors duration-300",
-                          isActive(`/${pillar.slug}`) ? "text-journal-gold" : "text-journal-text dark:text-journal-text-secondary hover:text-journal-gold",
-                        )}
-                      >
-                        {pillar.navLabel}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
             {navLinks.map((link) => {
               const linkClass = cn(
                 "relative inline-flex items-center gap-1 whitespace-nowrap text-[10px] lg:text-[11px] tracking-[0.12em] lg:tracking-[0.18em] xl:tracking-[0.25em] uppercase font-sans font-medium transition-all duration-300 py-1",
@@ -140,7 +109,7 @@ const Header = () => {
                   </Link>
                 );
               }
-              // A link with a small menu: opens on hover or keyboard focus, like Topics
+              // A link with a small menu: opens on hover or keyboard focus
               return (
                 <div key={link.path} className="group relative">
                   <Link to={link.path} className={linkClass} aria-haspopup="true">
@@ -212,9 +181,7 @@ const Header = () => {
                 >
                   {link.name}
                 </Link>
-                {link.children
-                  ?.filter((child) => child.path !== link.path)
-                  .map((child) => (
+                {link.children?.map((child) => (
                     <Link
                       key={child.path}
                       to={child.path}
@@ -229,23 +196,6 @@ const Header = () => {
                   ))}
               </div>
             ))}
-            <div className="w-10 h-px bg-journal-champagne/40" aria-hidden="true" />
-            <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium">Topics</span>
-            <div className="flex flex-wrap justify-center gap-x-5 gap-y-3 px-6">
-              {pillars.map((pillar) => (
-                <Link
-                  key={pillar.slug}
-                  to={`/${pillar.slug}`}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={cn(
-                    "text-[11px] tracking-[0.2em] uppercase font-sans transition-colors duration-300",
-                    isActive(`/${pillar.slug}`) ? "text-journal-gold" : "text-journal-text dark:text-journal-text-secondary hover:text-journal-gold",
-                  )}
-                >
-                  {pillar.navLabel}
-                </Link>
-              ))}
-            </div>
           </div>
         </div>
       </nav>
