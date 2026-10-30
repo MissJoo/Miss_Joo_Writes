@@ -6,10 +6,14 @@ import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Mail } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { homeFields } from "@/components/suitcase/SuitcaseTeasers";
 import { subscribe, SUBSCRIBE_ERROR } from "@/lib/newsletter";
 import PostcardConfirmation from "@/components/newsletter/PostcardConfirmation";
 import Honeypot from "@/components/newsletter/Honeypot";
 import ConsentCheckbox, { CONSENT_REQUIRED } from "@/components/newsletter/ConsentCheckbox";
+
+
 
 /** Set after a free-journal signup; the Free Journal page reads it to unlock the downloads. */
 export const JOURNALS_UNLOCKED_KEY = "mj_journals_unlocked";
@@ -89,42 +93,46 @@ const EmailSignupForm = ({
 
   if (variant === "compact") {
     return (
-      <form onSubmit={handleSubmit(onSubmit)} className="relative w-full max-w-md mx-auto space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="relative w-full max-w-xl mx-auto space-y-4">
         <Honeypot {...register("company")} />
-        <div className="flex flex-col sm:flex-row gap-3">
-          <div className="flex-1">
+        {/* Fields and button share the homepage boxes' field width */}
+        <div className={cn("flex flex-col gap-3", homeFields)}>
+          <div>
             <label htmlFor="name-input" className="sr-only">Name</label>
             <Input
               id="name-input"
               type="text"
               placeholder="Your name"
               {...register("name")}
-              className="h-12 rounded-full border-journal-border bg-journal-bg text-journal-text placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne focus-visible:border-journal-champagne"
+              className="h-12 px-6 rounded-full border-journal-border bg-journal-bg text-journal-text placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne focus-visible:border-journal-champagne"
               disabled={isSubmitting}
             />
           </div>
-          <div className="flex-[1.5]">
+          <div>
             <label htmlFor="email-input" className="sr-only">Email address</label>
             <Input
               id="email-input"
               type="email"
               placeholder="Your email address"
               {...register("email")}
-              className="h-12 rounded-full border-journal-border bg-journal-bg text-journal-text placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne focus-visible:border-journal-champagne"
+              className="h-12 px-6 rounded-full border-journal-border bg-journal-bg text-journal-text placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne focus-visible:border-journal-champagne"
               disabled={isSubmitting}
             />
           </div>
         </div>
 
-        <ConsentCheckbox id="consent-input" {...register("consent")} disabled={isSubmitting} />
+        {/* Lines up with the fields' left edge */}
+        <ConsentCheckbox id="consent-input" className={homeFields} {...register("consent")} disabled={isSubmitting} />
         
         <Button
           type="submit"
           disabled={isSubmitting}
-          className="w-full h-12 px-8 rounded-full bg-gold hover:bg-gold-hover text-espresso tracking-widest uppercase text-[11px] font-medium transition-all duration-300"
+          className={cn("flex w-full h-12 px-8 rounded-full bg-gold hover:bg-gold-hover text-espresso tracking-widest uppercase text-[11px] font-medium transition-all duration-300", homeFields)}
         >
-          {isSubmitting ? "Sending..." : "Send Me the Journal"}
+          {isSubmitting ? "Sending..." : "Send Me My Journals"}
         </Button>
+
+        <p className="text-xs text-journal-muted text-center font-sans">Arrives in your inbox in seconds.</p>
 
         {errorMessage && (
           <p role="alert" className="text-red-700 dark:text-red-300 text-xs mt-2 font-sans text-center">{errorMessage}</p>

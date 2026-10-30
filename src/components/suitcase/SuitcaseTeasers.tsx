@@ -8,6 +8,11 @@ import Countdown from "./Countdown";
 export const homeBoxSize = "w-full max-w-3xl mx-auto min-h-[453px] md:min-h-[509px]";
 /** Look shared by those boxes (and the three small boxes under the postcard) */
 export const homeBoxStyle = "border border-journal-border bg-journal-bg-secondary/40 rounded-[2px] px-6 py-8 sm:px-8 sm:py-10 md:px-12";
+/** Inside those boxes: paragraphs stay this wide, and fields, answer buttons and form buttons this wide */
+export const homeText = "max-w-lg mx-auto";
+/** Suitcase, letter and The Edit boxes from tablets up: the opened letter's width (520px) plus 1cm on each side */
+export const homeBoxNarrow = "md:w-[calc(520px+2cm)] md:!px-[1cm]";
+export const homeFields = "w-full max-w-[400px] mx-auto";
 /** Every homepage section after the hero: same spacing, thin divider line across the top */
 export const homeSection = "py-10 md:py-14 bg-journal-bg border-t border-journal-border";
 
@@ -23,7 +28,7 @@ export const SuitcaseHomeTeaser = () => {
   return (
     <section aria-labelledby="suitcase-teaser-title" className={homeSection}>
       <div className="container mx-auto px-6 lg:px-12">
-        <div className={`${homeBoxSize} ${homeBoxStyle} grid gap-8 justify-items-center content-center text-center`}>
+        <div className={`${homeBoxSize} ${homeBoxStyle} ${homeBoxNarrow} grid gap-8 justify-items-center content-center text-center`}>
           {/* Label, heading and line, then the suitcase, then the button */}
           <div className="text-center space-y-4">
             <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">
@@ -36,7 +41,7 @@ export const SuitcaseHomeTeaser = () => {
                 </span>
               ))}
             </h2>
-            {open && <p className="text-journal-text-secondary font-light text-sm md:text-base">{suitcase.teaser.line}</p>}
+            {open && <p className={`text-journal-text-secondary font-light text-sm md:text-base ${homeText}`}>{suitcase.teaser.line}</p>}
           </div>
           <ClosedSuitcase className="w-40 md:w-[200px] mx-auto" latches={open ? "open" : "locked"} />
           <div className={`text-center space-y-4${open ? "" : " sc-when-locked"}`}>

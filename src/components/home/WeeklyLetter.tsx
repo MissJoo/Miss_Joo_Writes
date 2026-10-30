@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { weeklyLetter } from "@/data/weekly-letter";
 import { getPost } from "@/data/posts";
-import { homeBoxSize, homeBoxStyle, homeSection } from "@/components/suitcase/SuitcaseTeasers";
+import { homeBoxNarrow, homeBoxSize, homeBoxStyle, homeSection } from "@/components/suitcase/SuitcaseTeasers";
 import "./home.css";
 
 const OPEN_MS = 950;
@@ -32,8 +32,7 @@ const WeeklyLetter = () => {
   return (
     <section aria-labelledby="weekly-letter-title" className={homeSection}>
       <div className="container mx-auto px-6 lg:px-12">
-        {/* Same size as the Suitcase box above */}
-        <div className={`${homeBoxSize} ${homeBoxStyle} flex flex-col justify-center !px-5 sm:!px-8 md:!px-12`}>
+        <div className={`${homeBoxSize} ${homeBoxStyle} ${homeBoxNarrow} flex flex-col justify-center !px-5 sm:!px-8`}>
         <div className={`text-center space-y-3 ${stage === "open" ? "mb-5" : "mb-8"}`}>
           <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">
             This week&rsquo;s letter

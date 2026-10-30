@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { moreBoxes, postcard, quiz, quizResult } from "@/data/quiz";
 import { suitcase, type SuitcaseIcon } from "@/data/suitcase";
 import PostcardCard, { POSTCARD_NAME_MAX, POSTCARD_NOTE_MAX, postcardLink } from "@/components/home/PostcardCard";
-import { homeBoxSize, homeBoxStyle, homeSection } from "@/components/suitcase/SuitcaseTeasers";
+import { homeBoxSize, homeBoxStyle, homeFields, homeSection, homeText } from "@/components/suitcase/SuitcaseTeasers";
 
 // Same look as the Suitcase box
 const cardClass = `flex flex-col text-center ${homeBoxStyle}`;
@@ -67,7 +67,7 @@ const Quiz = () => {
           <p className="text-[10px] tracking-[0.25em] uppercase text-journal-muted">
             {picks.length + 1} of {quiz.questions.length}
           </p>
-          <fieldset className="space-y-3 w-full max-w-xl mx-auto">
+          <fieldset className={cn("space-y-3", homeFields)}>
             <legend className="mb-4 text-journal-text-secondary font-light text-sm md:text-base">{current.question}</legend>
             {current.answers.map((answer) => (
               <button
@@ -100,8 +100,8 @@ const Postcard = () => {
   const [status, setStatus] = useState<"idle" | "copied" | "messenger" | "instagram" | "tiktok" | "fallback">("idle");
   const [link, setLink] = useState("");
   const fieldClass =
-    "h-12 w-full rounded-[3px] border border-journal-border bg-journal-bg px-4 text-center text-sm md:text-base text-journal-text placeholder:text-journal-muted/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne";
-  const fieldLabel = "block mb-2 text-[11px] tracking-[0.2em] uppercase text-journal-muted font-sans font-medium";
+    "h-12 w-full rounded-full border border-journal-border bg-journal-bg px-6 text-left text-sm md:text-base text-journal-text placeholder:text-journal-muted/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne";
+  const fieldLabel = "block mb-2 pl-6 text-left text-[11px] tracking-[0.2em] uppercase text-journal-muted font-sans font-medium";
 
   // Every pop-up starts from a blank form once it's closed
   const close = () => {
@@ -167,8 +167,8 @@ const Postcard = () => {
     <div className={cn(cardClass, homeBoxSize, "justify-center")}>
       <span className={labelClass}>{postcard.label}</span>
       <h3 className={cn(headingClass, "mt-4")}>{postcard.heading}</h3>
-      <p className="mt-3 font-serif text-lg md:text-xl text-journal-text-secondary leading-relaxed">{postcard.line}</p>
-      <div className="mt-5 space-y-4 w-full max-w-xl mx-auto">
+      <p className={cn("mt-3 font-serif text-lg md:text-xl text-journal-text-secondary leading-relaxed", homeText)}>{postcard.line}</p>
+      <div className={cn("mt-5 space-y-4", homeFields)}>
         <div>
           <label htmlFor="postcard-name" className={fieldLabel}>
             {postcard.nameLabel}
@@ -197,14 +197,14 @@ const Postcard = () => {
                 autoFocus
                 placeholder={postcard.notePlaceholder}
                 onChange={(e) => setNote(e.target.value)}
-                className={cn(fieldClass, "px-10 focus-visible:ring-offset-0")}
+                className={cn(fieldClass, "pr-12 focus-visible:ring-offset-0")}
               />
               <button
                 type="button"
                 onClick={() => setMessage(0)}
                 aria-label={postcard.noteBack}
                 title={postcard.noteBack}
-                className="absolute right-1 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center text-journal-muted hover:text-journal-gold transition-colors duration-300"
+                className="absolute right-3 top-1/2 -translate-y-1/2 flex h-10 w-10 items-center justify-center text-journal-muted hover:text-journal-gold transition-colors duration-300"
               >
                 <ChevronDown size={16} aria-hidden="true" />
               </button>
@@ -214,7 +214,7 @@ const Postcard = () => {
               id="postcard-message"
               value={message}
               onChange={(e) => setMessage(Number(e.target.value))}
-              className={cn(fieldClass, "cursor-pointer [text-align-last:center]")}
+              className={cn(fieldClass, "cursor-pointer")}
             >
               {postcard.messages.map((option, index) => (
                 <option key={option} value={index}>
@@ -244,7 +244,7 @@ const Postcard = () => {
         <button
           type="button"
           onClick={create}
-          className="inline-flex h-12 items-center justify-center rounded-[3px] bg-gold px-9 text-xs md:text-sm uppercase tracking-[0.15em] font-medium text-espresso hover:bg-gold-hover transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-journal-bg"
+          className="inline-flex h-11 items-center justify-center rounded-full bg-gold px-8 text-[11px] uppercase tracking-widest text-espresso hover:bg-gold-hover transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-journal-bg"
         >
           {postcard.create}
         </button>

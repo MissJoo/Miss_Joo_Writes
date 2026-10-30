@@ -8,7 +8,7 @@ import ReadByMood from "@/components/ReadByMood";
 import TodaysNote from "@/components/home/TodaysNote";
 import WeeklyLetter from "@/components/home/WeeklyLetter";
 import QuizAndPostcard from "@/components/home/QuizAndPostcard";
-import { SuitcaseHomeTeaser, homeBoxStyle, homeSection } from "@/components/suitcase/SuitcaseTeasers";
+import { SuitcaseHomeTeaser, homeBoxNarrow, homeBoxSize, homeBoxStyle, homeSection, homeText } from "@/components/suitcase/SuitcaseTeasers";
 import { posts, readingTime } from "@/data/posts";
 import { moodPortrait } from "@/data/moods";
 import { publicFileExists } from "@/lib/publicFiles";
@@ -173,14 +173,14 @@ const Index = () => {
       {/* The Edit Section */}
       <section aria-labelledby="the-edit-title" className={homeSection}>
         <div className="container mx-auto px-6 lg:px-12">
-          <div className={`w-full max-w-3xl mx-auto ${homeBoxStyle} text-center space-y-5`}>
+          <div className={`${homeBoxSize} ${homeBoxStyle} ${homeBoxNarrow} flex flex-col justify-center text-center space-y-5`}>
             <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">
               Beauty · Places · Little Finds
             </span>
             <h2 id="the-edit-title" className="font-serif text-2xl md:text-3.5xl text-journal-text">
               The Edit
             </h2>
-            <p className="text-journal-text-secondary font-light text-sm md:text-base max-w-md mx-auto">
+            <p className={`text-journal-text-secondary font-light text-sm md:text-base ${homeText}`}>
               Beauty, places, and the little finds that make ordinary days feel softer.
             </p>
             <div className="pt-2">
@@ -200,17 +200,20 @@ const Index = () => {
       {/* Free Journal / Lead Magnet Section */}
       <section className="py-10 md:py-14 bg-journal-bg border-t border-journal-border">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-2xl mx-auto text-center space-y-8 border border-journal-border bg-journal-card p-8 md:p-12 rounded-[2px] shadow-sm">
+          <div className={`w-full max-w-3xl mx-auto ${homeBoxStyle} text-center space-y-8`}>
             <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">
-              Free Reflection Journal
+              A Gift, From Me to You
             </span>
 
             <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text leading-tight">
-              A Soft Gift for Your Becoming
+              <span className="block">For the version of you</span>
+              <span className="block">that&rsquo;s still becoming.</span>
             </h2>
 
-            <p className="text-journal-text-secondary font-sans leading-relaxed text-sm md:text-base font-light max-w-xl mx-auto">
-              Download Notes on Becoming, a gentle reflection journal for women learning to slow down, let go, and return to themselves.
+            {/* Two lines from tablets up; phones are too narrow and wrap it */}
+            <p className={`text-journal-text-secondary font-sans leading-relaxed text-sm md:text-base font-light ${homeText}`}>
+              Quiet journals for the days life feels loud.
+              <br className="hidden md:inline" /> A way to come back to yourself. It&rsquo;s FREE, and yours to keep.
             </p>
 
             <div className="pt-2">
@@ -222,7 +225,7 @@ const Index = () => {
                 to="/downloads" 
                 className="text-xs uppercase tracking-widest text-journal-gold hover:text-journal-text transition-colors duration-300 font-medium"
               >
-                Learn more about the collection
+                Peek inside the collection
               </Link>
             </div>
           </div>

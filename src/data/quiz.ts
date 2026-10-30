@@ -54,7 +54,7 @@ export const quizResult = (picks: SuitcaseIcon[]): SuitcaseIcon => {
 export const postcard = {
   label: "Send a postcard",
   heading: "Miss someone far away?",
-  line: "Send them a postcard from Doha. Free, and it takes ten seconds.",
+  line: "FREE Postcard. Takes only 10 seconds to send.",
   nameLabel: "Their name",
   namePlaceholder: "e.g. Rose",
   /** The sender, shown in the sign-off at the bottom of the card */
