@@ -153,9 +153,10 @@ const Lifestyle = () => {
           </div>
 
           <div className="max-w-2xl mx-auto text-center mt-20 p-8 border border-journal-border bg-journal-card rounded-[2px] space-y-4">
-            <h3 className="font-serif text-xl text-journal-text">Would you like to share a story?</h3>
+            <h3 className="font-serif text-xl text-journal-text">Every good story starts somewhere.</h3>
             <p className="text-journal-text-secondary text-xs md:text-sm font-light max-w-md mx-auto leading-relaxed">
-              I collaborate with brands, spaces, and makers who believe in quality, beauty, and slow living.
+              If you have something meaningful to share, I&rsquo;d love to explore how we can bring it to life through
+              thoughtful content and storytelling.
             </p>
             <div className="pt-2">
               <Button variant="outline" className="rounded-full border border-journal-border hover:bg-gold hover:border-gold hover:text-espresso transition-all uppercase tracking-widest text-[11px] h-10 px-8" asChild>

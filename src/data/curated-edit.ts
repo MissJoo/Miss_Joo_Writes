@@ -55,7 +55,6 @@ export const curatedEdit: CuratedCard[] = [
       width: 1200,
       height: 674,
     },
-    button: { text: "Inquire / Collaborate", to: "/contact" },
   },
   {
     category: "Cafés",
