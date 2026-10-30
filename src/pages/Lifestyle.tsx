@@ -28,14 +28,14 @@ const Lifestyle = () => {
         <div className="container mx-auto px-6 lg:px-12 text-center">
           <div className="max-w-2xl mx-auto space-y-4">
             <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">
-              Curated Collections
+              Beauty · Places · Little Finds
             </span>
             <h1 className="font-serif text-3.5xl md:text-5xl leading-tight text-journal-text">
-              The Curated Edit
+              The Edit
             </h1>
             <div className="w-12 h-px bg-journal-champagne/40 mx-auto mt-2"></div>
-            <p className="text-journal-text-secondary font-sans text-sm md:text-base font-light max-w-md mx-auto leading-relaxed">
-              Beauty, places, pieces, and little moments worth remembering.
+            <p className="text-journal-text-secondary font-sans text-sm md:text-base font-light max-w-lg mx-auto leading-relaxed">
+              Beauty, places, and the little finds that make ordinary days feel softer.
             </p>
           </div>
         </div>

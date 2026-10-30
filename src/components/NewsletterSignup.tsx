@@ -13,6 +13,8 @@ interface NewsletterSignupProps {
   eyebrow?: string;
   title?: string;
   description?: string;
+  /** Text on the submit button */
+  button?: string;
   className?: string;
 }
 
@@ -27,6 +29,7 @@ const NewsletterSignup = ({
   eyebrow = "The Letter",
   title = "New essays, straight to your inbox",
   description = "One thoughtful letter when a new essay is published.\nNo noise, unsubscribe anytime.",
+  button = "Subscribe",
   className,
 }: NewsletterSignupProps) => {
   const id = useId();
@@ -99,7 +102,7 @@ const NewsletterSignup = ({
             disabled={status.state === "sending"}
             className="h-12 px-8 rounded-full bg-gold hover:bg-gold-hover text-espresso tracking-[0.2em] uppercase text-[11px] font-medium transition-colors duration-300 disabled:opacity-60"
           >
-            {status.state === "sending" ? "Sending…" : "Subscribe"}
+            {status.state === "sending" ? "Sending…" : button}
           </button>
           </div>
           <ConsentCheckbox

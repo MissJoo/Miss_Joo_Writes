@@ -96,7 +96,13 @@ const Blog = () => {
       {/* The Letter */}
       <section className="pb-20 md:pb-28 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
-          <NewsletterSignup source="topic-page" detail="journal" />
+          <NewsletterSignup
+            source="topic-page"
+            detail="journal"
+            title="The essays I don't post anywhere else."
+            description="One letter, only when a new essay is ready. Quiet, honest, and yours to keep."
+            button="Send me the letters"
+          />
         </div>
       </section>
     </Layout>

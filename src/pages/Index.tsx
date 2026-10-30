@@ -180,6 +180,7 @@ const Index = () => {
             <h2 id="the-edit-title" className="font-serif text-2xl md:text-3.5xl text-journal-text">
               The Edit
             </h2>
+            <div className="w-12 h-px bg-journal-champagne/40 mx-auto"></div>
             <p className={`text-journal-text-secondary font-light text-sm md:text-base ${homeText}`}>
               Beauty, places, and the little finds that make ordinary days feel softer.
             </p>

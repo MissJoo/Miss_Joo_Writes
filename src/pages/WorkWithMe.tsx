@@ -7,15 +7,15 @@ import { CONTACT_EMAIL, composeEmail } from "@/lib/email";
 const offerings = [
   {
     title: "Editorial",
-    body: "Long-form essays, guest columns and thoughtful features on womanhood, psychology, career and life abroad.",
+    body: "Long-form essays, guest columns and thoughtful features exploring womanhood, psychology, personal growth, career and life abroad.",
   },
   {
     title: "UGC",
-    body: "Considered, natural content for brands whose products fit genuinely into a slower, more intentional life.",
+    body: "Thoughtful, story-led content that introduces products naturally and brings brands into everyday life.",
   },
   {
     title: "Brand Partnerships",
-    body: "Selective, long-term collaborations across the journal, Instagram and TikTok, built around honest storytelling.",
+    body: "Selective collaborations across the journal, Instagram and TikTok, built on shared values, authentic storytelling and genuine audience connection.",
   },
 ];
 
@@ -59,12 +59,16 @@ const WorkWithMe = () => (
     <section className="py-16 md:py-20 bg-journal-bg-secondary/40 border-y border-journal-border/30">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="max-w-4xl mx-auto">
-          <h2 className="font-serif text-2xl md:text-3xl text-journal-text text-center mb-12">What I collaborate on</h2>
+          <h2 className="font-serif text-2xl md:text-3xl text-journal-text text-center mb-12">
+            <span aria-hidden="true" className="text-journal-gold text-base align-middle mr-3">✦</span>
+            Ways to Collaborate
+            <span aria-hidden="true" className="text-journal-gold text-base align-middle ml-3">✦</span>
+          </h2>
           <ul className="grid gap-6 md:grid-cols-3">
             {offerings.map((offering) => (
               <li key={offering.title} className="p-8 bg-journal-card border border-journal-border rounded-[2px] space-y-3">
                 <h3 className="font-serif text-xl text-journal-text">{offering.title}</h3>
-                <p className="text-sm text-journal-text-secondary font-light leading-relaxed">{offering.body}</p>
+                <p className="text-sm text-journal-text-secondary font-light leading-relaxed text-justify hyphens-auto">{offering.body}</p>
               </li>
             ))}
           </ul>
