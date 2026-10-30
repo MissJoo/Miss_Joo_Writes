@@ -167,7 +167,7 @@ const Postcard = () => {
     <div className={cn(cardClass, homeBoxSize, "justify-center")}>
       <span className={labelClass}>{postcard.label}</span>
       <h3 className={cn(headingClass, "mt-4")}>{postcard.heading}</h3>
-      <p className={cn("mt-3 font-serif text-lg md:text-xl text-journal-text-secondary leading-relaxed", homeText)}>{postcard.line}</p>
+      <p className={cn("mt-3 font-sans text-sm md:text-base font-light text-journal-text-secondary leading-relaxed", homeText)}>{postcard.line}</p>
       <div className={cn("mt-5 space-y-4", homeFields)}>
         <div>
           <label htmlFor="postcard-name" className={fieldLabel}>
