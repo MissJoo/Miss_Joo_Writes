@@ -7,7 +7,7 @@ import { CONTACT_EMAIL, composeEmail } from "@/lib/email";
 const offerings = [
   {
     title: "Editorial",
-    body: "Long-form essays, guest columns and thoughtful features exploring womanhood, psychology, personal growth, career and life abroad.",
+    body: "Long-form essays and thoughtful features exploring womanhood, psychology, personal growth, career and life abroad.",
   },
   {
     title: "UGC",
@@ -68,7 +68,7 @@ const WorkWithMe = () => (
             {offerings.map((offering) => (
               <li key={offering.title} className="p-8 bg-journal-card border border-journal-border rounded-[2px] space-y-3">
                 <h3 className="font-serif text-xl text-journal-text">{offering.title}</h3>
-                <p className="text-sm text-journal-text-secondary font-light leading-relaxed text-justify hyphens-auto">{offering.body}</p>
+                <p className="text-sm text-journal-text-secondary font-light leading-relaxed">{offering.body}</p>
               </li>
             ))}
           </ul>
