@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
+import { CONTACT_EMAIL, composeEmail } from "@/lib/email";
 
 // Placeholder copy, to be replaced.
-const CONTACT_EMAIL = "missjodiaries@gmail.com";
 
 const offerings = [
   {
@@ -116,12 +116,13 @@ const WorkWithMe = () => (
           </p>
           <p className="font-serif text-xl text-journal-text select-all">{CONTACT_EMAIL}</p>
           <div className="pt-2">
-            <a
-              href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Collaboration with Miss Joo")}`}
+            <button
+              type="button"
+              onClick={() => composeEmail("Collaboration with Miss Joo")}
               className="inline-flex h-11 items-center rounded-full bg-gold px-8 text-[11px] uppercase tracking-widest text-espresso hover:bg-gold-hover transition-colors"
             >
               Start a conversation
-            </a>
+            </button>
           </div>
         </div>
       </div>

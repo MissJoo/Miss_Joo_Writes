@@ -4,8 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
+import { composeEmail } from "@/lib/email";
 
-const CONTACT_EMAIL = "missjodiaries@gmail.com";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -29,11 +29,11 @@ const Contact = () => {
     ].join("\n");
 
     toast({
-      title: "Opening your email app",
-      description: "Please review the draft and press send so your message reaches my inbox.",
+      title: "Opening a new email",
+      description: "Your note is filled in. Press send so it reaches my inbox.",
     });
 
-    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    composeEmail(subject, body);
     setIsSubmitting(false);
   };
 
