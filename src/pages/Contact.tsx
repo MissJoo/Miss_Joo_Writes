@@ -63,9 +63,10 @@ const Contact = () => {
               </p>
             </div>
 
-            <div className="mx-auto flex aspect-square w-full max-w-sm flex-col justify-center rounded-[2px] border border-journal-border bg-journal-card p-2 shadow-sm [&_label]:block [&_label]:leading-none md:p-4">
-              <form onSubmit={handleSubmit} className="space-y-1">
-              <div className="space-y-0.5">
+            <div className="mx-auto flex w-full max-w-sm flex-col justify-center rounded-[2px] border border-journal-border bg-journal-card p-6 shadow-sm [&_label]:block [&_label]:leading-none md:p-8">
+              <h2 className="mb-4 font-serif text-2xl md:text-3xl text-journal-text">Write to me.</h2>
+              <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="space-y-1">
                 <label htmlFor="name" className="text-[10px] tracking-widest uppercase text-journal-gold font-sans font-semibold">
                   Name
                 </label>
@@ -81,7 +82,7 @@ const Contact = () => {
                 />
               </div>
 
-              <div className="space-y-0.5">
+              <div className="space-y-1">
                 <label htmlFor="email" className="text-[10px] tracking-widest uppercase text-journal-gold font-sans font-semibold">
                   Email
                 </label>
@@ -97,7 +98,7 @@ const Contact = () => {
                 />
               </div>
 
-              <div className="space-y-0.5">
+              <div className="space-y-1">
                 <label htmlFor="message" className="text-[10px] tracking-widest uppercase text-journal-gold font-sans font-semibold">
                   Message
                 </label>
@@ -113,13 +114,13 @@ const Contact = () => {
                 />
               </div>
 
-              <div>
+              <div className="pt-2">
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="h-8 w-full rounded-full border-none bg-gold px-8 text-[10px] uppercase tracking-widest text-espresso shadow-sm transition-colors duration-300 hover:bg-gold-hover sm:w-auto"
+                  className="h-11 w-full rounded-full border-none bg-gold px-8 text-[11px] uppercase tracking-widest text-espresso shadow-sm transition-colors duration-300 hover:bg-gold-hover sm:w-auto"
                 >
-                  {isSubmitting ? "Opening..." : "Open email draft"}
+                  {isSubmitting ? "Opening..." : "Send My Note"}
                 </Button>
               </div>
               </form>

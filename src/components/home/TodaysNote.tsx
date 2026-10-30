@@ -33,7 +33,7 @@ const TodaysNote = () => {
         <p id="todays-note" aria-live="polite" className="max-w-xl mx-auto">
           {note && (
             <span className="block mt-3 font-serif italic text-xl md:text-2xl text-journal-text leading-relaxed animate-fade-in motion-reduce:animate-none">
-              {note}
+              <span className="tn-note-glow">{note}</span>
             </span>
           )}
         </p>

@@ -41,13 +41,17 @@ const WorkWithMe = () => (
 
     <section className="py-16 md:py-20 bg-journal-bg">
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="max-w-2xl mx-auto space-y-6 text-journal-text-secondary leading-[1.8] font-sans text-[17px] font-light">
-          <h2 className="font-serif text-2xl text-journal-text text-center">About Miss Joo</h2>
-          <p>
-            Miss Joo is a writer based in Qatar, writing elegant, reflective essays on womanhood, psychology and
-            self-growth, career, and life abroad. The journal is read by women who want depth rather than noise, and who
-            are building lives with intention.
+        <div className="max-w-2xl mx-auto text-center space-y-6">
+          <p className="font-serif italic text-2xl md:text-3xl leading-snug text-journal-text">
+            <span className="block">A journal read by women</span>
+            <span className="block">who want depth over noise.</span>
           </p>
+          <Link
+            to="/about"
+            className="inline-block text-xs md:text-sm uppercase tracking-[0.2em] text-journal-gold hover:text-journal-text transition-colors duration-300 font-medium"
+          >
+            Read my story <span aria-hidden="true">→</span>
+          </Link>
         </div>
       </div>
     </section>
@@ -104,25 +108,20 @@ const WorkWithMe = () => (
     <section className="pb-20 md:pb-28 bg-journal-bg">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="max-w-2xl mx-auto text-center space-y-5 border border-journal-border bg-journal-card px-6 py-12 rounded-[2px] shadow-sm">
-          <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">Get in touch</span>
-          <h2 className="font-serif text-2xl md:text-3xl text-journal-text">Let&rsquo;s create something thoughtful</h2>
-          <p className="text-journal-text-secondary text-sm md:text-base font-light leading-relaxed max-w-md mx-auto">
-            For collaborations, press and media kit requests, email me with a short note about your brand and idea.
+          <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">Collaborations &amp; Press</span>
+          <h2 className="font-serif text-2xl md:text-3xl text-journal-text">Let&rsquo;s tell a story worth remembering.</h2>
+          <p className="text-journal-text-secondary text-sm md:text-base font-light leading-relaxed max-w-lg mx-auto">
+            For brand partnerships, press and media kit requests, send a short note about your brand and the story
+            you&rsquo;d like to tell. I read every message personally.
           </p>
           <p className="font-serif text-xl text-journal-text select-all">{CONTACT_EMAIL}</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+          <div className="pt-2">
             <a
               href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent("Collaboration with Miss Joo")}`}
               className="inline-flex h-11 items-center rounded-full bg-gold px-8 text-[11px] uppercase tracking-widest text-espresso hover:bg-gold-hover transition-colors"
             >
-              Email me
+              Start a conversation
             </a>
-            <Link
-              to="/contact"
-              className="text-xs uppercase tracking-widest text-journal-gold hover:text-journal-text transition-colors font-medium"
-            >
-              Or use the contact form
-            </Link>
           </div>
         </div>
       </div>
