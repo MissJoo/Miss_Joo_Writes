@@ -160,39 +160,56 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Preview Section */}
-      <section className="py-10 md:py-14 bg-journal-bg-secondary border-t border-journal-border">
+      {/* About Preview Section: photo left and text right from laptops up, stacked on phones */}
+      <section className="py-10 lg:py-20 bg-journal-bg-secondary border-t border-journal-border">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl mx-auto text-center space-y-8">
-            <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">About Me</h2>
-
+          <div
+            className={`max-w-5xl mx-auto grid gap-8 items-center lg:items-stretch ${publicFileExists(moodPortrait.src) ? "lg:grid-cols-[2fr_3fr] lg:gap-14" : ""}`}
+          >
             {publicFileExists(moodPortrait.src) && (
-              <figure className="mx-auto w-[min(300px,80%)]">
-                <img
-                  src={moodPortrait.src}
-                  alt="Miss Joo"
-                  width={600}
-                  height={750}
-                  loading="lazy"
-                  decoding="async"
-                  className="aspect-[4/5] w-full object-cover rounded-[3px] border border-journal-border shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10)]"
-                />
-                <figcaption className="mt-4 font-serif italic text-lg text-journal-text-secondary leading-relaxed">
-                  {moodPortrait.caption}
-                </figcaption>
-              </figure>
+              <img
+                src={moodPortrait.src}
+                alt="Miss Joo"
+                width={600}
+                height={750}
+                loading="lazy"
+                decoding="async"
+                className="mx-auto w-[min(320px,85%)] lg:w-full aspect-[4/5] lg:aspect-auto lg:h-full object-cover rounded-[3px] border border-journal-border shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10)]"
+              />
             )}
 
-            <div className="pt-2">
-              <Button 
-                variant="outline" 
-                className="rounded-full border-0 bg-gold text-espresso hover:bg-gold-hover hover:text-espresso tracking-widest uppercase text-[11px] h-11 px-8 transition-colors duration-300" 
-                asChild
-              >
-                <Link to="/about">
-                  Read My Story
-                </Link>
-              </Button>
+            <div className="space-y-5 text-center lg:text-left">
+              <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">
+                About Miss Joo
+              </span>
+              <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">Meet Miss Joo</h2>
+              <div className="space-y-4 text-journal-text-secondary font-sans text-sm md:text-base font-light leading-relaxed sm:text-justify">
+                <p className="font-serif italic text-lg md:text-xl text-journal-text">Hi, I&rsquo;m Joo.</p>
+                <p>
+                  I created this space for the thoughts, feelings, and little moments that often go unspoken. The things
+                  we carry quietly, the questions we don&rsquo;t always have answers to, and the experiences that slowly
+                  change the way we see ourselves.
+                </p>
+                <p>
+                  Here, you&rsquo;ll find reflections on womanhood, relationships, self-discovery, work, and life abroad.
+                  Some stories come from my own experiences; others are simply thoughts I hope you might recognise in your
+                  own.
+                </p>
+                <p>I hope you find a little of yourself in these pages.</p>
+              </div>
+              <p className="font-signature text-2xl text-journal-gold leading-snug">
+                With softness,
+                <span className="block">Miss Joo</span>
+              </p>
+              <div className="pt-1">
+                <Button
+                  variant="outline"
+                  className="rounded-full border-0 bg-gold text-espresso hover:bg-gold-hover hover:text-espresso tracking-widest uppercase text-[11px] h-11 px-8 transition-colors duration-300"
+                  asChild
+                >
+                  <Link to="/about">Read My Story</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
