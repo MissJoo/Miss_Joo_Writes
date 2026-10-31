@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { noteForDate } from "@/data/daily-notes";
+import { randomNote } from "@/data/daily-notes";
 import "./home.css";
 
-/** Homepage strip under the moods: "Today's note" in gold script and a softly glowing button; it opens one line from src/data/daily-notes.ts, new each day. */
+/** Homepage strip under the moods: "Today's note" in gold script and a softly glowing button; it opens a random line from src/data/daily-notes.ts. */
 const TodaysNote = () => {
-  // Picked on click, so the prerendered page never fixes the build day's note in place
+  // Picked on click, and starts closed again on every visit to the homepage (refresh or coming back)
   const [note, setNote] = useState<string | null>(null);
 
   return (
@@ -22,9 +22,9 @@ const TodaysNote = () => {
           {note === null && (
             <button
               type="button"
-              onClick={() => setNote(noteForDate())}
+              onClick={() => setNote(randomNote())}
               aria-controls="todays-note"
-              className="tn-glow inline-flex h-14 items-center gap-3 rounded-full border border-journal-gold/70 px-10 text-sm tracking-[0.25em] uppercase text-journal-gold hover:text-journal-text hover:border-journal-gold font-sans font-medium transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-journal-bg"
+              className="tn-glow inline-flex h-14 items-center gap-3 rounded-full border border-journal-gold/70 px-10 text-sm tracking-[0.25em] uppercase text-journal-gold hover:text-journal-text hover:border-journal-gold font-sans font-medium transition-colors [transition-duration:300ms] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-journal-bg"
             >
               Open it <span aria-hidden="true">→</span>
             </button>
