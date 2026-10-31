@@ -1,7 +1,4 @@
 import Layout from "@/components/layout/Layout";
-import { Link } from "react-router-dom";
-import { Button } from "@/components/ui/button";
-import { Instagram } from "lucide-react";
 
 const About = () => {
   return (
@@ -87,42 +84,6 @@ const About = () => {
                 With softness, Miss Joo
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Connect Section */}
-      <section className="py-16 md:py-20 bg-journal-bg-secondary">
-        <div className="container mx-auto px-6 lg:px-12 text-center space-y-6 max-w-xl">
-          <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">
-            Let&rsquo;s Stay in Touch
-          </span>
-          <h2 className="font-serif text-2xl text-journal-text">A little more beyond the pages.</h2>
-          
-          <p className="text-journal-text-secondary text-sm md:text-base font-light leading-relaxed">
-            Follow along for everyday moments, visual stories, and little glimpses of life beyond the journal. I&rsquo;d love to hear from you, too.
-          </p>
-
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href="https://instagram.com/missjooo98"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-3.5 bg-gold hover:bg-gold-hover text-espresso rounded-full transition-all duration-300 font-sans text-[11px] tracking-widest uppercase font-medium shadow-sm"
-            >
-              <Instagram size={14} />
-              <span className="normal-case tracking-wider">@missjooo98</span>
-            </a>
-            
-            <Button 
-              variant="outline" 
-              className="rounded-full border border-journal-border hover:bg-journal-card text-journal-text tracking-widest uppercase text-[11px] h-12 px-8 transition-colors duration-300"
-              asChild
-            >
-              <Link to="/contact">
-                Send me a message
-              </Link>
-            </Button>
           </div>
         </div>
       </section>

@@ -5,7 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import ShareButtons from "@/components/blog/ShareButtons";
 import ReadingProgress from "@/components/blog/ReadingProgress";
 import PauseHere from "@/components/blog/PauseHere";
-import NewsletterSignup from "@/components/NewsletterSignup";
+import NewsletterSignup, { LETTER_COPY } from "@/components/NewsletterSignup";
 import NotFound from "@/pages/NotFound";
 import { CHAPTER_MARK, PAUSE_MARK, cutMidSentence, getNextPost, getPost, isMarker, readingTime, textParagraphs } from "@/data/posts";
 import { getPillar, topicLabel } from "@/data/pillars";
@@ -183,15 +183,6 @@ const BlogPost = () => {
         </div>
       </section>
 
-      {/* Soft Divider After Content */}
-      <div className="w-16 h-[1px] bg-journal-border/50 mx-auto my-12"></div>
-
-      {/* Newsletter */}
-      <section className="pb-16 bg-journal-bg">
-        <div className="container mx-auto px-6 lg:px-12">
-          <NewsletterSignup source="post" detail={post.slug} />
-        </div>
-      </section>
 
       {post.pillar === suitcase.pillar && (
         <section className="pb-16 bg-journal-bg">
@@ -221,6 +212,13 @@ const BlogPost = () => {
               </Link>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* The Letter, last before the footer: essay, then Next page, then this */}
+      <section className="py-16 bg-journal-bg">
+        <div className="container mx-auto px-6 lg:px-12">
+          <NewsletterSignup source="post" detail={post.slug} {...LETTER_COPY} />
         </div>
       </section>
     </Layout>

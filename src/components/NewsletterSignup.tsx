@@ -22,6 +22,13 @@ type Status = { state: "idle" } | { state: "sending" } | { state: "success" } | 
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+/** The Letter's wording on the Journal page and under every essay */
+export const LETTER_COPY = {
+  title: "The essays I don't post anywhere else.",
+  description: "One letter, only when a new essay is ready. Quiet, honest, and yours to keep.",
+  button: "Send me the letters",
+};
+
 /** Inline newsletter block with success and error states. No pop-ups. */
 const NewsletterSignup = ({
   source,
