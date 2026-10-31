@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ChevronDown, Instagram, Link2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
-import { moreBoxes, postcard, quiz, quizResult } from "@/data/quiz";
+import { postcard, quiz, quizResult } from "@/data/quiz";
 import { suitcase, type SuitcaseIcon } from "@/data/suitcase";
 import PostcardCard, { POSTCARD_NAME_MAX, POSTCARD_NOTE_MAX, postcardLink } from "@/components/home/PostcardCard";
 import { homeBoxSize, homeBoxStyle, homeFields, homeSection, homeText } from "@/components/suitcase/SuitcaseTeasers";
@@ -307,36 +307,7 @@ const Postcard = () => {
   );
 };
 
-/** Three small boxes under the postcard, each pointing to a part of the site. */
-const MoreBoxes = () => (
-  <ul className="grid gap-6 md:grid-cols-3 w-full max-w-3xl mx-auto">
-    {moreBoxes.map((box) => {
-      const external = box.href.startsWith("http");
-      const linkClass = "inline-flex items-center gap-2 text-xs uppercase tracking-widest text-journal-gold hover:text-journal-text transition-colors duration-300 font-medium";
-      return (
-        <li key={box.title} className={cn(cardClass, "items-center !px-6 !py-8")}>
-          <h3 className="font-serif text-2xl text-journal-text leading-snug">{box.title}</h3>
-          <p className="mt-3 flex-1 text-journal-text-secondary font-light text-sm leading-relaxed">{box.line}</p>
-          <div className="mt-5">
-            {external ? (
-              <a href={box.href} target="_blank" rel="noopener noreferrer" className={linkClass}>
-                <span>{box.link}</span>
-                <span aria-hidden="true">↗</span>
-              </a>
-            ) : (
-              <Link to={box.href} className={linkClass}>
-                <span>{box.link}</span>
-                <span aria-hidden="true">→</span>
-              </Link>
-            )}
-          </div>
-        </li>
-      );
-    })}
-  </ul>
-);
-
-/** Homepage, after the newsletter: the quiz, the postcard and the three boxes, each its own section. */
+/** Homepage, after the newsletter: the quiz and the postcard, each its own section. */
 const QuizAndPostcard = () => (
   <>
     <section aria-label="Which letter are you?" className={homeSection}>
@@ -347,11 +318,6 @@ const QuizAndPostcard = () => (
     <section aria-label="Send a postcard" className={homeSection}>
       <div className="container mx-auto px-6 lg:px-12">
         <Postcard />
-      </div>
-    </section>
-    <section aria-label="More from Miss Joo Writes" className={homeSection}>
-      <div className="container mx-auto px-6 lg:px-12">
-        <MoreBoxes />
       </div>
     </section>
   </>

@@ -151,7 +151,7 @@ const EmailSignupForm = ({
           <Input
             id="default-name-input"
             type="text"
-            placeholder="Your Name"
+            placeholder="Your name"
             {...register("name")}
             className="h-12 px-6 rounded-full border-journal-border bg-journal-bg text-journal-text placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne"
             disabled={isSubmitting}
@@ -163,7 +163,7 @@ const EmailSignupForm = ({
           <Input
             id="default-email-input"
             type="email"
-            placeholder="Your Email Address"
+            placeholder="Your email address"
             {...register("email")}
             className="h-12 pl-12 pr-6 rounded-full border-journal-border bg-journal-bg text-journal-text placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne"
             disabled={isSubmitting}

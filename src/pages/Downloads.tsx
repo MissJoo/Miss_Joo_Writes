@@ -122,7 +122,7 @@ const Downloads = () => {
 
                         {/* Subtext */}
                         <p className="animate-fade-in-delay-1 mx-auto max-w-xl font-sans text-xs font-light leading-relaxed text-journal-text-secondary md:text-sm">
-                            A gentle monthly companion for anyone learning to move slower, trust what's unfolding, and sit with themselves honestly.
+                            A collection of gentle reflections and guided prompts for women learning to slow down, understand themselves, and embrace the process of becoming.
                         </p>
 
                         {/* Email Form / Unlocked Status */}
@@ -130,10 +130,10 @@ const Downloads = () => {
                             {!isUnlocked ? (
                                 <div className="mx-auto flex aspect-square w-full max-w-xs flex-col justify-center space-y-2 rounded-[2px] border border-journal-border bg-journal-card p-2 shadow-sm [&_button]:h-9 [&_input]:h-9 md:space-y-3 md:p-3">
                                     <p className="font-serif text-xs italic text-journal-text-secondary md:text-sm">
-                                        Join the newsletter to unlock the entire collection.
+                                        Subscribe to receive the collection, along with occasional letters from Miss Joo Writes.
                                     </p>
                                     <EmailSignupForm 
-                                        ctaText="Unlock Free Journals" 
+                                        ctaText="Unlock the Free Journals" 
                                         onSuccess={handleSignupSuccess}
                                     />
                                 </div>

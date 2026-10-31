@@ -89,25 +89,3 @@ export const postcard = {
   sharedButton: "Open the Suitcase",
   sharedMake: "Make one of your own",
 };
-
-// The three boxes under the postcard. href starting with "http" opens in a new tab.
-export const moreBoxes = [
-  {
-    title: "The Curated Edit",
-    line: "A considered collection of beauty, places, personal style and little things worth remembering.",
-    link: "Discover The Edit",
-    href: "/lifestyle",
-  },
-  {
-    title: "From the Feed",
-    line: "Everyday moments, shared on Instagram and TikTok, with the stories that go beyond the scroll.",
-    link: "Follow along",
-    href: "https://www.instagram.com/missjooo98/",
-  },
-  {
-    title: "Free Journal",
-    line: "Notes on Becoming, a gentle space for reflection, self-discovery and finding your way back to yourself.",
-    link: "Explore the journal",
-    href: "/downloads",
-  },
-];
