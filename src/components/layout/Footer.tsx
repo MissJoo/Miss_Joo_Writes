@@ -34,12 +34,12 @@ const Footer = () => {
     <footer className="keep-light-palette bg-journal-text text-journal-bg border-t border-journal-text-secondary/20">
       <div className="container mx-auto px-6 py-4 lg:px-12">
         <div className="mx-auto flex max-w-4xl flex-col items-center gap-1.5">
-          {/* Same eyebrow and heading styles as the old Stay in Touch block on the About page */}
+          {/* Same styles as the old Stay in Touch block on the About page: small line 10px + 3, heading 24px - 5 */}
           <div className="text-center space-y-3 pt-6 pb-3">
-            <span className="text-[10px] tracking-[0.3em] uppercase text-journal-champagne font-sans font-medium block">
+            <span className="text-[13px] tracking-[0.3em] uppercase text-journal-champagne font-sans font-medium block">
               Let&rsquo;s Stay in Touch
             </span>
-            <p className="font-serif text-2xl text-journal-bg">A little more beyond the pages.</p>
+            <p className="font-serif text-[19px] text-journal-bg">A little more beyond the pages.</p>
           </div>
 
           {/* Social Links */}
