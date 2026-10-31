@@ -106,7 +106,7 @@ export const posts: Post[] = [
     datePublished: "2026-09-26",
     pillar: "psychology",
     quote: "A resolution happens once. A choice gets made again and again, especially on the days it's hard.",
-    hook: "What am I carrying into the next chapter of my life, and did I ever actually choose it?",
+    hook: "What would it look like to choose your next chapter on purpose?",
     cliffhanger: "Writing a list like this is the easy part. Living it, on an ordinary Tuesday…",
     pause: {
       question: "What is one thing you keep choosing, even on the days it's hard?",
@@ -169,7 +169,7 @@ export const posts: Post[] = [
     pillar: "womanhood",
     quote: "You're not too much. You've just stopped settling for too little.",
     cliffhanger: "And each time I felt uncomfortable, I asked myself the same question…",
-    hook: "Too much compared to what?",
+    hook: "What if your standards are not too high, but finally your own?",
     pause: {
       question: "What is one thing you keep explaining away?",
       button: "I can name it",
@@ -237,7 +237,7 @@ export const posts: Post[] = [
     pillar: "career",
     quote: "Busy is motion. Building is direction.",
     cliffhanger: "When I asked myself what I had actually built, the answer was much quieter…",
-    hook: "Busy with what?",
+    hook: "What if being busy and building something are not the same thing at all?",
     pause: {
       question: "What did you build this week, even something small?",
       button: "I built something",
@@ -384,7 +384,7 @@ export const posts: Post[] = [
     datePublished: "2026-09-01",
     pillar: "psychology",
     quote: "I don't expect to have perfect answers. I just want to stop walking into each new year by accident.",
-    hook: "What am I carrying into the next chapter of my life, and did I ever actually choose it?",
+    hook: "What would it mean to stop walking into each new year by accident?",
     cliffhanger: "And lately I have been asking myself what I actually want to carry…",
     pause: {
       question: "What is one thing you have been carrying without ever checking it?",
@@ -434,7 +434,7 @@ export const posts: Post[] = [
     datePublished: "2026-08-30",
     pillar: "career",
     quote: "You don't need to arrive as the person you hope to become. You only need to show up as the person you are today.",
-    hook: "What is on your \"once I'm ready\" list?",
+    hook: "What if you walked in before you felt ready?",
     cliffhanger: "I only noticed how long mine had become when I stood in the middle of…",
     pause: {
       question: "What room are you still waiting outside of?",
@@ -1045,7 +1045,7 @@ export const posts: Post[] = [
     datePublished: "2026-06-24",
     pillar: "psychology",
     quote: "Sometimes letting go is not losing someone. Sometimes it is finally getting yourself back.",
-    hook: "Peace taught me that not everything needs a final conversation.",
+    hook: "What if closure is something you give yourself?",
     cliffhanger: "It happened when I realized I was more tired than…",
     pause: {
       question: "What are you still waiting for words about, when the actions already answered?",
@@ -1321,7 +1321,7 @@ export const posts: Post[] = [
     date: "May 12, 2026",
     datePublished: "2026-05-12",
     pillar: "womanhood",
-    hook: "Growth doesn't need a stage. It doesn't need applause.",
+    hook: "Does growth still count if no one sees it?",
     cliffhanger: "The people who are meant to notice will. And the ones who…",
     pause: {
       question: "What growth of yours has gone unseen?",
@@ -1686,7 +1686,7 @@ export const posts: Post[] = [
     date: "February 19, 2026",
     datePublished: "2026-02-19",
     pillar: "psychology",
-    hook: "There’s a kind of calm that doesn’t come from everything being perfect.",
+    hook: "What if calm comes from trusting yourself, not from life getting easier?",
     cliffhanger: "Nothing dramatic happened. No sudden breakthrough. Just small…",
     pause: {
       question: "What is one small decision that has made you steadier?",
@@ -1749,7 +1749,7 @@ export const posts: Post[] = [
     date: "February 04, 2026",
     datePublished: "2026-02-04",
     pillar: "psychology",
-    hook: "I’m not asking for permission anymore. I’m paying attention.",
+    hook: "What happens when you stop asking for permission and start listening?",
     cliffhanger: "Somewhere along the way, I stopped trusting the quiet voice inside…",
     pause: {
       question: "What does your quiet voice already know?",
@@ -2097,7 +2097,7 @@ export const posts: Post[] = [
     datePublished: "2025-12-15",
     dateModified: "2026-10-18",
     pillar: "psychology",
-    hook: "Who would you write to, if you knew they’d never read it?",
+    hook: "What do we do with the words we never send?",
     cliffhanger: "Some are a few lines long. Some go on for pages. Most of them begin…",
     pause: {
       question: "Who came to mind first while you read these letters?",
@@ -2272,7 +2272,7 @@ export const posts: Post[] = [
     datePublished: "2025-11-25",
     dateModified: "2026-10-18",
     pillar: "psychology",
-    hook: "What would your 2 AM self say, if you let her finish the sentence?",
+    hook: "What does the quiet voice at 2 AM already know?",
     cliffhanger: "She noticed when I’d said yes to something I didn’t want. She…",
     pause: {
       question: "What question has been waiting for you at night?",
@@ -2352,8 +2352,15 @@ export const getRelatedPosts = (post: Post, count = 2) => {
   return [...samePillar, ...rest].slice(0, count);
 };
 
-/** The next older essay; after the oldest, back to the newest. */
-export const getNextPost = (post: Post) => posts[(posts.indexOf(post) + 1) % posts.length];
+/**
+ * The essay to read next: the next older one on the same topic (after the oldest, back to that topic's newest),
+ * or the next older essay overall when the post has no topic or is the only one in it.
+ */
+export const getNextPost = (post: Post) => {
+  const sameTopic = post.pillar ? posts.filter((p) => p.pillar === post.pillar) : [];
+  const list = sameTopic.length > 1 ? sameTopic : posts;
+  return list[(list.indexOf(post) + 1) % list.length];
+};
 
 /**
  * The start of `text`, stopped partway through so it reads as unfinished: about `share` of its words

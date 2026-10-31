@@ -29,8 +29,10 @@ const BlogPost = () => {
   const pillar = getPillar(post.pillar);
   const shareUrl = canonicalUrl(`/blog/${post.slug}`);
 
-  const intro = textParagraphs(post)[0];
-  const bodyParagraphs = post.content;
+  // The highlighted question shows once, in the header: a body paragraph saying the same thing is left out
+  const plain = (text: string) =>
+    text.replace(/^(##:|>>:)/, "").replace(/[“”"]/g, "").replace(/’/g, "'").replace(/\s+/g, " ").trim().toLowerCase();
+  const bodyParagraphs = post.hook ? post.content.filter((p) => plain(p) !== plain(post.hook!)) : post.content;
   const firstTextIndex = bodyParagraphs.findIndex((p) => !isMarker(p));
 
   // Roman numeral for each "<!-- chapter -->" marker, counted in order
@@ -74,9 +76,9 @@ const BlogPost = () => {
       </section>
 
       {/* Post Header */}
-      <section className="pt-10 pb-6 bg-journal-bg">
+      <section className="pt-6 pb-4 md:pt-10 md:pb-6 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-2xl mx-auto text-center space-y-6">
+          <div className="max-w-2xl mx-auto text-center space-y-5 md:space-y-6">
             {/* Topic & Date */}
             <div className="flex items-center justify-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted animate-fade-in">
               {pillar ? (
@@ -93,32 +95,28 @@ const BlogPost = () => {
             </div>
 
             {/* Title */}
-            <h1 className="font-serif text-2xl md:text-4.5xl leading-tight text-journal-text animate-fade-in-up font-medium">
+            <h1 className="font-serif text-2xl md:text-4.5xl leading-tight text-journal-text animate-fade-in-up font-medium [text-wrap:balance]">
               {post.title}
             </h1>
 
             {/* Hook line */}
             {post.hook && (
-              <p className="text-left font-serif italic text-xl md:text-2xl leading-relaxed text-journal-text border border-journal-border/60 border-l-2 border-l-journal-champagne bg-journal-bg-secondary/30 rounded-r-[2px] px-6 py-4 animate-fade-in-delay-1">
+              <p className="text-left font-serif italic text-lg md:text-2xl leading-relaxed text-journal-text border border-journal-border/60 border-l-2 border-l-journal-champagne bg-journal-bg-secondary/30 rounded-r-[2px] px-5 py-2.5 md:px-6 md:py-3.5 animate-fade-in-delay-1">
                 {post.hook}
               </p>
             )}
 
-            {/* Intro / Excerpt */}
-            <p className="text-journal-text-secondary/90 italic font-serif text-lg md:text-xl leading-relaxed max-w-xl mx-auto animate-fade-in-delay-1 pt-4 border-t border-journal-border/30">
-              {intro}
-            </p>
           </div>
         </div>
       </section>
 
       {/* Soft Divider Before Content */}
-      <div className="w-16 h-[1px] bg-journal-border/50 mx-auto my-6"></div>
+      <div className="w-16 h-[1px] bg-journal-border/50 mx-auto my-4 md:my-6"></div>
 
       {/* Post Content */}
       <section className="pb-16 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
-          <article ref={articleRef} className="max-w-2xl mx-auto font-sans text-[17px] leading-[1.85] text-journal-text-secondary space-y-7 font-light">
+          <article ref={articleRef} className="max-w-2xl mx-auto font-sans text-[17px] leading-[1.85] text-journal-text-secondary space-y-6 md:space-y-7 font-light">
             {bodyParagraphs.map((paragraph, index) => {
               if (paragraph.trim() === CHAPTER_MARK) {
                 chapterCount += 1;
@@ -127,7 +125,7 @@ const BlogPost = () => {
                     key={index}
                     role="separator"
                     aria-label={`Chapter ${chapterCount}`}
-                    className="!my-14 flex items-center justify-center gap-4 font-sans text-xs tracking-[0.3em] uppercase text-journal-gold font-medium"
+                    className="!my-10 md:!my-14 flex items-center justify-center gap-4 font-sans text-xs tracking-[0.3em] uppercase text-journal-gold font-medium"
                   >
                     <span className="w-8 h-px bg-journal-champagne/40" aria-hidden="true"></span>
                     <span className="pl-[0.3em]">{toRoman(chapterCount)}</span>
@@ -153,7 +151,7 @@ const BlogPost = () => {
                 return (
                   <blockquote
                     key={index}
-                    className="border-l-[3px] border-journal-champagne pl-6 my-10 font-serif italic text-lg md:text-xl text-journal-gold leading-relaxed py-2 opacity-0 animate-fade-in bg-journal-bg-secondary/30 pr-4 rounded-r-[2px] whitespace-pre-line"
+                    className="border-l-[3px] border-journal-champagne pl-6 my-8 md:my-10 font-serif italic text-lg md:text-xl text-journal-gold leading-relaxed py-2 opacity-0 animate-fade-in bg-journal-bg-secondary/30 pr-4 rounded-r-[2px] whitespace-pre-line"
                     style={{ animationDelay: `${0.2 + Math.min(index, 8) * 0.05}s`, animationFillMode: "forwards" }}
                   >
                     {paragraph.replace(PULL_QUOTE_MARK, "").trim()}
