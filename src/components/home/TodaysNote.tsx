@@ -18,7 +18,7 @@ const TodaysNote = () => {
       </span>
       <div className="container mx-auto px-6 lg:px-12 text-center">
         <div className="flex flex-col items-center gap-6">
-          <span className="font-signature text-5xl md:text-6xl leading-tight text-journal-gold">Today&rsquo;s note</span>
+          <span className="font-signature text-5xl md:text-6xl leading-tight text-journal-gold">Today&rsquo;s note:</span>
           {note === null && (
             <button
               type="button"
@@ -38,6 +38,13 @@ const TodaysNote = () => {
           )}
         </p>
       </div>
+      {/* Matching star on the divider line below */}
+      <span
+        aria-hidden="true"
+        className="absolute left-1/2 bottom-0 -translate-x-1/2 bg-journal-bg-secondary px-4 py-0.5 text-sm leading-none text-journal-gold"
+      >
+        ✦
+      </span>
     </section>
   );
 };

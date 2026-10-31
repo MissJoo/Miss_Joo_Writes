@@ -203,7 +203,7 @@ const Index = () => {
       {/* Free Journal / Lead Magnet Section */}
       <section className="py-10 md:py-14 bg-journal-bg border-t border-journal-border">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className={`w-full max-w-3xl mx-auto ${homeBoxStyle} text-center space-y-8`}>
+          <div className={`${homeBoxSize} ${homeBoxStyle} ${homeBoxNarrow} flex flex-col justify-center text-center space-y-4`}>
             <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">
               A Gift, From Me to You
             </span>
@@ -219,11 +219,11 @@ const Index = () => {
               <br className="hidden md:inline" /> A way to come back to yourself. It&rsquo;s FREE, and yours to keep.
             </p>
 
-            <div className="pt-2">
+            <div>
               <EmailSignupForm variant="compact" />
             </div>
 
-            <div className="pt-4">
+            <div>
               <Link 
                 to="/downloads" 
                 className="text-xs uppercase tracking-widest text-journal-gold hover:text-journal-text transition-colors duration-300 font-medium"

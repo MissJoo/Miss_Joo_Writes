@@ -92,11 +92,12 @@ const EmailSignupForm = ({
 
   if (variant === "compact") {
     return (
-      <form onSubmit={handleSubmit(onSubmit)} className="relative w-full max-w-xl mx-auto space-y-4">
+      <form onSubmit={handleSubmit(onSubmit)} className="relative w-full max-w-xl mx-auto space-y-3">
         <Honeypot {...register("company")} />
-        {/* Fields and button share the homepage boxes' field width */}
-        <div className={cn("flex flex-col gap-3", homeFields)}>
-          <div>
+        {/* Fields and button share the homepage boxes' field width; name and email side by side from tablets up */}
+        <div className={cn("flex flex-col gap-2", homeFields)}>
+          <div className="flex flex-col gap-2 sm:flex-row">
+          <div className="flex-1">
             <label htmlFor="name-input" className="sr-only">Name</label>
             <Input
               id="name-input"
@@ -107,7 +108,7 @@ const EmailSignupForm = ({
               disabled={isSubmitting}
             />
           </div>
-          <div>
+          <div className="flex-1">
             <label htmlFor="email-input" className="sr-only">Email address</label>
             <Input
               id="email-input"
@@ -117,6 +118,7 @@ const EmailSignupForm = ({
               className="h-12 px-6 rounded-full border-journal-border bg-journal-bg text-journal-text text-base md:text-base placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne focus-visible:border-journal-champagne"
               disabled={isSubmitting}
             />
+          </div>
           </div>
         </div>
 
