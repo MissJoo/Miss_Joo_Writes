@@ -249,7 +249,6 @@ export const suitcase = {
   locked: {
     line: "Something for everyone who left home with one suitcase.",
     opens: "{opensLong}",
-    newsletterTitle: "Get a letter the moment it opens.",
     units: { days: "Days", hours: "Hours", minutes: "Minutes", seconds: "Seconds" },
     teaserLine: "{opensShort}",
     teaserButton: "See what's inside soon",

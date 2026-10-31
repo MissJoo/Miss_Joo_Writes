@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Layout from "@/components/layout/Layout";
 import BlogPostCard from "@/components/blog/BlogPostCard";
-import NewsletterSignup, { LETTER_COPY } from "@/components/NewsletterSignup";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import { cn } from "@/lib/utils";
 import { posts, readingTime } from "@/data/posts";
 import { pillars, type PillarSlug } from "@/data/pillars";
@@ -96,7 +96,7 @@ const Blog = () => {
       {/* The Letter */}
       <section className="pb-20 md:pb-28 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
-          <NewsletterSignup source="topic-page" detail="journal" {...LETTER_COPY} />
+          <NewsletterSignup source="topic-page" detail="journal" />
         </div>
       </section>
     </Layout>

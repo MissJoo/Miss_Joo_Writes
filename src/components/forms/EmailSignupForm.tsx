@@ -5,7 +5,6 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Mail } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { homeFields } from "@/components/suitcase/SuitcaseTeasers";
 import { subscribe, SUBSCRIBE_ERROR } from "@/lib/newsletter";
@@ -104,7 +103,7 @@ const EmailSignupForm = ({
               type="text"
               placeholder="Your name"
               {...register("name")}
-              className="h-12 px-6 rounded-full border-journal-border bg-journal-bg text-journal-text placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne focus-visible:border-journal-champagne"
+              className="h-12 px-6 rounded-full border-journal-border bg-journal-bg text-journal-text text-base md:text-base placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne focus-visible:border-journal-champagne"
               disabled={isSubmitting}
             />
           </div>
@@ -115,7 +114,7 @@ const EmailSignupForm = ({
               type="email"
               placeholder="Your email address"
               {...register("email")}
-              className="h-12 px-6 rounded-full border-journal-border bg-journal-bg text-journal-text placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne focus-visible:border-journal-champagne"
+              className="h-12 px-6 rounded-full border-journal-border bg-journal-bg text-journal-text text-base md:text-base placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne focus-visible:border-journal-champagne"
               disabled={isSubmitting}
             />
           </div>
@@ -143,31 +142,33 @@ const EmailSignupForm = ({
 
   // ── Default variant (used on Downloads page) ───────────────────────────────
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="relative w-full max-w-lg mx-auto space-y-4">
+    <form onSubmit={handleSubmit(onSubmit)} className="relative w-full max-w-xl mx-auto space-y-4">
       <Honeypot {...register("company")} />
-      <div className="space-y-3">
-        <div>
+      <div className="space-y-4">
+        {/* Name and email side by side from tablets up */}
+        <div className="flex flex-col gap-3 sm:flex-row">
+        <div className="flex-1">
           <label htmlFor="default-name-input" className="sr-only">Your Name</label>
           <Input
             id="default-name-input"
             type="text"
             placeholder="Your name"
             {...register("name")}
-            className="h-12 px-6 rounded-full border-journal-border bg-journal-bg text-journal-text placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne"
+            className="h-12 px-6 rounded-full border-journal-border bg-journal-bg text-journal-text text-base md:text-base placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne"
             disabled={isSubmitting}
           />
         </div>
-        <div className="relative">
-          <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-journal-muted" />
+        <div className="flex-1">
           <label htmlFor="default-email-input" className="sr-only">Your Email Address</label>
           <Input
             id="default-email-input"
             type="email"
             placeholder="Your email address"
             {...register("email")}
-            className="h-12 pl-12 pr-6 rounded-full border-journal-border bg-journal-bg text-journal-text placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne"
+            className="h-12 px-6 rounded-full border-journal-border bg-journal-bg text-journal-text text-base md:text-base placeholder:text-journal-muted/70 focus-visible:ring-journal-champagne"
             disabled={isSubmitting}
           />
+        </div>
         </div>
         <ConsentCheckbox id="default-consent-input" className="pl-1" {...register("consent")} disabled={isSubmitting} />
         {errorMessage && (
@@ -184,9 +185,6 @@ const EmailSignupForm = ({
         {isSubmitting ? "Sending..." : ctaText}
       </Button>
 
-      <p className="text-[11px] text-journal-muted text-center font-sans leading-relaxed">
-        By signing up, you'll receive the free download and occasional updates. Unsubscribe anytime.
-      </p>
     </form>
   );
 };

@@ -5,7 +5,7 @@ import { ArrowLeft } from "lucide-react";
 import ShareButtons from "@/components/blog/ShareButtons";
 import ReadingProgress from "@/components/blog/ReadingProgress";
 import PauseHere from "@/components/blog/PauseHere";
-import NewsletterSignup, { LETTER_COPY } from "@/components/NewsletterSignup";
+import NewsletterSignup from "@/components/NewsletterSignup";
 import NotFound from "@/pages/NotFound";
 import { CHAPTER_MARK, PAUSE_MARK, cutMidSentence, getNextPost, getPost, isMarker, readingTime, textParagraphs } from "@/data/posts";
 import { getPillar, topicLabel } from "@/data/pillars";
@@ -161,7 +161,7 @@ const BlogPost = () => {
               return (
                 <p
                   key={index}
-                  className={`opacity-0 animate-fade-in whitespace-pre-line text-justify hyphens-auto sm:hyphens-manual ${
+                  className={`opacity-0 animate-fade-in whitespace-pre-line text-left sm:text-justify ${
                     index === firstTextIndex
                       ? "first-letter:text-5xl first-letter:font-serif first-letter:font-bold first-letter:text-journal-gold first-letter:float-left first-letter:mr-2 first-letter:mt-1 first-letter:leading-none"
                       : ""
@@ -218,7 +218,7 @@ const BlogPost = () => {
       {/* The Letter, last before the footer: essay, then Next page, then this */}
       <section className="py-16 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
-          <NewsletterSignup source="post" detail={post.slug} {...LETTER_COPY} />
+          <NewsletterSignup source="post" detail={post.slug} />
         </div>
       </section>
     </Layout>

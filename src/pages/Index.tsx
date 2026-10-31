@@ -161,7 +161,7 @@ const Index = () => {
       </section>
 
       {/* About Preview Section */}
-      <section className="py-10 md:py-14 bg-journal-bg-secondary">
+      <section className="py-10 md:py-14 bg-journal-bg-secondary border-t border-journal-border">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-3xl mx-auto text-center space-y-8">
             <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">About Me</h2>

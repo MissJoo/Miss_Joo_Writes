@@ -104,32 +104,33 @@ const Downloads = () => {
 
                 {/* Content */}
                 <div className="container relative z-10 mx-auto -translate-y-1 px-6 py-0 md:py-2 lg:px-12">
-                    <div className="mx-auto max-w-3xl space-y-1.5 text-center md:space-y-3">
+                    {/* One box: icon, gold label, heading, text, then the form */}
+                    <div className="mx-auto max-w-2xl space-y-4 rounded-[2px] border border-journal-border bg-journal-card px-6 py-10 text-center shadow-sm md:space-y-5 md:px-12 md:py-12">
                         {/* Icon */}
                         <div className="animate-fade-in-up">
-                            <div className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-journal-border/40 bg-journal-bg-secondary text-journal-gold md:mb-1 md:h-10 md:w-10">
-                                <BookOpen className="h-4 w-4" />
+                            <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-journal-bg-secondary text-journal-gold">
+                                <BookOpen className="h-5 w-5" />
                             </div>
                         </div>
 
-                        {/* Headline */}
-                        <h1 className="animate-fade-in-up font-serif text-xl leading-tight text-journal-text md:text-3xl">
+                        {/* Label, then headline */}
+                        <span className="block animate-fade-in-up font-sans text-[10px] font-medium uppercase tracking-[0.3em] text-journal-gold">
+                            The Reflection Journal Collection
+                        </span>
+                        <h1 className="animate-fade-in-up font-serif text-2xl leading-tight text-journal-text md:text-3xl">
                             Notes on Becoming
-                            <span className="mt-1.5 block font-sans text-xs font-light uppercase tracking-[0.22em] text-journal-muted md:mt-2 md:text-sm md:tracking-[0.25em]">
-                                The Reflection Journal Collection
-                            </span>
                         </h1>
 
                         {/* Subtext */}
-                        <p className="animate-fade-in-delay-1 mx-auto max-w-xl font-sans text-xs font-light leading-relaxed text-journal-text-secondary md:text-sm">
+                        <p className="animate-fade-in-delay-1 mx-auto max-w-lg font-sans text-sm font-light leading-relaxed text-journal-text-secondary md:text-base">
                             A collection of gentle reflections and guided prompts for women learning to slow down, understand themselves, and embrace the process of becoming.
                         </p>
 
                         {/* Email Form / Unlocked Status */}
                         <div className="animate-fade-in-delay-2 pt-1 md:pt-4">
                             {!isUnlocked ? (
-                                <div className="mx-auto flex aspect-square w-full max-w-xs flex-col justify-center space-y-2 rounded-[2px] border border-journal-border bg-journal-card p-2 shadow-sm [&_button]:h-9 [&_input]:h-9 md:space-y-3 md:p-3">
-                                    <p className="font-serif text-xs italic text-journal-text-secondary md:text-sm">
+                                <div className="mx-auto w-full max-w-xl space-y-5">
+                                    <p className="font-serif text-base italic leading-relaxed text-journal-text-secondary md:text-lg">
                                         Subscribe to receive the collection, along with occasional letters from Miss Joo Writes.
                                     </p>
                                     <EmailSignupForm 

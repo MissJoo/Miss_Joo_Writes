@@ -28,7 +28,7 @@ export const SuitcaseHomeTeaser = () => {
   return (
     <section aria-labelledby="suitcase-teaser-title" className={homeSection}>
       <div className="container mx-auto px-6 lg:px-12">
-        <div className={`${homeBoxSize} ${homeBoxStyle} ${homeBoxNarrow} grid gap-8 justify-items-center content-center text-center`}>
+        <div className={`${homeBoxSize} ${homeBoxStyle} ${homeBoxNarrow} grid gap-7 justify-items-center content-center text-center`}>
           {/* Label, heading and line, then the suitcase, then the button */}
           <div className="text-center space-y-4">
             <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">

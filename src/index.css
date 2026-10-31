@@ -292,3 +292,14 @@
 
 /* Spam-trap field on the signup forms: hidden from readers, still in the HTML for bots */
 .hp-field { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+/* Size standards for gold (primary) buttons everywhere: 48px tall, 14px text, 24px each side.
+   Element + class beats the single-class sizes set on each button. The smaller buttons carry .btn-secondary. */
+a.bg-gold:not(.btn-secondary),
+button.bg-gold:not(.btn-secondary) {
+  height: 48px;
+  min-height: 48px;
+  font-size: 14px;
+  padding-left: 24px;
+  padding-right: 24px;
+}

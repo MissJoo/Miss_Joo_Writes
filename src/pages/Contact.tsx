@@ -77,7 +77,7 @@ const Contact = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="h-8 rounded-none border-0 border-b border-journal-border/80 bg-transparent px-0 py-1.5 font-sans text-sm text-journal-text transition-colors placeholder:text-journal-muted/50 focus-visible:border-journal-gold focus-visible:ring-0"
+                  className="h-11 rounded-none border-0 border-b border-journal-border/80 bg-transparent px-0 py-2 font-sans text-base md:text-base text-journal-text transition-colors placeholder:text-journal-muted/50 focus-visible:border-journal-gold focus-visible:ring-0"
                   placeholder="Your name"
                 />
               </div>
@@ -93,7 +93,7 @@ const Contact = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="h-8 rounded-none border-0 border-b border-journal-border/80 bg-transparent px-0 py-1.5 font-sans text-sm text-journal-text transition-colors placeholder:text-journal-muted/50 focus-visible:border-journal-gold focus-visible:ring-0"
+                  className="h-11 rounded-none border-0 border-b border-journal-border/80 bg-transparent px-0 py-2 font-sans text-base md:text-base text-journal-text transition-colors placeholder:text-journal-muted/50 focus-visible:border-journal-gold focus-visible:ring-0"
                   placeholder="your@email.com"
                 />
               </div>
@@ -109,7 +109,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   rows={1}
-                  className="min-h-10 resize-none rounded-none border-0 border-b border-journal-border/80 bg-transparent px-0 py-1.5 font-sans text-sm text-journal-text transition-colors placeholder:text-journal-muted/50 focus-visible:border-journal-gold focus-visible:ring-0"
+                  className="min-h-11 resize-none rounded-none border-0 border-b border-journal-border/80 bg-transparent px-0 py-2 font-sans text-base md:text-base text-journal-text transition-colors placeholder:text-journal-muted/50 focus-visible:border-journal-gold focus-visible:ring-0"
                   placeholder="What's on your mind?"
                 />
               </div>

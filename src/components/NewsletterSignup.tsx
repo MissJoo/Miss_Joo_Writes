@@ -22,7 +22,7 @@ type Status = { state: "idle" } | { state: "sending" } | { state: "success" } | 
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-/** The Letter's wording on the Journal page and under every essay */
+/** The Letter's wording, the same in every letter box on the site */
 export const LETTER_COPY = {
   title: "The essays I don't post anywhere else.",
   description: "One letter, only when a new essay is ready. Quiet, honest, and yours to keep.",
@@ -34,9 +34,9 @@ const NewsletterSignup = ({
   source,
   detail,
   eyebrow = "The Letter",
-  title = "New essays, straight to your inbox",
-  description = "One thoughtful letter when a new essay is published.\nNo noise, unsubscribe anytime.",
-  button = "Subscribe",
+  title = LETTER_COPY.title,
+  description = LETTER_COPY.description,
+  button = LETTER_COPY.button,
   className,
 }: NewsletterSignupProps) => {
   const id = useId();
@@ -102,7 +102,7 @@ const NewsletterSignup = ({
             disabled={status.state === "sending"}
             aria-invalid={status.state === "error"}
             aria-describedby={status.state === "error" ? `${id}-error` : undefined}
-            className="w-full sm:flex-1 h-12 shrink-0 px-5 rounded-full border border-journal-border bg-journal-bg text-journal-text text-sm placeholder:text-journal-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne"
+            className="w-full sm:flex-1 h-12 shrink-0 px-5 rounded-full border border-journal-border bg-journal-bg text-journal-text text-base placeholder:text-journal-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne"
           />
           <button
             type="submit"

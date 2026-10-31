@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { postcard, quiz, quizResult } from "@/data/quiz";
 import { suitcase, type SuitcaseIcon } from "@/data/suitcase";
 import PostcardCard, { POSTCARD_NAME_MAX, POSTCARD_NOTE_MAX, postcardLink } from "@/components/home/PostcardCard";
-import { homeBoxSize, homeBoxStyle, homeFields, homeSection, homeText } from "@/components/suitcase/SuitcaseTeasers";
+import { homeBoxNarrow, homeBoxSize, homeBoxStyle, homeFields, homeSection, homeText } from "@/components/suitcase/SuitcaseTeasers";
 
 // Same look as the Suitcase box
 const cardClass = `flex flex-col text-center ${homeBoxStyle}`;
@@ -45,7 +45,7 @@ const Quiz = () => {
   const current = quiz.questions[picks.length];
 
   return (
-    <div className={cn(cardClass, homeBoxSize, "justify-center")} aria-live="polite">
+    <div className={cn(cardClass, homeBoxSize, homeBoxNarrow, "justify-center")} aria-live="polite">
       <span className={labelClass}>{letter ? quiz.resultLabel : quiz.label}</span>
       {letter ? (
         <div key="result" className="mt-4 space-y-5 animate-fade-in motion-reduce:animate-none">
@@ -100,7 +100,7 @@ const Postcard = () => {
   const [status, setStatus] = useState<"idle" | "copied" | "messenger" | "instagram" | "tiktok" | "fallback">("idle");
   const [link, setLink] = useState("");
   const fieldClass =
-    "h-12 w-full rounded-full border border-journal-border bg-journal-bg px-6 text-left text-sm md:text-base text-journal-text placeholder:text-journal-muted/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne";
+    "h-12 w-full rounded-full border border-journal-border bg-journal-bg px-6 text-left text-base md:text-base text-journal-text placeholder:text-journal-muted/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne";
   const fieldLabel = "block mb-2 pl-6 text-left text-[11px] tracking-[0.2em] uppercase text-journal-muted font-sans font-medium";
 
   // Every pop-up starts from a blank form once it's closed
@@ -164,11 +164,11 @@ const Postcard = () => {
   };
 
   return (
-    <div className={cn(cardClass, homeBoxSize, "justify-center")}>
+    <div className={cn(cardClass, homeBoxSize, homeBoxNarrow, "justify-center")}>
       <span className={labelClass}>{postcard.label}</span>
       <h3 className={cn(headingClass, "mt-4")}>{postcard.heading}</h3>
       <p className={cn("mt-3 font-sans text-sm md:text-base font-light text-journal-text-secondary leading-relaxed", homeText)}>{postcard.line}</p>
-      <div className={cn("mt-5 space-y-4", homeFields)}>
+      <div className={cn("mt-4 space-y-3", homeFields)}>
         <div>
           <label htmlFor="postcard-name" className={fieldLabel}>
             {postcard.nameLabel}
@@ -240,11 +240,11 @@ const Postcard = () => {
           />
         </div>
       </div>
-      <div className="mt-5 sm:mt-6">
+      <div className="mt-4 sm:mt-5">
         <button
           type="button"
           onClick={create}
-          className="inline-flex h-11 items-center justify-center rounded-full bg-gold px-8 text-[11px] uppercase tracking-widest text-espresso hover:bg-gold-hover transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-journal-bg"
+          className="btn-secondary inline-flex h-10 items-center justify-center rounded-full bg-gold px-[18px] text-sm uppercase tracking-widest text-espresso hover:bg-gold-hover transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-journal-bg"
         >
           {postcard.create}
         </button>
@@ -293,7 +293,7 @@ const Postcard = () => {
                   value={link}
                   onFocus={(e) => e.currentTarget.select()}
                   aria-label="Share link"
-                  className="mt-3 h-11 w-full rounded-[3px] border border-journal-border bg-journal-bg px-3 text-center text-sm text-journal-text"
+                  className="mt-3 h-12 w-full rounded-[3px] border border-journal-border bg-journal-bg px-4 text-center text-base text-journal-text"
                 />
               )}
               <p aria-live="polite" className="mt-2 min-h-[1rem] text-xs text-journal-muted">

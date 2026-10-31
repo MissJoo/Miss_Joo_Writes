@@ -24,7 +24,7 @@ const TodaysNote = () => {
               type="button"
               onClick={() => setNote(randomNote())}
               aria-controls="todays-note"
-              className="tn-glow inline-flex h-14 items-center gap-3 rounded-full border border-journal-gold/70 px-10 text-sm tracking-[0.25em] uppercase text-journal-gold hover:text-journal-text hover:border-journal-gold font-sans font-medium transition-colors [transition-duration:300ms] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-journal-bg"
+              className="tn-glow inline-flex h-10 items-center gap-3 rounded-full border border-journal-gold/70 px-[18px] text-sm tracking-[0.25em] uppercase text-journal-gold hover:text-journal-text hover:border-journal-gold font-sans font-medium transition-colors [transition-duration:300ms] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-journal-bg"
             >
               Open it <span aria-hidden="true">→</span>
             </button>

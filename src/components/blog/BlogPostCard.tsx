@@ -61,14 +61,14 @@ const BlogPostCard = ({ title, excerpt, date, pillar, slug, featured = false, re
           </div>
 
           {/* Title */}
-          <h3
+          <h2
             className={cn(
               "font-serif text-journal-text group-hover:text-journal-gold transition-colors duration-300 leading-snug font-medium",
               featured ? "text-2xl lg:text-3xl" : "text-xl"
             )}
           >
             {title}
-          </h3>
+          </h2>
 
           {/* Excerpt */}
           <p className="text-journal-text-secondary font-sans leading-relaxed text-sm font-light line-clamp-3">

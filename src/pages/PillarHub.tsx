@@ -73,7 +73,6 @@ const PillarHub = ({ slug }: { slug: PillarSlug }) => {
             source="topic-page"
             detail={slug}
             className="mt-20"
-            {...(pillarPosts.length === 0 && { title: "Get the first one in your inbox." })}
           />
         </div>
       </section>
