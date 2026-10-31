@@ -73,44 +73,6 @@ const Index = () => {
 
       <TodaysNote />
 
-      {/* About Preview Section */}
-      <section className="py-10 md:py-14 bg-journal-bg-secondary">
-        <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-3xl mx-auto text-center space-y-8">
-            <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">About Me</h2>
-
-            {publicFileExists(moodPortrait.src) && (
-              <figure className="mx-auto w-[min(300px,80%)]">
-                <img
-                  src={moodPortrait.src}
-                  alt="Miss Joo"
-                  width={600}
-                  height={750}
-                  loading="lazy"
-                  decoding="async"
-                  className="aspect-[4/5] w-full object-cover rounded-[3px] border border-journal-border shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10)]"
-                />
-                <figcaption className="mt-4 font-serif italic text-lg text-journal-text-secondary leading-relaxed">
-                  {moodPortrait.caption}
-                </figcaption>
-              </figure>
-            )}
-
-            <div className="pt-2">
-              <Button 
-                variant="outline" 
-                className="rounded-full border-0 bg-gold text-espresso hover:bg-gold-hover hover:text-espresso tracking-widest uppercase text-[11px] h-11 px-8 transition-colors duration-300" 
-                asChild
-              >
-                <Link to="/about">
-                  Read My Story
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Latest Journal Entries Section */}
       <section className="py-10 md:py-14 bg-journal-bg border-t border-journal-border">
         <div className="container mx-auto px-6 lg:px-12">
@@ -170,6 +132,8 @@ const Index = () => {
 
       <WeeklyLetter />
 
+      <QuizAndPostcard />
+
       {/* The Edit Section */}
       <section aria-labelledby="the-edit-title" className={homeSection}>
         <div className="container mx-auto px-6 lg:px-12">
@@ -191,6 +155,44 @@ const Index = () => {
               >
                 Explore The Edit
               </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* About Preview Section */}
+      <section className="py-10 md:py-14 bg-journal-bg-secondary">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="max-w-3xl mx-auto text-center space-y-8">
+            <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">About Me</h2>
+
+            {publicFileExists(moodPortrait.src) && (
+              <figure className="mx-auto w-[min(300px,80%)]">
+                <img
+                  src={moodPortrait.src}
+                  alt="Miss Joo"
+                  width={600}
+                  height={750}
+                  loading="lazy"
+                  decoding="async"
+                  className="aspect-[4/5] w-full object-cover rounded-[3px] border border-journal-border shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10)]"
+                />
+                <figcaption className="mt-4 font-serif italic text-lg text-journal-text-secondary leading-relaxed">
+                  {moodPortrait.caption}
+                </figcaption>
+              </figure>
+            )}
+
+            <div className="pt-2">
+              <Button 
+                variant="outline" 
+                className="rounded-full border-0 bg-gold text-espresso hover:bg-gold-hover hover:text-espresso tracking-widest uppercase text-[11px] h-11 px-8 transition-colors duration-300" 
+                asChild
+              >
+                <Link to="/about">
+                  Read My Story
+                </Link>
+              </Button>
             </div>
           </div>
         </div>
@@ -232,8 +234,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
-      <QuizAndPostcard />
     </Layout>
   );
 };

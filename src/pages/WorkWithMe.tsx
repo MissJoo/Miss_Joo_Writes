@@ -19,12 +19,6 @@ const offerings = [
   },
 ];
 
-const platforms = [
-  { name: "The Journal", detail: "missjoowrites.com", href: "/blog", internal: true },
-  { name: "Instagram", detail: "@missjooo98", href: "https://www.instagram.com/missjooo98/" },
-  { name: "TikTok", detail: "@missjooo98", href: "https://www.tiktok.com/@missjooo98" },
-];
-
 const WorkWithMe = () => (
   <Layout>
     <section className="border-b border-journal-border/30 bg-journal-bg py-20 md:py-28">
@@ -77,40 +71,7 @@ const WorkWithMe = () => (
       </div>
     </section>
 
-    <section className="py-16 md:py-20 bg-journal-bg">
-      <div className="container mx-auto px-6 lg:px-12">
-        <div className="max-w-3xl mx-auto">
-          <h2 className="font-serif text-2xl md:text-3xl text-journal-text text-center mb-10">Platforms</h2>
-          <ul className="grid gap-4 sm:grid-cols-3 text-center">
-            {platforms.map((platform) => {
-              const content = (
-                <>
-                  <span className="block font-serif text-lg text-journal-text">{platform.name}</span>
-                  <span className="block text-xs tracking-wide text-journal-muted mt-1">{platform.detail}</span>
-                </>
-              );
-              const className =
-                "block p-6 border border-journal-border bg-journal-card rounded-[2px] hover:border-journal-champagne/60 transition-colors";
-              return (
-                <li key={platform.name}>
-                  {platform.internal ? (
-                    <Link to={platform.href} className={className}>
-                      {content}
-                    </Link>
-                  ) : (
-                    <a href={platform.href} target="_blank" rel="noopener noreferrer" className={className}>
-                      {content}
-                    </a>
-                  )}
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section className="pb-20 md:pb-28 bg-journal-bg">
+    <section className="pt-16 md:pt-20 pb-20 md:pb-28 bg-journal-bg">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="max-w-2xl mx-auto text-center space-y-5 border border-journal-border bg-journal-card px-6 py-12 rounded-[2px] shadow-sm">
           <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">Collaborations &amp; Press</span>
