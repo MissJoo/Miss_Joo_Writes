@@ -85,7 +85,7 @@ const NewsletterSignup = ({
       {status.state === "success" ? (
         <PostcardConfirmation />
       ) : (
-        <form onSubmit={handleSubmit} noValidate className="relative max-w-md mx-auto pt-2 space-y-4">
+        <form onSubmit={handleSubmit} noValidate className="relative max-w-xl mx-auto pt-2 space-y-4">
           <Honeypot value={company} onChange={(event) => setCompany(event.target.value)} />
           <div className="flex flex-col sm:flex-row gap-3">
           <label htmlFor={`${id}-email`} className="sr-only">
@@ -107,7 +107,7 @@ const NewsletterSignup = ({
           <button
             type="submit"
             disabled={status.state === "sending"}
-            className="h-12 px-8 rounded-full bg-gold hover:bg-gold-hover text-espresso tracking-[0.2em] uppercase text-[11px] font-medium transition-colors duration-300 disabled:opacity-60"
+            className="h-12 shrink-0 whitespace-nowrap px-6 rounded-full bg-gold hover:bg-gold-hover text-espresso tracking-[0.15em] uppercase text-[11px] font-medium transition-colors duration-300 disabled:opacity-60"
           >
             {status.state === "sending" ? "Sending…" : button}
           </button>
