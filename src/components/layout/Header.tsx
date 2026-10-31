@@ -16,6 +16,8 @@ interface NavLink {
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  // Phone menu: Journal's topics stay folded until Journal is tapped
+  const [isJournalOpen, setIsJournalOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
@@ -164,38 +166,75 @@ const Header = () => {
             isMenuOpen ? "max-h-screen py-8 mt-4" : "max-h-0"
           )}
         >
-          <div className="flex flex-col gap-6 items-center">
-            {navLinks.map((link, index) => (
-              <div
-                key={link.path}
-                className="flex flex-col items-center gap-2 opacity-0 animate-fade-in"
-                style={{ animationDelay: `${index * 0.08}s`, animationFillMode: "forwards" }}
-              >
-                <Link
-                  to={link.path}
-                  onClick={() => setIsMenuOpen(false)}
-                  className={cn(
-                    "text-lg tracking-[0.2em] font-serif uppercase transition-all duration-300 py-1",
-                    isActive(link.path) ? "text-journal-gold font-medium" : "text-journal-text dark:text-journal-text-secondary hover:text-journal-gold",
-                  )}
+          {/* Even 26px gaps. Letter spacing also trails the last letter, so a matching left padding keeps each word centred. */}
+          <div className="flex flex-col gap-[26px] items-center">
+            {navLinks.map((link, index) => {
+              const itemClass = (active: boolean) =>
+                cn(
+                  "text-lg tracking-[0.2em] pl-[0.2em] font-serif uppercase transition-all duration-300",
+                  active ? "text-journal-gold font-medium" : "text-journal-text dark:text-journal-text-secondary hover:text-journal-gold",
+                );
+              return (
+                <div
+                  key={link.path}
+                  className="flex flex-col items-center opacity-0 animate-fade-in"
+                  style={{ animationDelay: `${index * 0.08}s`, animationFillMode: "forwards" }}
                 >
-                  {link.name}
-                </Link>
-                {link.children?.map((child) => (
-                    <Link
-                      key={child.path}
-                      to={child.path}
-                      onClick={() => setIsMenuOpen(false)}
-                      className={cn(
-                        "text-[11px] tracking-[0.25em] uppercase font-sans transition-colors duration-300",
-                        isActive(child.path) ? "text-journal-gold" : "text-journal-muted hover:text-journal-gold",
-                      )}
-                    >
-                      {child.name}
+                  {link.children ? (
+                    <>
+                      {/* Journal opens and closes its topics */}
+                      <button
+                        type="button"
+                        onClick={() => setIsJournalOpen(!isJournalOpen)}
+                        aria-expanded={isJournalOpen}
+                        aria-controls="mobile-journal-topics"
+                        className={cn(itemClass(isJournalOpen || isLinkActive(link)), "inline-flex items-center gap-2")}
+                      >
+                        {/* Same width as the arrow, so the word itself stays centred */}
+                        <span aria-hidden="true" className="w-[14px]" />
+                        {link.name}
+                        <ChevronDown
+                          size={14}
+                          aria-hidden="true"
+                          className={cn("text-journal-gold transition-transform duration-300", isJournalOpen && "rotate-180")}
+                        />
+                      </button>
+                      <div
+                        id="mobile-journal-topics"
+                        aria-hidden={!isJournalOpen}
+                        className={cn(
+                          "grid transition-[grid-template-rows,opacity,margin] duration-300 ease-out",
+                          isJournalOpen ? "grid-rows-[1fr] opacity-100 mt-4" : "grid-rows-[0fr] opacity-0",
+                        )}
+                      >
+                        <div className="overflow-hidden">
+                          <div className="flex flex-col items-center gap-[14px] border-y border-journal-champagne/40 py-4 px-6">
+                            {link.children.map((child) => (
+                              <Link
+                                key={child.path}
+                                to={child.path}
+                                tabIndex={isJournalOpen ? undefined : -1}
+                                onClick={() => setIsMenuOpen(false)}
+                                className={cn(
+                                  "text-[11px] tracking-[0.18em] pl-[0.18em] uppercase font-sans transition-colors duration-300",
+                                  isActive(child.path) ? "text-journal-gold" : "text-journal-muted hover:text-journal-gold",
+                                )}
+                              >
+                                {child.name}
+                              </Link>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    </>
+                  ) : (
+                    <Link to={link.path} onClick={() => setIsMenuOpen(false)} className={itemClass(isActive(link.path))}>
+                      {link.name}
                     </Link>
-                  ))}
-              </div>
-            ))}
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
       </nav>
