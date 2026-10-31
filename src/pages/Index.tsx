@@ -163,6 +163,10 @@ const Index = () => {
       {/* About Preview Section: photo left and text right from laptops up, stacked on phones */}
       <section className="py-10 lg:py-20 bg-journal-bg-secondary border-t border-journal-border">
         <div className="container mx-auto px-6 lg:px-12">
+          {/* Laptops and up: the label sits above both columns (phones show it under the photo instead) */}
+          <span className="hidden lg:block mb-10 text-center text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium">
+            About Miss Joo
+          </span>
           <div
             className={`max-w-5xl mx-auto grid gap-8 items-center lg:items-stretch ${publicFileExists(moodPortrait.src) ? "lg:grid-cols-[2fr_3fr] lg:gap-14" : ""}`}
           >
@@ -179,10 +183,10 @@ const Index = () => {
             )}
 
             <div className="space-y-5 text-center lg:text-left">
-              <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">
+              <span className="lg:hidden text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">
                 About Miss Joo
               </span>
-              <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">Meet Miss Joo</h2>
+              <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text lg:!mt-0">Meet Miss Joo</h2>
               <div className="space-y-4 text-journal-text-secondary font-sans text-sm md:text-base font-light leading-relaxed sm:text-justify">
                 <p className="font-serif italic text-lg md:text-xl text-journal-text">Hi, I&rsquo;m Joo.</p>
                 <p>
