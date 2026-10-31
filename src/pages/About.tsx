@@ -65,7 +65,7 @@ const About = () => {
             </p>
 
             <p>
-              If you found your way here, maybe you are also in a season of becoming. Maybe you are learning to let go, to choose yourself, to feel deeply without being ashamed of it, or to find meaning in the things you once thought would break you.
+              Perhaps, as you read through these pages, you&rsquo;ll find thoughts that feel familiar, words for things you&rsquo;ve struggled to express, or perspectives that invite you to see things a little differently. I hope you find something here that makes you pause and feel understood.
             </p>
 
             <p>
@@ -95,12 +95,12 @@ const About = () => {
       <section className="py-16 md:py-20 bg-journal-bg-secondary">
         <div className="container mx-auto px-6 lg:px-12 text-center space-y-6 max-w-xl">
           <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">
-            Let's Connect
+            Let&rsquo;s Stay in Touch
           </span>
-          <h2 className="font-serif text-2xl text-journal-text">Let's connect</h2>
+          <h2 className="font-serif text-2xl text-journal-text">A little more beyond the pages.</h2>
           
           <p className="text-journal-text-secondary text-sm md:text-base font-light leading-relaxed">
-            For visual stories, everyday moments, and behind-the-scenes glimpses, find me on Instagram.
+            Follow along for everyday moments, visual stories, and little glimpses of life beyond the journal. I&rsquo;d love to hear from you, too.
           </p>
 
           <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">

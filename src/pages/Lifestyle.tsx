@@ -1,7 +1,6 @@
 import Layout from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import type { ReactNode } from "react";
-import { Button } from "@/components/ui/button";
 import { curatedEdit } from "@/data/curated-edit";
 import { publicFileExists } from "@/lib/publicFiles";
 
@@ -153,17 +152,21 @@ const Lifestyle = () => {
           </div>
 
           <div className="max-w-2xl mx-auto text-center mt-20 p-8 border border-journal-border bg-journal-card rounded-[2px] space-y-4">
-            <h3 className="font-serif text-xl text-journal-text">Every good story starts somewhere.</h3>
-            <p className="text-journal-text-secondary text-xs md:text-sm font-light max-w-md mx-auto leading-relaxed">
-              If you have something meaningful to share, I&rsquo;d love to explore how we can bring it to life through
-              thoughtful content and storytelling.
+            <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">
+              Brands &amp; Makers
+            </span>
+            <h3 className="font-serif text-2xl md:text-3xl text-journal-text">Made something with intention?</h3>
+            <p className="text-journal-text-secondary text-sm md:text-base font-light max-w-xl mx-auto leading-relaxed">
+              I love discovering and collaborating with brands, spaces and makers who value quality, beauty and thoughtful
+              living. If that sounds like you, I&rsquo;d love to hear your story.
             </p>
             <div className="pt-2">
-              <Button variant="outline" className="rounded-full border border-journal-border hover:bg-gold hover:border-gold hover:text-espresso transition-all uppercase tracking-widest text-[11px] h-10 px-8" asChild>
-                <Link to="/contact">
-                  Let's Collaborate
-                </Link>
-              </Button>
+              <Link
+                to="/contact"
+                className="inline-flex h-11 items-center rounded-full bg-gold px-8 text-[11px] uppercase tracking-widest text-espresso hover:bg-gold-hover transition-colors"
+              >
+                Start a conversation
+              </Link>
             </div>
           </div>
         </div>

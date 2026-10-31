@@ -94,20 +94,20 @@ export const postcard = {
 export const moreBoxes = [
   {
     title: "The Curated Edit",
-    line: "Beauty, places, pieces, and little moments worth remembering.",
-    link: "Explore The Edit",
+    line: "A considered collection of beauty, places, personal style and little things worth remembering.",
+    link: "Discover The Edit",
     href: "/lifestyle",
   },
   {
     title: "From the Feed",
-    line: "Small moments shared on social, and the longer essays behind them.",
-    link: "Follow @missjooo98",
+    line: "Everyday moments, shared on Instagram and TikTok, with the stories that go beyond the scroll.",
+    link: "Follow along",
     href: "https://www.instagram.com/missjooo98/",
   },
   {
     title: "Free Journal",
-    line: "Notes on Becoming, a gentle reflection journal for women learning to slow down.",
-    link: "Get the journal",
+    line: "Notes on Becoming, a gentle space for reflection, self-discovery and finding your way back to yourself.",
+    link: "Explore the journal",
     href: "/downloads",
   },
 ];

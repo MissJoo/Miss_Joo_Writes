@@ -63,10 +63,10 @@ const Header = () => {
           .map((pillar) => ({ name: pillar.name, path: `/${pillar.slug}` })),
       ],
     },
-    { name: "Free Journal", path: "/downloads" },
     { name: "The Edit", path: "/lifestyle" },
     { name: "About", path: "/about" },
     { name: "Work With Me", path: "/work-with-me" },
+    { name: "Free Journal", path: "/downloads" },
     { name: "Contact", path: "/contact" },
   ];
 

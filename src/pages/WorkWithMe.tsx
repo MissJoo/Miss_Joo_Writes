@@ -66,8 +66,9 @@ const WorkWithMe = () => (
           </h2>
           <ul className="grid gap-6 md:grid-cols-3">
             {offerings.map((offering) => (
-              <li key={offering.title} className="p-8 bg-journal-card border border-journal-border rounded-[2px] space-y-3">
+              <li key={offering.title} className="p-8 bg-journal-card border border-journal-border rounded-[2px] space-y-3 text-center">
                 <h3 className="font-serif text-xl text-journal-text">{offering.title}</h3>
+                <div className="w-8 h-px bg-journal-champagne/40 mx-auto"></div>
                 <p className="text-sm text-journal-text-secondary font-light leading-relaxed">{offering.body}</p>
               </li>
             ))}
@@ -115,8 +116,8 @@ const WorkWithMe = () => (
           <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">Collaborations &amp; Press</span>
           <h2 className="font-serif text-2xl md:text-3xl text-journal-text">Let&rsquo;s tell a story worth remembering.</h2>
           <p className="text-journal-text-secondary text-sm md:text-base font-light leading-relaxed max-w-lg mx-auto">
-            For brand partnerships, press and media kit requests, send a short note about your brand and the story
-            you&rsquo;d like to tell. I read every message personally.
+            For brand partnerships, press enquiries and media kit requests, send me a note about your brand and the story
+            you&rsquo;d like to share. I read every message personally.
           </p>
           <p className="font-serif text-xl text-journal-text select-all">{CONTACT_EMAIL}</p>
           <div className="pt-2">
@@ -125,7 +126,7 @@ const WorkWithMe = () => (
               onClick={() => composeEmail("Collaboration with Miss Joo")}
               className="inline-flex h-11 items-center rounded-full bg-gold px-8 text-[11px] uppercase tracking-widest text-espresso hover:bg-gold-hover transition-colors"
             >
-              Start a conversation
+              Send an inquiry
             </button>
           </div>
         </div>
