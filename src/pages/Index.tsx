@@ -137,7 +137,13 @@ const Index = () => {
       {/* The Edit Section */}
       <section aria-labelledby="the-edit-title" className={homeSection}>
         <div className="container mx-auto px-6 lg:px-12">
-          <div className={`${homeBoxSize} ${homeBoxStyle} ${homeBoxNarrow} flex flex-col justify-center text-center space-y-5`}>
+          {/* The photo is never cropped. Tablets and up: the box takes the photo's 3:2 shape and the photo fills it.
+              Phones are too narrow for that, so the whole photo runs along the bottom, with its own wall colour
+              (#2B190D) filling the space above for the text. */}
+          <div
+            className={`${homeBoxSize} ${homeBoxStyle} flex flex-col justify-center text-center space-y-5 bg-no-repeat bg-[length:100%_auto] bg-bottom max-md:justify-start max-md:pb-[calc((100vw_-_3rem)*2/3_+_1rem)] md:!min-h-0 md:aspect-[3/2] md:bg-cover md:bg-center md:justify-start md:pt-[8%]`}
+            style={{ backgroundImage: "url(/assets/home/the-edit-bg.webp)", backgroundColor: "#2b190d" }}
+          >
             <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">
               Beauty · Places · Little Finds
             </span>
@@ -145,8 +151,8 @@ const Index = () => {
               The Edit
             </h2>
             <div className="w-12 h-px bg-journal-champagne/40 mx-auto"></div>
-            <p className={`text-journal-text-secondary font-light text-sm md:text-base ${homeText}`}>
-              Beauty, places, and the little finds that make ordinary days feel softer.
+            <p className={`text-journal-text-secondary font-light text-sm md:text-base ${homeText} md:max-w-md`}>
+              A considered collection of places, discoveries and little things that make everyday life feel more beautiful.
             </p>
             <div className="pt-2">
               <Link
