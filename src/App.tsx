@@ -14,6 +14,8 @@ import BlogPost from "./pages/BlogPost";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Lifestyle from "./pages/Lifestyle";
+import EditCategory from "./pages/EditCategory";
+import EditStory from "./pages/EditStory";
 import Downloads from "./pages/Downloads";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import Terms from "./pages/Terms";
@@ -42,6 +44,8 @@ const App = () => (
         <Route path="/blog/:slug" element={<BlogPost />} />
         <Route path="/about" element={<About />} />
         <Route path="/lifestyle" element={<Lifestyle />} />
+        <Route path="/lifestyle/:category" element={<EditCategory />} />
+        <Route path="/lifestyle/:category/:story" element={<EditStory />} />
         <Route path="/shared-experiences" element={<Lifestyle />} />
         <Route path="/downloads" element={<Downloads />} />
         <Route path="/contact" element={<Contact />} />

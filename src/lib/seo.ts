@@ -1,5 +1,7 @@
 import { getPost, posts, type Post } from "@/data/posts";
 import { getPillar, pillars } from "@/data/pillars";
+import { editPaths, getEditCategory, getEditStory, hasStory } from "@/data/edit-categories";
+import { publicFileExists } from "@/lib/publicFiles";
 
 export const SITE_URL = "https://missjoowrites.com";
 export const SITE_NAME = "Miss Joo";
@@ -210,6 +212,34 @@ export const getPageMeta = (rawPathname: string): PageMeta => {
     };
   }
 
+  // The Edit's category pages (/lifestyle/<category>) and story pages (/lifestyle/<category>/<story>)
+  const editMatch = pathname.match(/^\/lifestyle\/([^/]+)(?:\/([^/]+))?$/);
+  if (editMatch) {
+    const category = getEditCategory(editMatch[1]);
+    if (!category) return NOT_FOUND_META;
+    if (!editMatch[2]) {
+      return {
+        title: `${category.name} | The Edit | Miss Joo`,
+        description: category.intro,
+        canonical,
+        image: absolute(category.image.src),
+        type: "website",
+        jsonLd: [],
+      };
+    }
+    const story = getEditStory(category, editMatch[2]);
+    if (!story) return NOT_FOUND_META;
+    return {
+      title: `${story.title} | ${category.name} | Miss Joo`,
+      description: story.intro ?? `${story.title}, from ${category.name} in The Edit by Miss Joo.`,
+      canonical,
+      image: absolute(publicFileExists(story.image) ? story.image : category.image.src),
+      type: hasStory(story) ? "article" : "website",
+      noindex: !hasStory(story),
+      jsonLd: [],
+    };
+  }
+
   const page = staticPages[pathname];
   if (page) {
     return {
@@ -261,6 +291,9 @@ export const getSitemapRoutes = () => {
       path: `/blog/${post.slug}`,
       lastmod: post.dateModified ?? post.datePublished,
     })),
+    ...editPaths()
+      .filter((page) => page.indexable)
+      .map((page) => ({ path: page.path, lastmod: SITE_PAGES_UPDATED })),
   ];
 };
 
@@ -277,6 +310,10 @@ export const getRedirects = () =>
 export const getPrerenderRoutes = () => [
   ...getSitemapRoutes().map((route) => route.path),
   ...Object.keys(staticPages).filter((path) => staticPages[path].canonicalPath || staticPages[path].noindex),
+  // The Edit's "Story coming soon" pages: built so their links work, but kept out of the sitemap
+  ...editPaths()
+    .filter((page) => !page.indexable)
+    .map((page) => page.path),
 ];
 
 const escapeAttr = (value: string) =>

@@ -17,7 +17,7 @@ const Lifestyle = () => {
             </h1>
             <div className="w-12 h-px bg-journal-champagne/40 mx-auto mt-2"></div>
             <p className="text-journal-text-secondary font-sans text-sm md:text-base font-light max-w-lg mx-auto leading-relaxed">
-              Beauty, places, and the little finds that make ordinary days feel softer.
+              A considered collection of beauty, places and the little finds that make everyday life feel softer.
             </p>
           </div>
         </div>
@@ -26,12 +26,13 @@ const Lifestyle = () => {
       {/* Grid Content */}
       <section className="py-16 lg:py-24 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12 max-w-5xl">
-          {/* Four categories: each photo shown whole (2:3), its text over the lower part on a soft dark fade */}
+          {/* Four categories, each opening its category page. Photo shown whole (2:3), text over its lower part. */}
           <div className="grid gap-6 md:grid-cols-2 md:gap-8">
             {editCategories.map((category) => (
-              <article
-                key={category.name}
-                className="relative aspect-[2/3] overflow-hidden rounded-[3px] border border-journal-border bg-journal-card shadow-sm"
+              <Link
+                key={category.slug}
+                to={`/lifestyle/${category.slug}`}
+                className="group relative block aspect-[2/3] overflow-hidden rounded-[3px] border border-journal-border bg-journal-card shadow-sm transition-colors duration-300 hover:border-journal-champagne/60"
               >
                 <img
                   src={category.image.src}
@@ -42,18 +43,12 @@ const Lifestyle = () => {
                   decoding="async"
                   className="absolute inset-0 h-full w-full object-cover"
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent px-6 pb-7 pt-28 md:px-8 md:pb-8 space-y-3">
-                  <span className="block font-sans text-[10px] font-medium uppercase tracking-[0.3em] text-journal-champagne">
-                    {category.number} · {category.name}
-                  </span>
-                  <h2 className="font-serif text-2xl md:text-3xl leading-snug text-[#f3e9dc]">{category.headline}</h2>
-                  <p className="font-sans text-sm font-light leading-relaxed text-[#f3e9dc]/85">{category.text}</p>
-                  {category.tag && (
-                    <p className="font-sans text-[10px] font-medium uppercase tracking-[0.25em] text-journal-champagne">{category.tag}</p>
-                  )}
-                  <p className="font-serif italic text-base md:text-lg text-[#f3e9dc]">&ldquo;{category.quote}&rdquo;</p>
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent px-6 pb-7 pt-24 md:px-8 md:pb-8 space-y-3">
+                  <h2 className="font-serif text-2xl md:text-3xl leading-snug text-[#f3e9dc]">{category.name}</h2>
+                  <p className="font-sans text-sm font-light leading-relaxed text-[#f3e9dc]/85">{category.cardText}</p>
+                  <span aria-hidden="true" className="block font-sans text-lg text-journal-champagne transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
 
