@@ -6,7 +6,7 @@ const Lifestyle = () => {
   return (
     <Layout>
       {/* Page Header */}
-      <section className="flex min-h-[calc(100svh-85px)] items-center border-b border-journal-border/30 bg-journal-bg py-12 md:min-h-[calc(100svh-5rem)] md:py-16">
+      <section className="bg-journal-bg pt-24 pb-10 lg:pt-28 lg:pb-12">
         <div className="container mx-auto px-6 lg:px-12 text-center">
           <div className="max-w-2xl mx-auto space-y-4">
             <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">
@@ -16,7 +16,7 @@ const Lifestyle = () => {
               The Edit
             </h1>
             <div className="w-12 h-px bg-journal-champagne/40 mx-auto mt-2"></div>
-            <p className="text-journal-text-secondary font-sans text-sm md:text-base font-light max-w-lg mx-auto leading-relaxed">
+            <p className="text-journal-text-secondary font-serif italic text-lg md:text-xl max-w-lg mx-auto leading-relaxed">
               A considered collection of beauty, places and the little finds that make everyday life feel softer.
             </p>
           </div>
@@ -24,7 +24,7 @@ const Lifestyle = () => {
       </section>
 
       {/* Grid Content */}
-      <section className="py-16 lg:py-24 bg-journal-bg">
+      <section className="pb-16 lg:pb-24 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12 max-w-5xl">
           {/* Four categories, each opening its category page. Photo shown whole (2:3), text over its lower part. */}
           <div className="grid gap-6 md:grid-cols-2 md:gap-8">
