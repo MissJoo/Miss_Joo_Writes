@@ -23,7 +23,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) .sc-theme {
-    --sc-bg: #2a1f18;
+    --sc-bg: #352821;
     --sc-surface: #33261d;
     --sc-fg: #f3e9dc;
     --sc-muted: #b39e89;
@@ -42,7 +42,7 @@
   }
 }
 :root[data-theme="dark"] .sc-theme {
-  --sc-bg: #2a1f18;
+  --sc-bg: #352821;
   --sc-surface: #33261d;
   --sc-fg: #f3e9dc;
   --sc-muted: #b39e89;

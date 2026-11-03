@@ -8,13 +8,18 @@ interface EditPhotoProps {
   className?: string;
   /** Lazy for cards further down the page; eager for the main photo of a page */
   eager?: boolean;
+  /** Shown while `src` doesn't exist yet, e.g. the category photo standing in for a story's own photo */
+  fallback?: string;
 }
 
-/** A portrait photo for The Edit, shown whole (2:3). Until its file exists, a labelled placeholder takes its place. */
-const EditPhoto = ({ src, alt, className, eager }: EditPhotoProps) =>
-  publicFileExists(src) ? (
+/**
+ * A photo for The Edit. Shows `src`; until that file exists, `fallback`; failing both, a labelled placeholder.
+ */
+const EditPhoto = ({ src, alt, className, eager, fallback }: EditPhotoProps) => {
+  const shown = publicFileExists(src) ? src : publicFileExists(fallback) ? fallback : undefined;
+  return shown ? (
     <img
-      src={src}
+      src={shown}
       alt={alt}
       width={900}
       height={1350}
@@ -36,5 +41,6 @@ const EditPhoto = ({ src, alt, className, eager }: EditPhotoProps) =>
       </span>
     </div>
   );
+};
 
 export default EditPhoto;

@@ -5,7 +5,8 @@
 // - Category photos (the cards on The Edit page) are in public/assets/edit/.
 // - Café & Dining, Places & Travel and Soft Living use their one category photo for every story,
 //   so replacing that one file updates their Featured Story, Collection cards and story pages together.
-// - Beauty & Style stories each have their own photo in public/assets/edit/stories/<story>.webp.
+// - Beauty & Style stories each have their own photo spot in public/assets/edit/stories/<story>.webp;
+//   until a story has its own photo, the Beauty & Style category photo stands in for it.
 
 export interface EditStory {
   slug: string;

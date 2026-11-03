@@ -30,7 +30,7 @@ const EditCategory = () => {
             to={storyPath(category, featured)}
             className="group mt-10 grid overflow-hidden rounded-[3px] border border-journal-border bg-journal-card shadow-sm transition-colors duration-300 hover:border-journal-champagne/60 md:grid-cols-[3fr_2fr]"
           >
-            <EditPhoto src={featured.image} alt={featured.title} eager className="aspect-[4/3] md:h-full" />
+            <EditPhoto src={featured.image} fallback={category.image.src} alt={featured.title} eager className="aspect-[4/3] md:h-full" />
             <div className="flex flex-col justify-center space-y-4 p-6 md:p-8">
               <span className="font-sans text-[10px] font-medium uppercase tracking-[0.3em] text-journal-gold">Featured Story</span>
               <h2 className="font-serif text-2xl md:text-3xl leading-snug text-journal-text group-hover:text-journal-gold transition-colors duration-300">
@@ -58,7 +58,7 @@ const EditCategory = () => {
                   to={storyPath(category, story)}
                   className="group flex h-full flex-col overflow-hidden rounded-[3px] border border-journal-border bg-journal-card transition-colors duration-300 hover:border-journal-champagne/60"
                 >
-                  <EditPhoto src={story.image} alt={story.title} className="aspect-[4/3]" />
+                  <EditPhoto src={story.image} fallback={category.image.src} alt={story.title} className="aspect-[4/3]" />
                   <div className="flex flex-1 flex-col space-y-2 p-5">
                     {story.title !== COMING_SOON && story.topic && (
                       <span className="font-sans text-[10px] font-medium uppercase tracking-[0.25em] text-journal-gold">

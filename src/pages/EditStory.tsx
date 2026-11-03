@@ -33,7 +33,7 @@ const EditStory = () => {
             )}
           </div>
 
-          <EditPhoto src={story.image} alt={story.title} eager className="mt-8 aspect-[16/9] rounded-[3px] border border-journal-border" />
+          <EditPhoto src={story.image} fallback={category.image.src} alt={story.title} eager className="mt-8 aspect-[16/9] rounded-[3px] border border-journal-border" />
 
           {written ? (
             <div className="mt-10 space-y-6 font-sans text-[17px] font-light leading-[1.85] text-journal-text-secondary">
@@ -61,7 +61,7 @@ const EditStory = () => {
                   to={storyPath(category, next)}
                   className="group flex h-full overflow-hidden rounded-[3px] border border-journal-border bg-journal-card transition-colors duration-300 hover:border-journal-champagne/60"
                 >
-                  <EditPhoto src={next.image} alt={next.title} className="aspect-[4/5] w-2/5 shrink-0" />
+                  <EditPhoto src={next.image} fallback={category.image.src} alt={next.title} className="aspect-[4/5] w-2/5 shrink-0" />
                   <div className="flex flex-1 flex-col justify-center space-y-3 p-4">
                     <h3 className="font-serif text-lg leading-snug text-journal-text group-hover:text-journal-gold transition-colors duration-300">
                       {next.title}

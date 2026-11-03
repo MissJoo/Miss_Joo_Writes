@@ -144,14 +144,15 @@ const Index = () => {
             className={`${homeBoxSize} ${homeBoxStyle} ${homeBoxNarrow} flex flex-col justify-start text-center space-y-5 bg-no-repeat bg-[length:100%_auto] bg-bottom max-md:pb-[calc((100vw_-_3rem)*2/3_+_1rem)] md:pt-12`}
             style={{ backgroundImage: "url(/assets/home/the-edit-bg.webp)", backgroundColor: "#2b190d" }}
           >
-            <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">
+            {/* The box is always dark (its photo and wall colour), so these colours stay the same in light mode */}
+            <span className="text-[10px] tracking-[0.35em] uppercase text-[#ddb56c] font-sans font-medium block">
               Beauty · Places · Little Finds
             </span>
-            <h2 id="the-edit-title" className="font-serif text-2xl md:text-3.5xl text-journal-text">
+            <h2 id="the-edit-title" className="font-serif text-2xl md:text-3.5xl text-[#f3e9dc]">
               The Edit
             </h2>
             <div className="w-12 h-px bg-journal-champagne/40 mx-auto"></div>
-            <p className={`text-journal-text-secondary font-light text-sm md:text-base ${homeText} md:max-w-md`}>
+            <p className={`text-[#d9c7b3] font-light text-sm md:text-base ${homeText} md:max-w-md`}>
               A considered collection of places, discoveries and little things that make everyday life feel more beautiful.
             </p>
             <div className="pt-2">
@@ -206,9 +207,10 @@ const Index = () => {
                 </p>
                 <p>I hope you find a little of yourself in these pages.</p>
               </div>
-              <p className="font-sans text-sm md:text-base font-light leading-relaxed text-journal-gold">
-                With softness,
-                <span className="block">Miss Joo</span>
+              {/* "With softness," in the paragraph font; "Miss Joo" stays in the gold script */}
+              <p className="text-journal-gold">
+                <span className="block font-sans text-sm md:text-base font-light leading-relaxed">With softness,</span>
+                <span className="block font-signature text-2xl leading-snug">Miss Joo</span>
               </p>
               <div className="pt-1">
                 <Button

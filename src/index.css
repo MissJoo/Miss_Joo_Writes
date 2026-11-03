@@ -86,7 +86,7 @@
   .dark {
     /* Dark mode, 60-30-10 around brown: warm brown (60) for pages and sections; cream and latte (30) for text and
        the lighter brown cards; champagne gold (10) only for buttons, links and accents. */
-    --journal-bg: 42 31 24; /* #2A1F18 warm brown */
+    --journal-bg: 53 40 33; /* #352821 warm cocoa brown */
     --journal-bg-secondary: 51 38 29; /* #33261D */
     --journal-card: 58 43 33; /* #3A2B21 */
     --journal-nav: 36 26 20; /* #241A14, a deeper brown menu bar */
@@ -97,7 +97,7 @@
     --journal-champagne: 212 168 90; /* #D4A85A, accents */
     --journal-border: 77 58 44; /* #4D3A2C */
 
-    --background: 24 28% 13%; /* #2A1F18 */
+    --background: 21 23% 17%; /* #352821 */
     --foreground: 34 49% 91%; /* #F3E9DC */
 
     --card: 25 28% 18%; /* #3A2B21 */
