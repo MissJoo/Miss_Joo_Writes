@@ -192,9 +192,8 @@ const Index = () => {
               <span className="lg:hidden text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">
                 About Miss Joo
               </span>
-              <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text lg:!mt-0">Meet Miss Joo</h2>
+              <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text lg:!mt-0">Hi, I&rsquo;m Joo.</h2>
               <div className="space-y-4 text-journal-text-secondary font-sans text-sm md:text-base font-light leading-relaxed sm:text-justify">
-                <p className="font-serif italic text-lg md:text-xl text-journal-text">Hi, I&rsquo;m Joo.</p>
                 <p>
                   I created this space for the thoughts, feelings, and little moments that often go unspoken. The things
                   we carry quietly, the questions we don&rsquo;t always have answers to, and the experiences that slowly
@@ -207,7 +206,7 @@ const Index = () => {
                 </p>
                 <p>I hope you find a little of yourself in these pages.</p>
               </div>
-              <p className="font-signature text-2xl text-journal-gold leading-snug">
+              <p className="font-sans text-sm md:text-base font-light leading-relaxed text-journal-gold">
                 With softness,
                 <span className="block">Miss Joo</span>
               </p>
