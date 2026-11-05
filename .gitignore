@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local AI tool files, not part of the site
+.github/agents/
+.github/hooks/
+.github/skills/
