@@ -1,23 +1,19 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { pillars } from "@/data/pillars";
-import { posts } from "@/data/posts";
 import ThemeToggle from "./ThemeToggle";
 import { scrollToTarget } from "@/lib/smoothScroll";
 
 interface NavLink {
   name: string;
   path: string;
-  /** Shown in a small dropdown under this link (desktop) or indented under it (mobile) */
-  children?: { name: string; path: string }[];
+  /** Shown as a gold outlined pill */
+  pill?: boolean;
 }
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // Phone menu: Journal's topics stay folded until Journal is tapped
-  const [isJournalOpen, setIsJournalOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
@@ -54,26 +50,15 @@ const Header = () => {
   }, [location.pathname]);
 
   const navLinks: NavLink[] = [
-    {
-      name: "Journal",
-      path: "/blog",
-      // Topics with at least one essay; the others join the list once their first essay is posted
-      children: [
-        { name: "All Entries", path: "/blog" },
-        ...pillars
-          .filter((pillar) => posts.some((post) => post.pillar === pillar.slug))
-          .map((pillar) => ({ name: pillar.name, path: `/${pillar.slug}` })),
-      ],
-    },
+    { name: "Journal", path: "/blog" },
     { name: "The Edit", path: "/lifestyle" },
     { name: "About", path: "/about" },
     { name: "Work With Me", path: "/work-with-me" },
-    { name: "Free Journal", path: "/downloads" },
     { name: "Contact", path: "/contact" },
+    { name: "Free Journal", path: "/downloads", pill: true },
   ];
 
   const isActive = (path: string) => location.pathname.replace(/\/+$/, "") === path;
-  const isLinkActive = (link: NavLink) => isActive(link.path) || !!link.children?.some((child) => isActive(child.path));
 
   return (
     <header 
@@ -98,48 +83,21 @@ const Header = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-4 lg:gap-6 xl:gap-9">
             {navLinks.map((link) => {
-              const linkClass = cn(
-                "relative inline-flex items-center gap-1 whitespace-nowrap text-[10px] lg:text-[11px] tracking-[0.12em] lg:tracking-[0.18em] xl:tracking-[0.25em] uppercase font-sans font-medium transition-all duration-300 py-1",
-                isLinkActive(link) ? "text-journal-gold" : "text-journal-text dark:text-journal-text-secondary hover:text-journal-gold",
-                "after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[1px] after:bg-journal-gold after:transition-all after:duration-500",
-                isLinkActive(link) ? "after:w-full" : "after:w-0 hover:after:w-2/3",
-              );
-              if (!link.children) {
-                return (
-                  <Link key={link.path} to={link.path} className={linkClass}>
-                    {link.name}
-                  </Link>
-                );
-              }
-              // A link with a small menu: opens on hover or keyboard focus
+              const linkClass = link.pill
+                ? cn(
+                    "inline-flex items-center whitespace-nowrap rounded-full border border-journal-gold py-1.5 pl-3 pr-[calc(0.75rem-0.12em)] lg:pl-4 lg:pr-[calc(1rem-0.18em)] xl:pr-[calc(1rem-0.25em)] text-[10px] lg:text-[11px] tracking-[0.12em] lg:tracking-[0.18em] xl:tracking-[0.25em] uppercase font-sans font-semibold text-journal-gold transition-colors duration-300 hover:bg-journal-gold/10",
+                    isActive(link.path) && "bg-journal-gold/10",
+                  )
+                : cn(
+                    "relative inline-flex items-center gap-1 whitespace-nowrap text-[10px] lg:text-[11px] tracking-[0.12em] lg:tracking-[0.18em] xl:tracking-[0.25em] uppercase font-sans font-medium transition-all duration-300 py-1",
+                    isActive(link.path) ? "text-journal-gold" : "text-journal-text dark:text-journal-text-secondary hover:text-journal-gold",
+                    "after:absolute after:bottom-0 after:left-1/2 after:-translate-x-1/2 after:h-[1px] after:bg-journal-gold after:transition-all after:duration-500",
+                    isActive(link.path) ? "after:w-full" : "after:w-0 hover:after:w-2/3",
+                  );
               return (
-                <div key={link.path} className="group relative">
-                  <Link to={link.path} className={linkClass} aria-haspopup="true">
-                    {link.name}
-                    <ChevronDown
-                      size={12}
-                      aria-hidden="true"
-                      className="transition-transform duration-300 group-hover:rotate-180 group-focus-within:rotate-180"
-                    />
-                  </Link>
-                  <div className="invisible absolute left-1/2 top-full z-50 -translate-x-1/2 pt-3 opacity-0 transition-all duration-300 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                    <ul className="min-w-[180px] border border-journal-border bg-journal-nav py-3 shadow-[0_12px_40px_-12px_rgba(139,106,67,0.25)] rounded-[2px]">
-                      {link.children.map((child) => (
-                        <li key={child.path}>
-                          <Link
-                            to={child.path}
-                            className={cn(
-                              "block whitespace-nowrap px-5 py-2 text-[11px] tracking-[0.2em] uppercase font-sans transition-colors duration-300",
-                              isActive(child.path) ? "text-journal-gold" : "text-journal-text dark:text-journal-text-secondary hover:text-journal-gold",
-                            )}
-                          >
-                            {child.name}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                </div>
+                <Link key={link.path} to={link.path} className={linkClass}>
+                  {link.name}
+                </Link>
               );
             })}
             <ThemeToggle className="-ml-2 lg:-ml-4" />
@@ -168,73 +126,25 @@ const Header = () => {
         >
           {/* Even 26px gaps. Letter spacing also trails the last letter, so a matching left padding keeps each word centred. */}
           <div className="flex flex-col gap-[26px] items-center">
-            {navLinks.map((link, index) => {
-              const itemClass = (active: boolean) =>
-                cn(
-                  "text-lg tracking-[0.2em] pl-[0.2em] font-serif uppercase transition-all duration-300",
-                  active ? "text-journal-gold font-medium" : "text-journal-text dark:text-journal-text-secondary hover:text-journal-gold",
-                );
-              return (
-                <div
-                  key={link.path}
-                  className="flex flex-col items-center opacity-0 animate-fade-in"
-                  style={{ animationDelay: `${index * 0.08}s`, animationFillMode: "forwards" }}
-                >
-                  {link.children ? (
-                    <>
-                      {/* Journal opens and closes its topics */}
-                      <button
-                        type="button"
-                        onClick={() => setIsJournalOpen(!isJournalOpen)}
-                        aria-expanded={isJournalOpen}
-                        aria-controls="mobile-journal-topics"
-                        className={cn(itemClass(isJournalOpen || isLinkActive(link)), "inline-flex items-center gap-2")}
-                      >
-                        {/* Same width as the arrow, so the word itself stays centred */}
-                        <span aria-hidden="true" className="w-[14px]" />
-                        {link.name}
-                        <ChevronDown
-                          size={14}
-                          aria-hidden="true"
-                          className={cn("text-journal-gold transition-transform duration-300", isJournalOpen && "rotate-180")}
-                        />
-                      </button>
-                      <div
-                        id="mobile-journal-topics"
-                        aria-hidden={!isJournalOpen}
-                        className={cn(
-                          "grid transition-[grid-template-rows,opacity,margin] duration-300 ease-out",
-                          isJournalOpen ? "grid-rows-[1fr] opacity-100 mt-4" : "grid-rows-[0fr] opacity-0",
-                        )}
-                      >
-                        <div className="overflow-hidden">
-                          <div className="flex flex-col items-center gap-[14px] border-y border-journal-champagne/40 py-4 px-6">
-                            {link.children.map((child) => (
-                              <Link
-                                key={child.path}
-                                to={child.path}
-                                tabIndex={isJournalOpen ? undefined : -1}
-                                onClick={() => setIsMenuOpen(false)}
-                                className={cn(
-                                  "text-[11px] tracking-[0.18em] pl-[0.18em] uppercase font-sans transition-colors duration-300",
-                                  isActive(child.path) ? "text-journal-gold" : "text-journal-muted hover:text-journal-gold",
-                                )}
-                              >
-                                {child.name}
-                              </Link>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </>
-                  ) : (
-                    <Link to={link.path} onClick={() => setIsMenuOpen(false)} className={itemClass(isActive(link.path))}>
-                      {link.name}
-                    </Link>
+            {navLinks.map((link, index) => (
+              <div
+                key={link.path}
+                className="flex flex-col items-center opacity-0 animate-fade-in"
+                style={{ animationDelay: `${index * 0.08}s`, animationFillMode: "forwards" }}
+              >
+                <Link
+                  to={link.path}
+                  onClick={() => setIsMenuOpen(false)}
+                  className={cn(
+                    "text-lg tracking-[0.2em] pl-[0.2em] font-serif uppercase transition-all duration-300",
+                    link.pill && "rounded-full border border-journal-gold py-2 pl-[calc(1.5rem+0.2em)] pr-6 font-semibold text-journal-gold hover:bg-journal-gold/10",
+                    !link.pill && (isActive(link.path) ? "text-journal-gold font-medium" : "text-journal-text dark:text-journal-text-secondary hover:text-journal-gold"),
                   )}
-                </div>
-              );
-            })}
+                >
+                  {link.name}
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
       </nav>

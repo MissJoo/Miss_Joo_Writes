@@ -32,7 +32,7 @@ export interface FeedItem {
 export const feed: FeedItem[] = [
   {
     platform: "instagram",
-    quote: "Being an OFW means that home is never just one place.",
+    quote: "Being an Expat means that home is never just one place.",
     essay: "qatar-days-filipina",
     essayTitle: "Qatar Days Through a Filipina Woman's Eyes",
     postUrl: POST_URL_PLACEHOLDER,

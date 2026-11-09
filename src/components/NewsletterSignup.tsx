@@ -1,4 +1,4 @@
-import { useId, useState, type FormEvent } from "react";
+import { useId, useState, type FormEvent, type ReactNode } from "react";
 import { subscribe, SUBSCRIBE_ERROR, type SignupSource } from "@/lib/newsletter";
 import PostcardConfirmation from "@/components/newsletter/PostcardConfirmation";
 import Honeypot from "@/components/newsletter/Honeypot";
@@ -12,9 +12,11 @@ interface NewsletterSignupProps {
   detail?: string;
   eyebrow?: string;
   title?: string;
-  description?: string;
+  description?: ReactNode;
   /** Text on the submit button */
   button?: string;
+  /** Homepage layout: text on the left and the form on the right from tablets up, with a visible email label */
+  split?: boolean;
   className?: string;
 }
 
@@ -37,6 +39,7 @@ const NewsletterSignup = ({
   title = LETTER_COPY.title,
   description = LETTER_COPY.description,
   button = LETTER_COPY.button,
+  split = false,
   className,
 }: NewsletterSignupProps) => {
   const id = useId();
@@ -66,29 +69,27 @@ const NewsletterSignup = ({
     }
   };
 
-  return (
-    <section
-      aria-labelledby={`${id}-title`}
-      className={cn(
-        "max-w-2xl mx-auto text-center space-y-5 border border-journal-border bg-journal-card px-6 py-10 md:px-12 md:py-12 rounded-[2px] shadow-sm",
-        className,
-      )}
-    >
+  const intro = (
+    <>
       <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">{eyebrow}</span>
       <h2 id={`${id}-title`} className="font-serif text-2xl md:text-3xl text-journal-text leading-tight">
         {title}
       </h2>
-      <p className="text-journal-text-secondary font-sans text-sm md:text-base font-light leading-relaxed max-w-md mx-auto whitespace-pre-line">
+      <p className={cn("text-journal-text-secondary font-sans text-sm md:text-base font-light leading-relaxed whitespace-pre-line", !split && "max-w-md mx-auto")}>
         {description}
       </p>
+    </>
+  );
 
+  const signup = (
+    <>
       {status.state === "success" ? (
         <PostcardConfirmation />
       ) : (
-        <form onSubmit={handleSubmit} noValidate className="relative max-w-xl mx-auto pt-2 space-y-4">
+        <form onSubmit={handleSubmit} noValidate className={cn("relative pt-2 space-y-4", !split && "max-w-xl mx-auto")}>
           <Honeypot value={company} onChange={(event) => setCompany(event.target.value)} />
-          <div className="flex flex-col sm:flex-row gap-3">
-          <label htmlFor={`${id}-email`} className="sr-only">
+          <div className={cn("flex flex-col gap-3", !split && "sm:flex-row")}>
+          <label htmlFor={`${id}-email`} className={split ? "-mb-1 font-sans text-sm font-medium text-journal-text" : "sr-only"}>
             Email address
           </label>
           <input
@@ -96,13 +97,13 @@ const NewsletterSignup = ({
             type="email"
             autoComplete="email"
             required
-            placeholder="Your email address"
+            placeholder={split ? "you@example.com" : "Your email address"}
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             disabled={status.state === "sending"}
             aria-invalid={status.state === "error"}
             aria-describedby={status.state === "error" ? `${id}-error` : undefined}
-            className="w-full sm:flex-1 h-12 shrink-0 px-5 rounded-full border border-journal-border bg-journal-bg text-journal-text text-base placeholder:text-journal-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne"
+            className={cn("w-full h-12 shrink-0 px-5 rounded-full border border-journal-border bg-journal-bg text-journal-text text-base placeholder:text-journal-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne", !split && "sm:flex-1")}
           />
           <button
             type="submit"
@@ -125,6 +126,29 @@ const NewsletterSignup = ({
         <p id={`${id}-error`} role="alert" className="text-red-800 dark:text-red-300 text-xs font-sans">
           {status.message}
         </p>
+      )}
+    </>
+  );
+
+  return (
+    <section
+      aria-labelledby={`${id}-title`}
+      className={cn(
+        "max-w-2xl mx-auto text-center space-y-5 border border-journal-border bg-journal-card px-6 py-10 md:px-12 md:py-12 rounded-[2px] shadow-sm",
+        split && "grid gap-6 space-y-0 text-left md:grid-cols-2 md:items-center md:gap-12",
+        className,
+      )}
+    >
+      {split ? (
+        <>
+          <div className="space-y-5">{intro}</div>
+          <div className="space-y-4">{signup}</div>
+        </>
+      ) : (
+        <>
+          {intro}
+          {signup}
+        </>
       )}
     </section>
   );

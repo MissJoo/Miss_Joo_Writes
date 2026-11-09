@@ -259,11 +259,13 @@ export const suitcase = {
 
   /** Homepage teaser */
   teaser: {
-    label: "Take What You Need",
-    /** One entry per line */
-    heading: ["Six things inside.", "One letter at the bottom."],
-    line: "Open it. See what you still carry.",
+    label: "An Interactive Reflection",
+    heading: "The Suitcase",
+    line: "Everyone who moves abroad arrives with one suitcase and slowly finds out what was really inside it. Open yours, one thing at a time.",
+    lineMobile: "Open yours, one thing at a time. About 3 minutes, and it ends with a letter.",
     button: "Open the suitcase",
+    /** Beside the button from tablets up */
+    duration: "About 3 minutes · Ends with a letter",
   },
 
   /** Featured block on the topic hub */

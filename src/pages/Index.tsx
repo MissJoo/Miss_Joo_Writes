@@ -4,9 +4,8 @@ import Layout from "@/components/layout/Layout";
 import heroImage from "@/assets/hero-image.webp";
 import FromTheFeed from "@/components/FromTheFeed";
 import ReadByMood from "@/components/ReadByMood";
-import TodaysNote from "@/components/home/TodaysNote";
 import NewsletterSignup from "@/components/NewsletterSignup";
-import QuizAndPostcard from "@/components/home/QuizAndPostcard";
+import { PostcardPopup, QuizLine } from "@/components/home/QuizAndPostcard";
 import { SuitcaseHomeTeaser, homeBoxNarrow, homeBoxSize, homeBoxStyle, homeSection, homeText } from "@/components/suitcase/SuitcaseTeasers";
 import { posts, readingTime } from "@/data/posts";
 import { moodPortrait } from "@/data/moods";
@@ -36,6 +35,9 @@ const Index = () => {
         {/* Content */}
         <div className="relative z-10 container mx-auto px-6 lg:px-12 text-center py-12">
           <div className="max-w-3xl mx-auto space-y-8">
+            <span className="block text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium animate-fade-in [text-wrap:balance]">
+              Essays on womanhood, healing and self-discovery
+            </span>
             <h1 className="font-serif text-[34px] md:text-[56px] leading-[1.15] text-journal-text animate-fade-in-up tracking-tight max-w-2xl mx-auto">
               For the thoughts we never posted, but still needed to feel.
             </h1>
@@ -43,7 +45,7 @@ const Index = () => {
             <div className="w-16 h-[1px] bg-journal-champagne/60 mx-auto my-6"></div>
 
             <p className="text-journal-text-secondary text-base md:text-lg font-sans font-light tracking-wide max-w-xl mx-auto leading-relaxed animate-fade-in-delay-1">
-              A soft editorial on womanhood, healing, growth, career, love, becoming, and the quiet moments that shape us.
+              I started this journal for the questions I could not say out loud. Start with one entry, or let your mood choose.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6 animate-fade-in-delay-2">
@@ -54,15 +56,9 @@ const Index = () => {
                 asChild
               >
                 <Link to="/blog">
-                  Enter the Journal
+                  Read the Journal
                 </Link>
               </Button>
-              <Link 
-                to={`/blog/${blogPosts[0].slug}`} 
-                className="text-journal-gold hover:text-journal-text text-xs tracking-wider uppercase underline underline-offset-4 decoration-journal-champagne font-sans font-medium py-2 transition-colors duration-300"
-              >
-                Read the latest reflection
-              </Link>
             </div>
           </div>
         </div>
@@ -70,56 +66,52 @@ const Index = () => {
 
       <ReadByMood />
 
-      <TodaysNote />
+      <SuitcaseHomeTeaser>
+        <QuizLine />
+      </SuitcaseHomeTeaser>
 
       {/* Latest Journal Entries Section */}
-      <section className="py-10 md:py-14 bg-journal-bg border-t border-journal-border">
+      <section className={homeSection}>
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="flex flex-col items-center text-center mb-12 border-b border-journal-border/50 pb-5">
+          <div className="mx-auto mb-5 md:mb-8 flex max-w-6xl items-end justify-between gap-6">
             <div>
-              <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">Latest from the Journal</h2>
-              <p className="text-[11px] text-journal-muted tracking-widest uppercase mt-1">Reflections and quiet lessons</p>
+              <h2 className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium">Latest from the Journal</h2>
+              <p className="hidden md:block mt-3 font-serif text-2xl md:text-3.5xl text-journal-text">Reflections and quiet lessons</p>
             </div>
-            <Link 
-              to="/blog" 
-              className="text-xs tracking-[0.2em] uppercase text-journal-gold hover:text-journal-text transition-colors mt-3 font-medium"
+            <Link
+              to="/blog"
+              className="hidden md:inline shrink-0 text-xs text-journal-gold underline underline-offset-4 hover:text-journal-text transition-colors"
             >
-              View All Entries
+              View all entries →
             </Link>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.slice(0, 3).map((post) => (
+          <div className="mx-auto grid max-w-6xl gap-4 md:grid-cols-3 md:gap-6">
+            {blogPosts.slice(0, 3).map((post, index) => (
               <article
                 key={post.slug}
-                className="group relative flex flex-col justify-between p-6 border border-journal-border bg-journal-card hover:border-journal-champagne/60 hover:-translate-y-[3px] transition-all duration-300 rounded-[3px] shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10),0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_-8px_rgba(139,106,67,0.22),0_4px_16px_-4px_rgba(0,0,0,0.07)] overflow-hidden"
+                className={`group relative flex-col p-6 border border-journal-border bg-journal-card hover:border-journal-champagne/60 hover:-translate-y-[3px] transition-all duration-300 rounded-[3px] shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10),0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_-8px_rgba(139,106,67,0.22),0_4px_16px_-4px_rgba(0,0,0,0.07)] overflow-hidden ${index === 2 ? "hidden md:flex" : "flex"}`}
               >
-                <div className="space-y-4 text-center">
-                  <div className="flex items-center justify-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted">
-                    <span>{topicLabel(post.pillar)}</span>
-                    <span className="w-4 h-px bg-journal-border"></span>
-                    <time dateTime={post.datePublished}>{post.date}</time>
-                    <span className="w-4 h-px bg-journal-border"></span>
-                    <span>{readingTime(post)}</span>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-[10px] tracking-[0.25em] uppercase text-journal-gold">{topicLabel(post.pillar)}</span>
+                    {index === 0 && (
+                      <span className="rounded-full bg-journal-gold px-2.5 py-0.5 text-[9px] font-semibold uppercase tracking-[0.15em] text-journal-bg">New</span>
+                    )}
                   </div>
 
                   <h3 className="font-serif text-xl group-hover:text-journal-gold transition-colors duration-300 text-journal-text leading-snug">
-                    <Link to={`/blog/${post.slug}`}>{post.title}</Link>
+                    {/* The whole card is the link */}
+                    <Link to={`/blog/${post.slug}`} className="after:absolute after:inset-0">{post.title}</Link>
                   </h3>
 
-                  <p className="text-journal-text-secondary text-sm font-light leading-relaxed line-clamp-3">
+                  <p className="hidden md:block text-journal-text-secondary text-sm font-light leading-relaxed line-clamp-3">
                     {post.cliffhanger || post.excerpt}
                   </p>
-                </div>
 
-                <div className="pt-6 border-t border-journal-border/30 mt-6 text-center">
-                  <Link 
-                    to={`/blog/${post.slug}`} 
-                    className="inline-flex items-center gap-2 text-xs uppercase tracking-widest text-journal-gold group-hover:text-journal-text transition-colors duration-300 font-medium"
-                  >
-                    <span>Read more</span>
-                    <span>→</span>
-                  </Link>
+                  <p className="text-xs font-light text-journal-muted">
+                    <time dateTime={post.datePublished}>{post.date}</time> · {readingTime(post)}
+                  </p>
                 </div>
               </article>
             ))}
@@ -127,12 +119,33 @@ const Index = () => {
         </div>
       </section>
 
-      <SuitcaseHomeTeaser />
+      {/* The Letter, then the postcard line under it */}
+      <section className={homeSection}>
+        <div className="container mx-auto px-6 lg:px-12">
+          <NewsletterSignup
+            source="homepage"
+            split
+            className="max-w-5xl"
+            description={
+              <>
+                <span className="md:hidden">One letter when a new essay is ready, plus a welcome letter with a free postcard.</span>
+                <span className="hidden md:block">One letter when a new essay is ready</span>
+                <span className="hidden md:block">A welcome letter with a free postcard</span>
+                <span className="hidden md:block">Unsubscribe any time</span>
+              </>
+            }
+          />
+          <div className="mx-auto mt-8 flex max-w-5xl flex-col gap-2 border-y border-journal-border/50 py-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="font-sans text-sm font-light text-journal-text-secondary">Miss someone far away? Send a free postcard.</p>
+            <PostcardPopup>Create a postcard →</PostcardPopup>
+          </div>
+        </div>
+      </section>
+
+      <FromTheFeed />
 
       {/* This Week's Letter (the envelope) is hidden for now. To show it again, put <WeeklyLetter /> back here
           and its import back at the top: import WeeklyLetter from "@/components/home/WeeklyLetter"; */}
-
-      <QuizAndPostcard />
 
       {/* The Edit Section */}
       <section aria-labelledby="the-edit-title" className={homeSection}>
@@ -167,16 +180,10 @@ const Index = () => {
         </div>
       </section>
 
-      {/* About Preview Section: photo left and text right from laptops up, stacked on phones */}
+      {/* About Preview Section: photo left and text right from tablets up, stacked on phones */}
       <section className="py-10 lg:py-20 bg-journal-bg-secondary border-t border-journal-border">
         <div className="container mx-auto px-6 lg:px-12">
-          {/* Laptops and up: the label sits above both columns (phones show it under the photo instead) */}
-          <span className="hidden lg:block mb-10 text-center text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium">
-            About Miss Joo
-          </span>
-          <div
-            className={`max-w-5xl mx-auto grid gap-8 items-center lg:items-stretch ${publicFileExists(moodPortrait.src) ? "lg:grid-cols-[2fr_3fr] lg:gap-14" : ""}`}
-          >
+          <div className={`max-w-5xl mx-auto grid gap-8 items-center ${publicFileExists(moodPortrait.src) ? "md:grid-cols-[295px_1fr] md:gap-14" : ""}`}>
             {publicFileExists(moodPortrait.src) && (
               <img
                 src={moodPortrait.src}
@@ -185,56 +192,29 @@ const Index = () => {
                 height={750}
                 loading="lazy"
                 decoding="async"
-                className="mx-auto w-[min(320px,85%)] lg:w-full aspect-[4/5] lg:aspect-auto lg:h-full object-cover rounded-[3px] border border-journal-border shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10)]"
+                className="w-full max-w-[320px] md:max-w-none aspect-[4/5] object-cover rounded-2xl border border-journal-border"
               />
             )}
 
-            <div className="space-y-5 text-center lg:text-left">
-              <span className="lg:hidden text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">
+            <div className="space-y-4">
+              <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">
                 About Miss Joo
               </span>
-              <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text lg:!mt-0">Hi, I&rsquo;m Joo.</h2>
-              <div className="space-y-4 text-journal-text-secondary font-sans text-sm md:text-base font-light leading-relaxed sm:text-justify">
-                <p>
-                  I created this space for the thoughts, feelings, and little moments that often go unspoken. The things
-                  we carry quietly, the questions we don&rsquo;t always have answers to, and the experiences that slowly
-                  change the way we see ourselves.
-                </p>
-                <p>
-                  Here, you&rsquo;ll find reflections on womanhood, relationships, self-discovery, work, and life abroad.
-                  Some stories come from my own experiences; others are simply thoughts I hope you might recognise in your
-                  own.
-                </p>
-                <p>I hope you find a little of yourself in these pages.</p>
-              </div>
-              {/* "With softness," in the paragraph font; "Miss Joo" stays in the gold script */}
-              <p className="text-journal-gold">
-                <span className="block font-sans text-sm md:text-base font-light leading-relaxed">With softness,</span>
-                <span className="block font-signature text-2xl leading-snug">Miss Joo</span>
+              <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">Hi, I&rsquo;m Joo.</h2>
+              <p className="text-journal-text-secondary font-sans text-sm md:text-base font-light leading-relaxed">
+                I created this space for the thoughts, feelings and small moments that often go unspoken. Some stories come
+                from my own life experience; others are thoughts I hope you recognise in your own.
               </p>
               <div className="pt-1">
-                <Button
-                  variant="outline"
-                  className="rounded-full border-0 bg-gold text-espresso hover:bg-gold-hover hover:text-espresso tracking-widest uppercase text-[11px] h-11 px-8 transition-colors duration-300"
-                  asChild
+                <Link
+                  to="/about"
+                  className="inline-flex h-11 items-center rounded-full border border-journal-gold px-8 text-[11px] uppercase tracking-widest text-journal-gold hover:text-journal-text hover:border-journal-text transition-colors duration-300"
                 >
-                  <Link to="/about">Read My Story</Link>
-                </Button>
+                  Read My Story
+                </Link>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <FromTheFeed />
-
-      {/* The Letter: same box size as the other homepage boxes */}
-      <section className="py-10 md:py-14 bg-journal-bg border-t border-journal-border">
-        <div className="container mx-auto px-6 lg:px-12">
-          <NewsletterSignup
-            source="homepage"
-            className={`${homeBoxSize} ${homeBoxStyle} ${homeBoxNarrow} flex flex-col justify-center`}
-          />
         </div>
       </section>
     </Layout>

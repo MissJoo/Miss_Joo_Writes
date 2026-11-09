@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { Link } from "react-router-dom";
 import { ChevronDown, Instagram, Link2 } from "lucide-react";
@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { postcard, quiz, quizResult } from "@/data/quiz";
 import { suitcase, type SuitcaseIcon } from "@/data/suitcase";
 import PostcardCard, { POSTCARD_NAME_MAX, POSTCARD_NOTE_MAX, postcardLink } from "@/components/home/PostcardCard";
-import { homeBoxNarrow, homeBoxSize, homeBoxStyle, homeFields, homeSection, homeText } from "@/components/suitcase/SuitcaseTeasers";
+import { homeBoxNarrow, homeBoxSize, homeBoxStyle, homeFields, homeText } from "@/components/suitcase/SuitcaseTeasers";
 
 // Same look as the Suitcase box
 const cardClass = `flex flex-col text-center ${homeBoxStyle}`;
@@ -307,20 +307,47 @@ const Postcard = () => {
   );
 };
 
-/** Homepage, after the newsletter: the quiz and the postcard, each its own section. */
-const QuizAndPostcard = () => (
-  <>
-    <section aria-label="Which letter are you?" className={homeSection}>
-      <div className="container mx-auto px-6 lg:px-12">
-        <Quiz />
-      </div>
-    </section>
-    <section aria-label="Send a postcard" className={homeSection}>
-      <div className="container mx-auto px-6 lg:px-12">
-        <Postcard />
-      </div>
-    </section>
-  </>
+const popupLink = "text-left text-xs text-journal-gold underline underline-offset-4 hover:text-journal-text transition-colors duration-300";
+
+/** A text link that opens one of the homepage tools in a pop-up. Closing it clears the tool for next time. */
+const Popup = ({ title, label, children }: { title: string; label: ReactNode; children: ReactNode }) => (
+  <DialogPrimitive.Root>
+    <DialogPrimitive.Trigger className={popupLink}>{label}</DialogPrimitive.Trigger>
+    <DialogPrimitive.Portal>
+      <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/70" />
+      <DialogPrimitive.Content
+        aria-describedby={undefined}
+        data-lenis-prevent
+        className="fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-[calc(520px+2cm)] max-h-[calc(100dvh-2rem)] overflow-y-auto -translate-x-1/2 -translate-y-1/2 focus:outline-none"
+      >
+        <div className="mb-2 flex justify-end">
+          <DialogPrimitive.Close className="inline-flex h-9 items-center gap-1.5 rounded-full border border-journal-border bg-journal-card px-4 text-[10px] font-semibold uppercase tracking-[0.2em] text-journal-text-secondary hover:border-journal-gold/60 hover:text-journal-gold transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne">
+            <span aria-hidden="true">←</span>
+            <span>{postcard.close}</span>
+          </DialogPrimitive.Close>
+        </div>
+        <DialogPrimitive.Title className="sr-only">{title}</DialogPrimitive.Title>
+        <div className="rounded-[2px] bg-journal-bg">{children}</div>
+      </DialogPrimitive.Content>
+    </DialogPrimitive.Portal>
+  </DialogPrimitive.Root>
 );
 
-export default QuizAndPostcard;
+/** The strip under the Suitcase: opens "Which letter are you?" */
+export const QuizLine = () => (
+  <div className="flex flex-col gap-2 rounded-[3px] border border-journal-border bg-journal-card px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+    <p className="font-sans text-xs font-light text-journal-text-secondary">
+      <span className="font-medium text-journal-text">Also: Which letter are you?</span> 1 of {quiz.questions.length} questions
+    </p>
+    <Popup title="Which letter are you?" label="Take the quiz →">
+      <Quiz />
+    </Popup>
+  </div>
+);
+
+/** A link that opens "Send a postcard" */
+export const PostcardPopup = ({ children }: { children: ReactNode }) => (
+  <Popup title="Send a postcard" label={children}>
+    <Postcard />
+  </Popup>
+);
