@@ -43,7 +43,7 @@ interface PostcardCardProps {
 
 /** One-sided postcard: Doha skyline on the left, the note on the right, the site name top right, a footer for a button. */
 const PostcardCard = ({ name, from, message, note, children }: PostcardCardProps) => (
-  <div className="w-full overflow-hidden rounded-[3px] border border-journal-border bg-journal-card text-left shadow-[0_8px_30px_-10px_rgba(0,0,0,0.35)]">
+  <div className="w-full overflow-hidden rounded-xl border border-journal-border bg-journal-card text-left shadow-[0_8px_30px_-10px_rgba(0,0,0,0.35)]">
     <div className="grid sm:grid-cols-2">
       <div className="flex items-center bg-[#1d1814]">
         <img

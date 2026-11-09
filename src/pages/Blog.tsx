@@ -84,7 +84,7 @@ const Blog = () => {
           </div>
 
           {filteredPosts.length === 0 && (
-            <div className="text-center py-20 bg-journal-card border border-journal-border max-w-md mx-auto rounded-[2px]">
+            <div className="text-center py-20 bg-journal-card border border-journal-border max-w-md mx-auto rounded-xl">
               <p className="text-journal-text-secondary font-light text-sm">
                 No entries in this topic yet.
               </p>

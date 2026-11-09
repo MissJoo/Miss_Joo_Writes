@@ -17,6 +17,8 @@ interface NewsletterSignupProps {
   button?: string;
   /** Homepage layout: text on the left and the form on the right from tablets up, with a visible email label */
   split?: boolean;
+  /** Smaller version of `split` that sits inside an essay: no visible email label */
+  compact?: boolean;
   className?: string;
 }
 
@@ -40,6 +42,7 @@ const NewsletterSignup = ({
   description = LETTER_COPY.description,
   button = LETTER_COPY.button,
   split = false,
+  compact = false,
   className,
 }: NewsletterSignupProps) => {
   const id = useId();
@@ -72,10 +75,10 @@ const NewsletterSignup = ({
   const intro = (
     <>
       <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">{eyebrow}</span>
-      <h2 id={`${id}-title`} className="font-serif text-2xl md:text-3xl text-journal-text leading-tight">
+      <h2 id={`${id}-title`} className={cn("font-serif text-journal-text", compact ? "text-xl leading-snug" : "text-2xl md:text-3xl leading-tight")}>
         {title}
       </h2>
-      <p className={cn("text-journal-text-secondary font-sans text-sm md:text-base font-light leading-relaxed whitespace-pre-line", !split && "max-w-md mx-auto")}>
+      <p className={cn("text-journal-text-secondary font-sans font-light leading-relaxed whitespace-pre-line", compact ? "text-xs" : "text-sm md:text-base", !split && "max-w-md mx-auto")}>
         {description}
       </p>
     </>
@@ -86,10 +89,10 @@ const NewsletterSignup = ({
       {status.state === "success" ? (
         <PostcardConfirmation />
       ) : (
-        <form onSubmit={handleSubmit} noValidate className={cn("relative pt-2 space-y-4", !split && "max-w-xl mx-auto")}>
+        <form onSubmit={handleSubmit} noValidate className={cn("relative space-y-4", !compact && "pt-2", !split && "max-w-xl mx-auto")}>
           <Honeypot value={company} onChange={(event) => setCompany(event.target.value)} />
           <div className={cn("flex flex-col gap-3", !split && "sm:flex-row")}>
-          <label htmlFor={`${id}-email`} className={split ? "-mb-1 font-sans text-sm font-medium text-journal-text" : "sr-only"}>
+          <label htmlFor={`${id}-email`} className={split && !compact ? "-mb-1 font-sans text-sm font-medium text-journal-text" : "sr-only"}>
             Email address
           </label>
           <input
@@ -97,7 +100,7 @@ const NewsletterSignup = ({
             type="email"
             autoComplete="email"
             required
-            placeholder={split ? "you@example.com" : "Your email address"}
+            placeholder={compact ? "Your email" : split ? "you@example.com" : "Your email address"}
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             disabled={status.state === "sending"}
@@ -108,7 +111,7 @@ const NewsletterSignup = ({
           <button
             type="submit"
             disabled={status.state === "sending"}
-            className="h-12 shrink-0 whitespace-nowrap px-6 rounded-full bg-gold hover:bg-gold-hover text-espresso tracking-[0.15em] uppercase text-[11px] font-medium transition-colors duration-300 disabled:opacity-60"
+            className={cn("h-12 shrink-0 whitespace-nowrap px-6 rounded-full bg-gold hover:bg-gold-hover text-espresso tracking-[0.15em] uppercase text-[11px] font-medium transition-colors duration-300 disabled:opacity-60", compact && "self-start")}
           >
             {status.state === "sending" ? "Sending…" : button}
           </button>
@@ -134,14 +137,15 @@ const NewsletterSignup = ({
     <section
       aria-labelledby={`${id}-title`}
       className={cn(
-        "max-w-2xl mx-auto text-center space-y-5 border border-journal-border bg-journal-card px-6 py-10 md:px-12 md:py-12 rounded-[2px] shadow-sm",
+        "max-w-2xl mx-auto text-center space-y-5 border border-journal-border bg-journal-card px-6 py-10 md:px-12 md:py-12 rounded-xl shadow-sm",
         split && "grid gap-6 space-y-0 text-left md:grid-cols-2 md:items-center md:gap-12",
+        compact && "gap-4 rounded-xl p-5 md:gap-6 md:p-6 shadow-none",
         className,
       )}
     >
       {split ? (
         <>
-          <div className="space-y-5">{intro}</div>
+          <div className={compact ? "space-y-2" : "space-y-5"}>{intro}</div>
           <div className="space-y-4">{signup}</div>
         </>
       ) : (

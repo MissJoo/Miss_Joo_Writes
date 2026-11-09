@@ -36,7 +36,7 @@ const SharedExperiences = () => {
               <img 
                 src={maisonImage} 
                 alt="Maison de Beauté Salon interior - a serene beauty space with soft natural lighting and elegant decor"
-                className="w-full h-64 md:h-80 object-cover md:rounded-sm"
+                className="w-full h-64 md:h-80 object-cover md:rounded-xl"
               />
             </div>
 

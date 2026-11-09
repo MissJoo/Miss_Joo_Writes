@@ -59,7 +59,7 @@ const ReadByMood = () => {
             {/* key forces a remount so the fade replays on every change */}
             <article
               key={post.slug}
-              className="animate-fade-in motion-reduce:animate-none rounded-2xl border border-journal-border bg-journal-card p-7 md:p-10"
+              className="animate-fade-in motion-reduce:animate-none rounded-xl border border-journal-border bg-journal-card p-7 md:p-10"
             >
               <span className="block font-sans text-[10px] font-medium uppercase tracking-[0.25em] text-journal-muted">Start here</span>
               <h3 className="mt-4 font-serif text-2xl md:text-3xl leading-snug text-journal-text">

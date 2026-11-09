@@ -2269,15 +2269,3 @@ export const getNextPost = (post: Post) => {
   const list = sameTopic.length > 1 ? sameTopic : posts;
   return list[(list.indexOf(post) + 1) % list.length];
 };
-
-/**
- * The start of `text`, stopped partway through so it reads as unfinished: about `share` of its words
- * (at least 3, at most `max`, never all of them), without trailing punctuation.
- */
-export const cutMidSentence = (text: string, share = 0.6, max = 20) => {
-  const words = text.replace(/\s+/g, " ").trim().split(" ");
-  let keep = Math.min(words.length - 1, max, Math.max(3, Math.round(words.length * share)));
-  // Never stop right at the end of a sentence
-  if (keep < words.length - 1 && /[.!?…]["”’)]*$/.test(words[keep - 1])) keep += 1;
-  return words.slice(0, Math.max(1, keep)).join(" ").replace(/[\s.,;:!?…"“”'’)-]+$/, "");
-};

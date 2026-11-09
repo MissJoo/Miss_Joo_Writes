@@ -15,7 +15,7 @@ const PostcardConfirmation = ({ children, className }: PostcardConfirmationProps
       alt="A postcard of the Doha skyline at night, signed From Doha, with love"
       width={720}
       height={480}
-      className="w-full max-w-[260px] h-auto rounded-[3px] border border-journal-border shadow-md"
+      className="w-full max-w-[260px] h-auto rounded-xl border border-journal-border shadow-md"
     />
     <p className="font-serif italic text-lg md:text-xl text-journal-text leading-snug">A postcard is on its way to your inbox.</p>
     <p className="text-xs font-sans text-journal-muted -mt-2">If you don&apos;t see it, check your Promotions or Spam folder.</p>

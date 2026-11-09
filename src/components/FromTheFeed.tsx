@@ -27,7 +27,7 @@ const FromTheFeed = () => {
             return (
               <li
                 key={item.essay}
-                className="flex flex-col border border-journal-border bg-journal-card rounded-[3px] overflow-hidden shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10)]"
+                className="flex flex-col border border-journal-border bg-journal-card rounded-xl overflow-hidden shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10)]"
               >
                 <a href={url} target="_blank" rel="noopener noreferrer" aria-label={`View on ${platformLabel[item.platform]}`} className="block">
                   {hasImage ? (

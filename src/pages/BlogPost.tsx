@@ -7,11 +7,21 @@ import ReadingProgress from "@/components/blog/ReadingProgress";
 import PauseHere from "@/components/blog/PauseHere";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import NotFound from "@/pages/NotFound";
-import { CHAPTER_MARK, PAUSE_MARK, cutMidSentence, getNextPost, getPost, isMarker, readingTime, textParagraphs } from "@/data/posts";
+import { CHAPTER_MARK, PAUSE_MARK, getNextPost, getPost, isMarker, readingTime } from "@/data/posts";
+import { continueWithFeeling } from "@/data/moods";
 import { getPillar, topicLabel } from "@/data/pillars";
 import { canonicalUrl } from "@/lib/seo";
 import { suitcase } from "@/data/suitcase";
 import { SuitcasePostLine } from "@/components/suitcase/SuitcaseTeasers";
+
+const CONTINUE_BOX = "<!-- continue -->";
+const LETTER_BOX = "<!-- letter -->";
+
+const keepReadingCard =
+  "group block rounded-xl border border-journal-border bg-journal-card p-5 md:p-6 hover:border-journal-champagne/60 transition-colors duration-300";
+const keepReadingLabel = "block text-[10px] tracking-[0.25em] uppercase text-journal-muted font-sans font-medium";
+const keepReadingTitle = "mt-2 font-serif text-xl md:text-2xl leading-snug text-journal-text group-hover:text-journal-gold transition-colors duration-300";
+const keepReadingNote = "mt-1 font-sans text-xs font-light text-journal-text-secondary";
 
 const BlogPost = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -23,9 +33,8 @@ const BlogPost = () => {
   }
 
   const nextPost = getNextPost(post);
-  // Its opening line, stopped mid-sentence. A very short opening line borrows the excerpt, which begins with it.
-  const nextOpening = textParagraphs(nextPost)[0].replace(/^(##:|>>:)/, "");
-  const nextFirstLine = `${cutMidSentence(nextOpening.split(/\s+/).length >= 12 ? nextOpening : nextPost.excerpt, 0.7)} —`;
+  const feeling = continueWithFeeling(post.slug, nextPost.slug);
+  const feelingPost = feeling && getPost(feeling.slug);
   const pillar = getPillar(post.pillar);
   const shareUrl = canonicalUrl(`/blog/${post.slug}`);
 
@@ -55,6 +64,25 @@ const BlogPost = () => {
 
   // Helper to detect section headings (prefixed with "##:")
   const isSectionHeading = (text: string) => text.startsWith("##:");
+
+  // The Continue box goes at the first chapter break, the Letter at a later one in the middle, both before the pause
+  const pauseAt = bodyParagraphs.findIndex((p) => p.trim() === PAUSE_MARK);
+  const beforePause = pauseAt < 0 ? bodyParagraphs.length : pauseAt;
+  const breaks = bodyParagraphs.flatMap((p, i) =>
+    i > firstTextIndex && i < beforePause && (p.trim() === CHAPTER_MARK || isSectionHeading(p)) ? [i] : [],
+  );
+  const continueAt = breaks[0] ?? Math.min(firstTextIndex + 2, beforePause);
+  const letterAt =
+    breaks.length > 1
+      ? breaks[Math.max(1, Math.floor(breaks.length / 2))]
+      : Math.max(continueAt + 1, Math.floor((continueAt + beforePause) / 2));
+  const articleParts = [
+    ...bodyParagraphs.slice(0, continueAt),
+    CONTINUE_BOX,
+    ...bodyParagraphs.slice(continueAt, letterAt),
+    LETTER_BOX,
+    ...bodyParagraphs.slice(letterAt),
+  ];
 
   return (
     <Layout>
@@ -101,7 +129,7 @@ const BlogPost = () => {
 
             {/* Hook line */}
             {post.hook && (
-              <p className="text-left font-serif italic text-lg md:text-2xl leading-relaxed text-journal-text border border-journal-border/60 border-l-2 border-l-journal-champagne bg-journal-bg-secondary/30 rounded-r-[2px] px-5 py-2.5 md:px-6 md:py-3.5 animate-fade-in-delay-1">
+              <p className="text-left font-serif italic text-lg md:text-2xl leading-relaxed text-journal-text border border-journal-border/60 border-l-2 border-l-journal-champagne bg-journal-bg-secondary/30 rounded-xl px-5 py-2.5 md:px-6 md:py-3.5 animate-fade-in-delay-1">
                 {post.hook}
               </p>
             )}
@@ -117,7 +145,34 @@ const BlogPost = () => {
       <section className="pb-16 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
           <article ref={articleRef} className="max-w-2xl mx-auto font-sans text-[17px] leading-[1.85] text-journal-text-secondary space-y-6 md:space-y-7 font-light">
-            {bodyParagraphs.map((paragraph, index) => {
+            {articleParts.map((paragraph, index) => {
+              if (paragraph === CONTINUE_BOX) {
+                return feeling && feelingPost ? (
+                  <aside key={index} aria-label="Continue with this feeling" className="!my-8 rounded-xl border border-journal-border bg-journal-card px-5 py-4 md:px-6 md:py-5">
+                    <span className="block font-sans text-[10px] font-medium uppercase tracking-[0.25em] text-journal-muted">Continue with this feeling</span>
+                    <p className="mt-2 font-sans text-sm leading-relaxed text-journal-text">
+                      If you are {feeling.feeling}, start here:{" "}
+                      <Link to={`/blog/${feelingPost.slug}`} className="text-journal-gold underline underline-offset-4 hover:text-journal-text transition-colors duration-300">
+                        {feelingPost.title}
+                      </Link>
+                    </p>
+                  </aside>
+                ) : null;
+              }
+              if (paragraph === LETTER_BOX) {
+                return (
+                  <NewsletterSignup
+                    key={index}
+                    source="post"
+                    detail={post.slug}
+                    split
+                    compact
+                    title="The longer essays, sent to you first."
+                    description="One letter when a new essay is ready. Quiet, honest, yours to keep."
+                    className="max-w-none !my-8"
+                  />
+                );
+              }
               if (paragraph.trim() === CHAPTER_MARK) {
                 chapterCount += 1;
                 return (
@@ -151,7 +206,7 @@ const BlogPost = () => {
                 return (
                   <blockquote
                     key={index}
-                    className="border-l-[3px] border-journal-champagne pl-6 my-8 md:my-10 font-serif italic text-lg md:text-xl text-journal-gold leading-relaxed py-2 opacity-0 animate-fade-in bg-journal-bg-secondary/30 pr-4 rounded-r-[2px] whitespace-pre-line"
+                    className="border-l-[3px] border-journal-champagne pl-6 my-8 md:my-10 font-serif italic text-lg md:text-xl text-journal-gold leading-relaxed py-2 opacity-0 animate-fade-in bg-journal-bg-secondary/30 pr-4 rounded-r-xl whitespace-pre-line"
                     style={{ animationDelay: `${0.2 + Math.min(index, 8) * 0.05}s`, animationFillMode: "forwards" }}
                   >
                     {paragraph.replace(PULL_QUOTE_MARK, "").trim()}
@@ -196,33 +251,26 @@ const BlogPost = () => {
         </section>
       )}
 
-      {/* Next Page */}
-      <section aria-labelledby="next-page-title" className="py-16 bg-journal-bg-secondary/20 border-t border-journal-border/30">
+      {/* Keep reading */}
+      <section aria-labelledby="keep-reading-title" className="pb-16 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
-          <div className="max-w-2xl mx-auto text-center space-y-5">
-            <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">Next page</span>
-            <h2 id="next-page-title" className="font-serif text-2xl md:text-3xl text-journal-text leading-snug">
-              {nextPost.title}
+          <div className="mx-auto max-w-5xl">
+            <h2 id="keep-reading-title" className="mb-4 text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium">
+              Keep reading
             </h2>
-            <p className="font-serif italic text-lg text-journal-text-secondary leading-relaxed">{nextFirstLine}</p>
-            <div className="pt-2">
-              <Link
-                to={`/blog/${nextPost.slug}`}
-                className="inline-flex h-11 items-center gap-2 rounded-full bg-gold px-8 text-[11px] uppercase tracking-widest text-espresso hover:bg-gold-hover transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-journal-bg"
-              >
-                <span>Turn the page</span>
-                <span aria-hidden="true">→</span>
-                <span className="sr-only">: {nextPost.title}</span>
+            <div className="grid gap-4 md:grid-cols-2">
+              <Link to={`/blog/${nextPost.slug}`} className={keepReadingCard}>
+                <span className={keepReadingLabel}>{topicLabel(nextPost.pillar)}</span>
+                <h3 className={keepReadingTitle}>{nextPost.title}</h3>
+                <p className={keepReadingNote}>{readingTime(nextPost)} →</p>
+              </Link>
+              <Link to="/the-suitcase" className={keepReadingCard}>
+                <span className={keepReadingLabel}>The Suitcase</span>
+                <h3 className={keepReadingTitle}>Open your own suitcase</h3>
+                <p className={keepReadingNote}>An interactive reflection, about 3 min →</p>
               </Link>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* The Letter, last before the footer: essay, then Next page, then this */}
-      <section className="py-16 bg-journal-bg">
-        <div className="container mx-auto px-6 lg:px-12">
-          <NewsletterSignup source="post" detail={post.slug} />
         </div>
       </section>
     </Layout>

@@ -293,7 +293,7 @@ const Postcard = () => {
                   value={link}
                   onFocus={(e) => e.currentTarget.select()}
                   aria-label="Share link"
-                  className="mt-3 h-12 w-full rounded-[3px] border border-journal-border bg-journal-bg px-4 text-center text-base text-journal-text"
+                  className="mt-3 h-12 w-full rounded-xl border border-journal-border bg-journal-bg px-4 text-center text-base text-journal-text"
                 />
               )}
               <p aria-live="polite" className="mt-2 min-h-[1rem] text-xs text-journal-muted">
@@ -327,7 +327,7 @@ const Popup = ({ title, label, children }: { title: string; label: ReactNode; ch
           </DialogPrimitive.Close>
         </div>
         <DialogPrimitive.Title className="sr-only">{title}</DialogPrimitive.Title>
-        <div className="rounded-[2px] bg-journal-bg">{children}</div>
+        <div className="rounded-xl bg-journal-bg">{children}</div>
       </DialogPrimitive.Content>
     </DialogPrimitive.Portal>
   </DialogPrimitive.Root>
@@ -335,7 +335,7 @@ const Popup = ({ title, label, children }: { title: string; label: ReactNode; ch
 
 /** The strip under the Suitcase: opens "Which letter are you?" */
 export const QuizLine = () => (
-  <div className="flex flex-col gap-2 rounded-[3px] border border-journal-border bg-journal-card px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
+  <div className="flex flex-col gap-2 rounded-xl border border-journal-border bg-journal-card px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
     <p className="font-sans text-xs font-light text-journal-text-secondary">
       <span className="font-medium text-journal-text">Also: Which letter are you?</span> 1 of {quiz.questions.length} questions
     </p>

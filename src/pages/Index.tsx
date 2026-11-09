@@ -6,7 +6,7 @@ import FromTheFeed from "@/components/FromTheFeed";
 import ReadByMood from "@/components/ReadByMood";
 import NewsletterSignup from "@/components/NewsletterSignup";
 import { PostcardPopup, QuizLine } from "@/components/home/QuizAndPostcard";
-import { SuitcaseHomeTeaser, homeBoxNarrow, homeBoxSize, homeBoxStyle, homeSection, homeText } from "@/components/suitcase/SuitcaseTeasers";
+import { SuitcaseHomeTeaser, homeSection, homeText } from "@/components/suitcase/SuitcaseTeasers";
 import { posts, readingTime } from "@/data/posts";
 import { moodPortrait } from "@/data/moods";
 import { publicFileExists } from "@/lib/publicFiles";
@@ -90,7 +90,7 @@ const Index = () => {
             {blogPosts.slice(0, 3).map((post, index) => (
               <article
                 key={post.slug}
-                className={`group relative flex-col p-6 border border-journal-border bg-journal-card hover:border-journal-champagne/60 hover:-translate-y-[3px] transition-all duration-300 rounded-[3px] shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10),0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_-8px_rgba(139,106,67,0.22),0_4px_16px_-4px_rgba(0,0,0,0.07)] overflow-hidden ${index === 2 ? "hidden md:flex" : "flex"}`}
+                className={`group relative flex-col p-6 border border-journal-border bg-journal-card hover:border-journal-champagne/60 hover:-translate-y-[3px] transition-all duration-300 rounded-xl shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10),0_1px_3px_rgba(0,0,0,0.04)] hover:shadow-[0_12px_40px_-8px_rgba(139,106,67,0.22),0_4px_16px_-4px_rgba(0,0,0,0.07)] overflow-hidden ${index === 2 ? "hidden md:flex" : "flex"}`}
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between gap-3">
@@ -147,35 +147,40 @@ const Index = () => {
       {/* This Week's Letter (the envelope) is hidden for now. To show it again, put <WeeklyLetter /> back here
           and its import back at the top: import WeeklyLetter from "@/components/home/WeeklyLetter"; */}
 
-      {/* The Edit Section */}
+      {/* The Edit Section: text above, photo filling the width below */}
       <section aria-labelledby="the-edit-title" className={homeSection}>
         <div className="container mx-auto px-6 lg:px-12">
-          {/* Same size as the other homepage boxes, and the photo is never trimmed: the whole photo runs along the
-              bottom at full width, and its own wall colour (#2B190D, the even colour of its top edge) fills the space
-              above, where the text sits. Phones leave room under the text for the photo. */}
-          <div
-            className={`${homeBoxSize} ${homeBoxStyle} ${homeBoxNarrow} flex flex-col justify-start text-center space-y-5 bg-no-repeat bg-[length:100%_auto] bg-bottom max-md:pb-[calc((100vw_-_3rem)*2/3_+_1rem)] md:pt-12`}
-            style={{ backgroundImage: "url(/assets/home/the-edit-bg.webp)", backgroundColor: "#2b190d" }}
-          >
-            {/* The box is always dark (its photo and wall colour), so these colours stay the same in light mode */}
-            <span className="text-[10px] tracking-[0.35em] uppercase text-[#ddb56c] font-sans font-medium block">
-              Beauty · Places · Little Finds
-            </span>
-            <h2 id="the-edit-title" className="font-serif text-2xl md:text-3.5xl text-[#f3e9dc]">
-              The Edit
-            </h2>
-            <div className="w-12 h-px bg-journal-champagne/40 mx-auto"></div>
-            <p className={`text-[#d9c7b3] font-light text-sm md:text-base ${homeText} md:max-w-md`}>
-              A considered collection of places, discoveries and little things that make everyday life feel more beautiful.
-            </p>
-            <div className="pt-2">
-              <Link
-                to="/lifestyle"
-                className="inline-flex h-11 items-center rounded-full bg-gold px-8 text-[11px] uppercase tracking-widest text-espresso hover:bg-gold-hover transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-journal-bg"
-              >
-                Explore The Edit
-              </Link>
+          {/* The box is always dark (the photo's wall colour), so these colours stay the same in light mode */}
+          <div className="mx-auto max-w-6xl overflow-hidden rounded-xl border border-journal-border" style={{ backgroundColor: "#2b190d" }}>
+            <div className="space-y-5 px-6 py-10 text-center md:py-12">
+              <span className="text-[10px] tracking-[0.35em] uppercase text-[#ddb56c] font-sans font-medium block">
+                Beauty · Places · Little Finds
+              </span>
+              <h2 id="the-edit-title" className="font-serif text-2xl md:text-3.5xl text-[#f3e9dc]">
+                The Edit
+              </h2>
+              <div className="w-12 h-px bg-journal-champagne/40 mx-auto"></div>
+              <p className={`text-[#d9c7b3] font-light text-sm md:text-base ${homeText}`}>
+                A considered collection of places, discoveries and little things that make everyday life feel more beautiful.
+              </p>
+              <div className="pt-2">
+                <Link
+                  to="/lifestyle"
+                  className="inline-flex h-11 items-center rounded-full bg-gold px-8 text-[11px] uppercase tracking-widest text-espresso hover:bg-gold-hover transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-journal-champagne focus-visible:ring-offset-2 focus-visible:ring-offset-journal-bg"
+                >
+                  Explore The Edit
+                </Link>
+              </div>
             </div>
+            <img
+              src="/assets/home/the-edit-bg.webp"
+              alt=""
+              width={1400}
+              height={933}
+              loading="lazy"
+              decoding="async"
+              className="block aspect-[3/2] w-full object-cover object-bottom md:aspect-[21/9]"
+            />
           </div>
         </div>
       </section>
@@ -192,7 +197,7 @@ const Index = () => {
                 height={750}
                 loading="lazy"
                 decoding="async"
-                className="w-full max-w-[320px] md:max-w-none aspect-[4/5] object-cover rounded-2xl border border-journal-border"
+                className="w-full max-w-[320px] md:max-w-none aspect-[4/5] object-cover rounded-xl border border-journal-border"
               />
             )}
 

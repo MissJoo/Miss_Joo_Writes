@@ -28,7 +28,7 @@ const EditCategory = () => {
           {/* Featured Story: wide photo on the left, text on the right */}
           <Link
             to={storyPath(category, featured)}
-            className="group mt-10 grid overflow-hidden rounded-[3px] border border-journal-border bg-journal-card shadow-sm transition-colors duration-300 hover:border-journal-champagne/60 md:grid-cols-[3fr_2fr]"
+            className="group mt-10 grid overflow-hidden rounded-xl border border-journal-border bg-journal-card shadow-sm transition-colors duration-300 hover:border-journal-champagne/60 md:grid-cols-[3fr_2fr]"
           >
             <EditPhoto src={featured.image} fallback={category.image.src} alt={featured.title} eager className="aspect-[4/3] md:h-full" />
             <div className="flex flex-col justify-center space-y-4 p-6 md:p-8">
@@ -56,7 +56,7 @@ const EditCategory = () => {
               <li key={story.slug}>
                 <Link
                   to={storyPath(category, story)}
-                  className="group flex h-full flex-col overflow-hidden rounded-[3px] border border-journal-border bg-journal-card transition-colors duration-300 hover:border-journal-champagne/60"
+                  className="group flex h-full flex-col overflow-hidden rounded-xl border border-journal-border bg-journal-card transition-colors duration-300 hover:border-journal-champagne/60"
                 >
                   <EditPhoto src={story.image} fallback={category.image.src} alt={story.title} className="aspect-[4/3]" />
                   <div className="flex flex-1 flex-col space-y-2 p-5">

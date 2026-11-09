@@ -105,7 +105,7 @@ const Downloads = () => {
                 {/* Content */}
                 <div className="container relative z-10 mx-auto -translate-y-1 px-6 py-0 md:py-2 lg:px-12">
                     {/* One box: icon, gold label, heading, text, then the form */}
-                    <div className="mx-auto max-w-2xl space-y-4 rounded-[2px] border border-journal-border bg-journal-card px-6 py-10 text-center shadow-sm md:space-y-5 md:px-12 md:py-12">
+                    <div className="mx-auto max-w-2xl space-y-4 rounded-xl border border-journal-border bg-journal-card px-6 py-10 text-center shadow-sm md:space-y-5 md:px-12 md:py-12">
                         {/* Icon */}
                         <div className="animate-fade-in-up">
                             <div className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-journal-bg-secondary text-journal-gold">
@@ -139,7 +139,7 @@ const Downloads = () => {
                                     />
                                 </div>
                             ) : (
-                                <div className="inline-flex flex-col items-center p-6 bg-journal-card rounded-[2px] border border-journal-border shadow-sm max-w-md">
+                                <div className="inline-flex flex-col items-center p-6 bg-journal-card rounded-xl border border-journal-border shadow-sm max-w-md">
                                     {justJoined && <PostcardConfirmation className="mb-6" />}
                                     <Unlock className="w-5 h-5 text-journal-gold mb-3 animate-pulse" />
                                     <p className="font-serif text-base text-journal-text font-medium">Collection Unlocked</p>
@@ -175,7 +175,7 @@ const Downloads = () => {
                             {journals.map((journal) => (
                                 <div 
                                     key={journal.month}
-                                    className="group relative flex flex-col justify-between p-8 bg-journal-card border border-journal-border hover:border-journal-champagne/60 hover:-translate-y-1 transition-all duration-300 rounded-[2px] shadow-sm"
+                                    className="group relative flex flex-col justify-between p-8 bg-journal-card border border-journal-border hover:border-journal-champagne/60 hover:-translate-y-1 transition-all duration-300 rounded-xl shadow-sm"
                                 >
                                     <div className="absolute top-0 right-0 p-6 opacity-[0.03] select-none">
                                         <BookOpen className="w-20 h-20 text-journal-text" />

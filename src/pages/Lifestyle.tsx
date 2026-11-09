@@ -32,7 +32,7 @@ const Lifestyle = () => {
               <Link
                 key={category.slug}
                 to={`/lifestyle/${category.slug}`}
-                className="group relative block aspect-[2/3] overflow-hidden rounded-[3px] border border-journal-border bg-journal-card shadow-sm transition-colors duration-300 hover:border-journal-champagne/60"
+                className="group relative block aspect-[2/3] overflow-hidden rounded-xl border border-journal-border bg-journal-card shadow-sm transition-colors duration-300 hover:border-journal-champagne/60"
               >
                 <img
                   src={category.image.src}
@@ -52,7 +52,7 @@ const Lifestyle = () => {
             ))}
           </div>
 
-          <div className="max-w-2xl mx-auto text-center mt-20 p-8 border border-journal-border bg-journal-card rounded-[2px] space-y-4">
+          <div className="max-w-2xl mx-auto text-center mt-20 p-8 border border-journal-border bg-journal-card rounded-xl space-y-4">
             <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">
               Brands &amp; Makers
             </span>

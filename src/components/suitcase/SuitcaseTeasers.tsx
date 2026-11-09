@@ -8,7 +8,7 @@ import Countdown from "./Countdown";
 /** Width and height shared by the homepage Suitcase, letter and quiz boxes, so the three line up */
 export const homeBoxSize = "w-full max-w-3xl mx-auto min-h-[453px] md:min-h-[509px]";
 /** Look shared by those boxes (and the three small boxes under the postcard) */
-export const homeBoxStyle = "border border-journal-border bg-journal-bg-secondary/40 rounded-[2px] px-6 py-8 sm:px-8 sm:py-10 md:px-12";
+export const homeBoxStyle = "border border-journal-border bg-journal-bg-secondary/40 rounded-xl px-6 py-8 sm:px-8 sm:py-10 md:px-12";
 /** Inside those boxes: paragraphs stay this wide, and fields, answer buttons and form buttons this wide */
 export const homeText = "max-w-lg mx-auto";
 /** Suitcase, letter and The Edit boxes from tablets up: the opened letter's width (520px) plus 1cm on each side */
@@ -35,7 +35,7 @@ export const SuitcaseHomeTeaser = ({ children }: { children?: ReactNode }) => {
           {/* Phones show the label above the illustration, larger screens above the heading */}
           <div>
             <span className={`${teaserLabel} mb-4 block md:hidden`}>{suitcase.teaser.label}</span>
-            <div className="flex aspect-[3/2] md:aspect-[4/3] items-center justify-center rounded-[3px] border border-journal-border bg-journal-card">
+            <div className="flex aspect-[3/2] md:aspect-[4/3] items-center justify-center rounded-xl border border-journal-border bg-journal-card">
               <ClosedSuitcase className="w-40 md:w-[200px]" latches={open ? "open" : "locked"} />
             </div>
           </div>
@@ -81,7 +81,7 @@ export const SuitcaseHubFeature = () => {
   return (
     <aside
       aria-labelledby="suitcase-hub-title"
-      className="max-w-4xl mx-auto mb-14 grid gap-6 sm:grid-cols-[140px_1fr] items-center border border-journal-border bg-journal-card px-8 py-8 rounded-[3px] shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10)]"
+      className="max-w-4xl mx-auto mb-14 grid gap-6 sm:grid-cols-[140px_1fr] items-center border border-journal-border bg-journal-card px-8 py-8 rounded-xl shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10)]"
     >
       <ClosedSuitcase className="w-28 sm:w-full mx-auto" latches={open ? "open" : "locked"} />
       <div className={`text-center sm:text-left space-y-3${open ? "" : " sc-when-locked"}`}>

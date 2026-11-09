@@ -109,7 +109,7 @@
 
 /* Note */
 .sc-note {
-  background: var(--sc-surface); border: 1px solid var(--sc-line); border-radius: 4px;
+  background: var(--sc-surface); border: 1px solid var(--sc-line); border-radius: 12px;
   padding: 32px 30px; min-height: 320px; display: grid; align-content: start; gap: 16px; position: relative;
 }
 .sc-note::before { content: ""; position: absolute; top: -10px; left: 28px; width: 70px; height: 20px; background: var(--sc-tape); opacity: 0.9; transform: rotate(-3deg); }
@@ -213,7 +213,7 @@
 .sc-envelope.is-open .sc-env-letter { transform: translateY(-46%); }
 
 .sc-letter {
-  position: relative; width: min(520px, 100%); background: var(--sc-paper); color: var(--sc-fg); border-radius: 4px;
+  position: relative; width: min(520px, 100%); background: var(--sc-paper); color: var(--sc-fg); border-radius: 12px;
   padding: 44px 34px 32px; display: grid; gap: 16px; box-shadow: 0 30px 60px -24px rgba(0, 0, 0, 0.55);
   animation: sc-rise 0.6s ease both; font-family: var(--sc-body); font-weight: 300; font-size: 17px;
   background-image: repeating-linear-gradient(transparent 0 31px, var(--sc-rule) 31px 32px); background-position: 0 22px;

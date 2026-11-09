@@ -63,7 +63,7 @@ const Contact = () => {
               </p>
             </div>
 
-            <div className="mx-auto flex w-full max-w-sm flex-col justify-center rounded-[2px] border border-journal-border bg-journal-card p-6 shadow-sm [&_label]:block [&_label]:leading-none md:p-8">
+            <div className="mx-auto flex w-full max-w-sm flex-col justify-center rounded-xl border border-journal-border bg-journal-card p-6 shadow-sm [&_label]:block [&_label]:leading-none md:p-8">
               <h2 className="mb-4 font-serif text-2xl md:text-3xl text-journal-text">Write to me.</h2>
               <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-1">

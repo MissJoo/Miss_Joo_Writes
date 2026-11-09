@@ -45,7 +45,7 @@ const PillarHub = ({ slug }: { slug: PillarSlug }) => {
               </div>
             </>
           ) : (
-            <div className="text-center py-16 px-6 bg-journal-card border border-journal-border max-w-md mx-auto rounded-[2px] space-y-4">
+            <div className="text-center py-16 px-6 bg-journal-card border border-journal-border max-w-md mx-auto rounded-xl space-y-4">
               <p className="font-serif italic text-lg text-journal-text-secondary">The first essays here are still being written.</p>
               {/* Planned titles from src/data/pillars.ts; disappears once the topic has a post */}
               {pillar.comingSoon && pillar.comingSoon.length > 0 && (

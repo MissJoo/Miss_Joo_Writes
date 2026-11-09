@@ -60,7 +60,7 @@ const WorkWithMe = () => (
           </h2>
           <ul className="grid gap-6 md:grid-cols-3">
             {offerings.map((offering) => (
-              <li key={offering.title} className="p-8 bg-journal-card border border-journal-border rounded-[2px] space-y-3 text-center">
+              <li key={offering.title} className="p-8 bg-journal-card border border-journal-border rounded-xl space-y-3 text-center">
                 <h3 className="font-serif text-xl text-journal-text">{offering.title}</h3>
                 <div className="w-8 h-px bg-journal-champagne/40 mx-auto"></div>
                 <p className="text-sm text-journal-text-secondary font-light leading-relaxed">{offering.body}</p>
@@ -73,7 +73,7 @@ const WorkWithMe = () => (
 
     <section className="pt-16 md:pt-20 pb-20 md:pb-28 bg-journal-bg">
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="max-w-2xl mx-auto text-center space-y-5 border border-journal-border bg-journal-card px-6 py-12 rounded-[2px] shadow-sm">
+        <div className="max-w-2xl mx-auto text-center space-y-5 border border-journal-border bg-journal-card px-6 py-12 rounded-xl shadow-sm">
           <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">Collaborations &amp; Press</span>
           <h2 className="font-serif text-2xl md:text-3xl text-journal-text">Let&rsquo;s tell a story worth remembering.</h2>
           <p className="text-journal-text-secondary text-sm md:text-base font-light leading-relaxed max-w-lg mx-auto">

@@ -29,7 +29,7 @@ const BlogPostCard = ({ title, excerpt, date, pillar, slug, featured = false, re
     <article
       className={cn(
         // Base
-        "group relative flex flex-col justify-between bg-journal-card border border-journal-border rounded-[3px] overflow-hidden h-full",
+        "group relative flex flex-col justify-between bg-journal-card border border-journal-border rounded-xl overflow-hidden h-full",
         // Warm depth shadow
         "shadow-[0_2px_12px_-4px_rgba(139,106,67,0.10),0_1px_3px_rgba(0,0,0,0.04)]",
         // Hover: lift + stronger warm shadow
