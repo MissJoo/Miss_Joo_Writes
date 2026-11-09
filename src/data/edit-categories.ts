@@ -24,7 +24,25 @@ export interface EditStory {
   image: string;
   /** Slugs of the two stories under "More from", when they are chosen by hand */
   moreFrom?: [string, string];
+  /** Alt text for the main photo, when it should say more than the title */
+  imageAlt?: string;
+  /** Search result title and description, when they differ from the defaults */
+  seoTitle?: string;
+  seoDescription?: string;
+  /** ISO publish date (YYYY-MM-DD), for search engines */
+  datePublished?: string;
+  /** A longer story: headings, photos and cards after the opening paragraphs */
+  blocks?: EditBlock[];
+  review?: { label: string; heading: string; rows: [string, string][]; subheading: string; text: string };
+  closing?: { line: string; text: string; label: string };
+  share?: { heading: string; text: string };
 }
+
+export type EditBlock =
+  | { kind: "heading"; text: string }
+  | { kind: "text"; text: string }
+  | { kind: "photo"; src: string; alt: string }
+  | { kind: "cards"; items: { number: string; title: string; text: string; src: string; alt: string }[] };
 
 export interface EditCategory {
   slug: string;
@@ -89,6 +107,98 @@ export const editCategories: EditCategory[] = [
     intro: "Coffee shops, restaurants and dining experiences worth discovering.",
     image: { src: "/assets/edit/cafe-dining.webp", alt: "A latte and a croissant on a wooden café table" },
     ...comingSoonStories("/assets/edit/cafe-dining.webp"),
+    featured: {
+      slug: "cotti-coffee-souq-waqif",
+      title: "Cotti Coffee Souq Waqif: A Quiet Coffee Stop in the Heart of Doha",
+      summary: "A calm coffee stop one minute from Souq Waqif Metro, plus three drinks worth ordering.",
+      intro: "Looking for a convenient coffee spot around Souq Waqif? Cotti Coffee is worth adding to your list.",
+      readTime: "2 min read",
+      image: "/images/cotti-souq-waqif-storefront.jpg",
+      imageAlt: "The lit Cotti Coffee storefront at Souq Waqif in the evening, with small tables outside",
+      seoTitle: "Cotti Coffee Souq Waqif: A Quiet Coffee Stop in Doha | Miss Joo Writes",
+      seoDescription: "A calm coffee stop one minute from Souq Waqif Metro, plus three drinks worth ordering, from Miss Joo.",
+      datePublished: "2026-11-09",
+      opening: "Finding a good coffee spot isn't always about discovering somewhere new or trendy.",
+      body: [
+        "Sometimes, it's about finding a place with good drinks, a comfortable atmosphere and a convenient location.",
+        "Cotti Coffee at Souq Waqif is one of those places.",
+        "The atmosphere is relatively calm and peaceful, making it a pleasant spot to sit down, enjoy your drink and take a little break from the bustle of the city.",
+      ],
+      blocks: [
+        { kind: "heading", text: "Where to Find It" },
+        {
+          kind: "photo",
+          src: "/images/cotti-souq-waqif-entrance.jpg",
+          alt: "The glass entrance of Cotti Coffee Souq Waqif, looking into the warm wood interior and counter",
+        },
+        { kind: "text", text: "One of the best things about this branch is its accessibility." },
+        {
+          kind: "text",
+          text: "Located approximately a one-minute walk from Souq Waqif Metro Station, it's an easy stop whether you're exploring the area, meeting friends or simply looking for somewhere to enjoy a coffee.",
+        },
+        { kind: "text", text: "No complicated detours. Just a short walk to your next coffee break." },
+        {
+          kind: "text",
+          text: "Step through the glass doors and you'll find warm wood, soft lighting and plenty of seating, whether you're staying a while or picking up on the go.",
+        },
+        { kind: "heading", text: "What to Order: Three Drinks Worth Trying" },
+        { kind: "text", text: "Not sure what to order on your first visit? Here are three drinks I'd recommend putting on your list." },
+        {
+          kind: "cards",
+          items: [
+            {
+              number: "01",
+              title: "Matcha Mango Coconut",
+              text: "Matcha with a soft tropical twist of mango and coconut. I order mine large, iced and with half sugar.",
+              src: "/images/cotti-matcha-mango-coconut.jpg",
+              alt: "An iced Matcha Mango Coconut from Cotti Coffee",
+            },
+            {
+              number: "02",
+              title: "Matcha Coconut Coffee Latte",
+              text: "Coconut matcha below, coffee layered on top. The one to order when you can't choose between matcha and coffee.",
+              src: "/images/cotti-matcha-coconut-coffee-latte.jpg",
+              alt: "An iced Matcha Coconut Coffee Latte with coffee layered over matcha",
+            },
+            {
+              number: "03",
+              title: "Pampas Blue Coco Latte",
+              text: "Cotti's coffee blend with milk and coconut milk, tinted a soft blue. An easy coconut latte, and the prettiest cup on the menu.",
+              src: "/images/cotti-pampas-blue-coco-latte.jpg",
+              alt: "An iced Pampas Blue Coco Latte with a soft blue base",
+            },
+          ],
+        },
+        { kind: "heading", text: "What Makes This Branch Worth Visiting?" },
+        { kind: "text", text: "For me, it's the combination of convenience and atmosphere." },
+        {
+          kind: "text",
+          text: "I particularly enjoy coming here on Thursday and Friday evenings. It's a lovely option when you want to step away from the busier surroundings of the souq and enjoy a more relaxed coffee break.",
+        },
+        { kind: "text", text: "If you're looking for somewhere accessible, relatively peaceful and easy to include in your evening plans, this branch is worth considering." },
+      ],
+      review: {
+        label: "The Edit Verdict",
+        heading: "Miss Joo's Review",
+        rows: [
+          ["Atmosphere", "Calm and peaceful"],
+          ["Accessibility", "Convenient Metro access"],
+          ["Drinks", "Personal recommendations above"],
+          ["Overall experience", "A pleasant coffee stop"],
+        ],
+        subheading: "Would I recommend it?",
+        text: "Yes. Especially if you appreciate a quieter coffee break and want somewhere conveniently located around Souq Waqif.",
+      },
+      closing: {
+        line: "Sometimes, all you need is a good drink and a little time to yourself.",
+        text: "Enjoy your coffee and the calm surroundings!",
+        label: "The Edit | Café & Dining | Doha, Qatar",
+      },
+      share: {
+        heading: "Enjoyed this little discovery?",
+        text: "Share this article with someone who would appreciate a quiet coffee stop in Doha.",
+      },
+    },
   },
   {
     slug: "places-travel",
@@ -137,6 +247,6 @@ export const moreFromStories = (category: EditCategory, story: EditStory) => {
 /** Every category and story page, for prerendering and the sitemap */
 export const editPaths = () =>
   editCategories.flatMap((category) => [
-    { path: `/lifestyle/${category.slug}`, indexable: true },
-    ...categoryStories(category).map((story) => ({ path: storyPath(category, story), indexable: hasStory(story) })),
+    { path: `/lifestyle/${category.slug}`, indexable: true, lastmod: category.featured.datePublished },
+    ...categoryStories(category).map((story) => ({ path: storyPath(category, story), indexable: hasStory(story), lastmod: story.datePublished })),
   ]);

@@ -229,14 +229,36 @@ export const getPageMeta = (rawPathname: string): PageMeta => {
     }
     const story = getEditStory(category, editMatch[2]);
     if (!story) return NOT_FOUND_META;
+    const description = story.seoDescription ?? story.intro ?? `${story.title}, from ${category.name} in The Edit by Miss Joo.`;
+    const image = absolute(publicFileExists(story.image) ? story.image : category.image.src);
     return {
-      title: `${story.title} | ${category.name} | Miss Joo`,
-      description: story.intro ?? `${story.title}, from ${category.name} in The Edit by Miss Joo.`,
+      title: story.seoTitle ?? `${story.title} | ${category.name} | Miss Joo`,
+      description,
       canonical,
-      image: absolute(publicFileExists(story.image) ? story.image : category.image.src),
+      image,
       type: hasStory(story) ? "article" : "website",
       noindex: !hasStory(story),
-      jsonLd: [],
+      publishedTime: story.datePublished,
+      modifiedTime: story.datePublished,
+      jsonLd: story.datePublished
+        ? [
+            {
+              "@context": "https://schema.org",
+              "@type": "Article",
+              headline: story.title,
+              description,
+              image: [image],
+              datePublished: story.datePublished,
+              dateModified: story.datePublished,
+              author: person,
+              publisher,
+              mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
+              url: canonical,
+              articleSection: category.name,
+              inLanguage: "en",
+            },
+          ]
+        : [],
     };
   }
 
@@ -293,7 +315,7 @@ export const getSitemapRoutes = () => {
     })),
     ...editPaths()
       .filter((page) => page.indexable)
-      .map((page) => ({ path: page.path, lastmod: SITE_PAGES_UPDATED })),
+      .map((page) => ({ path: page.path, lastmod: page.lastmod ?? SITE_PAGES_UPDATED })),
   ];
 };
 
