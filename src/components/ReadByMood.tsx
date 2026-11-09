@@ -9,7 +9,6 @@ import { topicLabel } from "@/data/pillars";
 const openingLines = (post: Post) => {
   const text = textParagraphs(post)
     .map((p) => p.replace(/^(##:|>>:)/, "").replace(/\s+/g, " ").trim())
-    .filter((p) => !p.startsWith("Until the next page"))
     .join(" ");
   const sentences = text.split(/(?<=[.!?…])\s+/);
   return [sentences[0], cutMidSentence(sentences[1] ?? "", 0.55)];

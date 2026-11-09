@@ -172,6 +172,10 @@ const BlogPost = () => {
                 </p>
               );
             })}
+            <footer className="!mt-10 md:!mt-12 space-y-6 md:space-y-7">
+              <p>Until the next page,</p>
+              <p className="font-signature text-2xl leading-snug text-journal-gold">-Miss Joo</p>
+            </footer>
           </article>
         </div>
       </section>
