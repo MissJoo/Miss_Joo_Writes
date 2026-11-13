@@ -16,7 +16,7 @@ const StoryBlock = ({ block }: { block: EditBlock }) => {
   if (block.kind === "heading") {
     return <h2 className={`${column} !mt-12 font-serif text-2xl md:text-3xl leading-snug text-journal-text`}>{block.text}</h2>;
   }
-  if (block.kind === "text") return <p className={column}>{block.text}</p>;
+  if (block.kind === "text") return <p className={`${column} text-left sm:text-justify`}>{block.text}</p>;
   if (block.kind === "photo") {
     return (
       <div className={column}>
@@ -82,7 +82,7 @@ const EditStory = () => {
                 {story.opening}
               </p>
               {story.body!.map((paragraph) => (
-                <p key={paragraph.slice(0, 40)} className={longer ? column : undefined}>{paragraph}</p>
+                <p key={paragraph.slice(0, 40)} className={`${longer ? column : ""} text-left sm:text-justify`}>{paragraph}</p>
               ))}
               {story.blocks?.map((block, index) => <StoryBlock key={index} block={block} />)}
 
