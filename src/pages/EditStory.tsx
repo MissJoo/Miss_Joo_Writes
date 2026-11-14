@@ -16,11 +16,34 @@ const StoryBlock = ({ block }: { block: EditBlock }) => {
   if (block.kind === "heading") {
     return <h2 className={`${column} !mt-12 font-serif text-2xl md:text-3xl leading-snug text-journal-text`}>{block.text}</h2>;
   }
-  if (block.kind === "text") return <p className={`${column} text-left sm:text-justify`}>{block.text}</p>;
+  if (block.kind === "text") {
+    return (
+      <p className={`${column} text-left sm:text-justify`}>
+        {block.text}
+        {block.link && (
+          <>
+            {" "}
+            <a
+              href={block.link.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-journal-gold underline underline-offset-4 hover:text-journal-text transition-colors duration-300"
+            >
+              {block.link.label}
+            </a>
+          </>
+        )}
+      </p>
+    );
+  }
   if (block.kind === "photo") {
     return (
       <div className={column}>
-        <EditPhoto src={block.src} alt={block.alt} className="aspect-[4/5] rounded-xl border border-journal-border" />
+        <EditPhoto
+          src={block.src}
+          alt={block.alt}
+          className={`${block.wide ? "aspect-[3/2]" : "aspect-[4/5]"} rounded-xl border border-journal-border`}
+        />
       </div>
     );
   }
@@ -98,6 +121,7 @@ const EditStory = () => {
                       </div>
                     ))}
                   </dl>
+                  {story.review.note && <p className="mt-3 text-[11px] italic leading-relaxed">{story.review.note}</p>}
                   <h3 className="mt-5 font-serif text-xl leading-snug text-journal-text">{story.review.subheading}</h3>
                   <p className="mt-1 text-sm leading-relaxed md:text-base">{story.review.text}</p>
                 </section>

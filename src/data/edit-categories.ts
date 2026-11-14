@@ -33,15 +33,15 @@ export interface EditStory {
   datePublished?: string;
   /** A longer story: headings, photos and cards after the opening paragraphs */
   blocks?: EditBlock[];
-  review?: { label: string; heading: string; rows: [string, string][]; subheading: string; text: string };
+  review?: { label: string; heading: string; rows: [string, string][]; note?: string; subheading: string; text: string };
   closing?: { line: string; text: string; label: string };
   share?: { heading: string; text: string };
 }
 
 export type EditBlock =
   | { kind: "heading"; text: string }
-  | { kind: "text"; text: string }
-  | { kind: "photo"; src: string; alt: string }
+  | { kind: "text"; text: string; link?: { label: string; href: string } }
+  | { kind: "photo"; src: string; alt: string; wide?: boolean }
   | { kind: "cards"; items: { number: string; title: string; text: string; src: string; alt: string }[] };
 
 export interface EditCategory {
@@ -127,15 +127,20 @@ export const editCategories: EditCategory[] = [
         { kind: "heading", text: "Where to Find It" },
         {
           kind: "photo",
-          src: "/images/cotti-souq-waqif-entrance.jpg",
-          alt: "The glass entrance of Cotti Coffee Souq Waqif, looking into the warm wood interior and counter",
+          src: "/images/cotti-al-fardan-centre.jpg",
+          alt: "Al Fardan Centre at night, with the lit Cotti Coffee storefront on the ground floor",
+          wide: true,
         },
         { kind: "text", text: "Cotti Coffee is located inside Al Fardan Centre on Ali Bin Abdullah Street, directly across from Souq Waqif." },
         {
           kind: "text",
           text: "It's also within a short walking distance of Souq Waqif Metro Station, making it easy to reach without needing a car.",
         },
-        { kind: "text", text: "Address: Al Fardan Centre, Ali Bin Abdullah Street, Doha, Qatar." },
+        {
+          kind: "text",
+          text: "Address:",
+          link: { label: "Cotti Coffee - Al Fardan Center", href: "https://share.google/wS7meROO3rVJqOGe9" },
+        },
         { kind: "heading", text: "What to Order: Three Drinks Worth Trying" },
         { kind: "text", text: "Not sure what to order on your first visit? Here are three drinks I'd recommend putting on your list." },
         {
@@ -177,12 +182,13 @@ export const editCategories: EditCategory[] = [
         heading: "My Verdict",
         rows: [
           ["Best for", "A relaxed coffee break or a little solo time"],
-          ["Go-to order", "Pampas Blue Coco Latte"],
-          ["Best time to visit", "Thursday or Friday evening"],
+          ["Go-to order", "Matcha Mango Coconut Latte"],
+          ["Best time to visit", "Weekdays"],
           ["One thing to know", "It's conveniently located just across from Souq Waqif."],
         ],
+        note: "Note: Weekend visits can feel busier than other days.",
         subheading: "Would I recommend it?",
-        text: "Yes. Especially if you're exploring Souq Waqif and want somewhere quieter to enjoy a coffee before heading back out. Get yourself a blue latte and take your time.",
+        text: "Yes. Especially if you're exploring Souq Waqif and want somewhere quieter to enjoy a coffee before heading back out. Get yourself a Matcha Mango Coconut Latte and take your time.",
       },
       closing: {
         line: "Sometimes, all you need is a good drink and a little time to yourself.",
