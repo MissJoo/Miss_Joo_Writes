@@ -182,13 +182,13 @@ export const editCategories: EditCategory[] = [
         heading: "My Verdict",
         rows: [
           ["Best for", "A relaxed coffee break or a little solo time"],
-          ["Go-to order", "Matcha Mango Coconut Latte"],
+          ["Go-to order", "Matcha Mango Coconut"],
           ["Best time to visit", "Weekdays"],
           ["One thing to know", "It's conveniently located just across from Souq Waqif."],
         ],
         note: "Note: Weekend visits can feel busier than other days.",
         subheading: "Would I recommend it?",
-        text: "Yes. Especially if you're exploring Souq Waqif and want somewhere quieter to enjoy a coffee before heading back out. Get yourself a Matcha Mango Coconut Latte and take your time.",
+        text: "Yes. Especially if you're exploring Souq Waqif and want somewhere quieter to enjoy a coffee before heading back out. Get yourself a Matcha Mango Coconut and take your time.",
       },
       closing: {
         line: "Sometimes, all you need is a good drink and a little time to yourself.",
