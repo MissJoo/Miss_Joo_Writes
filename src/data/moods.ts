@@ -48,6 +48,12 @@ export const moods: Mood[] = [
     also: "parts-of-myself-i-changed-to-fit-in",
     description: "For when you have been making yourself smaller to fit.",
   },
+  {
+    label: "Wondering who will stay",
+    essay: "love-is-not-proven-on-easy-days",
+    also: "fighting-vs-forcing-love",
+    description: "For when things got hard, and someone turned away.",
+  },
 ];
 
 /** Every essay under its feeling, for the "Continue with this feeling" box inside essays. */
@@ -58,6 +64,7 @@ const essaysByFeeling: Record<string, string[]> = {
   "Looking for peace": ["what-peace-taught-me", "embrace-quiet-moments", "fighting-vs-forcing-love", "what-peace-looks-like", "quiet-monday", "softness-not-weakness", "enjoy-without-guilt", "my-own-company", "no-force", "calm-me", "selective-energy", "art-of-letting-go"],
   "Far from home": ["the-armor-i-built", "letters-never-sent", "things-i-never-expected-to-miss", "qatar-days-filipina", "random-tuesday"],
   "Feeling like too much": ["stopped-shrinking", "parts-of-myself-i-changed-to-fit-in", "my-standards-are-finally-mine", "the-black-coffee-rule", "exist-without-performing", "people-who-stay", "choose-myself"],
+  "Wondering who will stay": ["love-is-not-proven-on-easy-days", "fighting-vs-forcing-love", "people-who-stay", "no-force"],
 };
 
 /** The feeling an essay belongs to and where to go next, never the essay itself or the one under "Keep reading". */
