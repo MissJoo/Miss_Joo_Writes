@@ -24,6 +24,7 @@ export default {
         serif: ['Cormorant Garamond', 'Georgia', 'serif'],
         sans: ['Inter', 'system-ui', 'sans-serif'],
         signature: ['Great Vibes', 'cursive'],
+        logo: ['Playfair Display', 'Georgia', 'serif'],
       },
       colors: {
         border: "hsl(var(--border))",

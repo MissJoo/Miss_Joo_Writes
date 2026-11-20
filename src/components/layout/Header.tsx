@@ -75,7 +75,7 @@ const Header = () => {
           <Link
             to="/"
             onClick={() => scrollToTarget(0)}
-            className="shrink-0 whitespace-nowrap font-serif text-xl lg:text-2xl font-semibold tracking-[0.08em] text-journal-text hover:text-journal-gold transition-colors duration-500"
+            className="shrink-0 whitespace-nowrap font-logo text-[10px] lg:text-xs font-semibold tracking-tight text-journal-text hover:text-journal-gold transition-colors duration-500"
           >
             Miss Joo Writes
           </Link>
