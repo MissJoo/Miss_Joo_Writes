@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Moon, Sun } from "lucide-react";
-import { followSystemTheme, getAppliedTheme, setTheme, type Theme } from "@/lib/theme";
+import { getAppliedTheme, setTheme, type Theme } from "@/lib/theme";
 import { cn } from "@/lib/utils";
 
 /** Sun/moon button that switches between light and dark mode. */
@@ -11,7 +11,6 @@ const ThemeToggle = ({ className }: { className?: string }) => {
 
   useEffect(() => {
     setThemeState(getAppliedTheme());
-    return followSystemTheme(setThemeState);
   }, []);
 
   const next: Theme = theme === "dark" ? "light" : "dark";

@@ -4,14 +4,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Theme: the reader's saved choice, else the device setting. Runs before paint to avoid a flash. -->
+  <!-- Theme: every visit starts in light mode; a switch to dark lasts for that visit only. Runs before paint. -->
   <script>
     (function () {
       var theme;
-      try { theme = localStorage.getItem('mj-theme'); } catch (e) {}
-      if (theme !== 'light' && theme !== 'dark') {
-        theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      }
+      try { theme = sessionStorage.getItem('mj-theme'); localStorage.removeItem('mj-theme'); } catch (e) {}
+      if (theme !== 'dark') theme = 'light';
       var root = document.documentElement;
       if (theme === 'dark') root.classList.add('dark');
       root.setAttribute('data-theme', theme);

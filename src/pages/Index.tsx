@@ -131,13 +131,23 @@ const Index = () => {
       <div className="hb-dark">
         <span className="hb-sash hb-sash--top-left" aria-hidden="true" />
         <span className="hb-sash hb-sash--bottom-right" aria-hidden="true" />
-        {/* The Letter, then the postcard line under it */}
+        {/* The Letter, with the postcard line inside its form card */}
         <section className={homeSection}>
           <div className="container mx-auto px-6 lg:px-12">
             <NewsletterSignup
               source="homepage"
               split
               className="hb-letter-box max-w-5xl"
+              extra={
+                <>
+                  <p className="font-sans text-sm font-light text-journal-muted">Miss someone far away? Send a free postcard.</p>
+                  <div className="mt-1">
+                    <PostcardPopup className="text-left font-sans text-base font-light leading-snug text-journal-gold underline underline-offset-4 hover:text-journal-text transition-colors duration-300">
+                      Create a postcard →
+                    </PostcardPopup>
+                  </div>
+                </>
+              }
               description={
                 <>
                   <span className="md:hidden">One letter when a new essay is ready, plus a welcome letter with a free postcard.</span>
@@ -147,10 +157,6 @@ const Index = () => {
                 </>
               }
             />
-            <div className="mx-auto mt-8 flex max-w-5xl flex-col gap-2 border-y border-journal-border/50 py-4 sm:flex-row sm:items-center sm:justify-between">
-              <p className="font-sans text-sm font-light text-journal-text-secondary">Miss someone far away? Send a free postcard.</p>
-              <PostcardPopup>Create a postcard →</PostcardPopup>
-            </div>
           </div>
         </section>
       </div>
@@ -221,13 +227,29 @@ const Index = () => {
 
               <div className="space-y-4">
                 <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">
-                  About Miss Joo
+                  About
                 </span>
-                <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">Hi, I&rsquo;m Joo.</h2>
+                <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">Hello, I&rsquo;m Miss Joo</h2>
+                {/* Gold bar down the left, as tall as the quote */}
+                <blockquote className="border-l-2 border-journal-champagne pl-5 font-serif italic text-lg md:text-xl leading-relaxed text-journal-gold">
+                  &ldquo;I write about what it means to be a woman who thinks and what it costs to become one.&rdquo;
+                </blockquote>
                 <p className="text-journal-text-secondary font-sans text-sm md:text-base font-light leading-relaxed">
                   I created this space for the thoughts, feelings and small moments that often go unspoken. Some stories come
                   from my own life experience; others are thoughts I hope you recognise in your own.
                 </p>
+                <ul aria-label="Miss Joo in numbers" className="flex flex-wrap gap-x-10 gap-y-4 pt-2">
+                  {[
+                    ["100+", "Subscribers"],
+                    ["120+", "Articles"],
+                    ["48K", "Instagram"],
+                  ].map(([value, label]) => (
+                    <li key={label}>
+                      <strong className="block font-serif text-3xl md:text-4xl font-normal leading-none text-journal-gold">{value}</strong>
+                      <span className="mt-2 block text-[10px] tracking-[0.25em] uppercase text-journal-muted font-sans font-medium">{label}</span>
+                    </li>
+                  ))}
+                </ul>
                 <div className="pt-1">
                   <Link
                     to="/about"

@@ -1,6 +1,8 @@
 import { ReactNode } from "react";
 import Header from "./Header";
 import Footer from "./Footer";
+import "@/components/home/home-burgundy.css";
+import "@/styles/type-preview.css";
 
 interface LayoutProps {
   children: ReactNode;
@@ -10,11 +12,14 @@ interface LayoutProps {
 
 const Layout = ({ children, className }: LayoutProps) => {
   return (
-    <div className={`min-h-screen flex flex-col bg-background relative text-foreground${className ? ` ${className}` : ""}`}>
+    <div className={`min-h-screen flex flex-col bg-background relative text-foreground${className ? ` ${className}` : ""} hb-home`}>
       <div className="relative flex flex-col min-h-screen">
         <Header />
         <main className="flex-1 pt-[85px] md:pt-20">
-          {children}
+          {/* Brand palette and typography on every page */}
+          <div className="type-preview">
+            <div className="hb-page">{children}</div>
+          </div>
         </main>
         <Footer />
       </div>

@@ -1,4 +1,4 @@
-/* Typography system preview: homepage only (wrapped in .type-preview). Spread site-wide once approved. */
+/* Brand typography and colours, applied to every page through Layout (.type-preview). */
 
 .type-preview {
   --font-logo: "Playfair Display", serif;
@@ -98,7 +98,7 @@ body:has(.type-preview) header nav :is(a, button):not(.font-logo) {
 }
 
 /* =================================
-   Colour identity preview (homepage only)
+   Colour identity (every page)
    Deep Burgundy #4A0E19 · Warm Ivory #F5EADF · Antique Gold #C49A42
    Chocolate Brown #56382D · Caramel Beige #C49A68 · Espresso #21110E
    Antique Gold is too light for small text on ivory, so small gold labels and links use Deep Burgundy in light mode.
@@ -114,9 +114,9 @@ body:has(.type-preview) header nav :is(a, button):not(.font-logo) {
   --journal-gold: 74 14 25;             /* Deep Burgundy: small labels and links */
   --journal-champagne: 196 154 66;      /* Antique Gold: dividers and accents */
   --journal-border: 196 154 104;        /* Caramel Beige */
-  --gold: #c49a42;                      /* Antique Gold buttons */
-  --gold-hover: #c49a68;                /* Caramel Beige on hover */
-  --espresso: #21110e;                  /* Espresso text on buttons */
+  --gold: #6e1423;                      /* Burgundy buttons on ivory, as on the homepage */
+  --gold-hover: #5c0f1e;
+  --espresso: #f7efe4;                  /* Ivory text on those buttons */
   background-color: rgb(var(--journal-bg));
 }
 
@@ -130,6 +130,9 @@ body:has(.type-preview) header nav :is(a, button):not(.font-logo) {
   --journal-gold: 196 154 66;           /* Antique Gold */
   --journal-champagne: 196 154 66;      /* Antique Gold */
   --journal-border: 86 56 45;           /* Chocolate Brown */
+  --gold: #c49a42;                      /* Antique Gold buttons in dark mode */
+  --gold-hover: #c49a68;
+  --espresso: #21110e;
 }
 
 /* Menu bar in Deep Burgundy with ivory text and the gold pill (both modes) */
@@ -146,4 +149,50 @@ body:has(.type-preview) header {
 .type-preview :is(h1, h2, h3) span {
   font-family: inherit;
   font-style: inherit;
+}
+
+/* The large opening letter of an essay stays inside its own paragraph at the 14px text size */
+.type-preview p[class*="first-letter:"] {
+  display: flow-root;
+}
+
+/* Signatures keep the gold script exactly as before ("-Miss Joo", the About page's "Joo") */
+.type-preview p.font-signature,
+.type-preview span.font-signature,
+.type-preview div.font-signature {
+  font-family: "Great Vibes", cursive;
+  font-style: normal;
+  font-weight: 400;
+}
+.type-preview p.font-signature {
+  font-size: 1.5rem;
+  line-height: 1.375;
+}
+
+
+/* Signatures keep their original gold (light #7A5A36, dark #DDB56C) */
+.type-preview .font-signature { color: rgb(122 90 54); }
+.dark .type-preview .font-signature { color: rgb(221 181 108); }
+
+/* Words inside a serif line (like "A journal read by women…") keep that line's font */
+.type-preview .font-serif span:not(.uppercase) {
+  font-family: inherit;
+}
+
+/* Paragraphs are justified from small tablets up (phones stay ragged, so narrow lines don't open wide gaps).
+   Centred paragraphs keep their last line centred, so short and centred text still looks centred. */
+@media (min-width: 640px) {
+  .type-preview p:not(.uppercase):not(:has(> time)) {
+    text-align: justify;
+    hyphens: none;
+  }
+  .type-preview :is(.text-center p, p.text-center) {
+    text-align-last: center;
+  }
+}
+@media (min-width: 768px) {
+  .type-preview :is(.md\:text-left p, p.md\:text-left) { text-align-last: auto; }
+}
+@media (min-width: 1024px) {
+  .type-preview :is(.lg\:text-left p, p.lg\:text-left) { text-align-last: auto; }
 }

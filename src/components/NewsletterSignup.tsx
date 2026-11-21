@@ -19,6 +19,8 @@ interface NewsletterSignupProps {
   split?: boolean;
   /** Smaller version of `split` that sits inside an essay: no visible email label */
   compact?: boolean;
+  /** Extra content at the end of the form side, under a thin line (the homepage postcard line) */
+  extra?: ReactNode;
   className?: string;
 }
 
@@ -43,6 +45,7 @@ const NewsletterSignup = ({
   button = LETTER_COPY.button,
   split = false,
   compact = false,
+  extra,
   className,
 }: NewsletterSignupProps) => {
   const id = useId();
@@ -130,6 +133,8 @@ const NewsletterSignup = ({
           {status.message}
         </p>
       )}
+
+      {extra && <div className="mt-6 border-t border-journal-border pt-6">{extra}</div>}
     </>
   );
 

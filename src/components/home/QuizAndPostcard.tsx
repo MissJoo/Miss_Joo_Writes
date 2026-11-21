@@ -310,9 +310,9 @@ const Postcard = () => {
 const popupLink = "text-left text-xs text-journal-gold underline underline-offset-4 hover:text-journal-text transition-colors duration-300";
 
 /** A text link that opens one of the homepage tools in a pop-up. Closing it clears the tool for next time. */
-const Popup = ({ title, label, children }: { title: string; label: ReactNode; children: ReactNode }) => (
+const Popup = ({ title, label, children, triggerClassName = popupLink }: { title: string; label: ReactNode; children: ReactNode; triggerClassName?: string }) => (
   <DialogPrimitive.Root>
-    <DialogPrimitive.Trigger className={popupLink}>{label}</DialogPrimitive.Trigger>
+    <DialogPrimitive.Trigger className={triggerClassName}>{label}</DialogPrimitive.Trigger>
     <DialogPrimitive.Portal>
       <DialogPrimitive.Overlay className="fixed inset-0 z-50 bg-black/70" />
       <DialogPrimitive.Content
@@ -333,21 +333,27 @@ const Popup = ({ title, label, children }: { title: string; label: ReactNode; ch
   </DialogPrimitive.Root>
 );
 
-/** The strip under the Suitcase: opens "Which letter are you?" */
+/** The card beside the Suitcase: opens "Which letter are you?" */
 export const QuizLine = () => (
-  <div className="flex flex-col gap-2 rounded-xl border border-journal-border bg-journal-card px-4 py-3 sm:flex-row sm:items-center sm:justify-between">
-    <p className="font-sans text-xs font-light text-journal-text-secondary">
-      <span className="font-medium text-journal-text">Also: Which letter are you?</span> 1 of {quiz.questions.length} questions
-    </p>
-    <Popup title="Which letter are you?" label="Take the quiz →">
-      <Quiz />
-    </Popup>
+  <div className="space-y-3 rounded-xl border border-journal-champagne/60 p-6 md:p-8">
+    <span className="block text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium">Also</span>
+    <h3 className="font-serif text-2xl leading-snug text-journal-text">Which letter are you?</h3>
+    <p className="font-sans text-xs font-light text-journal-muted">1 of {quiz.questions.length} questions</p>
+    <div className="pt-2">
+      <Popup
+        title="Which letter are you?"
+        label="Take the quiz →"
+        triggerClassName="text-[11px] font-medium uppercase tracking-[0.2em] text-journal-gold hover:text-journal-text transition-colors duration-300"
+      >
+        <Quiz />
+      </Popup>
+    </div>
   </div>
 );
 
 /** A link that opens "Send a postcard" */
-export const PostcardPopup = ({ children }: { children: ReactNode }) => (
-  <Popup title="Send a postcard" label={children}>
+export const PostcardPopup = ({ children, className }: { children: ReactNode; className?: string }) => (
+  <Popup title="Send a postcard" label={children} triggerClassName={className}>
     <Postcard />
   </Popup>
 );

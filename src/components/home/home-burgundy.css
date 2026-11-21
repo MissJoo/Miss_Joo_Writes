@@ -98,4 +98,45 @@ section.hb-letter-box > div:last-child {
 
 /* Menu bar and footer on the homepage: burgundy, to match the hero */
 .hb-home header { --journal-nav: 74 12 24; --journal-text: 247 239 228; --journal-gold: 222 186 116; --journal-border: 130 52 64; --journal-bg: 92 15 30; --journal-text-secondary: 236 220 202; --journal-muted: 214 190 168; --journal-champagne: 201 164 92; }
-.hb-home footer, .dark .hb-home footer.keep-light-palette { --journal-text: 59 10 20; --journal-bg: 247 239 228; --journal-text-secondary: 130 52 64; --journal-champagne: 222 186 116; }
+.hb-home footer.keep-light-palette, .dark .hb-home footer.keep-light-palette { --journal-text: 59 10 20; --journal-bg: 247 239 228; --journal-text-secondary: 130 52 64; --journal-champagne: 222 186 116; }
+
+/* Larger screens: the bottom-right sash sits lower, clear of the content above it */
+@media (min-width: 768px) { .hb-sash--bottom-right { bottom: -14px; } }
+
+/* Every page: the homepage ivory palette, in light and dark mode alike */
+.hb-page {
+  --journal-bg: 247 240 230;
+  --journal-bg-secondary: 240 230 214;
+  --journal-card: 251 247 240;
+  --journal-text: 59 10 20;
+  --journal-text-secondary: 74 42 42;
+  --journal-muted: 112 80 72;
+  --journal-gold: 110 20 35;
+  --journal-champagne: 184 148 79;
+  --journal-border: 226 210 188;
+  --gold: #6E1423;
+  --gold-hover: #5C0F1E;
+  --espresso: #F7EFE4;
+  color-scheme: light;
+  background-color: rgb(var(--journal-bg));
+  color: rgb(var(--journal-text-secondary));
+}
+
+/* Dark mode, every page: the ivory sections turn Espresso; burgundy sections, menu bar and footer stay as they are */
+.dark .hb-page,
+.dark .hb-light {
+  --journal-bg: 33 17 14;              /* #21110E Espresso */
+  --journal-bg-secondary: 44 22 18;    /* #2C1612 a touch lighter, for section bands */
+  --journal-card: 56 30 24;            /* #381E18 cards */
+  --journal-nav: 33 17 14;
+  --journal-text: 247 239 228;         /* #F7EFE4 ivory headings */
+  --journal-text-secondary: 236 220 202; /* #ECDCCA body text */
+  --journal-muted: 214 190 168;        /* #D6BEA8 captions */
+  --journal-gold: 222 186 116;         /* #DEBA74 gold labels and links */
+  --journal-champagne: 201 164 92;     /* #C9A45C lines and accents */
+  --journal-border: 86 56 45;          /* #56382D Chocolate Brown hairlines */
+  --gold: #D4AB5E;                     /* gold buttons */
+  --gold-hover: #C39A4D;
+  --espresso: #21110E;                 /* Espresso text on them */
+  color-scheme: dark;
+}

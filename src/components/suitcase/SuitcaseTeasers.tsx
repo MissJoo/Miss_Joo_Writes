@@ -31,17 +31,10 @@ export const SuitcaseHomeTeaser = ({ children }: { children?: ReactNode }) => {
   return (
     <section aria-labelledby="suitcase-teaser-title" className={homeSection}>
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="mx-auto grid max-w-6xl items-center gap-5 md:grid-cols-2 md:gap-12">
-          {/* Phones show the label above the illustration, larger screens above the heading */}
-          <div>
-            <span className={`${teaserLabel} mb-4 block md:hidden`}>{suitcase.teaser.label}</span>
-            <div className="flex aspect-[3/2] md:aspect-[4/3] items-center justify-center rounded-xl border border-journal-border bg-journal-card">
-              <ClosedSuitcase className="w-40 md:w-[200px]" latches={open ? "open" : "locked"} />
-            </div>
-          </div>
-
+        {/* Text on the left, a thin line, then the quiz card (stacked on phones) */}
+        <div className="mx-auto grid max-w-6xl items-center gap-8 md:grid-cols-[minmax(0,1.5fr)_1px_minmax(0,1fr)] md:gap-12">
           <div className="space-y-4">
-            <span className={`${teaserLabel} hidden md:block`}>{suitcase.teaser.label}</span>
+            <span className={`${teaserLabel} block`}>{suitcase.teaser.label}</span>
             <h2 id="suitcase-teaser-title" className="font-serif text-2xl md:text-3.5xl text-journal-text leading-tight">
               {suitcase.teaser.heading}
             </h2>
@@ -67,8 +60,9 @@ export const SuitcaseHomeTeaser = ({ children }: { children?: ReactNode }) => {
                 {open && <span className="hidden md:inline text-xs font-light text-journal-muted">{suitcase.teaser.duration}</span>}
               </div>
             </div>
-            {children}
           </div>
+          <div className="hidden md:block w-px self-stretch bg-journal-border" aria-hidden="true" />
+          <div>{children}</div>
         </div>
       </div>
     </section>
