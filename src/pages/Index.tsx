@@ -66,12 +66,10 @@ const Index = () => {
       </div>
 
       <div className="hb-light">
-        <span className="hb-sash hb-sash--top-right" aria-hidden="true" />
         <ReadByMood />
       </div>
 
       <div className="hb-dark">
-        <span className="hb-sash hb-sash--bottom-right" aria-hidden="true" />
         <SuitcaseHomeTeaser>
           <QuizLine />
         </SuitcaseHomeTeaser>
@@ -129,8 +127,6 @@ const Index = () => {
       </div>
 
       <div className="hb-dark">
-        <span className="hb-sash hb-sash--top-left" aria-hidden="true" />
-        <span className="hb-sash hb-sash--bottom-right" aria-hidden="true" />
         {/* The Letter, with the postcard line inside its form card */}
         <section className={homeSection}>
           <div className="container mx-auto px-6 lg:px-12">
@@ -235,8 +231,8 @@ const Index = () => {
                   &ldquo;I write about what it means to be a woman who thinks and what it costs to become one.&rdquo;
                 </blockquote>
                 <p className="text-journal-text-secondary font-sans text-sm md:text-base font-light leading-relaxed">
-                  I created this space for the thoughts, feelings and small moments that often go unspoken. Some stories come
-                  from my own life experience; others are thoughts I hope you recognise in your own.
+                  A writer, observer, and lover of things that make you stop and reconsider. Miss Joo Writes is a space built for
+                  women who want more depth, more honesty, more of themselves.
                 </p>
                 <ul aria-label="Miss Joo in numbers" className="flex flex-wrap gap-x-10 gap-y-4 pt-2">
                   {[
