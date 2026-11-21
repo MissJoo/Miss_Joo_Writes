@@ -75,9 +75,10 @@ const Header = () => {
           <Link
             to="/"
             onClick={() => scrollToTarget(0)}
-            className="shrink-0 whitespace-nowrap font-logo text-[10px] lg:text-xs font-semibold tracking-tight text-journal-text hover:text-journal-gold transition-colors duration-500"
+            className="shrink-0 whitespace-nowrap font-logo text-base lg:text-lg font-bold tracking-tight text-journal-text hover:text-journal-gold transition-colors duration-500"
+            aria-label="Miss Joo Writes, home"
           >
-            Miss Joo Writes
+            miss joo writes
           </Link>
 
           {/* Desktop Navigation */}

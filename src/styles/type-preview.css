@@ -1,0 +1,149 @@
+/* Typography system preview: homepage only (wrapped in .type-preview). Spread site-wide once approved. */
+
+.type-preview {
+  --font-logo: "Playfair Display", serif;
+  --font-editorial: "Cormorant Garamond", serif;
+  --font-body: "Montserrat", sans-serif;
+}
+
+/* Body text */
+.type-preview :is(p, li, label, input, select, textarea, dd, dt, button, a, span) {
+  font-family: var(--font-body);
+}
+.type-preview :is(p, li, label, input, dd, dt) {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.7;
+}
+
+/* Hero heading */
+.type-preview h1 {
+  font-family: var(--font-editorial);
+  font-size: clamp(38px, 4vw, 52px);
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.05;
+  letter-spacing: -0.6px;
+}
+
+/* Section headings */
+.type-preview h2:not(.uppercase) {
+  font-family: var(--font-editorial);
+  font-size: clamp(30px, 3vw, 38px);
+  font-weight: 600;
+  font-style: italic;
+  line-height: 1.1;
+}
+
+/* Article titles (cards) */
+.type-preview h3,
+.type-preview h3 a {
+  font-family: var(--font-editorial);
+  font-size: 23px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.12;
+}
+
+/* Editorial subheadings: serif lines that are not headings */
+.type-preview p.font-serif {
+  font-family: var(--font-editorial);
+  font-size: 25px;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.2;
+}
+
+/* Small section labels */
+.type-preview :is(span, h2, p).uppercase {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* Article metadata */
+.type-preview p:has(> time) {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+/* Buttons */
+.type-preview :is(a, button).bg-gold:not(.btn-secondary),
+.type-preview :is(a, button).bg-gold,
+.type-preview a.rounded-full.border-journal-gold {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+}
+
+/* Feeling buttons keep normal case */
+.type-preview [role="group"] button {
+  font-size: 13px;
+  font-weight: 500;
+}
+
+/* Navigation (homepage only during the preview) */
+body:has(.type-preview) header nav :is(a, button):not(.font-logo) {
+  font-family: "Montserrat", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+/* =================================
+   Colour identity preview (homepage only)
+   Deep Burgundy #4A0E19 · Warm Ivory #F5EADF · Antique Gold #C49A42
+   Chocolate Brown #56382D · Caramel Beige #C49A68 · Espresso #21110E
+   Antique Gold is too light for small text on ivory, so small gold labels and links use Deep Burgundy in light mode.
+   ================================= */
+
+.type-preview {
+  --journal-bg: 245 234 223;            /* Warm Ivory */
+  --journal-bg-secondary: 237 220 203;  /* Ivory deepened with Caramel Beige, for section bands */
+  --journal-card: 250 243 236;          /* Ivory lifted, for cards */
+  --journal-text: 33 17 14;             /* Espresso: headings */
+  --journal-text-secondary: 86 56 45;   /* Chocolate Brown: body text */
+  --journal-muted: 86 56 45;            /* Chocolate Brown: small captions */
+  --journal-gold: 74 14 25;             /* Deep Burgundy: small labels and links */
+  --journal-champagne: 196 154 66;      /* Antique Gold: dividers and accents */
+  --journal-border: 196 154 104;        /* Caramel Beige */
+  --gold: #c49a42;                      /* Antique Gold buttons */
+  --gold-hover: #c49a68;                /* Caramel Beige on hover */
+  --espresso: #21110e;                  /* Espresso text on buttons */
+  background-color: rgb(var(--journal-bg));
+}
+
+.dark .type-preview {
+  --journal-bg: 33 17 14;               /* Espresso */
+  --journal-bg-secondary: 44 25 20;     /* Espresso lifted toward Chocolate Brown */
+  --journal-card: 56 33 26;             /* between Espresso and Chocolate Brown, for cards */
+  --journal-text: 245 234 223;          /* Warm Ivory */
+  --journal-text-secondary: 196 154 104;/* Caramel Beige */
+  --journal-muted: 196 154 104;         /* Caramel Beige */
+  --journal-gold: 196 154 66;           /* Antique Gold */
+  --journal-champagne: 196 154 66;      /* Antique Gold */
+  --journal-border: 86 56 45;           /* Chocolate Brown */
+}
+
+/* Menu bar in Deep Burgundy with ivory text and the gold pill (both modes) */
+body:has(.type-preview) header {
+  --journal-nav: 74 14 25;
+  --journal-text: 245 234 223;
+  --journal-text-secondary: 245 234 223;
+  --journal-gold: 196 154 66;
+  --journal-champagne: 196 154 66;
+  --journal-border: 116 40 52;
+}
+
+/* Words styled inside a heading (like the gold "feel.") keep the heading's font */
+.type-preview :is(h1, h2, h3) span {
+  font-family: inherit;
+  font-style: inherit;
+}

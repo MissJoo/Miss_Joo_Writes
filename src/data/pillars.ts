@@ -1,6 +1,7 @@
 export type PillarSlug =
   | "womanhood"
   | "psychology"
+  | "love"
   | "career"
   | "life-in-qatar"
   | "fashion"
@@ -37,6 +38,14 @@ export const pillars: Pillar[] = [
     intro:
       "Reflections on healing, letting go, emotional tiredness, peace, and the patterns we slowly learn to see in ourselves.",
     description: "Essays on psychology, healing and self-growth: letting go, peace, and emotional patterns. By Miss Joo.",
+  },
+  {
+    slug: "love",
+    name: "Love & Relationships",
+    navLabel: "Love & Relationships",
+    intro:
+      "Essays on the love that stays: choosing each other on the hard days, knowing when to let go, and the respect that has to go both ways.",
+    description: "Essays on love and relationships: who stays, choosing each other, and respect that goes both ways. By Miss Joo.",
   },
   {
     slug: "career",

@@ -1,0 +1,101 @@
+/*
+  Homepage only: burgundy and ivory sections that alternate down the page (dark, light, dark, light).
+  Every homepage section is wrapped in .hb-dark or .hb-light. Those classes re-point the site's journal-* colour
+  tokens, so the existing components (mood picker, Suitcase teaser, letter signup, feed) take the new colours
+  without being edited. The homepage keeps this palette in light and dark mode. Other pages are not affected.
+*/
+
+.hb-dark {
+  --journal-bg: 92 15 30;              /* #5C0F1E burgundy, section background */
+  --journal-bg-secondary: 74 12 24;    /* #4A0C18 deeper burgundy */
+  --journal-card: 108 22 38;           /* #6C1626 cards on burgundy */
+  --journal-nav: 74 12 24;             /* #4A0C18 menu bar */
+  --journal-text: 247 239 228;         /* #F7EFE4 ivory headings */
+  --journal-text-secondary: 236 220 202; /* #ECDCCA body text */
+  --journal-muted: 214 190 168;        /* #D6BEA8 captions */
+  --journal-gold: 222 186 116;         /* #DEBA74 gold labels */
+  --journal-champagne: 201 164 92;     /* #C9A45C accents and lines */
+  --journal-border: 130 52 64;         /* #823440 hairlines */
+  --gold: #D4AB5E;
+  --gold-hover: #C39A4D;
+  --espresso: #3B0A14;
+  color-scheme: dark;
+}
+
+.hb-light {
+  --journal-bg: 247 240 230;           /* #F7F0E6 ivory, section background */
+  --journal-bg-secondary: 240 230 214; /* #F0E6D6 */
+  --journal-card: 251 247 240;         /* #FBF7F0 cards */
+  --journal-nav: 247 240 230;
+  --journal-text: 59 10 20;            /* #3B0A14 deep burgundy headings */
+  --journal-text-secondary: 74 42 42;  /* #4A2A2A body text */
+  --journal-muted: 112 80 72;          /* #705048 captions, AA on ivory */
+  --journal-gold: 110 20 35;           /* #6E1423 burgundy labels and the selected mood */
+  --journal-champagne: 184 148 79;     /* #B8944F gold lines */
+  --journal-border: 226 210 188;       /* #E2D2BC */
+  --gold: #6E1423;                     /* buttons on ivory are burgundy, as in the mockup */
+  --gold-hover: #5C0F1E;
+  --espresso: #F7EFE4;                 /* text on those buttons */
+  color-scheme: light;
+}
+
+/* Section shells: the corner sashes sit inside, clipped to the section */
+.hb-dark, .hb-light { position: relative; overflow: hidden; color: rgb(var(--journal-text-secondary)); }
+.hb-dark > section, .hb-light > section { border-top-color: transparent; }
+
+/* Leopard sash in a corner */
+.hb-sash {
+  position: absolute; z-index: 2; width: 360px; height: 88px; pointer-events: none;
+  background: url("/assets/home/leopard.webp") center / 220px repeat;
+  box-shadow: 0 0 0 1px rgb(201 164 92 / 0.9), 0 6px 18px rgb(0 0 0 / 0.25);
+}
+.hb-sash--top-right { top: 24px; right: -110px; transform: rotate(38deg); }
+.hb-sash--bottom-right { bottom: 24px; right: -110px; transform: rotate(-38deg); }
+.hb-sash--top-left { top: 24px; left: -110px; transform: rotate(-38deg); }
+@media (max-width: 767px) {
+  .hb-sash { width: 200px; height: 40px; background-size: 150px; }
+  .hb-sash--top-right, .hb-sash--bottom-right { right: -72px; }
+  .hb-sash--top-left { left: -72px; }
+  .hb-sash--top-right, .hb-sash--top-left { top: 14px; }
+  .hb-sash--bottom-right { bottom: 14px; }
+}
+
+/* Hero photo frame */
+.hb-hero-frame {
+  position: relative; overflow: hidden; border-radius: 14px; aspect-ratio: 4 / 3;
+  border: 1px solid rgb(201 164 92 / 0.85);
+  box-shadow: 0 24px 60px -24px rgb(0 0 0 / 0.55);
+}
+.hb-hero-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Until the hero photo is added: a framed leopard panel under a soft burgundy wash */
+.hb-hero-fallback {
+  width: 100%; height: 100%;
+  background:
+    linear-gradient(135deg, rgb(92 15 30 / 0.78), rgb(59 10 20 / 0.55)),
+    url("/assets/home/leopard.webp") center / 260px repeat;
+}
+
+/* Letter section: the form sits in an ivory card on burgundy, as in the mockup */
+section.hb-letter-box {
+  background: transparent; border: 0; box-shadow: none; padding-left: 0; padding-right: 0;
+}
+section.hb-letter-box > div:last-child {
+  --journal-bg: 255 255 255;
+  --journal-card: 251 247 240;
+  --journal-text: 59 10 20;
+  --journal-text-secondary: 74 42 42;
+  --journal-muted: 112 80 72;
+  --journal-gold: 110 20 35;
+  --journal-champagne: 184 148 79;
+  --journal-border: 226 210 188;
+  --gold: #6E1423;
+  --gold-hover: #5C0F1E;
+  --espresso: #F7EFE4;
+  background: rgb(251 247 240); border: 1px solid rgb(201 164 92 / 0.7); border-radius: 14px;
+  padding: 24px; color: rgb(74 42 42);
+}
+@media (min-width: 768px) { section.hb-letter-box > div:last-child { padding: 28px 32px; } }
+
+/* Menu bar and footer on the homepage: burgundy, to match the hero */
+.hb-home header { --journal-nav: 74 12 24; --journal-text: 247 239 228; --journal-gold: 222 186 116; --journal-border: 130 52 64; --journal-bg: 92 15 30; --journal-text-secondary: 236 220 202; --journal-muted: 214 190 168; --journal-champagne: 201 164 92; }
+.hb-home footer, .dark .hb-home footer.keep-light-palette { --journal-text: 59 10 20; --journal-bg: 247 239 228; --journal-text-secondary: 130 52 64; --journal-champagne: 222 186 116; }
