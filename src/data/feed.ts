@@ -32,7 +32,7 @@ export interface FeedItem {
 export const feed: FeedItem[] = [
   {
     platform: "instagram",
-    quote: "Being an Expat means that home is never just one place.",
+    quote: "I can miss home and still enjoy living here. One feeling does not cancel out the other.",
     essay: "qatar-days-filipina",
     essayTitle: "Qatar Days Through a Filipina Woman's Eyes",
     postUrl: POST_URL_PLACEHOLDER,
@@ -40,18 +40,18 @@ export const feed: FeedItem[] = [
   },
   {
     platform: "tiktok",
-    quote: "The little things I never expected to miss after moving to Qatar.",
-    essay: "things-i-never-expected-to-miss",
-    essayTitle: "The Things I Never Expected to Miss Until I Moved to Qatar",
+    quote: "If you are the only one fighting for it, you are not fighting for love anymore.",
+    essay: "fighting-vs-forcing-love",
+    essayTitle: "Fighting for Love or Forcing It",
     postUrl: POST_URL_PLACEHOLDER,
-    image: "/assets/feed/never-expected-to-miss.webp",
+    image: "/assets/feed/fighting-for-love.webp",
   },
   {
     platform: "instagram",
-    quote: "I'm learning to take my coffee black.",
-    essay: "the-black-coffee-rule",
-    essayTitle: "The Black Coffee Rule",
+    quote: "I used to believe that replaying everything made me wise. Mostly, it made me tired.",
+    essay: "overthinking-vs-thinking-deeply",
+    essayTitle: "Overthinking Is Not the Same as Thinking Deeply",
     postUrl: POST_URL_PLACEHOLDER,
-    image: "/assets/feed/black-coffee-rule.webp",
+    image: "/assets/feed/overthinking.webp",
   },
 ];
