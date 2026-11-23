@@ -94,7 +94,7 @@ const Contact = () => {
                   onChange={handleChange}
                   required
                   className="h-11 rounded-none border-0 border-b border-journal-border/80 bg-transparent px-0 py-2 font-sans text-base md:text-base text-journal-text transition-colors placeholder:text-journal-muted/50 focus-visible:border-journal-gold focus-visible:ring-0"
-                  placeholder="your@email.com"
+                  placeholder="Enter your email address"
                 />
               </div>
 

@@ -103,7 +103,7 @@ const NewsletterSignup = ({
             type="email"
             autoComplete="email"
             required
-            placeholder={compact ? "Your email" : split ? "you@example.com" : "Your email address"}
+            placeholder="Enter your email address"
             value={email}
             onChange={(event) => setEmail(event.target.value)}
             disabled={status.state === "sending"}
