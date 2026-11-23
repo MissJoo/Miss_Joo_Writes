@@ -58,13 +58,13 @@ export const moods: Mood[] = [
 
 /** Every essay under its feeling, for the "Continue with this feeling" box inside essays. */
 const essaysByFeeling: Record<string, string[]> = {
-  "Tired of holding it together": ["so-good-at-coping", "behind-every-role-there-is-a-soul", "busy-vs-building", "being-needed-and-being-known", "quiet-pressure-figured-out", "midnight-conversations"],
-  "Outgrowing something": ["outgrow-the-places-that-once-held-you", "no-longer-that-version", "dont-need-to-prove"],
-  "Starting over": ["september-feels-like-a-second-new-year", "growing-through-change", "what-i-am-choosing-now", "enter-bigger-rooms-before-i-feel-ready", "new-beginnings"],
-  "Looking for peace": ["art-of-letting-go", "embrace-quiet-moments", "fighting-vs-forcing-love", "what-peace-looks-like", "enjoy-without-guilt"],
-  "Far from home": ["the-armor-i-built", "letters-never-sent", "things-i-never-expected-to-miss", "qatar-days-filipina", "random-tuesday"],
-  "Feeling like too much": ["parts-of-myself-i-changed-to-fit-in", "my-standards-are-finally-mine", "the-black-coffee-rule", "choose-myself"],
-  "Wondering who will stay": ["love-is-not-proven-on-easy-days", "fighting-vs-forcing-love"],
+  "Tired of holding it together": ["so-good-at-coping", "behind-every-role-there-is-a-soul", "busy-vs-building", "being-needed-and-being-known", "quiet-pressure-figured-out", "midnight-conversations", "so-good-at-coping", "ask-for-what-i-need", "speak-to-myself-with-kindness", "the-morning-routine-im-coming-back-to", "one-bad-comment-over-ten-kind-ones"],
+  "Outgrowing something": ["outgrow-the-places-that-once-held-you", "no-longer-that-version", "dont-need-to-prove", "what-success-looks-like-to-me-now", "learning-from-people-who-know-more", "goals-i-actually-keep", "allowed-to-change-my-mind", "why-getting-what-i-wanted-didnt-keep-me-happy"],
+  "Starting over": ["september-feels-like-a-second-new-year", "growing-through-change", "what-i-am-choosing-now", "enter-bigger-rooms-before-i-feel-ready", "new-beginnings", "disappointment-doesnt-mean-i-chose-wrong", "books-that-changed-how-i-think", "curiosity-the-trait-im-working-on"],
+  "Looking for peace": ["art-of-letting-go", "embrace-quiet-moments", "fighting-vs-forcing-love", "what-peace-looks-like", "enjoy-without-guilt", "overthinking-vs-thinking-deeply", "social-media-without-the-pressure", "stories-about-other-people"],
+  "Far from home": ["the-armor-i-built", "letters-never-sent", "things-i-never-expected-to-miss", "qatar-days-filipina", "random-tuesday", "friendships-that-grew-up-with-me", "what-my-mother-taught-me-about-love", "what-living-abroad-taught-me-about-money"],
+  "Feeling like too much": ["parts-of-myself-i-changed-to-fit-in", "my-standards-are-finally-mine", "the-black-coffee-rule", "choose-myself", "accept-a-compliment", "what-i-wear-changes-how-i-show-up", "celebrating-other-womens-wins", "opinions-actually-mine", "integrity-when-it-costs-me", "disagree-without-losing-yourself", "kind-is-not-the-same-as-nice"],
+  "Wondering who will stay": ["love-is-not-proven-on-easy-days", "fighting-vs-forcing-love", "how-to-apologize", "easy-to-talk-to", "people-who-believed-in-me"],
 };
 
 /** The feeling an essay belongs to and where to go next, never the essay itself or the one under "Keep reading". */

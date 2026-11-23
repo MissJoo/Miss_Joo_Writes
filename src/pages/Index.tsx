@@ -128,7 +128,7 @@ const Index = () => {
 
       <div className="hb-dark">
         {/* The Letter, with the postcard line inside its form card */}
-        <section className={homeSection}>
+        <section id="the-letter" className={`${homeSection} scroll-mt-20`}>
           <div className="container mx-auto px-6 lg:px-12">
             <NewsletterSignup
               source="homepage"

@@ -89,6 +89,11 @@
   font-weight: 500;
 }
 
+/* Footer: body font for its links and small print (headings and the logo keep their own fonts) */
+body:has(.type-preview) footer .font-sans {
+  font-family: "Montserrat", sans-serif;
+}
+
 /* Navigation (homepage only during the preview) */
 body:has(.type-preview) header nav :is(a, button):not(.font-logo) {
   font-family: "Montserrat", sans-serif;
