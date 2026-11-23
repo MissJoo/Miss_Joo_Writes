@@ -14,8 +14,8 @@ export interface Mood {
 export const moods: Mood[] = [
   {
     label: "Tired of holding it together",
-    essay: "strong-days",
-    also: "emotionally-tired",
+    essay: "so-good-at-coping",
+    also: "behind-every-role-there-is-a-soul",
     description: "For the days you are strong, and the days you are just tired.",
   },
   {
@@ -32,7 +32,7 @@ export const moods: Mood[] = [
   },
   {
     label: "Looking for peace",
-    essay: "what-peace-taught-me",
+    essay: "art-of-letting-go",
     also: "embrace-quiet-moments",
     description: "For when you are ready to stop holding what keeps hurting you.",
   },
@@ -44,7 +44,7 @@ export const moods: Mood[] = [
   },
   {
     label: "Feeling like too much",
-    essay: "stopped-shrinking",
+    essay: "my-standards-are-finally-mine",
     also: "parts-of-myself-i-changed-to-fit-in",
     description: "For when you have been making yourself smaller to fit.",
   },
@@ -58,13 +58,13 @@ export const moods: Mood[] = [
 
 /** Every essay under its feeling, for the "Continue with this feeling" box inside essays. */
 const essaysByFeeling: Record<string, string[]> = {
-  "Tired of holding it together": ["strong-days", "emotionally-tired", "behind-every-role-there-is-a-soul", "busy-vs-building", "being-needed-and-being-known", "quiet-pressure-figured-out", "gratitude-for-me", "slow-down", "midnight-conversations"],
-  "Outgrowing something": ["outgrow-the-places-that-once-held-you", "no-longer-that-version", "no-longer-waiting-to-become-her", "woman-im-slowly-becoming", "dont-need-to-prove", "quiet-shifts", "version-of-me"],
-  "Starting over": ["september-feels-like-a-second-new-year", "growing-through-change", "what-i-am-choosing-now", "enter-bigger-rooms-before-i-feel-ready", "stopped-waiting", "spring-before-ready", "trust-myself", "behind-guilt", "new-beginnings"],
-  "Looking for peace": ["what-peace-taught-me", "embrace-quiet-moments", "fighting-vs-forcing-love", "what-peace-looks-like", "quiet-monday", "softness-not-weakness", "enjoy-without-guilt", "my-own-company", "no-force", "calm-me", "selective-energy", "art-of-letting-go"],
+  "Tired of holding it together": ["so-good-at-coping", "behind-every-role-there-is-a-soul", "busy-vs-building", "being-needed-and-being-known", "quiet-pressure-figured-out", "midnight-conversations"],
+  "Outgrowing something": ["outgrow-the-places-that-once-held-you", "no-longer-that-version", "dont-need-to-prove"],
+  "Starting over": ["september-feels-like-a-second-new-year", "growing-through-change", "what-i-am-choosing-now", "enter-bigger-rooms-before-i-feel-ready", "new-beginnings"],
+  "Looking for peace": ["art-of-letting-go", "embrace-quiet-moments", "fighting-vs-forcing-love", "what-peace-looks-like", "enjoy-without-guilt"],
   "Far from home": ["the-armor-i-built", "letters-never-sent", "things-i-never-expected-to-miss", "qatar-days-filipina", "random-tuesday"],
-  "Feeling like too much": ["stopped-shrinking", "parts-of-myself-i-changed-to-fit-in", "my-standards-are-finally-mine", "the-black-coffee-rule", "exist-without-performing", "people-who-stay", "choose-myself"],
-  "Wondering who will stay": ["love-is-not-proven-on-easy-days", "fighting-vs-forcing-love", "people-who-stay", "no-force"],
+  "Feeling like too much": ["parts-of-myself-i-changed-to-fit-in", "my-standards-are-finally-mine", "the-black-coffee-rule", "choose-myself"],
+  "Wondering who will stay": ["love-is-not-proven-on-easy-days", "fighting-vs-forcing-love"],
 };
 
 /** The feeling an essay belongs to and where to go next, never the essay itself or the one under "Keep reading". */
