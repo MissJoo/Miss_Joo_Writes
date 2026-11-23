@@ -236,9 +236,9 @@ const Index = () => {
                 </p>
                 <ul aria-label="Miss Joo in numbers" className="flex flex-wrap gap-x-10 gap-y-4 pt-2">
                   {[
-                    ["100+", "Subscribers"],
-                    ["120+", "Articles"],
-                    ["48K", "Instagram"],
+                    ["28M+", "Views on my top 3 reels"],
+                    ["48K+", "Readers on Instagram"],
+                    ["120+", "Essays published"],
                   ].map(([value, label]) => (
                     <li key={label}>
                       <strong className="block font-serif text-3xl md:text-4xl font-normal leading-none text-journal-gold">{value}</strong>
