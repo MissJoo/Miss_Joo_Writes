@@ -17,7 +17,7 @@ const FreeJournalBox = () => (
     {/* Two lines from tablets up; phones are too narrow and wrap it */}
     <p className={`text-journal-text-secondary font-sans leading-relaxed text-sm md:text-base font-light ${homeText}`}>
       Quiet journals for the days life feels loud.
-      <br className="hidden md:inline" /> A way to come back to yourself. It&rsquo;s FREE, and yours to keep.
+      <br className="hidden md:inline" /> Free to download and yours to keep, with a letter from me whenever a new essay is ready.
     </p>
 
     <div>
@@ -29,7 +29,7 @@ const FreeJournalBox = () => (
         to="/downloads"
         className="text-xs uppercase tracking-widest text-journal-gold hover:text-journal-text transition-colors duration-300 font-medium"
       >
-        Peek inside the collection
+        See all the journals
       </Link>
     </div>
   </div>
