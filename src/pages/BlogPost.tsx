@@ -167,8 +167,8 @@ const BlogPost = () => {
                     detail={post.slug}
                     split
                     compact
-                    title="The longer essays, sent to you first."
-                    description="One letter when a new essay is ready. Quiet, honest, yours to keep."
+                    title="Read the next essay before anyone else."
+                    description="One letter, only when a new essay is ready. No noise, and you can leave anytime."
                     className="max-w-none !my-8"
                   />
                 );

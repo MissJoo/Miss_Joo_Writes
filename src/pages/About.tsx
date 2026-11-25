@@ -11,7 +11,7 @@ const About = () => {
               The Author
             </span>
             <h1 className="font-serif text-3.5xl md:text-5xl leading-tight text-journal-text animate-fade-in-up">
-              Hello, I'm <span className="font-signature text-journal-gold font-normal not-italic tracking-normal text-3.5xl md:text-5xl block sm:inline mt-1 sm:mt-0">Joo</span>
+              Hello, I'm <span className="font-signature text-journal-gold font-normal not-italic tracking-normal text-3.5xl md:text-5xl block sm:inline mt-1 sm:mt-0">Miss Joo</span>
             </h1>
             <div className="w-12 h-px bg-journal-champagne/40 mx-auto mt-4"></div>
           </div>
@@ -23,65 +23,51 @@ const About = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-2xl mx-auto space-y-6 text-journal-text-secondary leading-[1.8] font-sans text-[17px] md:text-[18px] font-light text-left sm:text-justify">
             <p className="font-serif italic text-lg md:text-xl text-journal-text text-center border-b border-journal-border/30 pb-8 mb-8">
-              “I created Miss Joo Writes because some feelings do not fit inside an Instagram caption.”
+              &ldquo;I created Miss Joo Writes because some feelings don&rsquo;t fit inside an Instagram caption.&rdquo;
             </p>
 
             <p>
-              Some thoughts need more space.<br />
-              Some emotions need time before they make sense.<br />
-              Some stories are too personal to be rushed, too layered to be posted and forgotten in a few seconds.
+              Some thoughts need more space than a post can give them. Some need time before they make sense.
             </p>
 
             <p>
-              For a long time, I carried so many things quietly: the lessons, heartbreaks, overthinking, growth, soft moments, heavy nights, and the kind of feelings I did not always know how to explain. Writing became the place where I could finally let them breathe.
+              I&rsquo;m a Filipina woman living in Qatar. For years, I carried a lot quietly: the lessons, the heartbreaks, the overthinking, the nights I couldn&rsquo;t explain to anyone. Writing became the place where I could finally make sense of them.
             </p>
 
             <p className="font-medium text-journal-text">
-              This space is my personal journal on the internet.
+              This journal is where I think out loud.
             </p>
 
             <p>
-              It is where I write about becoming, healing, letting go, self-worth, love, silence, softness, and the small realizations that change us slowly. Not because I have everything figured out, but because I am still learning too.
+              I write about what it means to be a woman who thinks: how we love, how we choose, how we grow, and how we learn to trust our own minds. I write about building a life far from home. And I write about the small realizations that change us slowly.
+            </p>
+
+            <p>
+              I don&rsquo;t have everything figured out. I&rsquo;m still learning, and I write as I learn. When I share an idea from research, I name where it came from. When I share something from my own life, it&rsquo;s true.
             </p>
 
             <p className="border-l-[2px] border-journal-champagne pl-6 my-8 font-serif italic text-lg md:text-xl text-journal-gold leading-relaxed">
-              I write for the version of me who felt too much.<br />
-              The version of me who stayed longer than she should have.<br />
-              The version of me who kept trying to understand everything.<br />
-              And the version of me who is finally learning that peace matters too.
+              I write for the woman who thinks deeply, and sometimes too much.<br />
+              For the woman building a life far from everything familiar.<br />
+              And for the woman who is ready to stop shrinking and start choosing.
             </p>
 
             <p>
-              Miss Joo Writes is not about perfect healing. It is about honest healing.
-            </p>
-
-            <p>
-              The kind that happens quietly.<br />
-              The kind that comes after confusion.<br />
-              The kind that teaches you to come back to yourself, one thought at a time.
-            </p>
-
-            <p>
-              Perhaps, as you read through these pages, you&rsquo;ll find thoughts that feel familiar, words for things you&rsquo;ve struggled to express, or perspectives that invite you to see things a little differently. I hope you find something here that makes you pause and feel understood.
-            </p>
-
-            <p>
-              I hope this space reminds you that you are not alone in your thoughts.<br />
-              You are not too emotional.<br />
-              You are not behind.<br />
-              You are simply becoming.
+              I hope you find something here that makes you pause and feel understood. And I hope you leave with a thought that feels a little more your own.
             </p>
 
             <p className="pt-4">
-              Welcome to Miss Joo Writes, a quiet corner for feelings, reflections, healing, and the stories we are still learning how to tell.
+              Welcome to Miss Joo Writes.
             </p>
 
             <div className="pt-8 border-t border-journal-border/30 text-center mt-12 space-y-4">
               <p className="text-journal-gold font-serif text-xl md:text-2xl italic leading-relaxed max-w-lg mx-auto">
                 “Some stories are not written because they are perfect. They are written because they are true.”
               </p>
-              <div className="font-signature text-3xl text-journal-gold select-none pt-2">
-                With softness, Miss Joo
+              {/* Sign-off, same as the essays: the line in body text, then the name in the signature script */}
+              <div className="space-y-6 pt-2">
+                <p className="text-journal-text-secondary font-sans font-light">Until the next page,</p>
+                <p className="font-signature text-2xl leading-snug text-journal-gold select-none">-Miss Joo</p>
               </div>
             </div>
           </div>

@@ -132,7 +132,7 @@ const staticPages: Record<string, StaticPage> = {
   },
   "/terms": {
     title: "Terms of Use | Miss Joo",
-    description: "The terms for using missjoowrites.com and its content.",
+    description: "The terms of use for missjoowrites.com, the personal essay blog by Miss Joo: using and sharing its essays, downloads and other content.",
   },
 };
 
@@ -220,7 +220,7 @@ export const getPageMeta = (rawPathname: string): PageMeta => {
     if (!editMatch[2]) {
       return {
         title: `${category.name} | The Edit | Miss Joo`,
-        description: category.intro,
+        description: `${category.intro} From The Edit by Miss Joo Writes.`,
         canonical,
         image: absolute(category.image.src),
         type: "website",
@@ -320,7 +320,7 @@ export const getSitemapRoutes = () => {
 };
 
 /** Update when the static pages (about, contact, legal...) change. */
-export const SITE_PAGES_UPDATED = "2026-10-18";
+export const SITE_PAGES_UPDATED = "2026-11-25";
 
 /** Old post URLs that now live elsewhere. GitHub Pages has no server redirects, so each gets a redirect page. */
 export const getRedirects = () =>

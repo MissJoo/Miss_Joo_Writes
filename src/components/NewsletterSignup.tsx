@@ -30,8 +30,8 @@ const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 /** The Letter's wording, the same in every letter box on the site */
 export const LETTER_COPY = {
-  title: "The essays I don't post anywhere else.",
-  description: "One letter, only when a new essay is ready. Quiet, honest, and yours to keep.",
+  title: "Every new essay, in your inbox first.",
+  description: "One letter, only when a new essay is ready. No noise, and you can leave anytime.",
   button: "Send me the letters",
 };
 

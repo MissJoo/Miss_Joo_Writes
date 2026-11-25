@@ -29,7 +29,7 @@ export const pillars: Pillar[] = [
     navLabel: "Womanhood",
     intro:
       "Essays on becoming, softness, self-worth, and the quiet work of learning who you are as a woman, without shrinking to fit.",
-    description: "Essays on womanhood, self-worth, softness and becoming. By Miss Joo.",
+    description: "Essays on womanhood, self-worth, softness and becoming: learning who you are as a woman without shrinking to fit. By Miss Joo.",
   },
   {
     slug: "psychology",
@@ -53,7 +53,7 @@ export const pillars: Pillar[] = [
     navLabel: "Career",
     intro:
       "Notes on work, ambition, belonging in professional rooms, and the pressure to have it all figured out.",
-    description: "Essays on career, ambition and belonging at work. By Miss Joo.",
+    description: "Essays on career, ambition and belonging at work: the pressure to have it all figured out, and finding your place in bigger rooms. By Miss Joo.",
   },
   {
     slug: "life-in-qatar",
@@ -68,7 +68,7 @@ export const pillars: Pillar[] = [
     name: "Fashion",
     navLabel: "Fashion",
     intro: "Considered pieces, personal style, and dressing as a form of self-respect.",
-    description: "Essays on fashion and personal style. By Miss Joo.",
+    description: "Essays on fashion and personal style: considered pieces, dressing with intention, and style as a form of self-respect. By Miss Joo.",
     comingSoon: ["I Started Dressing for the Woman I'm Becoming", "What Living in Doha Taught Me About Elegance"],
   },
   {
@@ -76,7 +76,7 @@ export const pillars: Pillar[] = [
     name: "Beauty & Skincare",
     navLabel: "Beauty",
     intro: "Skincare, self-care rituals, and beauty as a quiet act of attention.",
-    description: "Essays on beauty, skincare and self-care rituals. By Miss Joo.",
+    description: "Essays on beauty, skincare and self-care rituals: quiet routines, simple essentials, and beauty as an act of attention. By Miss Joo.",
     comingSoon: ["My Skin Noticed the Move Before I Did", "The Only Ten Minutes Nobody Asks Anything of Me"],
   },
   {
@@ -84,7 +84,7 @@ export const pillars: Pillar[] = [
     name: "Travel",
     navLabel: "Travel",
     intro: "Slow journeys, new cities, and what travel teaches us about home.",
-    description: "Essays on slow travel and the places that change us. By Miss Joo.",
+    description: "Essays on slow travel and the places that change us: new cities, quiet journeys, and what travel teaches us about home. By Miss Joo.",
     comingSoon: ["Going Home Feels Like Travel Now", "A Weekend in Doha for Friends Who Think There's Nothing to Do"],
   },
 ];
