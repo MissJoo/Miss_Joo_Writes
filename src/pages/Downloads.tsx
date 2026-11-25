@@ -19,6 +19,13 @@ interface Journal {
 // Newest first
 const journals: Journal[] = [
     {
+        month: "October",
+        title: "Held & Heard",
+        theme: "Held",
+        desc: "For the woman who is good at coping and tired of doing it alone. A space to let someone in, say what you need out loud, and speak to yourself with the kindness you give everyone else.",
+        file: "/downloads/notes-on-becoming-october.pdf",
+    },
+    {
         month: "September",
         title: "Rhythm & Renewal",
         theme: "Rhythm",
@@ -115,14 +122,14 @@ const Downloads = () => {
 
                         {/* Label, then headline */}
                         <span className="block animate-fade-in-up font-sans text-[10px] font-medium uppercase tracking-[0.3em] text-journal-gold">
-                            The Reflection Journal Collection
+                            Free Monthly Journals
                         </span>
                         <h1 className="animate-fade-in-up font-serif text-2xl leading-tight text-journal-text md:text-3xl">
                             Notes on Becoming
                         </h1>
 
                         {/* Subtext */}
-                        <p className="animate-fade-in-delay-1 mx-auto max-w-lg font-sans text-sm font-light leading-relaxed text-journal-text-secondary md:text-base">
+                        <p className="animate-fade-in-delay-1 mx-auto max-w-lg !text-center font-sans text-sm font-light leading-relaxed text-journal-text-secondary md:text-base">
                             A collection of gentle reflections and guided prompts for women learning to slow down, understand themselves, and embrace the process of becoming.
                         </p>
 
@@ -131,10 +138,10 @@ const Downloads = () => {
                             {!isUnlocked ? (
                                 <div className="mx-auto w-full max-w-xl space-y-5">
                                     <p className="font-serif text-base italic leading-relaxed text-journal-text-secondary md:text-lg">
-                                        Subscribe to receive the collection, along with occasional letters from Miss Joo Writes.
+                                        Subscribe to receive the collection, along with a letter whenever a new essay is ready.
                                     </p>
                                     <EmailSignupForm 
-                                        ctaText="Unlock the Free Journals" 
+                                        ctaText="Send Me the Collection" 
                                         onSuccess={handleSignupSuccess}
                                     />
                                 </div>
@@ -165,10 +172,10 @@ const Downloads = () => {
                     <div className="max-w-5xl mx-auto">
                         <div className="text-center mb-16 space-y-2">
                             <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">
-                                The Collection
+                                The Journals
                             </h2>
                             <div className="w-8 h-px bg-journal-champagne/40 mx-auto mt-3"></div>
-                            <p className="text-[10px] tracking-widest text-journal-muted uppercase font-sans">Monthly Guides</p>
+                            <p className="text-[10px] tracking-widest text-journal-muted uppercase font-sans">One for each month</p>
                         </div>
 
                         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -235,32 +242,32 @@ const Downloads = () => {
                             <div className="w-12 h-px bg-journal-champagne/40 mx-auto"></div>
                         </div>
 
-                        <p className="text-center text-journal-text-secondary mb-12 font-light text-sm md:text-base max-w-xl mx-auto leading-relaxed">
-                            Each 8-page monthly journal is carefully designed with a warm, luxurious aesthetic. Perfect for printing or reading digitally on your tablet.
+                        <p className="!text-center text-journal-text-secondary mb-12 font-light text-sm md:text-base max-w-xl mx-auto leading-relaxed">
+                            Each journal is 8 pages, made around one theme for the month. Print it, or fill it in on your tablet.
                         </p>
 
                         <div className="grid md:grid-cols-3 gap-8 md:gap-12">
                             <div className="text-center space-y-4">
                                 <div className="w-12 h-[1px] bg-journal-champagne/30 mx-auto mb-4"></div>
                                 <h3 className="font-serif text-lg text-journal-text font-medium">Guided Reflections</h3>
-                                <p className="text-journal-text-secondary font-sans text-xs md:text-sm leading-relaxed font-light">
-                                    Thoughtful invitations designed to guide you through moments of pause and self-discovery, tied to the month's theme.
+                                <p className="!text-center text-journal-text-secondary font-sans text-xs md:text-sm leading-relaxed font-light">
+                                    Questions to sit with, written around the month's theme.
                                 </p>
                             </div>
 
                             <div className="text-center space-y-4">
                                 <div className="w-12 h-[1px] bg-journal-champagne/30 mx-auto mb-4"></div>
                                 <h3 className="font-serif text-lg text-journal-text font-medium">Creative Activities</h3>
-                                <p className="text-journal-text-secondary font-sans text-xs md:text-sm leading-relaxed font-light">
-                                    A unique activity each month.. from energy maps to letters to yourself.. to help you process your growth gently.
+                                <p className="!text-center text-journal-text-secondary font-sans text-xs md:text-sm leading-relaxed font-light">
+                                    A different activity each month, from energy maps to letters to yourself.
                                 </p>
                             </div>
 
                             <div className="text-center space-y-4">
                                 <div className="w-12 h-[1px] bg-journal-champagne/30 mx-auto mb-4"></div>
                                 <h3 className="font-serif text-lg text-journal-text font-medium">Gratitude & Intentions</h3>
-                                <p className="text-journal-text-secondary font-sans text-xs md:text-sm leading-relaxed font-light">
-                                    Dedicated space to honor what you're grateful for and set a quiet intention for the days ahead.
+                                <p className="!text-center text-journal-text-secondary font-sans text-xs md:text-sm leading-relaxed font-light">
+                                    Space to write what you're grateful for, and one intention for the month ahead.
                                 </p>
                             </div>
                         </div>
@@ -276,7 +283,7 @@ const Downloads = () => {
                             A Quiet Realization
                         </span>
                         <blockquote className="font-serif italic text-xl md:text-2.5xl text-journal-gold leading-relaxed">
-                            “Sometimes the most radical thing we can do is slow down and listen to ourselves.”
+                            “I started these journals because I needed somewhere to put the thoughts I wasn’t ready to post.”
                         </blockquote>
                         <div className="w-16 h-[1px] bg-journal-champagne/30 mx-auto"></div>
                     </div>

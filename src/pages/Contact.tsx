@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
-import { composeEmail } from "@/lib/email";
+import { Link } from "react-router-dom";
+import { CONTACT_EMAIL, composeEmail } from "@/lib/email";
 
 
 const Contact = () => {
@@ -59,12 +60,11 @@ const Contact = () => {
               </h1>
               <div className="mx-auto h-px w-12 bg-journal-champagne/40 md:mx-0"></div>
               <p className="font-sans text-xs font-light leading-relaxed text-journal-text-secondary md:text-base">
-                Have a thought to share, a question, or just want to say hello? I'd love to hear from you.
+                Did an essay stay with you? Do you have a question, or a story of your own? Write to me. I read every message myself.
               </p>
             </div>
 
             <div className="mx-auto flex w-full max-w-sm flex-col justify-center rounded-xl border border-journal-border bg-journal-card p-6 shadow-sm [&_label]:block [&_label]:leading-none md:p-8">
-              <h2 className="mb-4 font-serif text-2xl md:text-3xl text-journal-text">Write to me.</h2>
               <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-1">
                 <label htmlFor="name" className="text-[10px] tracking-widest uppercase text-journal-gold font-sans font-semibold">
@@ -108,8 +108,8 @@ const Contact = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
-                  rows={1}
-                  className="min-h-11 resize-none rounded-none border-0 border-b border-journal-border/80 bg-transparent px-0 py-2 font-sans text-base md:text-base text-journal-text transition-colors placeholder:text-journal-muted/50 focus-visible:border-journal-gold focus-visible:ring-0"
+                  rows={5}
+                  className="min-h-32 resize-none rounded-none border-0 border-b border-journal-border/80 bg-transparent px-0 py-2 font-sans text-base md:text-base text-journal-text transition-colors placeholder:text-journal-muted/50 focus-visible:border-journal-gold focus-visible:ring-0"
                   placeholder="What's on your mind?"
                 />
               </div>
@@ -122,6 +122,14 @@ const Contact = () => {
                 >
                   {isSubmitting ? "Opening..." : "Send My Note"}
                 </Button>
+                <p className="mt-4 font-sans text-xs font-light leading-relaxed text-journal-muted">
+                  This opens a new email with your note filled in. You can also write to me directly at{" "}
+                  <a href={`mailto:${CONTACT_EMAIL}`} className="text-journal-gold underline underline-offset-4">{CONTACT_EMAIL}</a>.
+                </p>
+                <p className="mt-2 font-sans text-xs font-light leading-relaxed text-journal-muted">
+                  Writing about a collaboration?{" "}
+                  <Link to="/work-with-me" className="text-journal-gold underline underline-offset-4">Go to Work With Me</Link>.
+                </p>
               </div>
               </form>
 

@@ -2,20 +2,18 @@ import { Link } from "react-router-dom";
 import Layout from "@/components/layout/Layout";
 import { CONTACT_EMAIL, composeEmail } from "@/lib/email";
 
-// Placeholder copy, to be replaced.
-
 const offerings = [
   {
     title: "Editorial",
-    body: "Long-form essays and thoughtful features exploring womanhood, psychology, personal growth, career and life abroad.",
+    body: "Essays and features on how women think, love and grow, written from life in Qatar.",
   },
   {
     title: "UGC",
-    body: "Thoughtful, story-led content that introduces products naturally and brings brands into everyday life.",
+    body: "Short videos for Instagram and TikTok that show a product in real, everyday use, filmed and edited by me.",
   },
   {
     title: "Brand Partnerships",
-    body: "Selective collaborations across the journal, Instagram and TikTok, built on shared values, authentic storytelling and genuine audience connection.",
+    body: "Features, reels and reviews across the journal, Instagram and TikTok, including café and dining in Doha for The Edit. I only work with brands I'd use myself.",
   },
 ];
 
@@ -43,6 +41,21 @@ const WorkWithMe = () => (
             <p className="font-serif italic text-2xl md:text-3xl leading-snug text-journal-text">
               <span className="block">A journal read by women</span>
               <span className="block">who want depth over noise.</span>
+            </p>
+            <ul aria-label="Miss Joo in numbers" className="flex flex-wrap justify-center gap-x-10 gap-y-4 pt-2">
+              {[
+                ["28M+", "Views on my top 3 reels"],
+                ["48K+", "Readers on Instagram"],
+                ["120+", "Essays published"],
+              ].map(([value, label]) => (
+                <li key={label}>
+                  <strong className="block font-serif text-3xl md:text-4xl font-normal leading-none text-journal-gold">{value}</strong>
+                  <span className="mt-2 block text-[10px] tracking-[0.25em] uppercase text-journal-muted font-sans font-medium">{label}</span>
+                </li>
+              ))}
+            </ul>
+            <p className="text-journal-text-secondary text-sm md:text-base font-light leading-relaxed max-w-lg mx-auto">
+              Most of my Instagram audience is 25 to 44, with the largest groups in the United States, Qatar, India and the UAE.
             </p>
             <Link
               to="/about"
@@ -82,10 +95,9 @@ const WorkWithMe = () => (
       <section className="pt-16 md:pt-20 pb-20 md:pb-28 bg-journal-bg">
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-2xl mx-auto text-center space-y-5 border border-journal-border bg-journal-card px-6 py-12 rounded-xl shadow-sm">
-            <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">Collaborations &amp; Press</span>
-            <h2 className="font-serif text-2xl md:text-3xl text-journal-text">Let&rsquo;s tell a story worth remembering.</h2>
+            <h2 className="font-serif text-2xl md:text-3xl text-journal-text">Have a brand that belongs here? Let&rsquo;s talk.</h2>
             <p className="text-journal-text-secondary text-sm md:text-base font-light leading-relaxed max-w-lg mx-auto">
-              For brand partnerships, press enquiries and media kit requests, send me a note about your brand and the story
+              For brand partnerships and press enquiries, send me a note about your brand and the story
               you&rsquo;d like to share. I read every message personally.
             </p>
             <p className="font-serif text-xl text-journal-text select-all">{CONTACT_EMAIL}</p>
