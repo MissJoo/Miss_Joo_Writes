@@ -11,7 +11,7 @@ const About = () => {
               The Author
             </span>
             <h1 className="font-serif text-3.5xl md:text-5xl leading-tight text-journal-text animate-fade-in-up">
-              Hello, I'm <span className="font-signature text-journal-gold font-normal not-italic tracking-normal text-3.5xl md:text-5xl block sm:inline mt-1 sm:mt-0">Miss Joo</span>
+              Hello, I'm <span className="font-signature text-journal-gold font-normal not-italic tracking-normal text-3.5xl md:text-5xl block sm:inline mt-1 sm:mt-0">Joo</span>
             </h1>
             <div className="w-12 h-px bg-journal-champagne/40 mx-auto mt-4"></div>
           </div>
@@ -31,7 +31,7 @@ const About = () => {
             </p>
 
             <p>
-              I&rsquo;m a Filipina woman living in Qatar. For years, I carried a lot quietly: the lessons, the heartbreaks, the overthinking, the nights I couldn&rsquo;t explain to anyone. Writing became the place where I could finally make sense of them.
+              For years, I carried a lot quietly: the lessons, the heartbreaks, the overthinking, the nights I couldn&rsquo;t explain to anyone. Writing became the place where I could finally make sense of them.
             </p>
 
             <p className="font-medium text-journal-text">
@@ -64,11 +64,6 @@ const About = () => {
               <p className="text-journal-gold font-serif text-xl md:text-2xl italic leading-relaxed max-w-lg mx-auto">
                 “Some stories are not written because they are perfect. They are written because they are true.”
               </p>
-              {/* Sign-off, same as the essays: the line in body text, then the name in the signature script */}
-              <div className="space-y-6 pt-2">
-                <p className="text-journal-text-secondary font-sans font-light">Until the next page,</p>
-                <p className="font-signature text-2xl leading-snug text-journal-gold select-none">-Miss Joo</p>
-              </div>
             </div>
           </div>
         </div>

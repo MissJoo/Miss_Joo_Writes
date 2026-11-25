@@ -34,7 +34,7 @@ const Index = () => {
                 For the thoughts we never posted, but still needed to <span className="text-journal-gold">feel.</span>
               </h1>
               <p className="text-journal-text-secondary text-base md:text-lg font-sans font-light leading-relaxed max-w-xl mx-auto lg:mx-0 animate-fade-in-delay-1">
-                Honest essays on how we think, love and grow, written for women who want to understand themselves a little better. Start with one entry, or choose by how you feel today.
+                Honest essays on how we think, love and grow, written for women who want to understand themselves a little better. Start with one entry, or pick one by how you feel today.
               </p>
               <div className="flex justify-center lg:justify-start pt-2 animate-fade-in-delay-2">
                 <Button
@@ -231,8 +231,8 @@ const Index = () => {
                   &ldquo;I write about what it means to be a woman who thinks and what it costs to become one.&rdquo;
                 </blockquote>
                 <p className="text-journal-text-secondary font-sans text-sm md:text-base font-light leading-relaxed">
-                  I&rsquo;m a writer and a close observer of how women think, love and grow. Miss Joo Writes is for women who want to go
-                  a little deeper, and come away a little more like themselves.
+                  A writer and a close observer of how women think, love and grow. Miss Joo Writes is a space built for women who want
+                  more depth, more honesty, more of themselves.
                 </p>
                 <ul aria-label="Miss Joo in numbers" className="flex flex-wrap gap-x-10 gap-y-4 pt-2">
                   {[
