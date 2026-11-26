@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Check, Link2, Linkedin } from "lucide-react";
+import { Check, Link2 } from "lucide-react";
 
 const WhatsAppIcon = () => (
   <svg width={15} height={15} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -10,6 +10,12 @@ const WhatsAppIcon = () => (
 const XIcon = () => (
   <svg width={13} height={13} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
     <path d="M18.24 2.25h3.31l-7.23 8.26 8.5 11.24h-6.66l-5.21-6.82-5.97 6.82H1.67l7.73-8.84L1.25 2.25h6.83l4.71 6.23 5.45-6.23Zm-1.16 17.52h1.83L7.08 4.13H5.12l11.96 15.64Z" />
+  </svg>
+);
+
+const TikTokIcon = () => (
+  <svg width={13} height={13} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
   </svg>
 );
 
@@ -36,9 +42,21 @@ const ShareButtons = ({ url, title }: ShareButtonsProps) => {
     }
   };
 
+  // TikTok has no share link for websites: copy the essay link, then open TikTok messages so it can be pasted
+  const [tiktokCopied, setTiktokCopied] = useState(false);
+  const shareTikTok = async () => {
+    try {
+      await navigator.clipboard.writeText(url);
+      setTiktokCopied(true);
+      window.setTimeout(() => setTiktokCopied(false), 3000);
+    } catch {
+      // Copy failed: TikTok still opens, and the reader can use "Copy link"
+    }
+    window.open("https://www.tiktok.com/messages", "_blank", "noopener,noreferrer");
+  };
+
   const links = [
     { label: "WhatsApp", href: `https://wa.me/?text=${encodeURIComponent(`${title} ${url}`)}`, icon: <WhatsAppIcon /> },
-    { label: "LinkedIn", href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`, icon: <Linkedin size={14} aria-hidden="true" /> },
     { label: "X", href: `https://x.com/intent/post?url=${encodedUrl}&text=${encodedText}`, icon: <XIcon /> },
   ];
 
@@ -49,6 +67,10 @@ const ShareButtons = ({ url, title }: ShareButtonsProps) => {
         <button type="button" onClick={copyLink} className={buttonClass}>
           {copied ? <Check size={14} aria-hidden="true" /> : <Link2 size={14} aria-hidden="true" />}
           <span aria-live="polite">{copied ? "Copied" : "Copy link"}</span>
+        </button>
+        <button type="button" onClick={shareTikTok} className={buttonClass} aria-label="Share on TikTok: copies the link and opens TikTok">
+          <TikTokIcon />
+          <span aria-live="polite">{tiktokCopied ? "Link copied" : "TikTok"}</span>
         </button>
         {links.map((link) => (
           <a

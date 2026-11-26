@@ -497,3 +497,37 @@
 @media (max-width: 520px) { .sc-letter { padding: 36px 24px 28px; } }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sc-overlay { background: rgba(27, 20, 15, 0.88); } }
 :root[data-theme="dark"] .sc-overlay { background: rgba(27, 20, 15, 0.88); }
+
+/* Boarding pass, as in the approved screenshot (Nov 26): wine label, script-like brand, item chips, bold stub */
+.sc-pass-top { align-items: baseline; }
+.sc-pass-top > span:first-child { color: var(--sc-wine); font-weight: 600; letter-spacing: 0.24em; }
+.sc-pass-top > span:last-child { font-family: var(--sc-display); font-style: italic; font-size: 17px; letter-spacing: 0; text-transform: none; font-weight: 500; color: var(--sc-brass); }
+.sc-pass p { font-size: 14px; line-height: 1.65; color: var(--sc-muted); }
+.sc-route { gap: 18px; }
+.sc-route .sc-arrow { color: var(--sc-wine); }
+.sc-fields .sc-small { margin-bottom: 8px; font-weight: 600; color: var(--sc-fg); opacity: 0.8; }
+.sc-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.sc-chip { display: inline-block; padding: 5px 12px; border-radius: 999px; font-size: 12px; font-weight: 500; line-height: 1.4; background: var(--cs); color: var(--cd); }
+.sc-chip.is-left { background: transparent; color: var(--sc-muted); border: 1.5px dashed var(--sc-tile-edge); }
+.sc-stub > div:not(.sc-bars):not(:first-child) > div { font-family: var(--sc-display); font-style: italic; font-size: 22px; line-height: 1.2; }
+.sc-stub .sc-code { font-size: 56px; color: #FBF6EE; }
+.sc-story .sc-chip { font-size: 30px; padding: 10px 26px; }
+.sc-story .sc-chips { gap: 16px; }
+.sc-story .sc-pass-top > span:last-child { font-size: 30px; }
+.sc-story .sc-stub > div:not(.sc-bars):not(:first-child) > div { font-size: 40px; }
+
+/* Readable body text: Montserrat Regular (the site's sans) in warm dark brown */
+.sc-theme { --sc-body: "Montserrat", system-ui, sans-serif; }
+.sc-theme { --sc-muted: #5C4636; }
+.sc-page, .sc-letter { font-weight: 400; font-size: 16px; }
+.sc-intro, .sc-note p, .sc-screen-head p, .sc-pass p, .sc-letter p { color: var(--sc-muted); }
+.sc-note .sc-lead { color: var(--sc-fg); }
+.sc-letter .sc-ask { color: #5A3F0B; }
+.sc-story { font-weight: 400; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sc-theme { --sc-muted: #c9b6a2; } }
+:root[data-theme="dark"] .sc-theme { --sc-muted: #c9b6a2; }
+.sc-env-label { font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; font-weight: 600; color: var(--sc-wine); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sc-env-label { color: var(--sc-latch); } }
+:root[data-theme="dark"] .sc-env-label { color: var(--sc-latch); }
+/* The packed-suitcase heading stands upright, as in the screenshot */
+.type-preview .sc-screen-head h2:not(.uppercase) { font-style: normal; font-weight: 500; }

@@ -215,6 +215,7 @@ const SuitcaseGame = () => {
           <span>{suitcase.pass.brand}</span>
         </div>
         <h3>{result.title}</h3>
+        <p>{result.line}</p>
         <div className="sc-route">
           <div>
             <span className="sc-small">{suitcase.pass.fromLabel}</span>
@@ -228,15 +229,31 @@ const SuitcaseGame = () => {
             <b>{suitcase.pass.to}</b>
           </div>
         </div>
-        <p>{result.line}</p>
+        {/* Items as chips: carried ones in their own colour, left-behind ones as dashed outlines */}
         <div className="sc-fields">
           <div>
             <span className="sc-small">{suitcase.pass.carryingLabel}</span>
-            {list(kept)}
+            <div className="sc-chips">
+              {kept.length
+                ? kept.map((it) => (
+                    <span key={it.id} className="sc-chip" style={toneVars(it.id)}>
+                      {it.name}
+                    </span>
+                  ))
+                : <span className="sc-chip is-left">{suitcase.pass.nothing}</span>}
+            </div>
           </div>
           <div>
             <span className="sc-small">{suitcase.pass.leftLabel}</span>
-            {list(left)}
+            <div className="sc-chips">
+              {left.length
+                ? left.map((it) => (
+                    <span key={it.id} className="sc-chip is-left">
+                      {it.name}
+                    </span>
+                  ))
+                : <span className="sc-chip is-left">{suitcase.pass.nothing}</span>}
+            </div>
           </div>
         </div>
       </div>
@@ -331,11 +348,6 @@ const SuitcaseGame = () => {
         </div>
 
         <article className="sc-note" aria-live="polite" style={currentItem ? toneVars(currentItem.id) : undefined}>
-          <span className="sc-note-stamp" aria-hidden="true">
-            {suitcase.envelope.postmarkLine1}
-            <br />
-            {suitcase.envelope.postmarkLine2}
-          </span>
           <div key={`${phase}-${current ?? "intro"}`} className="sc-fade" style={{ display: "grid", gap: 16 }}>
             {phase === "unpack" && !currentItem && (
               <>
@@ -427,11 +439,11 @@ const SuitcaseGame = () => {
           </header>
           {passMarkup}
           <div className="sc-actions sc-center">
-            <button type="button" className="sc-btn" onClick={copyPass}>
-              {suitcase.pass.copy}
-            </button>
-            <button type="button" className="sc-btn is-ghost" onClick={savePass} disabled={rendering}>
+            <button type="button" className="sc-btn" onClick={savePass} disabled={rendering}>
               {suitcase.pass.save}
+            </button>
+            <button type="button" className="sc-btn is-ghost" onClick={copyPass}>
+              {suitcase.pass.copy}
             </button>
             <button type="button" className="sc-btn is-ghost" onClick={reset}>
               {suitcase.closed.again}
@@ -498,6 +510,7 @@ const SuitcaseGame = () => {
           >
             {dialog && letter && dialogItem && dialog.stage !== "letter" && (
               <div className="sc-env-wrap" onClick={(event) => event.target === event.currentTarget && setDialog(null)}>
+                <span className="sc-env-label">{suitcase.unpack.emptyBold.replace(/\.$/, "")}</span>
                 <Dialog.Title asChild>
                   <p className="sc-env-hint">{fill(suitcase.envelope.hint, { name: withoutArticle(dialogItem.name) })}</p>
                 </Dialog.Title>

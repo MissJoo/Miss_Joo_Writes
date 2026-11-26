@@ -9,7 +9,7 @@ const PauseHere = ({ pause }: { pause: NonNullable<Post["pause"]> }) => {
     <aside aria-label="Pause here" className="!my-10 rounded-xl border border-journal-border bg-journal-card p-5 md:p-6 space-y-3">
       <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">Pause here</span>
       <p className="font-serif text-xl md:text-2xl text-journal-text leading-snug">{pause.question}</p>
-      <p className="font-sans text-xs font-light leading-relaxed text-journal-text-secondary">Your answer stays private unless you choose to share it</p>
+      <p className="font-sans text-xs font-light leading-relaxed text-journal-text-secondary">Just for you. Nothing you write here is saved or sent.</p>
       {/* Never sent or saved anywhere: it only lives on this page until the reader leaves */}
       <textarea
         rows={3}
