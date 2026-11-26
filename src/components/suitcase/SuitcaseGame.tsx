@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import * as Dialog from "@radix-ui/react-dialog";
 import { fill, suitcase, type SuitcaseIcon, type SuitcaseResult } from "@/data/suitcase";
@@ -12,6 +12,18 @@ type Phase = "unpack" | "repack" | "done";
 type DialogState = { id: SuitcaseIcon; stage: "envelope" | "opening" | "letter" } | null;
 
 const { items } = suitcase;
+
+// Each item's colour, shown once it is taken out (main, dark edge, soft glow)
+const tone: Record<SuitcaseIcon, [string, string, string]> = {
+  photo: ["#B5485D", "#8E2F44", "#F3D6DC"],
+  coffee: ["#B9792A", "#8A5617", "#F5E1C2"],
+  jacket: ["#2E8C86", "#1E6762", "#CFEAE6"],
+  phone: ["#7B4FA0", "#5C3780", "#E5D8F0"],
+  ticket: ["#C08A1E", "#8C6210", "#F4E4BC"],
+  notebook: ["#8E2436", "#6E1423", "#EED3D7"],
+};
+const toneVars = (id: SuitcaseIcon) =>
+  ({ "--c": tone[id][0], "--cd": tone[id][1], "--cs": tone[id][2] }) as CSSProperties;
 const total = items.length;
 const prefersReducedMotion = () =>
   typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -244,6 +256,7 @@ const SuitcaseGame = () => {
 
   return (
     <>
+      {phase === "unpack" && (
       <section className="sc-stage" aria-label="The suitcase">
         <div className="sc-case">
           <div className="sc-handle" aria-hidden="true"></div>
@@ -253,7 +266,7 @@ const SuitcaseGame = () => {
               <span className="sc-latch"></span>
             </div>
             <div className="sc-lining" aria-busy={unwrapping ? true : undefined}>
-              {items.map((it) => {
+              {items.map((it, i) => {
                 const isOut = opened.includes(it.id);
                 const anim = unwrapping?.id === it.id ? unwrapping.stage : null;
                 return (
@@ -264,10 +277,14 @@ const SuitcaseGame = () => {
                     aria-label={fill(isOut ? suitcase.unpack.ariaReadAgain : suitcase.unpack.ariaTakeOut, { name: it.name })}
                     onClick={() => openItem(it.id)}
                     disabled={phase !== "unpack"}
+                    style={isOut ? toneVars(it.id) : undefined}
                   >
+                    <span className="sc-num" aria-hidden="true">{`0${i + 1}`}</span>
                     {isOut ? (
                       <>
-                        <ItemIcon id={it.id} />
+                        <span className="sc-badge">
+                          <ItemIcon id={it.id} />
+                        </span>
                         <span>{it.name}</span>
                         <span className="sc-tag">{suitcase.unpack.unpacked}</span>
                       </>
@@ -277,7 +294,10 @@ const SuitcaseGame = () => {
                         <span>{it.name}</span>
                       </span>
                     ) : (
-                      <span className="sc-tag">{suitcase.unpack.takeOut}</span>
+                      <>
+                        <span className="sc-q" aria-hidden="true">?</span>
+                        <span className="sc-tag">{suitcase.unpack.takeOut}</span>
+                      </>
                     )}
                     {anim && (
                       <span className="giftwrap" aria-hidden="true">
@@ -300,12 +320,22 @@ const SuitcaseGame = () => {
               })}
             </div>
           </div>
+          <div className="sc-steps" aria-hidden="true">
+            {items.map((it) => (
+              <span key={it.id} className={opened.includes(it.id) ? "is-on" : undefined} style={opened.includes(it.id) ? toneVars(it.id) : undefined} />
+            ))}
+          </div>
           <p className="sc-count" aria-live="polite">
             {fill(suitcase.unpack.counter, { opened: opened.length, total })}
           </p>
         </div>
 
-        <article className="sc-note" aria-live="polite">
+        <article className="sc-note" aria-live="polite" style={currentItem ? toneVars(currentItem.id) : undefined}>
+          <span className="sc-note-stamp" aria-hidden="true">
+            {suitcase.envelope.postmarkLine1}
+            <br />
+            {suitcase.envelope.postmarkLine2}
+          </span>
           <div key={`${phase}-${current ?? "intro"}`} className="sc-fade" style={{ display: "grid", gap: 16 }}>
             {phase === "unpack" && !currentItem && (
               <>
@@ -345,65 +375,66 @@ const SuitcaseGame = () => {
               </>
             )}
 
-            {phase === "repack" && (
-              <>
-                <span className="sc-eyebrow">{suitcase.repack.eyebrow}</span>
-                <h2 ref={noteHeadingRef} tabIndex={-1}>
-                  {suitcase.repack.heading}
-                </h2>
-                <p>{suitcase.repack.body}</p>
-                <div className="sc-repack">
-                  {items.map((it) => (
-                    <div key={it.id} className="sc-row">
-                      <span>{it.name}</span>
-                      <div className="sc-toggle" role="group" aria-label={it.name}>
-                        <button
-                          type="button"
-                          aria-pressed={!!keep[it.id]}
-                          onClick={() => setKeep((k) => ({ ...k, [it.id]: true }))}
-                        >
-                          {suitcase.repack.carry}
-                        </button>
-                        <button
-                          type="button"
-                          aria-pressed={!keep[it.id]}
-                          onClick={() => setKeep((k) => ({ ...k, [it.id]: false }))}
-                        >
-                          {suitcase.repack.leave}
-                        </button>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                <button type="button" className="sc-btn" onClick={() => setPhase("done")}>
-                  {suitcase.repack.done}
-                </button>
-              </>
-            )}
-
-            {phase === "done" && (
-              <>
-                <span className="sc-eyebrow">{suitcase.closed.eyebrow}</span>
-                <h2>{suitcase.closed.heading}</h2>
-                <p>{suitcase.closed.body}</p>
-                <button type="button" className="sc-btn is-ghost" onClick={reset}>
-                  {suitcase.closed.again}
-                </button>
-              </>
-            )}
           </div>
         </article>
       </section>
+      )}
+
+      {phase === "repack" && (
+        <section className="sc-screen sc-fade" aria-label={suitcase.repack.eyebrow}>
+          <header className="sc-screen-head">
+            <span className="sc-eyebrow">{suitcase.repack.eyebrow}</span>
+            <h2 ref={noteHeadingRef} tabIndex={-1}>
+              {suitcase.repack.heading}
+            </h2>
+            <p>{suitcase.repack.body}</p>
+          </header>
+          <div className="sc-shell sc-repack-shell">
+            <div className="sc-lining sc-repack">
+              {items.map((it) => (
+                <div key={it.id} className={`sc-row${keep[it.id] ? " is-kept" : ""}`} style={toneVars(it.id)}>
+                  <span className="sc-row-name">
+                    <span className="sc-dot" aria-hidden="true" />
+                    {it.name}
+                  </span>
+                  <div className="sc-toggle" role="group" aria-label={it.name}>
+                    <button type="button" aria-pressed={!!keep[it.id]} onClick={() => setKeep((k) => ({ ...k, [it.id]: true }))}>
+                      {suitcase.repack.carry}
+                    </button>
+                    <button type="button" aria-pressed={!keep[it.id]} onClick={() => setKeep((k) => ({ ...k, [it.id]: false }))}>
+                      {suitcase.repack.leave}
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="sc-actions sc-center">
+            <span className="sc-tally">{`Carrying ${items.filter((it) => keep[it.id]).length} · Leaving ${total - items.filter((it) => keep[it.id]).length}`}</span>
+            <button type="button" className="sc-btn" onClick={() => setPhase("done")}>
+              {suitcase.repack.done}
+            </button>
+          </div>
+        </section>
+      )}
 
       {phase === "done" && (
-        <section ref={resultRef} aria-label={suitcase.pass.label} className="sc-fade" style={{ display: "grid", gap: 20, scrollMarginTop: 110 }}>
+        <section ref={resultRef} aria-label={suitcase.pass.label} className="sc-screen sc-fade" style={{ scrollMarginTop: 110 }}>
+          <header className="sc-screen-head">
+            <span className="sc-eyebrow">{suitcase.closed.eyebrow}</span>
+            <h2>{suitcase.closed.heading}</h2>
+            <p>{suitcase.closed.body}</p>
+          </header>
           {passMarkup}
-          <div className="sc-actions">
+          <div className="sc-actions sc-center">
             <button type="button" className="sc-btn" onClick={copyPass}>
               {suitcase.pass.copy}
             </button>
             <button type="button" className="sc-btn is-ghost" onClick={savePass} disabled={rendering}>
               {suitcase.pass.save}
+            </button>
+            <button type="button" className="sc-btn is-ghost" onClick={reset}>
+              {suitcase.closed.again}
             </button>
             <span className="sc-status" role="status">
               {status}

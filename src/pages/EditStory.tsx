@@ -130,7 +130,7 @@ const EditStory = () => {
               {story.closing && (
                 <div className={`${column} !mt-10 space-y-6 text-center`}>
                   <p className="font-serif italic text-xl md:text-2xl leading-snug text-journal-text">{story.closing.line}</p>
-                  <p>{story.closing.text}</p>
+                  {story.closing.text && <p>{story.closing.text}</p>}
                   {/* The agreed sign-off: same fonts as the Journal articles */}
                   <footer className="space-y-6 md:space-y-7">
                     <p>Until the next page,</p>
@@ -156,6 +156,8 @@ const EditStory = () => {
           )}
 
           {/* More from this category: a thin line either side of the heading, then two side-by-side cards */}
+          {moreFromStories(category, story).length > 0 && (
+          <>
           <div className="mt-14 mb-8 flex items-center gap-5">
             <span className="h-px flex-1 bg-journal-border" aria-hidden="true" />
             <h2 className="font-sans text-[10px] font-medium uppercase tracking-[0.3em] text-journal-gold">More from {category.name}</h2>
@@ -181,6 +183,8 @@ const EditStory = () => {
               </li>
             ))}
           </ul>
+          </>
+          )}
         </div>
       </article>
     </Layout>

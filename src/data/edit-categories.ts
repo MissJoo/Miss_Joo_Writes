@@ -34,7 +34,7 @@ export interface EditStory {
   /** A longer story: headings, photos and cards after the opening paragraphs */
   blocks?: EditBlock[];
   review?: { label: string; heading: string; rows: [string, string][]; note?: string; subheading: string; text: string };
-  closing?: { line: string; text: string; label: string };
+  closing?: { line: string; text?: string; label: string };
   share?: { heading: string; text: string };
 }
 
@@ -73,8 +73,8 @@ export const editCategories: EditCategory[] = [
   {
     slug: "beauty-style",
     name: "Beauty & Style",
-    cardText: "Beauty rituals, skincare, perfumes and timeless wardrobe pieces.",
-    intro: "Beauty rituals, skincare discoveries and timeless pieces chosen with intention.",
+    cardText: "Skincare, perfumes and the wardrobe pieces I keep reaching for.",
+    intro: "The products I actually use, the scents I wear on repeat, and the pieces that make me feel like myself.",
     image: { src: "/assets/edit/beauty-style.webp", alt: "A perfume bottle and a jar of cream beside white flowers in soft light" },
     featured: {
       slug: "the-beauty-rituals-i-keep-coming-back-to",
@@ -92,36 +92,36 @@ export const editCategories: EditCategory[] = [
       moreFrom: ["the-perfumes-im-loving-right-now", "a-timeless-wardrobe-for-everyday-living"],
     },
     collection: [
-      { slug: "my-current-skincare-essentials", title: "My Current Skincare Essentials", topic: "Skincare", date: "Jun 28" },
-      { slug: "a-timeless-wardrobe-for-everyday-living", title: "A Timeless Wardrobe for Everyday Living", topic: "Style", date: "Jun 21" },
-      { slug: "the-perfumes-im-loving-right-now", title: "The Perfumes I'm Loving Right Now", topic: "Beauty", date: "Jun 14" },
-      { slug: "a-minimal-makeup-routine-that-works", title: "A Minimal Makeup Routine That Works", topic: "Beauty", date: "Jun 07" },
-      { slug: "small-beauty-rituals-that-make-a-difference", title: "Small Beauty Rituals That Make a Difference", topic: "Self-care", date: "May 31" },
-      { slug: "rest-reset-glow", title: "Rest, Reset, Glow", topic: "Wellness", date: "May 24" },
+      { slug: "my-current-skincare-essentials", title: "My Current Skincare Essentials", topic: "Skincare" },
+      { slug: "a-timeless-wardrobe-for-everyday-living", title: "A Timeless Wardrobe for Everyday Living", topic: "Style" },
+      { slug: "the-perfumes-im-loving-right-now", title: "The Perfumes I'm Loving Right Now", topic: "Beauty" },
+      { slug: "a-minimal-makeup-routine-that-works", title: "A Minimal Makeup Routine That Works", topic: "Beauty" },
+      { slug: "small-beauty-rituals-that-make-a-difference", title: "Small Beauty Rituals That Make a Difference", topic: "Self-care" },
+      { slug: "rest-reset-glow", title: "Rest, Reset, Glow", topic: "Wellness" },
     ].map((story) => ({ ...story, image: beautyPhoto(story.slug) })),
   },
   {
     slug: "cafe-dining",
     name: "Café & Dining",
-    cardText: "Coffee shops, restaurants and dining experiences worth discovering.",
-    intro: "Coffee shops, restaurants and dining experiences worth discovering.",
+    cardText: "Cafés and restaurants in Doha, with what to order and when to go.",
+    intro: "Where I write, meet friends and slow down in Doha. Every review gives you the price, the hours and my order.",
     image: { src: "/assets/edit/cafe-dining.webp", alt: "A latte and a croissant on a wooden café table" },
     ...comingSoonStories("/assets/edit/cafe-dining.webp"),
     featured: {
       slug: "cotti-coffee-souq-waqif",
       title: "Cotti Coffee Souq Waqif: A Quiet Coffee Stop in the Heart of Doha",
-      summary: "A quiet coffee stop just across from Souq Waqif, with the metro only a short walk away.",
-      intro: "A quiet coffee stop just across from Souq Waqif, with the metro only a short walk away.",
-      readTime: "2 min read",
+      summary: "A calm room across from Souq Waqif, open until 11 PM, with drinks at QR 13 and the metro a short walk away.",
+      intro: "A calm room across from Souq Waqif, open until 11 PM, with drinks at QR 13 and the metro a short walk away.",
+      readTime: "3 min read",
       image: "/images/cotti-souq-waqif-storefront.jpg",
       imageAlt: "The lit Cotti Coffee storefront at Souq Waqif in the evening, with small tables outside",
-      seoTitle: "Cotti Coffee Souq Waqif: A Quiet Coffee Stop in Doha | Miss Joo Writes",
-      seoDescription: "A quiet coffee stop inside Al Fardan Centre, just across from Souq Waqif, plus three drinks worth ordering, from Miss Joo.",
+      seoTitle: "Cotti Coffee Souq Waqif: Hours, Prices and What to Order | Miss Joo Writes",
+      seoDescription: "A calm coffee stop in Al Fardan Centre, across from Souq Waqif. Open 7:30 AM to 11 PM, drinks from QR 13, free Wi-Fi, and three drinks worth ordering.",
       datePublished: "2026-11-09",
-      opening: "Not every coffee break needs to come with a special occasion. Sometimes, you just need somewhere comfortable to sit for a while.",
+      opening: "Not every coffee break needs a special occasion. Sometimes, you just need somewhere comfortable to sit for a while.",
       body: [
-        "Cotti Coffee at Al Fardan Centre offers exactly that kind of pause. Step through the glass doors and the atmosphere shifts: warm wood, soft lighting and a quieter setting that feels a world away from the activity outside.",
-        "Located just across from Souq Waqif, it's a convenient stop after exploring the market or spending an evening around the area.",
+        "Cotti Coffee at Al Fardan Centre gives you exactly that. Step through the glass doors and the noise of the street fades: warm wood, soft lighting and a room that feels a world away from the crowds outside.",
+        "It's an easy stop after walking through the market, or before an evening around the souq.",
       ],
       blocks: [
         { kind: "heading", text: "Where to Find It" },
@@ -131,18 +131,24 @@ export const editCategories: EditCategory[] = [
           alt: "Al Fardan Centre at night, with the lit Cotti Coffee storefront on the ground floor",
           wide: true,
         },
-        { kind: "text", text: "Cotti Coffee is located inside Al Fardan Centre on Ali Bin Abdullah Street, directly across from Souq Waqif." },
+        { kind: "text", text: "Cotti Coffee is on the ground floor of Al Fardan Centre, on Ali Bin Abdullah Street, directly across from Souq Waqif." },
         {
           kind: "text",
-          text: "It's also within a short walking distance of Souq Waqif Metro Station, making it easy to reach without needing a car.",
+          text: "You don't need a car. Souq Waqif Metro Station is a short walk away.",
         },
         {
           kind: "text",
           text: "Address:",
-          link: { label: "Cotti Coffee - Al Fardan Center", href: "https://share.google/wS7meROO3rVJqOGe9" },
+          link: { label: "Cotti Coffee, Al Fardan Centre", href: "https://share.google/wS7meROO3rVJqOGe9" },
         },
+        {
+          kind: "text",
+          text: "Opening hours: 7:30 AM to 11 PM. Their website says they close at 10 PM, but they're open until 11 PM, so you have time for a late coffee after the souq.",
+        },
+        { kind: "text", text: "Price: Each of the three drinks below is QR 13." },
+        { kind: "text", text: "Good to know: Free Wi-Fi, and enough seating for a solo laptop session or a table of friends." },
         { kind: "heading", text: "What to Order: Three Drinks Worth Trying" },
-        { kind: "text", text: "Not sure what to order on your first visit? Here are three drinks I'd recommend putting on your list." },
+        { kind: "text", text: "Not sure what to order on your first visit? These are my three." },
         {
           kind: "cards",
           items: [
@@ -172,27 +178,30 @@ export const editCategories: EditCategory[] = [
         { kind: "heading", text: "What Makes This Branch Worth Visiting?" },
         {
           kind: "text",
-          text: "My favorite time to visit is Thursday or Friday evening. There's usually plenty happening around Souq Waqif, so having somewhere quieter to step into makes the coffee break even more enjoyable.",
+          text: "It gets busy on Thursday and Friday evenings, when the souq is at its fullest. For a quiet coffee, go on a Monday or Tuesday, when you can almost have the room to yourself.",
         },
-        { kind: "text", text: "I like that I can enjoy my drink without having to leave the area or go too far from the souq." },
-        { kind: "text", text: "It's a simple convenience, but sometimes that's exactly what makes a place worth returning to." },
+        {
+          kind: "text",
+          text: "I like that I can sit with my drink without leaving the area. It's a simple convenience, but sometimes that's exactly what makes a place worth returning to.",
+        },
       ],
       review: {
         label: "The Edit Verdict",
         heading: "My Verdict",
         rows: [
-          ["Best for", "A relaxed coffee break or a little solo time"],
-          ["Go-to order", "Matcha Mango Coconut"],
-          ["Best time to visit", "Weekdays"],
-          ["One thing to know", "It's conveniently located just across from Souq Waqif."],
+          ["Best for", "A slow coffee on your own, or catching up with friends"],
+          ["Go-to order", "Matcha Mango Coconut, large, iced, half sugar"],
+          ["Price", "QR 13 per drink"],
+          ["Hours", "7:30 AM to 11 PM"],
+          ["Best time to visit", "Monday or Tuesday, when it's quiet"],
+          ["Good to know", "Free Wi-Fi. No car needed: Souq Waqif Metro is a short walk away."],
         ],
-        note: "Note: Weekend visits can feel busier than other days.",
+        note: "Note: Thursday and Friday evenings get busy.",
         subheading: "Would I recommend it?",
-        text: "Yes. Especially if you're exploring Souq Waqif and want somewhere quieter to enjoy a coffee before heading back out. Get yourself a Matcha Mango Coconut and take your time.",
+        text: "Yes, especially if you're exploring Souq Waqif and want a quieter place to sit before heading back out.",
       },
       closing: {
-        line: "Sometimes, all you need is a good drink and a little time to yourself.",
-        text: "Enjoy your coffee and the calm surroundings!",
+        line: "Next time you're near the souq, skip the crowd for twenty minutes. Order the Matcha Mango Coconut, find a seat, and let the evening wait.",
         label: "The Edit | Café & Dining | Doha, Qatar",
       },
       share: {
@@ -204,8 +213,8 @@ export const editCategories: EditCategory[] = [
   {
     slug: "places-travel",
     name: "Places & Travel",
-    cardText: "Discoveries around Qatar and destinations beyond its borders.",
-    intro: "Discoveries around Qatar and destinations beyond its borders.",
+    cardText: "Places around Qatar, and the cities that changed something in me.",
+    intro: "Not itineraries. The places in Qatar I keep going back to, and the cities abroad I still think about.",
     image: {
       src: "/assets/edit/places-travel.webp",
       alt: "A lantern-lit stone walkway in Doha at golden hour, with a spiral minaret in the distance",
@@ -215,8 +224,8 @@ export const editCategories: EditCategory[] = [
   {
     slug: "soft-living",
     name: "Soft Living",
-    cardText: "Books, home finds, everyday rituals and intentional living.",
-    intro: "Books, home finds, everyday rituals and intentional living.",
+    cardText: "Books, small rituals and the habits that make ordinary days softer.",
+    intro: "What I'm reading, the routines that keep me steady, and the small things that make home feel like home.",
     image: { src: "/assets/edit/soft-living.webp", alt: "A lit candle, books, a vase of small white flowers and a latte on a wooden table" },
     ...comingSoonStories("/assets/edit/soft-living.webp"),
   },
@@ -240,9 +249,8 @@ export const storyPath = (category: EditCategory, story: EditStory) => `/lifesty
 export const moreFromStories = (category: EditCategory, story: EditStory) => {
   const all = categoryStories(category);
   if (story.moreFrom) return story.moreFrom.map((slug) => all.find((s) => s.slug === slug)!).filter(Boolean);
-  const pool = hasStory(category.featured) && category.collection.includes(story) ? category.collection : all;
-  const i = pool.indexOf(story);
-  return [pool[(i + 1) % pool.length], pool[(i + 2) % pool.length]];
+  // Only finished stories, never "Story coming soon" cards
+  return all.filter((s) => s !== story && hasStory(s)).slice(0, 2);
 };
 
 /** Every category and story page, for prerendering and the sitemap */

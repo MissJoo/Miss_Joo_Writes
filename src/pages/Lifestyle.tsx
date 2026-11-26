@@ -10,14 +10,14 @@ const Lifestyle = () => {
         <div className="container mx-auto px-6 lg:px-12 text-center">
           <div className="max-w-2xl mx-auto space-y-4">
             <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">
-              Beauty · Places · Little Finds
+              Beauty · Cafés · Places · Soft Living
             </span>
             <h1 className="font-serif text-3.5xl md:text-5xl leading-tight text-journal-text">
               The Edit
             </h1>
             <div className="w-12 h-px bg-journal-champagne/40 mx-auto mt-2"></div>
             <p className="text-journal-text-secondary font-serif italic text-lg md:text-xl max-w-lg mx-auto leading-relaxed">
-              A considered collection of beauty, places and the little finds that make everyday life feel softer.
+              Beauty, cafés, places and small finds in Doha and beyond, chosen because I&rsquo;d recommend them to a friend.
             </p>
           </div>
         </div>
@@ -56,17 +56,17 @@ const Lifestyle = () => {
             <span className="text-[10px] tracking-[0.3em] uppercase text-journal-gold font-sans font-medium block">
               Brands &amp; Makers
             </span>
-            <h3 className="font-serif text-2xl md:text-3xl text-journal-text">Made something with intention?</h3>
-            <p className="text-journal-text-secondary text-sm md:text-base font-light max-w-xl mx-auto leading-relaxed">
-              I love discovering and collaborating with brands, spaces and makers who value quality, beauty and thoughtful
-              living. If that sounds like you, I&rsquo;d love to hear your story.
+            <h3 className="font-serif text-2xl md:text-3xl text-journal-text">Have a place or product worth sharing?</h3>
+            <p className="!text-center text-journal-text-secondary text-sm md:text-base font-light max-w-xl mx-auto leading-relaxed">
+              I feature caf&eacute;s, salons, places and products in Doha that I&rsquo;d honestly recommend to a friend. If you&rsquo;d
+              like yours in The Edit, tell me about it.
             </p>
             <div className="pt-2">
               <Link
-                to="/contact"
+                to="/work-with-me"
                 className="inline-flex h-11 items-center rounded-full bg-gold px-8 text-[11px] uppercase tracking-widest text-espresso hover:bg-gold-hover transition-colors"
               >
-                Start a conversation
+                Tell me about it
               </Link>
             </div>
           </div>

@@ -184,6 +184,21 @@ body:has(.type-preview) header {
   font-family: inherit;
 }
 
+/* ...except a signature word inside a heading, which keeps the script ("Hello, I'm Joo" on the About page) */
+.type-preview .font-serif span.font-signature {
+  font-family: "Great Vibes", cursive;
+  font-style: normal;
+}
+
+/* The About page's "Joo": burgundy in light mode, gold in dark mode so it stays readable on brown */
+.type-preview .about-joo { color: #6E1423; }
+.dark .type-preview .about-joo { color: rgb(221 181 108); }
+/* The About page's closing "With softness, Miss Joo": bold, in the footer headings' champagne gold (#DEBA74) */
+.type-preview p.about-signoff,
+.dark .type-preview p.about-signoff {
+  font-weight: 700; color: rgb(222 186 116);
+}
+
 /* Paragraphs are justified from small tablets up (phones stay ragged, so narrow lines don't open wide gaps).
    Centred paragraphs keep their last line centred, so short and centred text still looks centred. */
 @media (min-width: 640px) {

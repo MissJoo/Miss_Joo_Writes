@@ -11,7 +11,7 @@ const About = () => {
               The Author
             </span>
             <h1 className="font-serif text-3.5xl md:text-5xl leading-tight text-journal-text animate-fade-in-up">
-              Hello, I'm <span className="font-signature text-journal-gold font-normal not-italic tracking-normal text-3.5xl md:text-5xl block sm:inline mt-1 sm:mt-0">Joo</span>
+              Hello, I'm <span className="about-joo font-signature font-normal not-italic tracking-normal text-3.5xl md:text-5xl block sm:inline mt-1 sm:mt-0">Joo</span>
             </h1>
             <div className="w-12 h-px bg-journal-champagne/40 mx-auto mt-4"></div>
           </div>
@@ -63,6 +63,9 @@ const About = () => {
             <div className="pt-8 border-t border-journal-border/30 text-center mt-12 space-y-4">
               <p className="text-journal-gold font-serif text-xl md:text-2xl italic leading-relaxed max-w-lg mx-auto">
                 “Some stories are not written because they are perfect. They are written because they are true.”
+              </p>
+              <p className="pt-4 text-center font-signature text-3xl md:text-4xl leading-snug about-joo about-signoff select-none">
+                With softness, Miss Joo
               </p>
             </div>
           </div>

@@ -3,7 +3,7 @@ import Layout from "@/components/layout/Layout";
 import NotFound from "@/pages/NotFound";
 import EditPath from "@/components/edit/EditPath";
 import EditPhoto from "@/components/edit/EditPhoto";
-import { COMING_SOON, getEditCategory, storyPath } from "@/data/edit-categories";
+import { getEditCategory, hasStory, storyPath } from "@/data/edit-categories";
 
 /** The Edit, level 2: one category with its Featured Story and The Collection. */
 const EditCategory = () => {
@@ -11,6 +11,9 @@ const EditCategory = () => {
   const category = getEditCategory(slug);
   if (!category) return <NotFound />;
   const { featured } = category;
+  // Only finished stories show; empty "Story coming soon" cards stay hidden until they are written
+  const showFeatured = hasStory(featured);
+  const collection = category.collection.filter(hasStory);
 
   return (
     <Layout>
@@ -26,6 +29,7 @@ const EditCategory = () => {
           </div>
 
           {/* Featured Story: wide photo on the left, text on the right */}
+          {showFeatured && (
           <Link
             to={storyPath(category, featured)}
             className="group mt-10 grid overflow-hidden rounded-xl border border-journal-border bg-journal-card shadow-sm transition-colors duration-300 hover:border-journal-champagne/60 md:grid-cols-[3fr_2fr]"
@@ -44,15 +48,18 @@ const EditCategory = () => {
               </span>
             </div>
           </Link>
+          )}
 
           {/* The Collection, with a thin line either side of the heading */}
+          {collection.length > 0 && (
+          <>
           <div className="mt-14 mb-8 flex items-center gap-5">
             <span className="h-px flex-1 bg-journal-border" aria-hidden="true" />
             <h2 className="font-serif text-2xl md:text-3xl text-journal-text">The Collection</h2>
             <span className="h-px flex-1 bg-journal-border" aria-hidden="true" />
           </div>
           <ul className="grid gap-6 md:grid-cols-3">
-            {category.collection.map((story) => (
+            {collection.map((story) => (
               <li key={story.slug}>
                 <Link
                   to={storyPath(category, story)}
@@ -60,9 +67,9 @@ const EditCategory = () => {
                 >
                   <EditPhoto src={story.image} fallback={category.image.src} alt={story.title} className="aspect-[4/3]" />
                   <div className="flex flex-1 flex-col space-y-2 p-5">
-                    {story.title !== COMING_SOON && story.topic && (
+                    {story.topic && (
                       <span className="font-sans text-[10px] font-medium uppercase tracking-[0.25em] text-journal-gold">
-                        {story.topic} · {story.date}
+                        {story.topic}{story.date ? ` · ${story.date}` : ""}
                       </span>
                     )}
                     <h3 className="flex-1 font-serif text-xl leading-snug text-journal-text group-hover:text-journal-gold transition-colors duration-300">
@@ -74,6 +81,15 @@ const EditCategory = () => {
               </li>
             ))}
           </ul>
+          </>
+          )}
+
+          <p className="mt-14 text-center font-serif italic text-lg md:text-xl text-journal-text-secondary">
+            More stories coming soon. Have a place I should try?{" "}
+            <Link to="/contact" className="text-journal-gold underline underline-offset-4 hover:text-journal-text transition-colors">
+              Tell me
+            </Link>
+          </p>
         </div>
       </section>
     </Layout>
