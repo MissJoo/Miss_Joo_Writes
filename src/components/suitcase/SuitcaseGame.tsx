@@ -106,21 +106,9 @@ const SuitcaseGame = () => {
   };
 
   const openItem = (id: SuitcaseIcon) => {
-    if (phase !== "unpack" || unwrapping) return; // ignore clicks while a card is unwrapping
-    if (opened.includes(id) || prefersReducedMotion()) {
-      finishOpening(id, opened);
-      return;
-    }
-    // Pop + gift (0 to 0.6s), unwrap (0.6 to 1.4s), reveal (1.2 to 2.2s), then settle
-    const openedBefore = opened;
-    setUnwrapping({ id, stage: "wrap" });
-    unwrapTimers.current = [
-      window.setTimeout(() => setUnwrapping({ id, stage: "reveal" }), 1200),
-      window.setTimeout(() => {
-        setUnwrapping(null);
-        finishOpening(id, openedBefore);
-      }, 2250),
-    ];
+    if (phase !== "unpack") return;
+    // Items open straight away (the gift-unwrapping animation was removed on request)
+    finishOpening(id, opened);
   };
 
   const startRepack = () => {
@@ -285,12 +273,11 @@ const SuitcaseGame = () => {
             <div className="sc-lining" aria-busy={unwrapping ? true : undefined}>
               {items.map((it, i) => {
                 const isOut = opened.includes(it.id);
-                const anim = unwrapping?.id === it.id ? unwrapping.stage : null;
                 return (
                   <button
                     key={it.id}
                     type="button"
-                    className={`sc-item${isOut ? " is-out" : ""}${!isOut && !anim ? " is-closed" : ""}${anim ? " gift-pop" : ""}${current === it.id ? " is-active" : ""}`}
+                    className={`sc-item${isOut ? " is-out" : ""}${!isOut ? " is-closed" : ""}${current === it.id ? " is-active" : ""}`}
                     aria-label={fill(isOut ? suitcase.unpack.ariaReadAgain : suitcase.unpack.ariaTakeOut, { name: it.name })}
                     onClick={() => openItem(it.id)}
                     disabled={phase !== "unpack"}
@@ -305,32 +292,11 @@ const SuitcaseGame = () => {
                         <span>{it.name}</span>
                         <span className="sc-tag">{suitcase.unpack.unpacked}</span>
                       </>
-                    ) : anim === "reveal" ? (
-                      <span className="gift-reveal">
-                        <ItemIcon id={it.id} />
-                        <span>{it.name}</span>
-                      </span>
                     ) : (
                       <>
                         <span className="sc-q" aria-hidden="true">?</span>
                         <span className="sc-tag">{suitcase.unpack.takeOut}</span>
                       </>
-                    )}
-                    {anim && (
-                      <span className="giftwrap" aria-hidden="true">
-                        <span className="giftwrap-paper giftwrap-paper-left" />
-                        <span className="giftwrap-paper giftwrap-paper-right" />
-                        <span className="giftwrap-ribbon giftwrap-ribbon-v" />
-                        <span className="giftwrap-ribbon giftwrap-ribbon-h" />
-                        <span className="giftwrap-bow">
-                          <svg viewBox="0 0 48 28">
-                            <path d="M24 14 C18 2 4 2 6 12 C7 20 18 18 24 14 Z" />
-                            <path d="M24 14 C30 2 44 2 42 12 C41 20 30 18 24 14 Z" />
-                            <path d="M22 15 L16 27 L20 26 L23 17 Z M26 15 L32 27 L28 26 L25 17 Z" />
-                            <circle cx="24" cy="14" r="4" />
-                          </svg>
-                        </span>
-                      </span>
                     )}
                   </button>
                 );
@@ -439,7 +405,7 @@ const SuitcaseGame = () => {
           </header>
           {passMarkup}
           <div className="sc-actions sc-center">
-            <button type="button" className="sc-btn" onClick={savePass} disabled={rendering}>
+            <button type="button" className="sc-btn is-ghost" onClick={savePass} disabled={rendering}>
               {suitcase.pass.save}
             </button>
             <button type="button" className="sc-btn is-ghost" onClick={copyPass}>
