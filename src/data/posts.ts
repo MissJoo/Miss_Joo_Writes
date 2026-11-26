@@ -2953,7 +2953,9 @@ const allPosts: Post[] = [
 ];
 
 /** Essays dated after the build day stay hidden until a build on or after their date. */
-const buildDay = new Date(__BUILD_TIME__).toISOString().slice(0, 10);
+// The build's date in Qatar (UTC+3, no daylight saving), so an essay goes live on its date in Doha
+const QATAR_OFFSET_MS = 3 * 60 * 60 * 1000;
+const buildDay = new Date(new Date(__BUILD_TIME__).getTime() + QATAR_OFFSET_MS).toISOString().slice(0, 10);
 export const posts: Post[] = allPosts.filter((post) => post.datePublished <= buildDay);
 
 export const getPost = (slug: string | undefined) => posts.find((post) => post.slug === slug);
