@@ -149,7 +149,7 @@ const Index = () => {
                   <span className="md:hidden">One letter when a new essay is ready, plus a welcome letter with a free postcard.</span>
                   <span className="hidden md:block">One letter when a new essay is ready</span>
                   <span className="hidden md:block">A welcome letter with a free postcard</span>
-                  <span className="hidden md:block">Unsubscribe any time</span>
+                  <span className="hidden md:block">Leave any time, no hard feelings</span>
                 </>
               }
             />
