@@ -91,14 +91,127 @@ export const editCategories: EditCategory[] = [
       image: beautyPhoto("the-beauty-rituals-i-keep-coming-back-to"),
       moreFrom: ["the-perfumes-im-loving-right-now", "a-timeless-wardrobe-for-everyday-living"],
     },
-    collection: [
-      { slug: "my-current-skincare-essentials", title: "My Current Skincare Essentials", topic: "Skincare" },
+    collection: ([
+      {
+        slug: "my-current-skincare-essentials",
+        title: "My Current Skincare Essentials: Five Products That Earned Their Spot",
+        topic: "Skincare",
+        date: "November 27, 2026",
+        datePublished: "2026-11-27",
+        summary: "Five products, morning to night, and the reason each one stays on my vanity in the Doha heat.",
+        intro: "Five products, morning to night. Not a haul, not a trend list. Just what is on my vanity right now, and why each one stays.",
+        readTime: "5 min read",
+        imageAlt: "A hand holding the Balea Beauty Hyaluron Serum in front of a vanity with a candle and books",
+        seoTitle: "My Current Skincare Essentials: A Simple AM to PM Routine | Miss Joo Writes",
+        seoDescription: "A five-product skincare routine for hot climates: hyaluronic serum, panthenol cream, SPF 50+, a gentle retinol and azelaic acid, and how I use them.",
+        opening: "My vanity used to be crowded. Now it holds five products, and every one of them has a job.",
+        body: [
+          "Living in Doha changed how I think about skin. The sun is stronger, the air outside is heavy and the air inside is dry from the air conditioning. A routine built on trends doesn't survive that. A routine built on purpose does.",
+          "So I stopped asking what's new and started asking what each product is actually doing for me. These are the five that answered.",
+        ],
+        blocks: [
+          { kind: "heading", text: "The Morning: Hydrate, Moisturise, Protect" },
+          {
+            kind: "text",
+            text: "Mornings are about three things. Water back into the skin, something to keep it there, and protection from a sun that doesn't take days off.",
+          },
+          {
+            kind: "cards",
+            items: [
+              {
+                number: "01",
+                title: "Balea Beauty Hyaluron Serum",
+                text: "Hyaluronic acid draws water into the skin and holds it there. A few drops on damp skin after cleansing, and my face stops feeling tight from the AC.",
+                src: "/images/skincare-essentials/balea-hyaluron-serum.webp",
+                alt: "A hand holding the Balea Beauty Hyaluron Serum dropper bottle",
+              },
+              {
+                number: "02",
+                title: "Purito Mighty Bamboo Panthenol Cream",
+                text: "Panthenol is a soothing, barrier-friendly ingredient, and this cream is light enough for the heat. It seals in the serum without feeling heavy under sunscreen.",
+                src: "/images/skincare-essentials/purito-panthenol-cream.webp",
+                alt: "A hand holding the Purito Seoul Mighty Bamboo Panthenol Cream tube",
+              },
+              {
+                number: "03",
+                title: "SUNDANCE SPF 50+ Sonnencreme",
+                text: "Very high UVA and UVB protection, made for the face and décolleté, and not greasy. In Qatar, SPF is the one step I never skip, rain or shine.",
+                src: "/images/skincare-essentials/sundance-spf50.webp",
+                alt: "A hand holding the orange SUNDANCE SPF 50+ face sunscreen tube",
+              },
+            ],
+          },
+          { kind: "heading", text: "The Night: Treat, Slowly" },
+          {
+            kind: "text",
+            text: "Night is where the active ingredients work. I keep it simple, and I never rush it.",
+          },
+          {
+            kind: "cards",
+            items: [
+              {
+                number: "04",
+                title: "Luxe Organix Retinol + Bakuchiol Cream",
+                text: "A gentle 0.1% retinol paired with bakuchiol, niacinamide and panthenol. A soft way into retinol for smoother-looking skin, without starting at full strength.",
+                src: "/images/skincare-essentials/luxe-organix-retinol-bakuchiol.webp",
+                alt: "A hand holding the Luxe Organix Retinol and Bakuchiol overnight cream",
+              },
+              {
+                number: "05",
+                title: "Skinoren Cream",
+                text: "Skinoren contains azelaic acid. It's a medicated cream, so it's one to use with a pharmacist's or dermatologist's advice. I use it on the nights I'm not using retinol.",
+                src: "/images/skincare-essentials/skinoren-cream.webp",
+                alt: "A hand holding an orange tube of Skinoren Cream",
+              },
+            ],
+          },
+          { kind: "heading", text: "How I Keep It Gentle" },
+          {
+            kind: "text",
+            text: "Retinol and azelaic acid don't go on together. I alternate them on different nights and give my skin rest nights with just the serum and cream.",
+          },
+          {
+            kind: "text",
+            text: "New actives get a patch test first, and they go in one at a time. If something stings or my skin turns red, I stop.",
+          },
+          {
+            kind: "text",
+            text: "Retinol makes skin more sensitive to the sun, which is one more reason the SPF is non-negotiable the morning after.",
+          },
+          {
+            kind: "text",
+            text: "This is what works for my skin, not medical advice. If you're dealing with a skin condition, or you're pregnant or breastfeeding, talk to a dermatologist before adding retinol or azelaic acid.",
+          },
+        ],
+        review: {
+          label: "The Edit Summary",
+          heading: "My Routine at a Glance",
+          rows: [
+            ["Morning", "Balea Hyaluron Serum, Purito Panthenol Cream, SUNDANCE SPF 50+"],
+            ["Night A", "Luxe Organix Retinol + Bakuchiol"],
+            ["Night B", "Skinoren Cream"],
+            ["Rest nights", "Serum and cream only"],
+            ["Non-negotiable", "SPF every morning, especially after retinol nights"],
+          ],
+          note: "Note: patch test anything new, and start actives slowly.",
+          subheading: "The one thing I'd tell a friend",
+          text: "You don't need more products. You need the right few, used consistently.",
+        },
+        closing: {
+          line: "Five products. One job each. That's the whole secret.",
+          label: "The Edit | Beauty & Style | Doha, Qatar",
+        },
+        share: {
+          heading: "Know someone rebuilding their routine?",
+          text: "Share this with the friend whose vanity has more products than it needs.",
+        },
+      },
       { slug: "a-timeless-wardrobe-for-everyday-living", title: "A Timeless Wardrobe for Everyday Living", topic: "Style" },
       { slug: "the-perfumes-im-loving-right-now", title: "The Perfumes I'm Loving Right Now", topic: "Beauty" },
       { slug: "a-minimal-makeup-routine-that-works", title: "A Minimal Makeup Routine That Works", topic: "Beauty" },
       { slug: "small-beauty-rituals-that-make-a-difference", title: "Small Beauty Rituals That Make a Difference", topic: "Self-care" },
       { slug: "rest-reset-glow", title: "Rest, Reset, Glow", topic: "Wellness" },
-    ].map((story) => ({ ...story, image: beautyPhoto(story.slug) })),
+    ] as Omit<EditStory, "image">[]).map((story) => ({ ...story, image: beautyPhoto(story.slug) })),
   },
   {
     slug: "cafe-dining",
