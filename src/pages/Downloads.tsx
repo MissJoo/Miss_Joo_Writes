@@ -19,6 +19,13 @@ interface Journal {
 // Newest first
 const journals: Journal[] = [
     {
+        month: "November",
+        title: "Clarity & Curiosity",
+        theme: "Curious",
+        desc: "For the woman learning to question what she was handed. A space to notice which beliefs are really yours, let go of thoughts that only keep you up, and stay curious about people before deciding who they are.",
+        file: "/downloads/notes-on-becoming-november.pdf",
+    },
+    {
         month: "October",
         title: "Held & Heard",
         theme: "Held",
