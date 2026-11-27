@@ -16,6 +16,18 @@ const FromTheFeed = () => {
         <div className="max-w-6xl mx-auto mb-8 space-y-3">
           <span className="text-[10px] tracking-[0.35em] uppercase text-journal-gold font-sans font-medium block">From the Feed</span>
           <h2 className="font-serif text-2xl md:text-3.5xl text-journal-text">Small moments, and the essays behind them.</h2>
+          <p className="font-sans text-sm md:text-base font-light leading-relaxed text-journal-text-secondary">
+            The smaller thoughts live on Instagram and TikTok. Follow{" "}
+            <a
+              href={PROFILE_URLS.instagram}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-journal-gold underline underline-offset-4 hover:text-journal-text transition-colors"
+            >
+              @missjooo98
+            </a>
+            .
+          </p>
         </div>
 
         <ul className="grid gap-6 md:grid-cols-3 max-w-6xl mx-auto">

@@ -108,7 +108,7 @@ const BlogPost = () => {
         <div className="container mx-auto px-6 lg:px-12">
           <div className="max-w-2xl mx-auto text-center space-y-5 md:space-y-6">
             {/* Topic & Date */}
-            <div className="flex items-center justify-center gap-3 text-[10px] tracking-[0.25em] uppercase text-journal-muted animate-fade-in">
+            <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-[10px] tracking-[0.25em] uppercase text-journal-muted animate-fade-in [&>*]:whitespace-nowrap">
               {pillar ? (
                 <Link to={`/${pillar.slug}`} className="text-journal-gold font-semibold hover:text-journal-text transition-colors">
                   {pillar.navLabel}

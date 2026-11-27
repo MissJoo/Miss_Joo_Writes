@@ -456,3 +456,21 @@
 :root[data-theme="dark"] .sc-env-label { color: var(--sc-latch); }
 /* The packed-suitcase heading stands upright, as in the screenshot */
 .type-preview .sc-screen-head h2:not(.uppercase) { font-style: normal; font-weight: 500; }
+
+/* Readable sizes (Nov 27): nothing under 13px; body text at 16–17px */
+.sc-theme .sc-intro, .sc-theme .sc-note p, .sc-theme .sc-screen-head p, .sc-theme .sc-pass p, .sc-theme .sc-opens, .sc-theme .sc-sign { font-size: 16px; line-height: 1.7; }
+.sc-theme .sc-item { font-size: 15px; }
+.sc-theme .sc-count, .sc-theme .sc-status, .sc-theme .sc-tally, .sc-theme .sc-toggle button, .sc-theme .sc-chip { font-size: 14px; }
+.sc-theme .sc-tag, .sc-theme .sc-small, .sc-theme .sc-eyebrow, .sc-theme .sc-pass-top, .sc-theme .sc-num,
+.sc-theme .sc-countdown-label, .sc-theme .sc-env-label, .sc-theme .sc-env-wrap > .sc-env-hint:last-child { font-size: 13px; letter-spacing: 0.12em; }
+.sc-theme .sc-env-hint { font-size: 15px; }
+.sc-theme .sc-letter { font-size: 17px; }
+.sc-theme .sc-letter p { font-size: 17px; line-height: 1.75; }
+@media (max-width: 480px) { .sc-theme .sc-countdown-label { font-size: 12px; letter-spacing: 0.08em; } }
+/* Keep the saved Story image (1080×1920) at its own large sizes, and the envelope's italic line at 24px */
+.sc-theme .sc-story .sc-pass p { font-size: 34px; line-height: 1.5; }
+.sc-theme .sc-story .sc-small { font-size: 20px; letter-spacing: 0.14em; }
+.sc-theme .sc-story .sc-pass-top { font-size: 22px; letter-spacing: 0.2em; }
+.sc-theme .sc-story .sc-chip { font-size: 30px; }
+.sc-theme .sc-story-head .sc-eyebrow { font-size: 26px; }
+.sc-theme .sc-env-wrap > .sc-env-hint:not(:last-child) { font-size: 24px; }

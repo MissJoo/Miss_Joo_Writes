@@ -43,7 +43,8 @@ const Blog = () => {
       >
         <div className="container mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between gap-4">
-            <div className="-mx-6 flex flex-1 flex-nowrap gap-1.5 overflow-x-auto px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:gap-2 md:px-0">
+            {/* Phones: one row that scrolls sideways. Tablets and up: the topics wrap so none is hidden */}
+            <div className="-mx-6 flex flex-1 flex-nowrap gap-1.5 overflow-x-auto px-6 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:flex-wrap md:gap-2 md:overflow-visible md:px-0">
               {filters.map((filter) => (
                 <button
                   key={filter.key}

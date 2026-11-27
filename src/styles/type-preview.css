@@ -11,7 +11,7 @@
   font-family: var(--font-body);
 }
 .type-preview :is(p, li, label, input, dd, dt) {
-  font-size: 14px;
+  font-size: 16px; /* was 14px; raised for readability (Nov 27) */
   font-weight: 400;
   line-height: 1.7;
 }
@@ -57,7 +57,7 @@
 /* Small section labels */
 .type-preview :is(span, h2, p).uppercase {
   font-family: var(--font-body);
-  font-size: 10px;
+  font-size: 12px; /* was 10px */
   font-weight: 600;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -66,7 +66,7 @@
 /* Article metadata */
 .type-preview p:has(> time) {
   font-family: var(--font-body);
-  font-size: 10px;
+  font-size: 12px; /* was 10px */
   font-weight: 500;
   letter-spacing: 0.8px;
   text-transform: uppercase;
@@ -208,6 +208,10 @@ body:has(.type-preview) header {
   }
   .type-preview :is(.text-center p, p.text-center) {
     text-align-last: center;
+  }
+  /* Short card summaries stay left-aligned: in narrow cards, justifying opens wide gaps between words */
+  .type-preview p[class*="line-clamp"] {
+    text-align: left;
   }
 }
 @media (min-width: 768px) {
