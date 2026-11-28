@@ -38,11 +38,11 @@ const StoryBlock = ({ block }: { block: EditBlock }) => {
   }
   if (block.kind === "photo") {
     return (
-      <div className={column}>
+      <div className={block.natural ? "" : column}>
         <EditPhoto
           src={block.src}
           alt={block.alt}
-          className={`${block.wide ? "aspect-[3/2]" : "aspect-[4/5]"} rounded-xl border border-journal-border`}
+          className={`${block.natural ? "h-auto aspect-auto" : block.wide ? "aspect-[3/2]" : "aspect-[4/5]"} rounded-xl border border-journal-border`}
         />
       </div>
     );
@@ -96,7 +96,7 @@ const EditStory = () => {
             fallback={category.image.src}
             alt={story.imageAlt ?? story.title}
             eager
-            className={`mt-8 rounded-xl border border-journal-border ${longer ? "aspect-[4/3] object-[center_12%]" : "aspect-[16/9]"}`}
+            className={`mt-8 rounded-xl border border-journal-border ${story.imagePortrait ? "mx-auto max-w-xl aspect-[4/5]" : longer ? "aspect-[4/3] object-[center_12%]" : "aspect-[16/9]"}`}
           />
 
           {written ? (
@@ -155,7 +155,7 @@ const EditStory = () => {
             )
           )}
 
-          {/* More from this category: a thin line either side of the heading, then two side-by-side cards */}
+          {/* More from this category: a thin line either side of the heading, then two side-by-side cards (three cards stack photo over title) */}
           {moreFromStories(category, story).length > 0 && (
           <>
           <div className="mt-14 mb-8 flex items-center gap-5">
@@ -163,14 +163,14 @@ const EditStory = () => {
             <h2 className="font-sans text-[10px] font-medium uppercase tracking-[0.3em] text-journal-gold">More from {category.name}</h2>
             <span className="h-px flex-1 bg-journal-border" aria-hidden="true" />
           </div>
-          <ul className="grid gap-5 sm:grid-cols-2">
-            {moreFromStories(category, story).map((next) => (
+          <ul className={`grid gap-5 ${moreFromStories(category, story).length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}>
+            {moreFromStories(category, story).map((next, _i, list) => (
               <li key={next.slug}>
                 <Link
                   to={storyPath(category, next)}
-                  className="group flex h-full overflow-hidden rounded-xl border border-journal-border bg-journal-card transition-colors duration-300 hover:border-journal-champagne/60"
+                  className={`group flex h-full overflow-hidden rounded-xl ${list.length === 3 ? "flex-col" : ""} border border-journal-border bg-journal-card transition-colors duration-300 hover:border-journal-champagne/60`}
                 >
-                  <EditPhoto src={next.image} fallback={category.image.src} alt={next.title} className="aspect-[4/5] w-2/5 shrink-0" />
+                  <EditPhoto src={next.image} fallback={category.image.src} alt={next.title} className={list.length === 3 ? "aspect-[4/3] w-full shrink-0" : "aspect-[4/5] w-2/5 shrink-0"} />
                   <div className="flex flex-1 flex-col justify-center space-y-3 p-4">
                     <h3 className="font-serif text-lg leading-snug text-journal-text group-hover:text-journal-gold transition-colors duration-300">
                       {next.title}

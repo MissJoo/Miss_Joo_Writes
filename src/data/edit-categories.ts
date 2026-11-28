@@ -22,10 +22,12 @@ export interface EditStory {
   opening?: string;
   body?: string[];
   image: string;
-  /** Slugs of the two stories under "More from", when they are chosen by hand */
-  moreFrom?: [string, string];
+  /** Slugs of the two or three stories under "More from", when they are chosen by hand */
+  moreFrom?: string[];
   /** Alt text for the main photo, when it should say more than the title */
   imageAlt?: string;
+  /** The main photo is portrait (4:5): shown narrower and taller instead of cropped wide */
+  imagePortrait?: boolean;
   /** Search result title and description, when they differ from the defaults */
   seoTitle?: string;
   seoDescription?: string;
@@ -41,7 +43,7 @@ export interface EditStory {
 export type EditBlock =
   | { kind: "heading"; text: string }
   | { kind: "text"; text: string; link?: { label: string; href: string } }
-  | { kind: "photo"; src: string; alt: string; wide?: boolean }
+  | { kind: "photo"; src: string; alt: string; wide?: boolean; /** Full width, at the photo's own shape (no cropping), e.g. a collage */ natural?: boolean }
   | { kind: "cards"; items: { number: string; title: string; text: string; src: string; alt: string }[] };
 
 export interface EditCategory {
@@ -79,26 +81,127 @@ export const editCategories: EditCategory[] = [
     featured: {
       slug: "the-beauty-rituals-i-keep-coming-back-to",
       title: "The Beauty Rituals I Keep Coming Back To",
-      summary: "Simple, thoughtful routines that keep my skin healthy and my days a little softer.",
+      summary: "Six products, six months of consistency, and the simple routine that changed my skin.",
       intro:
-        "Simple, thoughtful skincare and beauty rituals that keep my skin healthy, my routine easy and my days a little softer.",
+        "Six products, six months of consistency, and the simple routine that changed my skin. Not a haul, not a trend list. Just what works, and why I keep coming back to it.",
       readTime: "6 min read",
+      datePublished: "2026-11-27",
+      imageAlt: "Luxe Organix Whip Cleanser, Balea Hyaluron Serum, Purito Panthenol Cream, SUNDANCE SPF 50+, Luxe Organix Retinol + Bakuchiol and Skinoren Cream on a marble vanity in warm light",
+      seoTitle: "The Beauty Rituals I Keep Coming Back To: My 6-Month Skincare Routine | Miss Joo Writes",
+      seoDescription: "The simple six-product skincare routine I've used for over six months in Doha: a vitamin C cleanser, hyaluronic serum, azelaic acid, panthenol cream, SPF 50+ and a gentle retinol.",
       opening: "A little consistency goes a long way.",
       body: [
         "Over the years, I've learned that beauty doesn't have to be complicated. It's not about having a long list of products or following every trend. For me, it's about finding a few rituals that work, staying consistent and being intentional with what I use.",
         "These are the simple beauty rituals I keep coming back to, a routine that supports my skin, fits my lifestyle and makes me feel a little more put together, even on the busiest days.",
       ],
-      image: beautyPhoto("the-beauty-rituals-i-keep-coming-back-to"),
+      blocks: [
+        { kind: "heading", text: "Why These Stuck" },
+        {
+          kind: "text",
+          text: "I've used this exact routine for over six months now. It's the longest I've ever stayed with anything, and it shows. My skin looks more vibrant, I get far fewer breakouts, the texture is smoother and my tone is more even.",
+        },
+        {
+          kind: "text",
+          text: "Nothing here is new or complicated. What changed was that I stopped switching products every few weeks and gave my skin time to respond.",
+        },
+        {
+          kind: "text",
+          text: "Living in Doha changed how I think about skin. The sun is stronger, the air outside is heavy and the air inside is dry from the air conditioning. A routine built on trends doesn't survive that. A routine built on purpose does.",
+        },
+        {
+          kind: "text",
+          text: "A few of these products came home with me from a trip to Germany last August. The Balea serum and the SUNDANCE sunscreen are from dm, a German drugstore, and you won't find them on shelves in Doha. If you're here, look for the ingredient, not the brand: a hyaluronic acid serum and a non-greasy SPF 50+ for the face will do the same job.",
+        },
+        {
+          kind: "photo",
+          src: "/images/skincare-essentials/skincare-collage.webp",
+          alt: "Six tiles, one product each: Luxe Organix Whip Cleanser, Balea Hyaluron Serum, Skinoren Cream, Purito Panthenol Cream, SUNDANCE SPF 50+ and Luxe Organix Retinol + Bakuchiol",
+          natural: true,
+        },
+        { kind: "heading", text: "The Morning: Hydrate, Treat, Protect" },
+        {
+          kind: "text",
+          text: "Mornings are about five things. A clean start, water back into the skin, a treatment, something to seal it all in, and protection from a sun that doesn't take days off.",
+        },
+        {
+          kind: "text",
+          text: "1. Luxe Organix Power Glow Vita Glow C Whip Cleanser. A whipped foam with vitamin C and hyaluronic acid. Every routine starts here, morning and night, so it's the one step that never changes.",
+        },
+        {
+          kind: "text",
+          text: "2. Balea Beauty Hyaluron Serum. Hyaluronic acid draws water into the skin and holds it there. A few drops on damp skin after cleansing, morning and night, and my face stops feeling tight from the AC.",
+        },
+        {
+          kind: "text",
+          text: "3. Skinoren Cream. Skinoren contains azelaic acid. It's a medicated cream, so it's one to use with a pharmacist's or dermatologist's advice. I keep it in the morning, after the serum, so it never meets my retinol.",
+        },
+        {
+          kind: "text",
+          text: "4. Purito Mighty Bamboo Panthenol Cream. Panthenol is a soothing, barrier-friendly ingredient, and this cream is light enough for the heat. It seals in everything underneath without feeling heavy under sunscreen, and I use it again at night.",
+        },
+        {
+          kind: "text",
+          text: "5. SUNDANCE SPF 50+ Sonnencreme. Very high UVA and UVB protection, made for the face and décolleté, and not greasy. In Qatar, SPF is the one step I never skip, even on days I don't leave the house.",
+        },
+        { kind: "heading", text: "The Night: Treat, Slowly" },
+        {
+          kind: "text",
+          text: "Night is for retinol. Same cleanser, same serum, same cream, with one active in the middle. I keep it simple, and I never rush it.",
+        },
+        {
+          kind: "text",
+          text: "The active is the Luxe Organix Retinol + Bakuchiol Cream, a gentle 0.1% retinol paired with bakuchiol, niacinamide and panthenol. It goes on after the serum, with the Purito cream on top. A soft way into retinol for smoother-looking skin, without starting at full strength.",
+        },
+        { kind: "heading", text: "How I Keep It Gentle" },
+        {
+          kind: "text",
+          text: "Azelaic acid in the morning, retinol at night. Keeping them apart means my skin only handles one strong active at a time.",
+        },
+        {
+          kind: "text",
+          text: "New actives get a patch test first, and they go in one at a time. If something stings or my skin turns red, I stop.",
+        },
+        {
+          kind: "text",
+          text: "Retinol makes skin more sensitive to the sun, which is one more reason the SPF is non-negotiable every morning.",
+        },
+        {
+          kind: "text",
+          text: "This is what works for my skin, not medical advice. If you're dealing with a skin condition, or you're pregnant or breastfeeding, talk to a dermatologist before adding retinol or azelaic acid.",
+        },
+      ],
+      review: {
+        label: "The Edit Summary",
+        heading: "My Routine at a Glance",
+        rows: [
+          ["Morning", "Luxe Organix Whip Cleanser, Balea Hyaluron Serum, Skinoren Cream, Purito Panthenol Cream, SUNDANCE SPF 50+"],
+          ["Night", "Luxe Organix Whip Cleanser, Balea Hyaluron Serum, Luxe Organix Retinol + Bakuchiol, Purito Panthenol Cream"],
+          ["From Germany", "Balea serum and SUNDANCE SPF, both from dm"],
+          ["The rule", "Azelaic acid in the morning, retinol at night, never together"],
+          ["Non-negotiable", "SPF every morning, because retinol makes skin more sun-sensitive"],
+        ],
+        note: "Note: patch test anything new, and start actives slowly.",
+        subheading: "The one thing I'd tell a friend",
+        text: "You don't need more products. You need the right few, used consistently.",
+      },
+      closing: {
+        line: "Six months, six products, one lesson: my skin didn't need more. It needed me to stay.",
+        label: "The Edit | Beauty & Style | Doha, Qatar",
+      },
+      share: {
+        heading: "Know someone rebuilding their routine?",
+        text: "Share this with the friend whose vanity has more products than it needs.",
+      },
+      image: beautyPhoto("my-current-skincare-essentials"),
       moreFrom: ["the-perfumes-im-loving-right-now", "a-timeless-wardrobe-for-everyday-living"],
     },
-    collection: [
-      { slug: "my-current-skincare-essentials", title: "My Current Skincare Essentials", topic: "Skincare" },
+    collection: ([
       { slug: "a-timeless-wardrobe-for-everyday-living", title: "A Timeless Wardrobe for Everyday Living", topic: "Style" },
       { slug: "the-perfumes-im-loving-right-now", title: "The Perfumes I'm Loving Right Now", topic: "Beauty" },
       { slug: "a-minimal-makeup-routine-that-works", title: "A Minimal Makeup Routine That Works", topic: "Beauty" },
       { slug: "small-beauty-rituals-that-make-a-difference", title: "Small Beauty Rituals That Make a Difference", topic: "Self-care" },
       { slug: "rest-reset-glow", title: "Rest, Reset, Glow", topic: "Wellness" },
-    ].map((story) => ({ ...story, image: beautyPhoto(story.slug) })),
+    ] as Omit<EditStory, "image">[]).map((story) => ({ ...story, image: beautyPhoto(story.slug) })),
   },
   {
     slug: "cafe-dining",
